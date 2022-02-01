@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="@drawable/qq_userguide_page2bg" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <SurfaceView android:id="@id/qav_beauty_surfaceView" android:layout_width="1.0dip" android:layout_height="1.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        <com.tencent.av.opengl.ui.GLRootView android:id="@id/qav_beauty_glroot" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+        <RelativeLayout android:id="@id/qav_beauty_bottom" android:background="@drawable/qav_bottombar_bg" android:layout_width="fill_parent" android:layout_height="@dimen/qav_bottombar_bg_height" android:layout_alignParentBottom="true">
+            <Button android:textSize="17.0sp" android:textColor="@color/qav_white" android:gravity="center" android:id="@id/qav_beauty_finish" android:background="@drawable/qav_audio_btn_green" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="40.0dip" android:text="@string/qav_beauty_finish" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:layout_alignWithParentIfMissing="true" android:onClick="BtnOnClick" android:contentDescription="@string/qav_beauty_finish_description" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/qq_introduce_page" android:background="#cc000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/qav_beauty_bottom_2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true">
+            <com.tencent.av.widget.BidirectionSeekBar android:id="@id/qav_beauty_seek_bar" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginRight="30.0dip" android:layout_marginBottom="134.0dip" android:maxHeight="4.0dip" android:progressDrawable="@drawable/qav_beauty_seekbar" android:thumb="@drawable/qav_beauty_seekbar_thumb_60" android:thumbOffset="0.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:layout_alignWithParentIfMissing="true" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/qav_white" android:gravity="center" android:id="@id/qav_beauty_seek_tip" android:background="@drawable/qav_beauty_seekbar_tip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:text="@string/qav_beauty_seekbar_tip" android:layout_above="@id/qav_beauty_seek_bar" android:layout_alignParentLeft="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+</FrameLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="@dimen/weiyun_backup_gallery_width" android:layout_height="@dimen/weiyun_backup_gallery_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.dataline.util.widget.AsyncImageView android:id="@id/imageView" android:background="#00ff0000" android:layout_width="@dimen/weiyun_backup_gallery_image_size" android:layout_height="@dimen/weiyun_backup_gallery_image_size" android:src="@drawable/qzone_defaultphoto" android:scaleType="fitXY" android:layout_above="@id/bucket_name" android:layout_centerHorizontal="true" />
+    <TextView android:textColor="@color/white" android:gravity="center" android:id="@id/num" android:background="@drawable/weiyun_backup_picturecount_bg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" android:text="100" android:layout_alignTop="@id/imageView" android:layout_alignRight="@id/imageView" />
+    <TextView android:textSize="16.0sp" android:textColor="@color/skin_dark_gray" android:ellipsize="middle" android:gravity="center" android:id="@id/bucket_name" android:layout_width="90.0sp" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="gallery" android:singleLine="true" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

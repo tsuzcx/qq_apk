@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:id="@id/tag_group" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="45.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="16.0sp" android:textColor="#ff000000" android:gravity="center_vertical" android:id="@id/tag_group_name" android:layout_width="wrap_content" android:layout_height="45.0dip" android:layout_marginLeft="40.0dip" android:text="部分好友" />
+    <TextView android:textSize="16.0sp" android:textColor="#ff000000" android:gravity="center_vertical" android:id="@id/tag_group_count" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="5.0dip" android:text="(10)" android:layout_toRightOf="@id/tag_group_name" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/tag_group_select_icon" android:focusable="false" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/qzone_icon_img_check" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/tag_group_arrow" android:focusable="false" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/qzone_home_permissionsettings_arrow" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/divider_line" android:background="#ffcbcaca" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="40.0dip" />
+</RelativeLayout>

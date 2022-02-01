@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="true" android:drawable="@drawable/qzone_album_bottom_op_bg_bar" />
+    <item android:state_enabled="false" android:drawable="@color/qzone_color_hint" />
+</selector>

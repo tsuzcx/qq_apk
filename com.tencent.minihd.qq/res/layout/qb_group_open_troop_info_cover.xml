@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/troop_cover_layout" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/troop_cover_imageView" android:background="@drawable/qb_group_info_head_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/white" android:id="@id/troop_name_textView" android:background="@drawable/qb_group_open_troop_info_name_bg" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginBottom="120.0dip" android:text="@string/qb_troop_title_open_troop" android:includeFontPadding="false" android:layout_alignBottom="@id/troop_cover_imageView" />
+        <ImageView android:id="@id/troop_logo_imageView" android:background="@drawable/qb_group_troop_open_icon" android:layout_width="32.5dip" android:layout_height="12.5dip" android:layout_marginLeft="10.0dip" android:layout_marginBottom="123.0dip" android:layout_toRightOf="@id/troop_name_textView" android:layout_alignBottom="@id/troop_cover_imageView" />
+    </RelativeLayout>
+</RelativeLayout>

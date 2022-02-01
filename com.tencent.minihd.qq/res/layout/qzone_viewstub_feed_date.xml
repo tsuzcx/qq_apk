@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.qzone.proxy.feedcomponent.ui.FeedDate android:textSize="16.0sp" android:id="@id/feedview_date" android:background="@null" android:paddingTop="@dimen/feed_item_margin_top30px" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

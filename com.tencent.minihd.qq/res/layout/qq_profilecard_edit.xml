@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.BounceScrollView android:background="@color/common_bg_color" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/common_32dp" android:layout_marginRight="@dimen/common_32dp"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="@color/common_bg_color" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:background="@drawable/card_shadow" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/common_32dp">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/nick_rl" android:layout_marginTop="@dimen/common_32dp" style="@style/detail_p_activity_item_style">
+                <TextView android:text="@string/profile_nick_title" style="@style/detail_p_activity_title_style" />
+                <EditText android:id="@id/nick_edit" android:layout_width="0.0dip" android:layout_weight="1.0" style="@style/detail_p_activity_edit_style" />
+                <ImageView android:visibility="invisible" style="@style/detail_p_activity_arrow_style" />
+            </LinearLayout>
+            <View android:background="#fff2f2f2" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/common_32dp" android:layout_marginTop="@dimen/common_16dp" android:layout_marginRight="@dimen/common_32dp" android:layout_marginBottom="@dimen/common_16dp" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/sex_rl" style="@style/detail_p_activity_item_style">
+                <TextView android:text="@string/profile_sex_title" style="@style/detail_p_activity_title_style" />
+                <TextView android:id="@id/sex_txt" android:layout_width="0.0dip" android:layout_weight="1.0" style="@style/detail_p_activity_edit_style" />
+                <ImageView android:visibility="invisible" style="@style/detail_p_activity_arrow_style" />
+            </LinearLayout>
+            <View android:background="#fff2f2f2" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/common_32dp" android:layout_marginTop="@dimen/common_16dp" android:layout_marginRight="@dimen/common_32dp" android:layout_marginBottom="@dimen/common_16dp" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/age_rl" style="@style/detail_p_activity_item_style">
+                <TextView android:text="@string/profile_age_title" style="@style/detail_p_activity_title_style" />
+                <TextView android:id="@id/age_txt" android:layout_width="0.0dip" android:layout_weight="1.0" style="@style/detail_p_activity_edit_style" />
+                <ImageView android:visibility="invisible" style="@style/detail_p_activity_arrow_style" />
+            </LinearLayout>
+            <View android:background="#fff2f2f2" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/common_32dp" android:layout_marginTop="@dimen/common_16dp" android:layout_marginRight="@dimen/common_32dp" android:layout_marginBottom="@dimen/common_16dp" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/constellation_rl" android:layout_marginBottom="@dimen/common_32dp" style="@style/detail_p_activity_item_style">
+                <TextView android:text="@string/profile_constellation_title" style="@style/detail_p_activity_title_style" />
+                <TextView android:id="@id/constellation_txt" android:layout_width="0.0dip" android:layout_weight="1.0" style="@style/detail_p_activity_edit_style" />
+                <ImageView android:visibility="invisible" style="@style/detail_p_activity_arrow_style" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:background="@drawable/card_shadow" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/common_32dp">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/profession_rl" android:layout_marginTop="30.0dip" style="@style/detail_p_activity_item_style">
+                <TextView android:layout_marginRight="@dimen/qq_profilecard_detail_maringLR" android:text="@string/profile_profession_title" style="@style/detail_p_activity_title_style" />
+                <TextView android:textColor="#ffffffff" android:gravity="center" android:id="@id/profession_icon_txt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="3.0dip" android:text="星座" />
+                <TextView android:textColor="@color/black_30_per_alpha" android:id="@id/profession_content_txt" android:layout_width="0.0dip" android:layout_marginLeft="@dimen/qq_profilecard_detail_marginLeft" android:layout_weight="1.0" style="@style/detail_p_activity_txt_style" />
+                <ImageView android:id="@id/indicator" android:visibility="invisible" style="@style/detail_p_activity_arrow_style" />
+            </LinearLayout>
+            <View android:background="#fff2f2f2" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/common_32dp" android:layout_marginTop="@dimen/common_16dp" android:layout_marginRight="@dimen/common_32dp" android:layout_marginBottom="@dimen/common_16dp" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/company_rl" style="@style/detail_p_activity_item_style">
+                <TextView android:text="@string/profile_company_title" style="@style/detail_p_activity_title_style" />
+                <EditText android:id="@id/company_edit" android:layout_width="0.0dip" android:layout_weight="1.0" style="@style/detail_p_activity_edit_style" />
+                <ImageView android:visibility="invisible" style="@style/detail_p_activity_arrow_style" />
+            </LinearLayout>
+            <View android:background="#fff2f2f2" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/common_32dp" android:layout_marginTop="@dimen/common_16dp" android:layout_marginRight="@dimen/common_32dp" android:layout_marginBottom="@dimen/common_16dp" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/college_rl" style="@style/detail_p_activity_item_style">
+                <TextView android:text="@string/profile_school_title" style="@style/detail_p_activity_title_style" />
+                <EditText android:id="@id/college_edit" android:layout_width="0.0dip" android:layout_weight="1.0" style="@style/detail_p_activity_edit_style" />
+                <ImageView android:visibility="invisible" style="@style/detail_p_activity_arrow_style" />
+            </LinearLayout>
+            <View android:background="#fff2f2f2" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/common_32dp" android:layout_marginTop="@dimen/common_16dp" android:layout_marginRight="@dimen/common_32dp" android:layout_marginBottom="@dimen/common_16dp" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/location_item" style="@style/detail_p_activity_item_style">
+                <TextView android:text="@string/profile_location_title" style="@style/detail_p_activity_title_style" />
+                <TextView android:id="@id/location_txt" android:layout_width="0.0dip" android:layout_weight="1.0" style="@style/detail_p_activity_edit_style" />
+                <ImageView android:visibility="invisible" style="@style/detail_p_activity_arrow_style" />
+            </LinearLayout>
+            <View android:background="#fff2f2f2" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/common_32dp" android:layout_marginTop="@dimen/common_16dp" android:layout_marginRight="@dimen/common_32dp" android:layout_marginBottom="@dimen/common_16dp" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/hometown_item" style="@style/detail_p_activity_item_style">
+                <TextView android:text="@string/profile_hometown_title" style="@style/detail_p_activity_title_style" />
+                <TextView android:textColor="@color/black_30_per_alpha" android:id="@id/hometown_txt" android:layout_width="0.0dip" android:layout_weight="1.0" style="@style/detail_p_activity_edit_style" />
+                <ImageView android:visibility="invisible" style="@style/detail_p_activity_arrow_style" />
+            </LinearLayout>
+            <View android:background="#fff2f2f2" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/common_32dp" android:layout_marginTop="@dimen/common_16dp" android:layout_marginRight="@dimen/common_32dp" android:layout_marginBottom="@dimen/common_16dp" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/email_item" style="@style/detail_p_activity_item_style">
+                <TextView android:text="@string/profile_email_title" style="@style/detail_p_activity_title_style" />
+                <EditText android:id="@id/email_edit" android:layout_width="0.0dip" android:layout_weight="1.0" style="@style/detail_p_activity_edit_style" />
+                <ImageView android:visibility="invisible" style="@style/detail_p_activity_arrow_style" />
+            </LinearLayout>
+            <View android:background="#fff2f2f2" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/common_32dp" android:layout_marginTop="@dimen/common_16dp" android:layout_marginRight="@dimen/common_32dp" android:layout_marginBottom="@dimen/common_16dp" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/personalNote_item" android:paddingTop="12.0dip" android:paddingBottom="12.0dip" android:layout_marginBottom="@dimen/common_32dp" style="@style/detail_p_activity_item_style">
+                <TextView android:text="@string/profile_personalNote_title" style="@style/detail_p_activity_title_style" />
+                <TextView android:id="@id/personalNote_txt" android:layout_width="0.0dip" android:singleLine="false" android:layout_weight="1.0" style="@style/detail_p_activity_edit_style" />
+                <ImageView android:layout_gravity="center_vertical" android:visibility="invisible" style="@style/detail_p_activity_arrow_style" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:background="@drawable/card_shadow" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/common_32dp" android:layout_marginBottom="@dimen/common_32dp">
+            <LinearLayout android:orientation="horizontal" android:id="@id/interest_item" android:layout_marginLeft="@dimen/common_32dp" android:layout_marginTop="@dimen/common_16dp" android:layout_marginBottom="@dimen/common_16dp" style="@style/detail_p_activity_item_style">
+                <TextView android:gravity="left" android:layout_gravity="left" android:layout_width="0.0dip" android:text="@string/profile_interest_edit_title" android:layout_weight="1.0" style="@style/detail_p_activity_title_style" />
+                <ImageView android:layout_gravity="center_vertical" android:visibility="invisible" style="@style/detail_p_activity_arrow_style" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</com.tencent.mobileqq.widget.BounceScrollView>

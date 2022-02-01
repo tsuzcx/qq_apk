@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+      <array name="intersend1">
+        <item>184458</item>
+        <item>失恋33天</item>
+        <item>鲍鲸鲸</item>
+    </array>
+    <array name="intersend2">
+         <item>227661</item>
+        <item>悲剧的诞生</item>
+        <item>尼采（德）</item>
+    </array>
+    <array name="intersend3">
+         <item>123705</item>
+        <item>剩女突围</item>
+        <item>李娜</item>
+        
+    </array>
+   <array name="intersend4">
+         <item>31879</item>
+        <item>孙子传</item>
+        <item>曹尧德</item>
+        
+    </array>
+    <array name="intersend5">
+         <item>130326</item>
+        <item>傲慢与偏见</item>
+        <item>简·奥斯汀</item>
+        
+    </array>
+   <array name="intersend6">
+         <item>130888</item>
+        <item>野性的呼唤</item>
+        <item>(美) 杰克·伦敦</item>
+       
+    </array>
+   <array name="intersend7">
+         <item>163073</item>
+        <item>金瓶梅</item>
+        <item>兰陵笑笑生</item>
+        
+    </array>
+    <array name="intersend8">
+         <item>141156</item>
+        <item>超级校园狂少</item>
+        <item>夏寂凉</item>
+        
+    </array>
+    <array name="intersend9">
+         <item>9432</item>
+        <item>低成本泡妞</item>
+        <item>猛然间</item>
+       
+    </array>
+    <array name="intersend10">
+         <item>177853</item>
+        <item>老婆，你别跑</item>
+        <item>kuaileruyi</item>
+       
+    </array>
+    <array name="intersend11">
+         <item>15837</item>
+        <item>省钱完全手册</item>
+        <item>牛晓彦</item>
+        
+    </array>
+    <array name="intersend12">
+        <item>127255</item>
+        <item>丑女无敌</item>
+        <item>李娜，曹博</item>
+    </array>
+</resources>

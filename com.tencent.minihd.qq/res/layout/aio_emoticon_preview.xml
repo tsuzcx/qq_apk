@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.emoticonview.EmotionPreviewLayout android:orientation="horizontal" android:id="@id/emotionLayout" android:background="@drawable/qvip_emoji_preview_bg" android:visibility="gone" android:layout_marginLeft="5.0dip" android:layout_alignParentLeft="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

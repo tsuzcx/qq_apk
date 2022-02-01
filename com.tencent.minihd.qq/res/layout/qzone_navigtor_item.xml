@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_gravity="center" android:orientation="horizontal" android:id="@id/navigator_item" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:id="@id/item_group" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <com.qzone.widget.AsyncImageView android:layout_gravity="center_vertical" android:id="@id/item_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:layout_marginRight="5.0dip" />
+        <TextView android:textSize="13.0sp" android:textColor="#ff000000" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/item_label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:maxLines="1" />
+        <TextView android:textSize="13.0sp" android:textColor="#ff000000" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/item_descript" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="(2345)" android:maxLines="1" />
+    </LinearLayout>
+    <View android:layout_gravity="center|right" android:id="@id/feed_div" android:background="#ffe4e4e4" android:layout_width="1.0dip" android:layout_height="15.0dip" />
+</FrameLayout>

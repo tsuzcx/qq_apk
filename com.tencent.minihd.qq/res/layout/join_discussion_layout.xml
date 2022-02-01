@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/scrollbar_handle_vertical" android:background="@drawable/bg_texture" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@id/disc_info" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@id/discussion_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="45.0dip" android:src="@drawable/discussion_avatar_icon" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:contentDescription="@null" />
+            <TextView android:textSize="16.0sp" android:textColor="@color/skin_dark_gray" android:gravity="center_horizontal" android:id="@id/discussion_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:layout_below="@id/discussion_icon" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="@dimen/textSizeS4" android:textColor="@color/skin_gray2" android:id="@id/create_time" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:layout_below="@id/discussion_name" android:layout_centerHorizontal="true" />
+            <Button android:id="@id/join_btn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="18.0dip" android:layout_marginRight="10.0dip" android:text="加入讨论组" android:layout_below="@id/create_time" style="@style/ButtonBlue" />
+            <TextView android:textSize="12.0sp" android:textColor="#ffaaaaaa" android:id="@id/invalid_time" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="25.0dip" android:shadowColor="#ffffffff" android:shadowDy="2.0" android:shadowRadius="2.0" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/expire_info" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@id/url_expire" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="87.0dip" android:src="@drawable/discussion_expired_logo" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:contentDescription="@null" />
+            <TextView android:textSize="16.0sp" android:textColor="@color/skin_dark_gray" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="该讨论组链接已过期" android:layout_below="@id/url_expire" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+</com.tencent.mobileqq.widget.BounceScrollView>

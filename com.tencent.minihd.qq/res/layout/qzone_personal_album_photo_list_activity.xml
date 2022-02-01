@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.qzone.widget.QZonePullToRefreshListView android:scrollbarThumbVertical="@drawable/qzone_scrollbar" android:scrollbarStyle="insideOverlay" android:id="@id/personal_album_photo_list" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/transparent" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" />
+        <ViewStub android:layout_gravity="center" android:id="@id/personal_album_photo_list_empty" android:layout="@layout/qzone_troopalbum_emptyview" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <RelativeLayout android:id="@id/bottomBar_selected_photo" android:background="@drawable/skin_aio_input_bar_bg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="50.0dip" android:layout_alignParentBottom="true">
+            <TextView android:id="@id/tv_confirm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="10.0dip" android:text="@string/qzone_ok" android:layout_alignParentRight="true" style="@style/SmallButtonBlue" />
+            <HorizontalScrollView android:gravity="center|left|top" android:id="@id/scrollView" android:paddingTop="8.0dip" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_toLeftOf="@id/tv_confirm" android:layout_centerVertical="true">
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="fill_parent">
+                    <com.tencent.widget.GridView android:id="@id/selectedPhotos" android:paddingLeft="10.0dip" android:fadingEdge="none" android:layout_width="100.0dip" android:layout_height="fill_parent" android:listSelector="@color/transparent" android:cacheColorHint="@null" android:horizontalSpacing="10.0dip" android:verticalSpacing="0.0dip" android:stretchMode="none" android:columnWidth="40.0dip" android:numColumns="1" />
+                </LinearLayout>
+            </HorizontalScrollView>
+        </RelativeLayout>
+        <LinearLayout android:gravity="center" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/bottomBar_operation" android:background="@drawable/qzone_album_bottom_op_bg_bar" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/qun_album_photo_list_bottom_op_bar_height" android:baselineAligned="false" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+            <TextView android:textSize="12.0sp" android:textColor="@color/qzone_text_album_bottom_bar" android:gravity="center" android:id="@id/iv_operation_move" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/qzone_personal_album_photolist_bottom_op_bar_move" android:drawableTop="@drawable/qzone_personal_album_manage_move_selector" android:layout_weight="1.0" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/qzone_text_album_bottom_bar" android:gravity="center" android:id="@id/iv_operation_download" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/qzone_personal_album_photolist_bottom_op_bar_download" android:drawableTop="@drawable/qzone_qun_album_manage_download_selector" android:layout_weight="1.0" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/qzone_text_album_bottom_bar" android:gravity="center" android:id="@id/iv_operation_delete" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/qzone_personal_album_photolist_bottom_op_bar_delete" android:drawableTop="@drawable/qzone_qun_album_manage_delete_selector" android:layout_weight="1.0" />
+        </LinearLayout>
+        <TextView android:textSize="15.0sp" android:textColor="@color/qzone_selector_photo_edit_color" android:gravity="center" android:layout_gravity="bottom" android:id="@id/bottomBar_custom_shoot_time" android:background="@drawable/qzone_selector_photo_edit_color_bg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/qun_album_photo_list_bottom_op_bar_height" android:text="@string/qzone_personal_album_photolist_bottom_op_bar_sort" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <LinearLayout android:layout_gravity="bottom" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include android:visibility="gone" layout="@layout/qzone_vip_reminder_banner" />
+    </LinearLayout>
+</FrameLayout>

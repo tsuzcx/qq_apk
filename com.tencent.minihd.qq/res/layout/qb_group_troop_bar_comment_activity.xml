@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.InputMethodRelativeLayout android:id="@id/root" android:background="@drawable/transparent_2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/layout_emotion_pannel" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <com.tencent.mobileqq.activity.aio.InputLinearLayout android:gravity="center" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/inputBar" android:background="@drawable/skin_aio_input_bar_bg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="50.0dip" android:layout_above="@id/layout_emotion_pannel">
+        <View android:id="@id/skin_input_bg" android:layout_width="0.0dip" android:layout_height="0.0dip" />
+        <ImageButton android:id="@id/emo_btn" android:background="@drawable/trans" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="2.0dip" android:src="@drawable/qzone_edit_face_drawable" android:contentDescription="@string/qb_group_troop_bar_publish_emotion_face_btn_description" />
+        <com.tencent.widget.XEditTextEx android:textSize="16.0sp" android:textColor="@color/skin_input" android:id="@id/input" android:background="@drawable/skin_aio_input_bg" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:maxLines="3" android:layout_weight="1.0" android:inputType="textMultiLine" android:textSelectHandle="@drawable/text_select_handle_middle" />
+        <Button android:id="@id/send_btn" style="@style/bottom_bar_send_btn" />
+    </com.tencent.mobileqq.activity.aio.InputLinearLayout>
+    <View android:id="@id/transparent_space" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/inputBar" />
+    <View android:background="@color/qb_troop_bar_publish_divider" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignBottom="@id/inputBar" />
+    <View android:background="@color/qb_troop_bar_publish_divider" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignTop="@id/inputBar" />
+</com.tencent.mobileqq.widget.InputMethodRelativeLayout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.av.opengl.ui.GLRootView android:id="@id/av_video_glview" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="35.0dip" android:layout_marginTop="40.0dip">
+            <Button android:gravity="center" android:id="@id/btn_camera" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+            <Button android:gravity="center" android:id="@id/btn_mic" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+            <Button android:gravity="center" android:id="@id/btn_mute" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+            <Button android:gravity="center" android:id="@id/btn_audio_route" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="35.0dip" android:layout_marginTop="20.0dip">
+            <Button android:gravity="center" android:id="@id/btn_camera_switch" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="切换摄像头" android:layout_weight="1.0" />
+            <View android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+            <View android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+            <Button android:gravity="center" android:id="@id/btn_close" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="退出" android:layout_weight="1.0" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

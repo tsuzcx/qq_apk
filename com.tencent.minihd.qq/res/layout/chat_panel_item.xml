@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:paddingTop="@dimen/dp_8" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/imageView1" android:layout_width="@dimen/dp_56" android:layout_height="@dimen/dp_56" android:src="@drawable/chat_griditem_sel" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="12.0sp" android:textColor="@color/skin_gray5_item" android:id="@id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_8" android:text="TextView" android:maxEms="4" android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/imageView1" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/flag_new" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-12.0dip" android:src="@drawable/skin_tips_dot_stroke" android:layout_toRightOf="@id/imageView1" android:layout_alignParentTop="true" />
+</RelativeLayout>

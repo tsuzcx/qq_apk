@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/qq_nearpeople_turnbrand_guide_mask" android:background="#66000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:layout_gravity="center" android:id="@id/qq_nearpeople_turnbrand_guide_swipe" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qq_nearpeople_turnbrand_guide_swipe" android:contentDescription="@null" />
+    <ImageView android:layout_gravity="center" android:id="@id/qq_nearpeople_turnbrand_guide_prise" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qq_nearpeople_turnbrand_guide_prise" android:contentDescription="@null" />
+</merge>

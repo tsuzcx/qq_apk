@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/guide_container" android:background="#ffedf9ff" android:paddingTop="30.0dip" android:paddingBottom="30.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center" android:id="@id/userguide_image" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/user_guide_image" android:scaleType="fitCenter" />
+    <ImageView android:layout_gravity="bottom|center" android:id="@id/open_qq_btn" android:background="@drawable/start_open_qq_selector" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="90.0dip" />
+</FrameLayout>

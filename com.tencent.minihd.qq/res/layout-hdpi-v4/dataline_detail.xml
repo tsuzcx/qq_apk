@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.BounceScrollView android:id="@id/container" android:background="@drawable/bg_texture" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/transparent" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0px" android:layout_weight="1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/content_container" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="horizontal" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@id/icon" android:background="@drawable/qfile_dataline_pc_recent" android:layout_width="75.0dip" android:layout_height="75.0dip" android:contentDescription="@null" />
+            <TextView android:textSize="17.0sp" android:textColor="@color/skin_dark_gray" android:ellipsize="end" android:id="@id/info" android:paddingLeft="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lite_title" android:singleLine="true" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:background="@drawable/common_strip_setting_bg" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+            <TextView android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/feature_info" style="@style/C9_Font" />
+            <TextView android:id="@id/content" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/lite_introduce" android:lineSpacingExtra="4.0dip" style="@style/B4_Font" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/common_strip_setting_bg" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginTop="20.0dip">
+            <TextView android:layout_gravity="center_vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/lite_autorecv_3g" android:layout_weight="1.0" style="@style/B4_Font" />
+            <com.tencent.widget.Switch android:layout_gravity="center_vertical" android:id="@id/state_change" android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="@string/lite_autorecv_3g" />
+        </LinearLayout>
+        <TextView android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginBottom="1.0dip" android:text="@string/lite_autorecv_toast" style="@style/D4_Font" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/common_strip_setting_bg" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginTop="20.0dip">
+            <TextView android:layout_gravity="center_vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/lite_pconline_switch" android:layout_weight="1.0" style="@style/B4_Font" />
+            <com.tencent.widget.Switch android:layout_gravity="center_vertical" android:id="@id/pc_state_change" android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="@string/lite_pconline_switch" />
+        </LinearLayout>
+        <TextView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginBottom="1.0dip" android:text="@string/lite_pconline_switch_desc" style="@style/D4_Font" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/view_recv_file" android:background="@drawable/common_strip_setting_bg" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginTop="20.0dip">
+            <TextView android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/lite_view_recvfile" android:layout_weight="1.0" style="@style/B4_Font_white" />
+            <ImageView android:id="@id/imageView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/common_arrow_right_selector" android:contentDescription="@null" />
+        </LinearLayout>
+        <TextView android:layout_gravity="center_horizontal" android:id="@id/recv_file_path" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginBottom="1.0dip" android:text="" style="@style/D4_Font" />
+        <FrameLayout android:id="@id/add_shortcut" android:background="@drawable/common_strip_setting_bg" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginTop="15.0dip">
+            <TextView android:textSize="15.0sp" android:textColor="@color/skin_blue" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/add_shortcut" />
+        </FrameLayout>
+        <FrameLayout android:id="@id/clear_record" android:background="@drawable/common_strip_setting_bg" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginTop="15.0dip">
+            <TextView android:textSize="15.0sp" android:textColor="@color/skin_blue" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lite_delete" />
+        </FrameLayout>
+    </LinearLayout>
+</com.tencent.mobileqq.widget.BounceScrollView>

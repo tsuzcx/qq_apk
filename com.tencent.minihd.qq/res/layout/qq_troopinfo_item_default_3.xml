@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/arrow" style="@style/TroopInfoExItemArrow" />
+    <RelativeLayout android:id="@id/head" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/arrow" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
+        <TextView android:id="@id/title" style="@style/TroopInfoExItemTitle" />
+        <TextView android:id="@id/newmsgtip" style="@style/TroopInfoExItemReddot" />
+        <LinearLayout android:id="@id/content" style="@style/TroopInfoExItemContent2">
+            <View style="@style/TroopInfoExItemSpace" />"
+<TextView android:id="@id/short_info" style="@style/TroopInfoExItemInfo" />"
+</LinearLayout>
+    </RelativeLayout>
+    <TextView android:textSize="18.0sp" android:textColor="@color/skin_gray4_item" android:id="@id/info" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="32.0dip" android:layout_marginTop="@dimen/table_shuoming_margin_top" android:layout_marginBottom="@dimen/table_shuoming_margin_bottom" android:layout_toLeftOf="@id/arrow" android:layout_below="@id/head" android:layout_alignParentLeft="true" />
+    <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_below="@id/info" />
+</RelativeLayout>

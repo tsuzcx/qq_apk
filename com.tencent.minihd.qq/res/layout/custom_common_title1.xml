@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/rlCommenTitle" style="@style/title_bar"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/ivTitleName" style="@style/title_bar_title" />
+    <com.tencent.widget.EmptyTextView android:id="@id/ivTitleBtnLeft" style="@style/title_bar_left_btn" />
+    <TextView android:textColor="@color/skin_send_btn" android:id="@id/ivTitleBtnRightText" style="@style/title_bar_right_btn" />
+</RelativeLayout>

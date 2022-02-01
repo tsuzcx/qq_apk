@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@drawable/qzone_bg_alertdialog" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minWidth="300.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/title_container" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="2.0dip" android:layout_marginRight="8.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
+        <ImageView android:id="@id/icon" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="3.0dip" android:layout_marginTop="2.0dip" android:layout_marginRight="3.0dip" />
+        <TextView android:textSize="21.0sp" android:textColor="@color/white" android:ellipsize="end" android:gravity="center" android:layout_gravity="center" android:id="@id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/content" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginTop="11.0dip" android:layout_marginRight="4.0dip" android:layout_marginBottom="15.0dip" android:layout_below="@id/title_container">
+        <TextView android:textSize="16.0sp" android:textColor="@color/white" android:gravity="center" android:id="@id/message" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:layout_gravity="bottom" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:layout_below="@id/content">
+        <Button android:textSize="15.0sp" android:textColor="@color/white" android:id="@id/negativeButton" android:background="@drawable/qzone_selector_btn_alertdiaglog" android:layout_width="0.0dip" android:layout_height="42.0dip" android:layout_marginRight="5.0dip" android:text="取消" android:layout_weight="1.0" />
+        <Button android:textSize="15.0sp" android:textColor="@color/white" android:id="@id/neutralButton" android:background="@drawable/qzone_selector_btn_alertdiaglog" android:layout_width="0.0dip" android:layout_height="42.0dip" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:text="说明" android:layout_weight="1.0" />
+        <Button android:textSize="15.0sp" android:textColor="@color/white" android:id="@id/positiveButton" android:background="@drawable/qzone_selector_btn_alertdiaglog" android:layout_width="0.0dip" android:layout_height="42.0dip" android:layout_marginLeft="5.0dip" android:text="确定" android:layout_weight="1.0" />
+    </LinearLayout>
+</RelativeLayout>

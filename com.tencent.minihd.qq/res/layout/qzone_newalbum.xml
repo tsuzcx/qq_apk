@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:id="@id/newalbum_scrollview" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.qzone.widget.ExtendLinearLayout android:orientation="vertical" android:id="@id/albumEdit" android:paddingLeft="12.0dip" android:paddingTop="15.0dip" android:paddingRight="12.0dip" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:orientation="vertical" android:background="@drawable/qzone_inputbox_upload_pic" android:padding="1.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <RelativeLayout android:gravity="center_vertical" android:clickable="true" android:layout_width="fill_parent" android:layout_height="51.0dip">
+                    <TextView android:textSize="15.0sp" android:textColor="@color/qzone_color_hei" android:gravity="center_vertical" android:id="@id/nameTextView" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:text="@string/qzone_album_create_albumname" />
+                    <ImageView android:id="@id/icon_close_name" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/qzone_icon_close" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/qzone_album_create_albumname_clear_description" />
+                    <EditText android:textSize="15.0sp" android:textColor="@color/qzone_color_title" android:textColorHint="@color/qzone_color_hint_text" android:id="@id/nameEditText" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:singleLine="true" android:layout_toLeftOf="@id/icon_close_name" android:layout_toRightOf="@id/nameTextView" />
+                </RelativeLayout>
+                <include layout="@layout/qzone_album_divider" />
+                <RelativeLayout android:gravity="center_vertical" android:clickable="true" android:layout_width="fill_parent" android:layout_height="51.0dip">
+                    <TextView android:textSize="15.0sp" android:textColor="@color/qzone_color_hei" android:gravity="center_vertical" android:id="@id/descTextView" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:text="@string/qzone_album_create_albumdesc" />
+                    <ImageView android:id="@id/icon_close_desc" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/qzone_icon_close" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                    <EditText android:textSize="15.0sp" android:textColor="@color/qzone_color_title" android:textColorHint="@color/qzone_color_hint_text" android:id="@id/descEditText" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:maxLines="1" android:singleLine="true" android:layout_toLeftOf="@id/icon_close_desc" android:layout_toRightOf="@id/descTextView" />
+                </RelativeLayout>
+                <include layout="@layout/qzone_album_divider" />
+                <RelativeLayout android:gravity="center_vertical" android:id="@id/id_qz_activity_change_cover" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="51.0dip">
+                    <TextView android:textSize="15.0sp" android:textColor="@color/qzone_color_hei" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:text="@string/qzone_album_change_cover_albumdesc" />
+                    <com.qzone.widget.AsyncImageView android:id="@id/img_change_cover" android:layout_width="35.0dip" android:layout_height="35.0dip" android:layout_marginRight="@dimen/album_grid_item_horizontal_spacing" android:scaleType="centerCrop" android:layout_toLeftOf="@id/img_album_list_item_open" android:layout_centerVertical="true" />
+                    <ImageView android:layout_gravity="center_vertical" android:id="@id/img_album_list_item_open" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/qzone_icon_forward_selector" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                </RelativeLayout>
+            </LinearLayout>
+            <TextView android:textSize="15.0sp" android:textColor="@color/qzone_color_content_second" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginBottom="6.0dip" android:text="@string/qzone_album_create_albumtheme_title" />
+            <LinearLayout android:orientation="vertical" android:background="@drawable/qzone_inputbox_upload_pic" android:padding="1.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <RelativeLayout android:gravity="center_vertical" android:id="@id/id_qz_activity_photo_normal_theme_select" android:clickable="true" android:layout_width="fill_parent" android:layout_height="51.0dip">
+                    <TextView android:textSize="15.0sp" android:textColor="@color/qzone_color_hei" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:text="@string/qzone_album_theme_normal" />
+                    <ImageView android:id="@id/id_qz_activity_photo_normal_theme_check" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:src="@drawable/qzone_icon_img_check" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                </RelativeLayout>
+                <include layout="@layout/qzone_album_divider" />
+                <RelativeLayout android:gravity="center_vertical" android:id="@id/id_qz_activity_photo_baby_theme_select" android:clickable="true" android:layout_width="fill_parent" android:layout_height="51.0dip">
+                    <TextView android:textSize="15.0sp" android:textColor="@color/qzone_color_hei" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:text="@string/qzone_album_theme_baby" />
+                    <ImageView android:id="@id/id_qz_activity_photo_baby_theme_check" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:src="@drawable/qzone_icon_img_check" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                    <TextView android:textSize="15.0sp" android:textColor="@color/qzone_color_hint_text" android:gravity="center_vertical" android:id="@id/id_qz_activity_newalbum_babytheme_birthtime" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="10.0dip" android:text="" android:layout_toLeftOf="@id/id_qz_activity_photo_baby_theme_check" />
+                </RelativeLayout>
+                <include layout="@layout/qzone_album_divider" />
+                <RelativeLayout android:gravity="center_vertical" android:id="@id/id_qz_activity_photo_travel_theme_select" android:clickable="true" android:layout_width="fill_parent" android:layout_height="51.0dip">
+                    <TextView android:textSize="15.0sp" android:textColor="@color/qzone_color_hei" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:text="@string/qzone_album_theme_travel" />
+                    <ImageView android:id="@id/id_qz_activity_photo_travel_theme_check" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:src="@drawable/qzone_icon_img_check" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:background="@drawable/qzone_inputbox_upload_pic" android:padding="1.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
+                <RelativeLayout android:id="@id/priv_container" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="47.0dip">
+                    <TextView android:textSize="17.0sp" android:textColor="#ff000000" android:id="@id/priv_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="谁能看见" android:singleLine="true" android:layout_centerVertical="true" />
+                    <ImageView android:id="@id/priv_icon" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:layout_toLeftOf="@id/priv" android:layout_centerVertical="true" />
+                    <TextView android:textColor="#ff000000" android:id="@id/priv" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="25.0dip" android:button="@null" android:maxWidth="170.0dip" android:text="所有人可见" android:singleLine="true" android:drawablePadding="5.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                    <ImageView android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="5.0dip" android:src="@drawable/qzone_list_icon_arrow" android:layout_alignParentRight="true" />
+                </RelativeLayout>
+            </LinearLayout>
+            <Button android:id="@id/bt_delete" android:background="@drawable/common_btn_red" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="46.0dip" android:layout_marginTop="15.0dip" android:text="@string/qzone_qun_edit_album_delete" style="@style/ButtonRed" />
+        </com.qzone.widget.ExtendLinearLayout>
+    </ScrollView>
+</LinearLayout>

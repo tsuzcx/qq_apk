@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:scrollbarThumbVertical="@drawable/scrollbar_handle_vertical" android:background="@color/common_bg_color" android:paddingLeft="32.0dip" android:paddingRight="32.0dip" android:focusable="true" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="vertical" android:background="@drawable/card_shadow" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="32.0dip">
+        <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/titleLayout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="4.0dip">
+            <TextView android:id="@id/totalStyleTv" android:paddingLeft="32.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/total_style" style="@style/T4_Font" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="108.0dip" android:text="@string/trafic_today" android:layout_alignParentRight="true" style="@style/T4_Font" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="32.0dip" android:text="@string/trafic_month" android:layout_alignParentRight="true" style="@style/T4_Font" />
+        </RelativeLayout>
+        <RelativeLayout android:orientation="horizontal" android:id="@id/sumlayout" android:background="@drawable/common_entry_btn_selector" android:layout_width="fill_parent" android:layout_height="52.0dip" android:layout_below="@id/titleLayout">
+            <TextView android:gravity="center_vertical" android:id="@id/trafficSumTv" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="32.0dip" android:text="@string/traffic_sum" style="@style/B4_Font" />
+            <TextView android:textColor="@color/skin_gray3" android:gravity="center_vertical" android:id="@id/trafficTodayTv" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="108.0dip" android:text="@string/trafic_default" android:layout_alignParentRight="true" style="@style/S2_Font" />
+            <TextView android:gravity="center_vertical" android:id="@id/trafficMonthTv" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="32.0dip" android:text="@string/trafic_default" android:layout_alignParentRight="true" style="@style/Q4_Font" />
+            <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+                <include layout="@layout/qq_setting_line" />
+            </FrameLayout>
+        </RelativeLayout>
+        <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/chatlayout" android:background="@drawable/common_entry_btn_selector" android:layout_width="fill_parent" android:layout_height="52.0dip" android:layout_below="@id/sumlayout">
+            <TextView android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="32.0dip" android:text="@string/traffic_basic_im" style="@style/B4_Font" />
+            <TextView android:textColor="@color/skin_gray3" android:gravity="center_vertical" android:id="@id/basicImTodayTv" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="108.0dip" android:text="@string/trafic_default" android:layout_alignParentRight="true" style="@style/S2_Font" />
+            <TextView android:gravity="center_vertical" android:id="@id/basicImMonthTv" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="32.0dip" android:text="@string/trafic_default" android:layout_alignParentRight="true" style="@style/Q4_Font" />
+            <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+                <include layout="@layout/qq_setting_line" />
+            </FrameLayout>
+        </RelativeLayout>
+        <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/piclayout" android:background="@drawable/common_entry_btn_selector" android:layout_width="fill_parent" android:layout_height="52.0dip" android:layout_below="@id/chatlayout">
+            <TextView android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="32.0dip" android:text="@string/traffic_pic" style="@style/B4_Font" />
+            <TextView android:textColor="@color/skin_gray3" android:gravity="center_vertical" android:id="@id/picTodayTv" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="108.0dip" android:text="@string/trafic_default" android:layout_alignParentRight="true" style="@style/S2_Font" />
+            <TextView android:gravity="center_vertical" android:id="@id/picMonthTv" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="32.0dip" android:text="@string/trafic_default" android:layout_alignParentRight="true" style="@style/Q4_Font" />
+            <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+                <include layout="@layout/qq_setting_line" />
+            </FrameLayout>
+        </RelativeLayout>
+        <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/pttlayout" android:background="@drawable/common_entry_btn_selector" android:layout_width="fill_parent" android:layout_height="52.0dip" android:layout_below="@id/piclayout">
+            <TextView android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="32.0dip" android:text="@string/traffic_ptt" style="@style/B4_Font" />
+            <TextView android:textColor="@color/skin_gray3" android:gravity="center_vertical" android:id="@id/pttTodayTv" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="108.0dip" android:text="@string/trafic_default" android:layout_alignParentRight="true" style="@style/S2_Font" />
+            <TextView android:gravity="center_vertical" android:id="@id/pttMonthTv" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="32.0dip" android:text="@string/trafic_default" android:layout_alignParentRight="true" style="@style/Q4_Font" />
+            <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+                <include layout="@layout/qq_setting_line" />
+            </FrameLayout>
+        </RelativeLayout>
+        <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/videolayout" android:background="@drawable/common_entry_btn_selector" android:layout_width="fill_parent" android:layout_height="52.0dip" android:layout_below="@id/pttlayout">
+            <TextView android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="32.0dip" android:text="@string/traffic_audiovideo" style="@style/B4_Font" />
+            <TextView android:textColor="@color/skin_gray3" android:gravity="center_vertical" android:id="@id/videoTodayTv" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="108.0dip" android:text="@string/trafic_default" android:layout_alignParentRight="true" style="@style/S2_Font" />
+            <TextView android:gravity="center_vertical" android:id="@id/videoMonthTv" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="32.0dip" android:text="@string/trafic_default" android:layout_alignParentRight="true" style="@style/Q4_Font" />
+            <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+                <include layout="@layout/qq_setting_line" />
+            </FrameLayout>
+        </RelativeLayout>
+        <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/filelayout" android:background="@drawable/common_entry_btn_selector" android:layout_width="fill_parent" android:layout_height="52.0dip" android:layout_below="@id/videolayout">
+            <TextView android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="32.0dip" android:text="@string/traffic_file" style="@style/B4_Font" />
+            <TextView android:textColor="@color/skin_gray3" android:gravity="center_vertical" android:id="@id/fileTodayTv" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="108.0dip" android:text="@string/trafic_default" android:layout_alignParentRight="true" style="@style/S2_Font" />
+            <TextView android:gravity="center_vertical" android:id="@id/fileMonthTv" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="32.0dip" android:text="@string/trafic_default" android:layout_alignParentRight="true" style="@style/Q4_Font" />
+            <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+                <include layout="@layout/qq_setting_line" />
+            </FrameLayout>
+        </RelativeLayout>
+        <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/qzonelayout" android:background="@drawable/common_entry_btn_selector" android:layout_width="fill_parent" android:layout_height="52.0dip" android:layout_below="@id/filelayout">
+            <TextView android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="32.0dip" android:text="@string/traffic_qzone" style="@style/B4_Font" />
+            <TextView android:textColor="@color/skin_gray3" android:gravity="center_vertical" android:id="@id/qzoneTodayTv" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="108.0dip" android:text="@string/trafic_default" android:layout_alignParentRight="true" style="@style/S2_Font" />
+            <TextView android:gravity="center_vertical" android:id="@id/qzoneMonthTv" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="32.0dip" android:text="@string/trafic_default" android:layout_alignParentRight="true" style="@style/Q4_Font" />
+            <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+                <include layout="@layout/qq_setting_line" />
+            </FrameLayout>
+        </RelativeLayout>
+        <TextView android:textSize="12.0sp" android:textColor="@color/skin_gray3" android:id="@id/bottomTips" android:paddingBottom="10.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginTop="10.0dip" android:text="@string/trafic_tip" android:layout_below="@id/qzonelayout" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</ScrollView>

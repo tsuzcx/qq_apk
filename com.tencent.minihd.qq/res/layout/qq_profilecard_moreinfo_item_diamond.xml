@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:gravity="right" android:layout_gravity="right" android:id="@id/title" style="@style/CardInfoItemTitle" />
+    <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:id="@id/diamond_container" android:layout_width="0.0dip" android:layout_height="24.0dip" android:layout_marginLeft="@dimen/info_card_moreinfo_item_info_marginLeft" android:layout_marginTop="-4.0dip" android:layout_weight="1.0">
+        <ImageView android:id="@id/diamond_vip" android:background="@drawable/qb_vip" android:layout_width="21.0dip" android:layout_height="24.0dip" android:layout_marginRight="5.0dip" />
+        <RelativeLayout android:id="@id/diamond_yellow_container" android:layout_width="21.0dip" android:layout_height="24.0dip" android:layout_marginRight="5.0dip">
+            <ImageView android:id="@id/diamond_yellow" android:background="@drawable/qb_diamond_gray_yellow" android:layout_width="21.0dip" android:layout_height="15.5dip" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+        <ImageView android:id="@id/diamond_red" android:background="@drawable/qb_diamond_gray_red" android:layout_width="21.0dip" android:layout_height="15.5dip" android:layout_marginRight="5.0dip" />
+        <LinearLayout android:orientation="vertical" android:id="@id/diamond_green_container" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip">
+            <ImageView android:layout_gravity="center_horizontal" android:id="@id/diamond_green_crown" android:background="@drawable/qb_diamond_crown" android:visibility="gone" android:layout_width="12.0dip" android:layout_height="7.0dip" />
+            <ImageView android:id="@id/diamond_green" android:background="@drawable/qb_diamond_gray_green" android:layout_width="21.0dip" android:layout_height="15.5dip" />
+        </LinearLayout>
+        <ImageView android:id="@id/diamond_superqq" android:layout_width="21.0dip" android:layout_height="24.0dip" android:layout_marginRight="5.0dip" />
+        <LinearLayout android:orientation="vertical" android:id="@id/diamond_super_green_container" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip">
+            <ImageView android:layout_gravity="center_horizontal" android:id="@id/diamond_super_green_crown" android:background="@drawable/qb_diamond_crown" android:visibility="gone" android:layout_width="12.0dip" android:layout_height="7.0dip" />
+            <ImageView android:id="@id/diamond_super_green" android:layout_width="21.0dip" android:layout_height="15.5dip" />
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView android:id="@id/arrow" android:visibility="gone" style="@style/CardInfoItemArrow" />
+</LinearLayout>

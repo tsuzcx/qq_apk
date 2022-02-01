@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.widget.XPanelContainer android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fasten="meta-data"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/chat_content" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.activity.aio.InputLinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/inputBar" android:background="@drawable/skin_aio_input_bar_bg" android:paddingTop="@dimen/dp_24" android:paddingBottom="@dimen/dp_24" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+            <View android:id="@id/skin_input_bg" android:layout_width="0.0dip" android:layout_height="0.0dip" />
+            <ImageView android:textSize="14.0sp" android:id="@id/fun_btn" android:background="@drawable/trans" android:layout_width="@dimen/dp_40" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_32" android:src="@drawable/aio_voice" />
+            <com.tencent.widget.XEditTextEx android:textSize="@dimen/aio_text_size_small" android:textColor="@color/skin_input" android:textColorHint="@color/skin_input_hint" android:gravity="center_vertical" android:id="@id/input" android:background="@drawable/skin_aio_input_bg" android:paddingTop="@dimen/dp6" android:paddingRight="@dimen/dp_8" android:paddingBottom="@dimen/dp6" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_32" android:minHeight="40.0dip" android:hint="@string/aio_input_hint" android:maxLines="5" android:layout_weight="1.0" android:inputType="textMultiLine" android:contentDescription="文本框  连按两次来编辑" android:textSelectHandle="@drawable/text_select_handle_middle" />
+            <ImageView android:id="@id/audio_btn" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="104.0dip" android:src="@drawable/aio_audio_button_up_selector" android:scaleType="center" android:layout_weight="1.0" />
+            <ImageButton android:id="@id/emo_btn" android:background="@drawable/skin_aio_emo_bg" android:paddingLeft="32.0dip" android:layout_width="@dimen/dp_72" android:layout_height="fill_parent" android:src="@drawable/qzone_edit_face_drawable" android:contentDescription="选择表情面板 " />
+            <com.tencent.mobileqq.widget.NotAllowInterceptRelativeLayout android:layout_width="104.0dip" android:layout_height="40.0dip">
+                <com.tencent.widget.PatchedButton android:textColor="@color/skin_aio_send_button" android:id="@id/plus_btn" android:background="@drawable/trans" android:paddingLeft="32.0dip" android:paddingRight="32.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="发照片等功能面板" />
+            </com.tencent.mobileqq.widget.NotAllowInterceptRelativeLayout>
+        </com.tencent.mobileqq.activity.aio.InputLinearLayout>
+        <com.tencent.mobileqq.bubble.ChatXListView android:id="@id/listView1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="#00000000" android:transcriptMode="normal" android:divider="@null" android:layout_above="@id/inputBar" />
+        <com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner android:id="@id/animator" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignTop="@id/listView1" android:layout_alignBottom="@id/listView1" />
+        <LinearLayout android:orientation="vertical" android:id="@id/qq_aio_tips_container" android:paddingLeft="@dimen/aio_float_tip__margin" android:paddingRight="@dimen/aio_float_tip__margin" android:layout_width="fill_parent" android:layout_height="@dimen/aio_float_tip_height">
+            <RelativeLayout android:id="@id/qq_aio_tips_layout" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <RelativeLayout android:id="@id/chat_tips_container" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <View android:id="@id/input_bar_top_shadow" android:background="@drawable/skin_aio_input_bg_top_shadow" android:layout_width="fill_parent" android:layout_height="4.0dip" android:layout_above="@id/inputBar" />
+    </RelativeLayout>
+</com.tencent.widget.XPanelContainer>

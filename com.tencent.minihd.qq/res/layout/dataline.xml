@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.DateLineFrameLayout android:id="@id/lite" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.widget.XListView android:id="@id/lite_listView" android:focusable="false" android:layout_width="fill_parent" android:layout_height="0.0dip" android:listSelector="@android:color/transparent" android:transcriptMode="normal" android:divider="@null" android:layout_weight="1.0" />
+        <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/dateline_plus_panel" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <View android:background="@drawable/skin_aio_input_bg_top_shadow" android:layout_width="fill_parent" android:layout_height="4.0dip" />
+            <LinearLayout android:gravity="center_vertical" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/lite_bottomBar" android:background="@drawable/skin_aio_input_bar_bg" android:paddingLeft="@dimen/dp_32" android:paddingTop="@dimen/dp_24" android:paddingRight="@dimen/dp_16" android:paddingBottom="@dimen/dp_24" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="50.0dip">
+                <ImageButton android:layout_gravity="center_vertical" android:id="@id/ivPopUp" android:background="@drawable/trans" android:layout_width="40.0dip" android:layout_height="wrap_content" android:src="@drawable/aio_fold" android:contentDescription="@string/lite_ivpopup" />
+                <com.tencent.widget.XEditText android:textSize="16.0sp" android:textColor="@color/skin_input" android:id="@id/input" android:background="@drawable/skin_aio_input_bg" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_32" android:maxLines="5" android:layout_weight="1.0" android:inputType="textMultiLine" android:contentDescription="@string/lite_input_desc" android:textSelectHandle="@drawable/text_select_handle_middle" />
+                <Button android:textSize="20.0sp" android:textColor="@color/skin_aio_send_button_white" android:layout_gravity="center_vertical" android:id="@id/send" android:background="@drawable/aio_send_btn" android:layout_width="72.0dip" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="0.0dip" android:layout_marginBottom="0.0dip" android:text="@string/chat_send" android:contentDescription="@string/chat_send" />
+            </LinearLayout>
+            <FrameLayout android:id="@id/panelLayout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="196.0dip">
+                <GridView android:gravity="center" android:id="@id/panel" android:paddingLeft="104.0dip" android:paddingRight="104.0dip" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="196.0dip" android:listSelector="@drawable/trans" android:verticalSpacing="11.0dip" android:stretchMode="columnWidth" android:numColumns="3" />
+            </FrameLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/qq_aio_tips_container" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@id/chat_tips_container" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <View android:id="@id/litenightmask" android:background="#77000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</com.tencent.mobileqq.widget.DateLineFrameLayout>

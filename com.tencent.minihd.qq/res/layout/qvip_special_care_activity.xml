@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/scrollbar_handle_vertical" android:id="@id/scroll" android:background="@drawable/bg_texture" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="false"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/special_attention_setting" android:background="@drawable/common_strip_setting_bg" android:layout_width="fill_parent" android:layout_height="60.0dip" android:layout_marginLeft="0.0dip" android:layout_marginTop="35.0dip" android:layout_marginRight="0.0dip">
+                <ImageView android:id="@id/face" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="10.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+                <TextView android:gravity="center_vertical" android:id="@id/name" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:maxWidth="160.0dip" android:singleLine="true" android:layout_toRightOf="@id/face" android:layout_centerVertical="true" style="@style/table_neirong_16sp_black" />
+                <com.tencent.widget.Switch android:id="@id/special_attention_control" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="10.0dip" android:text="@string/qvip_special_care_msg" style="@style/table_shuoming_13sp_808080" />
+            <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/special_sound_setting" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" formItem:bgType="single" formItem:leftText="@string/qvip_special_sound_text" formItem:rightText="@string/qvip_special_care_default_sound" formItem:showArrow="true" />
+            <RelativeLayout android:id="@id/friend_super_svip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+                <TextView android:textSize="14.0sp" android:textColor="#ff808080" android:id="@id/friend_special_type_msg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/friend_special_type_msg" android:maxLines="1" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+                <Button android:id="@id/friend_open_super_svip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="@string/qvip_open_super_svip_msg" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/SmallButtonBlue" />
+            </RelativeLayout>
+        </LinearLayout>
+        <RelativeLayout android:id="@id/special_care_tips_layout" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </RelativeLayout>
+</com.tencent.mobileqq.widget.BounceScrollView>

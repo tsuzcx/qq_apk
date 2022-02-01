@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/scrollbar_handle_vertical" android:focusable="true" android:focusableInTouchMode="true" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.0px" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/tenpay_switch" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="single" formItem:switchText="财付通测试环境开关" formItem:switchChecked="true" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/jiping_switch" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" formItem:bgType="single" formItem:switchText="计平测试环境开关" formItem:switchChecked="true" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/sso_switch" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" formItem:bgType="single" formItem:switchText="sso测试环境开关" formItem:switchChecked="true" />
+            <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/h5_env_switch" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" formItem:bgType="single" formItem:leftText="H5测试环境切换" formItem:showArrow="true" />
+        </LinearLayout>
+    </com.tencent.mobileqq.widget.BounceScrollView>
+</LinearLayout>

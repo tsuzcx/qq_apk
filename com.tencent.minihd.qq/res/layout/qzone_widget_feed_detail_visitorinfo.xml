@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_gravity="center" android:orientation="vertical" android:background="@color/qzone_background" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="center" android:id="@id/visitorinfo_container" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/visitorCountContainer" android:background="@color/white" android:paddingLeft="@dimen/feed_detail_visitorinfo_margin_hor" android:paddingRight="@dimen/feed_detail_visitorinfo_margin_hor" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/feed_detail_common_margin_ver">
+            <ImageView android:id="@id/img_icon_visitor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/dp8" android:src="@drawable/qzone_qz_selector_skin_feed_icon_review_visitors" android:layout_centerVertical="true" />
+            <TextView android:textSize="@dimen/feed_detial_feed_info_text_size" android:textColor="@color/qzone_feed_username" android:id="@id/visitorContent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0人浏览过" android:layout_toRightOf="@id/img_icon_visitor" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </FrameLayout>
+</LinearLayout>

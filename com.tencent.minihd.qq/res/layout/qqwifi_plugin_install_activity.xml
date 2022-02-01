@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/qqwifi_background_install_layout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="100.0dip">
+        <ProgressBar android:layout_gravity="center_horizontal" android:id="@id/qqwifi_background_install_progressbar" android:layout_width="20.0dip" android:layout_height="20.0dip" android:indeterminateDrawable="@drawable/common_loading3" />
+        <TextView android:textSize="15.0dip" android:layout_gravity="center_horizontal" android:id="@id/qqwifi_background_install_words" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/qqwifi_loading" />
+    </LinearLayout>
+    <com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/scrollbar_handle_vertical" android:id="@id/qqwifi_install_bounceSV" android:focusable="true" android:focusableInTouchMode="true" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.0px" android:layout_weight="1.0">
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/qqwifi_install_ll_container" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@id/img_wifi_signal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="55.0dip" android:src="@drawable/qqwifi_signal_3" />
+            <ImageView android:id="@id/imageView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:src="@drawable/qqwifi_icon_freewifi" />
+            <TextView android:textSize="16.0sp" android:textColor="#ff000000" android:id="@id/qqwifi_install_tv_downloadtip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/qqwifi_download_tip" />
+            <TextView android:textSize="16.0sp" android:textColor="#ff000000" android:id="@id/qqwifi_install_tv_freeusetip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="@string/qqwifi_freeuse_tip" />
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="60.0dip">
+                <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/qqwifi_install_notifyBarSwitch" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <CheckBox android:gravity="center" android:id="@id/qqwifi_install_barSwitch" android:background="@drawable/qqwifi_checkbox" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginRight="6.0dip" android:checked="true" android:button="@null" />
+                    <TextView android:textSize="16.0sp" android:textColor="#ffa6a6a6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qqwifi_show_barSwitch" />
+                </LinearLayout>
+                <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
+                    <ImageView android:layout_gravity="center" android:id="@id/qqwifi_install_iv_loading" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                    <LinearLayout android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="46.0dip">
+                        <Button android:id="@id/qqwifi_install_btn_download" android:layout_width="fill_parent" android:layout_height="46.0dip" android:text="@string/qqwifi_start_experience" style="@style/ButtonBlue" />
+                    </LinearLayout>
+                    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/qqwifi_install_ll_download" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip">
+                        <TextView android:textSize="14.0sp" android:textColor="#ff000000" android:id="@id/qqwifi_install_tv_isDownloading" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qqwifi_is_downloading" />
+                        <RelativeLayout android:id="@id/qqwifi_install_rl_download" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip">
+                            <ProgressBar android:layout_gravity="center" android:id="@id/qqwifi_install_progressbar" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxHeight="4.0dip" android:max="100" android:progressDrawable="@drawable/aio_file_progress_layerlist" android:minHeight="4.0dip" android:layout_toLeftOf="@id/qqwifi_install_ib_stop_download" android:layout_centerVertical="true" style="?android:attr/progressBarStyleHorizontal" />
+                            <Button android:id="@id/qqwifi_install_ib_stop_download" android:background="@drawable/boss_unipay_ic_wrong" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_alignParentRight="true" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </FrameLayout>
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/qqwifi_install_ll_serviceApply" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
+                <TextView android:textSize="16.0sp" android:textColor="#ffa6a6a6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qqwifi_already_read_and_agree" />
+                <TextView android:textSize="16.0sp" android:textColor="#ff00a5e0" android:id="@id/qqwifi_service_statement" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qqwifi_service_content" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.tencent.mobileqq.widget.BounceScrollView>
+</LinearLayout>

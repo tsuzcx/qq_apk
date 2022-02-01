@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/blank" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="25.0dip" />
+    <RelativeLayout android:id="@id/info" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/blank">
+        <TextView android:textSize="14.0sp" android:textColor="#ff808080" android:id="@id/person_special_type_msg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/person_special_type_msg" android:maxLines="1" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <Button android:id="@id/person_open_super_svip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="@string/qvip_open_super_svip_msg" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/SmallButtonBlue" />
+    </RelativeLayout>
+    <TextView android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="8.0dip" android:layout_below="@id/info" />
+</RelativeLayout>

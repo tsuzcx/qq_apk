@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="bottom|center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="10.0dip" android:layout_marginBottom="16.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="12.0sp" android:textColor="@color/qb_tenpay_skin_gray3" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="7.0dip" android:text="@string/qb_tenpay_version_support" />
+    <LinearLayout android:gravity="center_horizontal" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="12.0sp" android:textColor="@color/qb_tenpay_skin_gray3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qb_tenpay_version_support1" />
+        <TextView android:textSize="12.0sp" android:id="@id/tenpay_bottom_support_btn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qb_tenpay_version_support2" style="@style/qb_tenpay_link_blue" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/qb_tenpay_skin_gray3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qb_tenpay_version_support3" />
+    </LinearLayout>
+</LinearLayout>

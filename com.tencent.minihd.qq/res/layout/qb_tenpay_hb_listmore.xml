@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:padding="8.0px" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ProgressBar android:id="@id/tenpay_loading_bar" android:layout_width="21.0dip" android:layout_height="21.0dip" android:indeterminateDrawable="@drawable/common_loading6" />
+    <TextView android:textSize="13.0sp" android:textColor="#ffa6a6a6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:text="正在加载数据..." />
+</LinearLayout>

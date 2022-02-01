@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="52.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:gravity="center_vertical" android:id="@id/qqsetting_item_text" android:paddingLeft="@dimen/qq_form_item_padding" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawablePadding="10.0dip" android:layout_centerVertical="true" style="@style/table_neirong_18sp_black_for_redesign" />
+    <ImageView android:id="@id/dev_protect_status_imgv" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/qq_eqlock_closed" android:layout_toLeftOf="@id/dev_protect_status" android:layout_centerVertical="true" android:contentDescription="@null" />
+    <TextView android:textSize="15.0sp" android:textColor="@color/skin_gray3" android:id="@id/dev_protect_status" android:visibility="invisible" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:text="@string/eqlock_auth_not_open" android:layout_toLeftOf="@id/imageView" android:layout_centerVertical="true" />
+    <ProgressBar android:id="@id/progressbar" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="15.0dip" android:indeterminateDrawable="@drawable/common_loading" android:layout_toLeftOf="@id/imageView" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/imageView" android:visibility="invisible" android:layout_width="1.0dip" android:layout_height="wrap_content" android:layout_marginRight="@dimen/qq_form_item_padding" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+</RelativeLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/search_bar" layout="@layout/search_box" />
+    <TextView android:textSize="12.0sp" android:textColor="@color/skin_gray2" android:gravity="center|left" android:id="@id/text_view1" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:focusable="true" android:layout_width="fill_parent" android:layout_height="40.0dip" android:text="@string/agent_recommend_group" />
+    <com.tencent.open.agent.RecommendListManager android:orientation="vertical" android:id="@id/social_character_devided_list_view" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ViewStub android:layout="@layout/select_member_item" android:inflatedId="@id/recommend_item_0" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ViewStub android:layout="@layout/select_member_item" android:inflatedId="@id/recommend_item_1" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ViewStub android:layout="@layout/select_member_item" android:inflatedId="@id/recommend_item_2" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ViewStub android:layout="@layout/select_member_item" android:inflatedId="@id/recommend_item_3" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ViewStub android:layout="@layout/select_member_item" android:inflatedId="@id/recommend_item_4" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.tencent.open.agent.RecommendListManager>
+    <TextView android:textSize="12.0sp" android:textColor="@color/skin_gray2" android:gravity="center|left" android:id="@id/text_view2" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:focusable="true" android:layout_width="fill_parent" android:layout_height="40.0dip" android:text="@string/select_from_friend_team" />
+</LinearLayout>

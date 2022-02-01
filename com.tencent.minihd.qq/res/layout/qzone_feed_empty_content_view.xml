@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/empty_content_layout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/empty_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qzone_icon_logo_normal" />
+        <FrameLayout android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/qzone_empty_tip_margin_top">
+            <TextView android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/empty_msg" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/empty_tip_font" />
+            <ProgressBar android:layout_gravity="center" android:id="@id/empty_progressbar" android:visibility="gone" android:layout_width="19.0dip" android:layout_height="19.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" />
+        </FrameLayout>
+    </LinearLayout>
+</RelativeLayout>

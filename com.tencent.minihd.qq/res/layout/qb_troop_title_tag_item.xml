@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView android:textSize="@dimen/troop_member_card_font_small" android:textColor="@color/qb_troop_gray_color" android:ellipsize="end" android:paddingLeft="@dimen/troop_member_card_item_edge_margin" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:layout_marginBottom="21.0dip" android:singleLine="true" android:includeFontPadding="false"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

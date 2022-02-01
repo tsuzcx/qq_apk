@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/qb_troop_file_viewMoreItem" android:background="@drawable/qb_group_file_view_more_bkgnd" android:layout_width="fill_parent" android:layout_height="44.0dip">
+        <TextView android:textSize="18.0dip" android:textColor="@color/qb_group_file_view_more_text_color" android:id="@id/qb_troop_file_viewerMore" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/file_assistant_viewer_more" android:singleLine="true" android:includeFontPadding="false" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="50.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="11.0dip" android:textColor="#cc000000" android:gravity="center" android:id="@id/qav_titlebar_quit_double_screen" android:visibility="gone" android:layout_width="@dimen/qav_double_screen_quit_btn_width" android:layout_height="@dimen/qav_double_screen_quit_btn_height" android:layout_marginTop="8.0dip" android:layout_marginRight="15.0dip" android:includeFontPadding="false" android:layout_alignParentRight="true" android:onClick="BtnOnClick" />
+    <View android:id="@id/bottom_line" android:background="#26ffffff" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="35.0dip" android:layout_marginRight="15.0dip" />
+</RelativeLayout>

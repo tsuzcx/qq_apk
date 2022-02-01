@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true">
+        <ImageView android:id="@id/faceImageView" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginTop="40.0dip" />
+        <TextView android:textSize="24.0sp" android:ellipsize="end" android:gravity="center" android:id="@id/nickView" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="10.0dip" android:singleLine="true" style="@style/B7_Font" />
+        <TextView android:textSize="16.0sp" android:textColor="#ff808080" android:gravity="center" android:id="@id/tipsView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="40.0dip" />
+        <Button android:id="@id/confirmButton" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="20.0dip" android:text="@string/qrcode_logout_pc" style="@style/ButtonRed" />
+    </LinearLayout>
+</RelativeLayout>

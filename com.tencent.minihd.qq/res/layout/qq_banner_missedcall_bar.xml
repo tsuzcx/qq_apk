@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:id="@id/qq_banner_missedcall_bar" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="40.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:background="@drawable/common_tips_bg_yellow" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/common_32dp" android:layout_marginRight="@dimen/common_32dp" android:layout_marginBottom="@dimen/common_16dp">
+        <TextView android:textSize="12.0sp" android:textColor="#ff000000" android:ellipsize="middle" android:gravity="center" android:layout_gravity="center|left" android:id="@id/qq_banner_missedcall_text" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_marginLeft="@dimen/common_16dp" android:text="@string/qq_call_missedcall_bar_txt" android:singleLine="true" android:drawableLeft="@drawable/qq_conversation_missedcall_bar_tip" android:drawablePadding="10.0dip" />
+    </LinearLayout>
+</LinearLayout>

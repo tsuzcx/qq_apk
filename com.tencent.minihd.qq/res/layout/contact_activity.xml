@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <RelativeLayout android:orientation="vertical" android:id="@id/root" android:layout_width="@dimen/pad_left_panel_width" android:layout_height="fill_parent">
+        <FrameLayout android:id="@id/search_box_container" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" />
+        <include android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/common_main_loading" />
+        <ViewStub android:id="@id/stub_elv_buddies" android:visibility="gone" android:layout="@layout/contact_group_buddies" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="71.0dip" />
+        <View android:id="@id/right_panel_shadow_in_left" android:background="@drawable/right_panel_shadow" android:visibility="gone" android:layout_width="17.0dip" android:layout_height="fill_parent" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <com.tencent.mobileqq.widget.NotRemoveFrameLayout android:id="@id/Contactscontainer" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/pad_left_panel_width">
+        <FrameLayout android:id="@id/contacts_default" android:background="@color/common_bg_color" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="20.0sp" android:textColor="@color/skin_black_group_item" android:ellipsize="end" android:gravity="center" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginTop="10.0dip" android:text="@string/aio_image_menu_forward_contact" android:maxEms="11" android:singleLine="true" android:includeFontPadding="false" />
+            <ImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="50.0dip" android:src="@drawable/recent_none_custom" />
+        </FrameLayout>
+        <View android:id="@id/left_panel_shadow_in_right" android:background="@drawable/left_panel_shadow" android:layout_width="17.0dip" android:layout_height="fill_parent" />
+    </com.tencent.mobileqq.widget.NotRemoveFrameLayout>
+</FrameLayout>

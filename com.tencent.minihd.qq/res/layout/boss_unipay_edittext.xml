@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/boss_unipay_edit_wrap"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/boss_unipay_id_apEdittextText" style="@style/boss_unipay_lable_form.wide" />
+    <EditText android:id="@id/boss_unipay_id_apEdittextEdit" android:layout_width="0.0dip" android:digits="0123456789\n" android:layout_weight="100.0" android:inputType="number" style="@style/boss_unipay_edit.noborder" />
+    <ImageButton android:id="@id/boss_unipay_id_apEdittextImg" style="@style/boss_unipay_ic_wrong_s" />
+</LinearLayout>

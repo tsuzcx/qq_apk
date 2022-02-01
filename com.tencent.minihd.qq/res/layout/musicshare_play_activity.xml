@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="#ffe6e6e6" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/mpa_imageview" android:layout_width="200.0dip" android:layout_height="200.0dip" android:layout_marginLeft="64.0dip" android:layout_marginTop="50.0dip" android:layout_marginRight="64.0dip" android:src="@drawable/structmsg_music_default_big" />
+        <TextView android:gravity="center" android:id="@id/mpa_textview_song" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="64.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="64.0dip" android:text="@string/song_name" android:maxLines="2" style="@style/MPA_Song_Font" />
+        <TextView android:gravity="center" android:id="@id/mpa_textview_album_player" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="64.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="64.0dip" android:text="@string/song_info" android:maxLines="2" style="@style/MPA_Player_Font" />
+        <Button android:id="@id/mpa_button" android:layout_width="180.0dip" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:text="@string/stop_play" style="@style/ButtonBlue" />
+    </LinearLayout>
+</ScrollView>

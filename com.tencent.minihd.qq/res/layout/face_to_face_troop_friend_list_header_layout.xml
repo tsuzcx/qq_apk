@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/troopFriendCountLayout" android:background="@color/white" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/face2face_troop_friend_count_layout_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/face2face_troop_friend_count_prefix_text_size" android:textColor="@color/face2face_troop_friend_count_prefix_color" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/face_to_face_troop_friend_count_tips_01" />
+    <TextView android:textSize="@dimen/face2face_troop_friend_count_number_text_size" android:textColor="@color/face2face_troop_friend_count_number_color" android:id="@id/troopFriendCount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/face_to_face_troop_friend_count_default" />
+    <TextView android:textSize="@dimen/face2face_troop_friend_count_prefix_text_size" android:textColor="@color/face2face_troop_friend_count_prefix_color" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/face_to_face_troop_friend_count_tips_02" />
+</LinearLayout>

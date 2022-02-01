@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/edit_panel" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <include layout="@layout/custom_commen_title" />
+    <com.tencent.mobileqq.widget.BounceScrollView android:id="@id/edit_scroll" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/tip_bar" android:background="@drawable/common_strip_setting_bottom" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/qq_tipsicon" />
+                <TextView android:textColor="@color/color_lan" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="上传太麻烦？一键导入照片墙照片。" android:includeFontPadding="false" android:layout_weight="1.0" />
+                <Button android:textColor="@color/color_lan" android:id="@id/import_btn" android:background="@drawable/common_btn_small_white" android:layout_width="50.0dip" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip" android:text="导入" />
+            </LinearLayout>
+            <RelativeLayout android:id="@id/edit_photo_container" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <com.tencent.widget.CustomImgView android:id="@id/edit_big_pic" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_below="@id/edit_big_pic" />
+                <com.tencent.mobileqq.widget.CustomHorizontalScrollView android:id="@id/edit_photo_wall" android:scrollbars="none" android:fadingEdge="none" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:layout_below="@id/edit_big_pic">
+                    <LinearLayout android:orientation="horizontal" android:id="@id/edit_layout" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                </com.tencent.mobileqq.widget.CustomHorizontalScrollView>
+                <ImageView android:id="@id/edit_panel_photo_wall_wording" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qq_nearby_people_photo_wall_wording" android:layout_centerHorizontal="true" />
+                <ImageView android:id="@id/edit_panel_photo_wall_star" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qq_nearby_people_photo_wall_star" android:layout_alignRight="@id/edit_panel_photo_wall_wording" />
+                <LinearLayout android:orientation="horizontal" android:id="@id/edit_panel_photo_wall_tip" android:paddingTop="3.0dip" android:paddingBottom="3.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/edit_photo_wall">
+                    <TextView android:textSize="13.0dip" android:textColor="@color/skin_gray3" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:text="上传真实照片（仅陌生人可见）获得更多关注！" android:layout_weight="1.0" />
+                    <TextView android:textColor="@color/skin_gray3" android:id="@id/photo_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:layout_alignParentRight="true" />
+                </LinearLayout>
+            </RelativeLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/common_strip_setting_top" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textColor="@color/skin_black" android:text="交友宣言" style="@style/CardInfoItemTitle" />
+                <EditText android:textSize="@dimen/qq_profilecard_name_text_size16" android:textColor="@color/skin_black" android:textColorHint="@color/skin_gray3" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/xuan_yan" android:background="@null" android:focusableInTouchMode="false" android:clickable="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:hint="想对附近的人说点什么" android:singleLine="true" android:editable="false" android:layout_weight="1.0" />
+                <ImageView style="@style/CardInfoItemArrow" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/skin_setting_strip_middle_unpressed" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textColor="@color/skin_black" android:text="交友昵称" style="@style/CardInfoItemTitle" />
+                <EditText android:textSize="@dimen/qq_profilecard_name_text_size16" android:textColor="@color/skin_black" android:textColorHint="@color/skin_gray3" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/nickname" android:background="@null" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginRight="30.0dip" android:hint="你的交友昵称" android:singleLine="true" android:layout_weight="1.0" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/common_strip_setting_bottom" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textColor="@color/skin_black" android:text="情感状态" style="@style/CardInfoItemTitle" />
+                <EditText android:textSize="@dimen/qq_profilecard_name_text_size16" android:textColor="@color/skin_black" android:textColorHint="@color/skin_gray3" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/status" android:background="@null" android:focusableInTouchMode="false" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:hint="你的情感状态" android:singleLine="true" android:editable="false" android:layout_weight="1.0" />
+            </LinearLayout>
+            <TextView android:textSize="13.0dip" android:textColor="@color/skin_gray3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/info_card_moreinfo_item_paddingLR" android:layout_marginTop="11.0dip" android:layout_marginBottom="8.0dip" android:text="以下资料，QQ好友和附近的人都可查看。" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/common_strip_setting_top" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip">
+                <TextView android:textColor="@color/skin_black" android:text="性别" style="@style/CardInfoItemTitle" />
+                <EditText android:textSize="@dimen/qq_profilecard_name_text_size16" android:textColor="@color/skin_black" android:textColorHint="@color/skin_gray3" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/gender" android:background="@null" android:focusableInTouchMode="false" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:hint="你的性别" android:singleLine="true" android:editable="false" android:layout_weight="1.0" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/common_strip_setting_middle" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textColor="@color/skin_black" android:text="年龄" style="@style/CardInfoItemTitle" />
+                <EditText android:textSize="@dimen/qq_profilecard_name_text_size16" android:textColor="@color/skin_black" android:textColorHint="@color/skin_gray3" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/age" android:background="@null" android:focusableInTouchMode="false" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:hint="你的年龄" android:singleLine="true" android:editable="false" android:layout_weight="1.0" />
+                <ImageView style="@style/CardInfoItemArrow" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/common_strip_setting_bottom" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textColor="@color/skin_black" android:text="星座" style="@style/CardInfoItemTitle" />
+                <EditText android:textSize="@dimen/qq_profilecard_name_text_size16" android:textColor="@color/skin_black" android:textColorHint="@color/skin_gray3" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/xing_zuo" android:background="@null" android:focusableInTouchMode="false" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:hint="你的星座" android:singleLine="true" android:editable="false" android:layout_weight="1.0" />
+                <ImageView style="@style/CardInfoItemArrow" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/common_strip_setting_top" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
+                <TextView android:textColor="@color/skin_black" android:text="职业" style="@style/CardInfoItemTitle" />
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                    <TextView android:textSize="13.0dip" android:textColor="@color/white" android:gravity="center" android:id="@id/career_tag" android:paddingLeft="5.0dip" android:paddingTop="1.0px" android:paddingRight="5.0dip" android:paddingBottom="1.0px" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:minWidth="36.0dip" android:includeFontPadding="false" />
+                    <EditText android:textSize="@dimen/qq_profilecard_name_text_size16" android:textColor="@color/skin_black" android:textColorHint="@color/skin_gray3" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/job" android:background="@null" android:focusableInTouchMode="false" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:hint="选择职业，发现同行" android:singleLine="true" android:editable="false" android:layout_weight="1.0" />
+                </LinearLayout>
+                <ImageView style="@style/CardInfoItemArrow" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/skin_setting_strip_middle_unpressed" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textColor="@color/skin_black" android:text="公司" style="@style/CardInfoItemTitle" />
+                <EditText android:textSize="@dimen/qq_profilecard_name_text_size16" android:textColor="@color/skin_black" android:textColorHint="@color/skin_gray3" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/company" android:background="@null" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginRight="30.0dip" android:hint="填写公司，发现同事" android:singleLine="true" android:layout_weight="1.0" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/skin_setting_strip_middle_unpressed" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textColor="@color/skin_black" android:text="学校" style="@style/CardInfoItemTitle" />
+                <EditText android:textSize="@dimen/qq_profilecard_name_text_size16" android:textColor="@color/skin_black" android:textColorHint="@color/skin_gray3" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/college" android:background="@null" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginRight="30.0dip" android:hint="填写学校，发现校友" android:singleLine="true" android:layout_weight="1.0" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/common_strip_setting_bottom" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textColor="@color/skin_black" android:text="故乡" style="@style/CardInfoItemTitle" />
+                <EditText android:textSize="@dimen/qq_profilecard_name_text_size16" android:textColor="@color/skin_black" android:textColorHint="@color/skin_gray3" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/hometown" android:background="@null" android:focusableInTouchMode="false" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:hint="选择故乡，发现老乡" android:singleLine="true" android:editable="false" android:layout_weight="1.0" />
+                <ImageView style="@style/CardInfoItemArrow" />
+            </LinearLayout>
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/qzone_visibility" android:paddingLeft="10.0dip" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" formItem:bgType="top" formItem:switchText="空间动态对附近的人可见" formItem:switchChecked="true" />
+            <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/hobby_visibility" android:paddingLeft="10.0dip" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="bottom" formItem:switchText="兴趣爱好对附近的人可见" formItem:switchChecked="true" />
+            <TextView android:textSize="13.0dip" android:textColor="@color/skin_gray3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/info_card_moreinfo_item_paddingLR" android:layout_marginTop="8.0dip" android:layout_marginRight="@dimen/info_card_moreinfo_item_paddingLR" android:layout_marginBottom="20.0dip" android:text="开启后，可将最近听过的QQ音乐、玩过的QQ游戏等“兴趣爱好”展示给附近的人。" />
+        </LinearLayout>
+    </com.tencent.mobileqq.widget.BounceScrollView>
+</LinearLayout>

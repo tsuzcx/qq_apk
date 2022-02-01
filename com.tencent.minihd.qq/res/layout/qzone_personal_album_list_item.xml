@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="item_outter_1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/img_album_list_item_cover_rl" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentLeft="true" android:contentDescription="item_outter_2">
+        <com.qzone.widget.AsyncImageView android:id="@id/img_album_list_item_cover" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/qzone_defaultphoto" />
+        <ImageView android:id="@id/img_video_list_item_child_bg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/qzone_video_show_bg" android:scaleType="fitXY" android:layout_alignBottom="@id/img_album_list_item_cover" />
+        <ImageView android:id="@id/img_video_list_item_child_icon" android:visibility="gone" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@drawable/qzone_video_btn_play_s68" android:layout_centerInParent="true" />
+        <LinearLayout android:gravity="bottom" android:orientation="vertical" android:background="@color/qzone_30pre_black" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true" android:contentDescription="item_info_container_outter">
+            <LinearLayout android:gravity="bottom" android:layout_gravity="bottom" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/common_16dp" android:layout_marginRight="@dimen/common_16dp" android:layout_marginBottom="@dimen/common_10dp" android:contentDescription="item_info_container_inner">
+                <TextView android:textSize="18.0sp" android:textColor="@color/white" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/album_list_item_album_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:singleLine="true" />
+                <TextView android:textSize="12.0sp" android:textColor="@color/white" android:layout_gravity="center_vertical" android:id="@id/album_list_item_pic_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:singleLine="true" />
+                <TextView android:textSize="12.0sp" android:textColor="@color/white" android:id="@id/album_network_item_info" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:singleLine="true" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+    <ImageView android:id="@id/img_album_list_item_theme_icon" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="2.0dip" android:layout_alignParentLeft="true" />
+    <View android:id="@id/view_margin_bottom" android:background="@color/qzone_common_background" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/common_32dp" android:layout_alignParentBottom="true" />
+</RelativeLayout>

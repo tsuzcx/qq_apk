@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/card_shadow" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.widgets.ElasticHorScrView android:id="@id/scroll_view1" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/common_32dp" android:layout_marginTop="@dimen/common_32dp" android:layout_marginRight="@dimen/common_32dp">
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <GridView android:id="@id/grid_row_view1" android:scrollbars="none" android:fadingEdge="none" android:layout_width="wrap_content" android:layout_height="wrap_content" android:listSelector="@color/transparent" android:cacheColorHint="@null" android:horizontalSpacing="32.0dip" android:verticalSpacing="0.0dip" android:stretchMode="none" android:columnWidth="48.0dip" android:numColumns="1" />
+        </LinearLayout>
+    </com.tencent.biz.widgets.ElasticHorScrView>
+    <com.tencent.biz.widgets.ElasticHorScrView android:id="@id/scroll_view2" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/common_32dp" android:layout_marginTop="@dimen/common_32dp" android:layout_marginRight="@dimen/common_32dp">
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <GridView android:id="@id/grid_row_view2" android:scrollbars="none" android:fadingEdge="none" android:layout_width="wrap_content" android:layout_height="wrap_content" android:listSelector="@color/transparent" android:cacheColorHint="@null" android:horizontalSpacing="32.0dip" android:verticalSpacing="0.0dip" android:stretchMode="none" android:columnWidth="48.0dip" android:numColumns="1" />
+        </LinearLayout>
+    </com.tencent.biz.widgets.ElasticHorScrView>
+    <TextView android:textSize="21.0sp" android:textColor="#ff0079ff" android:gravity="center" android:id="@id/action_sheet_title" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

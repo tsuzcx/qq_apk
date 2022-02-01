@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/qlink_bg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/rlCommenTitle" style="@style/title_bar">
+        <com.tencent.widget.EmptyTextView android:id="@id/ivTitleBtnLeft" style="@style/title_bar_left_btn" />
+        <TextView android:id="@id/ivTitleName" android:text="选择发送对象" style="@style/title_bar_title" />
+        <ImageView android:id="@id/qlhelp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/qlFileRecord" android:background="@drawable/qlink_his_file" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/qlFileRecordbj" android:background="@drawable/skin_tips_dot" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignTop="@id/qlFileRecord" android:layout_alignRight="@id/qlFileRecord" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/tipslayout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="50.0dip" android:layout_below="@id/rlCommenTitle">
+        <LinearLayout android:orientation="horizontal" android:id="@id/tips2layout" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
+            <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/tips2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:text="让同伴点“我要收文件”" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/tips1layout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/tips2layout" android:layout_centerHorizontal="true">
+            <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:id="@id/tips1layout_r" android:background="@drawable/qlink_white_btn_bg" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <ImageView android:layout_gravity="center_vertical" android:id="@id/tips1_jintan" android:paddingLeft="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qlink_warn" />
+                <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/tips1" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            </LinearLayout>
+            <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:id="@id/tips1_ex_layout_r" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <ProgressBar android:layout_gravity="center_vertical" android:id="@id/tips1_ex_progress" android:layout_width="20.0dip" android:layout_height="20.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading5" android:indeterminateBehavior="repeat" />
+                <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/tips1_ex" android:paddingLeft="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="xxxx" android:singleLine="true" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/animlayout" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/tipslayout">
+        <ImageView android:id="@id/centerLight" android:visibility="invisible" android:layout_width="88.0dip" android:layout_height="88.0dip" android:layout_marginBottom="81.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/outerLightOne" android:background="@drawable/qlink_discovery_scale_light" android:visibility="invisible" android:layout_width="140.0dip" android:layout_height="140.0dip" android:layout_marginTop="-26.0dip" android:layout_alignTop="@id/centerLight" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/outerLightTwo" android:background="@drawable/qlink_discovery_scale_light" android:visibility="invisible" android:layout_width="140.0dip" android:layout_height="140.0dip" android:layout_marginTop="-26.0dip" android:layout_alignTop="@id/centerLight" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/outerLightThree" android:background="@drawable/qlink_discovery_scale_light" android:visibility="invisible" android:layout_width="140.0dip" android:layout_height="140.0dip" android:layout_marginTop="-26.0dip" android:layout_alignTop="@id/centerLight" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/outerLightfour" android:background="@drawable/qlink_discovery_scale_light" android:visibility="invisible" android:layout_width="140.0dip" android:layout_height="140.0dip" android:layout_marginTop="-26.0dip" android:layout_alignTop="@id/centerLight" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="181.0dip" android:layout_below="@id/tipslayout">
+        <com.tencent.qlink.widget.QlinkContactsRelativeLayout android:id="@id/contactsLayout" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/oplayout" android:background="#fff8f8f8" android:layout_width="fill_parent" android:layout_height="125.0dip" android:layout_alignParentBottom="true">
+        <TextView android:id="@id/space_h" android:background="#ffaeaeae" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_above="@id/cancelbtn" />
+        <TextView android:textSize="16.0dip" android:textColor="#ff02a5e3" android:gravity="center" android:id="@id/cancelbtn" android:background="@drawable/qlink_com_btn_selector" android:layout_width="fill_parent" android:layout_height="50.0dip" android:text="取 消" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <ImageView android:id="@id/centerLightview" android:background="@drawable/qlink_center_avatar_bg_light" android:layout_width="88.0dip" android:layout_height="88.0dip" android:layout_marginBottom="81.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <com.tencent.mobileqq.filemanager.widget.AsyncImageView android:id="@id/centerIcon" android:background="@drawable/h001" android:layout_width="76.0dip" android:layout_height="76.0dip" android:layout_marginTop="6.0dip" android:scaleType="fitXY" android:layout_alignTop="@id/centerLightview" android:layout_centerHorizontal="true" />
+</RelativeLayout>

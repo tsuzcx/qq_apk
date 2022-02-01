@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<clip android:gravity="top" android:drawable="@drawable/aio_image_shade" android:clipOrientation="vertical"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

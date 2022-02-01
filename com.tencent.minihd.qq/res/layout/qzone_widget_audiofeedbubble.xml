@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="7.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:background="@drawable/qzone_btn_audiobubble_bg" android:layout_width="42.0dip" android:layout_height="42.0dip">
+        <com.qzone.widget.PieChart android:layout_gravity="center" android:id="@id/audioPlayButtonProgress" android:layout_width="42.0dip" android:layout_height="42.0dip" />
+        <ImageView android:layout_gravity="center" android:background="@drawable/qzone_btn_audiobubble_overlay_pack" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <ImageView android:layout_gravity="center" android:id="@id/audioPlayButtonIcon" android:background="@drawable/qzone_btn_audiobubble_play" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </FrameLayout>
+    <TextView android:textSize="16.0sp" android:textColor="#ffd8d8d8" android:layout_gravity="bottom" android:id="@id/audioPlayButtonText" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</LinearLayout>

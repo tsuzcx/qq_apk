@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@id/visit_date_area" android:focusable="true" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.qzone.proxy.feedcomponent.ui.FeedDate android:textSize="14.0sp" android:textStyle="bold" android:textColor="#ff000000" android:gravity="center_vertical" android:id="@id/timeData" android:background="#ffeeeeee" android:paddingLeft="15.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="22.0dip" />
+    </LinearLayout>
+    <com.qzone.widget.LinerLayoutForListViewItem android:orientation="horizontal" android:id="@id/visitorFeedLayout" android:background="@drawable/qzone_visitor_item_bg" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="56.0dip">
+        <FrameLayout android:layout_gravity="center_vertical" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip">
+            <com.qzone.widget.AvatarImageView android:layout_gravity="center" android:id="@id/HeadViewLeft" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="1.0px" qzone:avatarSize="40.0dip"
+              xmlns:qzone="http://schemas.android.com/apk/res/com.tencent.minihd.qq" />
+        </FrameLayout>
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="16.0sp" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/VisitorName" android:paddingRight="7.5dip" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:maxWidth="138.0dip" android:singleLine="true" android:layout_alignParentLeft="true" />
+            <TextView android:textSize="14.0sp" android:textColor="#ff696969" android:ellipsize="none" android:id="@id/VisitTime" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6.0dip" android:singleLine="true" android:layout_below="@id/VisitorName" />
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/qzone_list_icon_arrow" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+            <RelativeLayout android:id="@id/rightLayout" android:layout_width="64.0dip" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+                <com.tencent.mobileqq.widget.ShaderAnimLayout android:id="@id/shader" android:visibility="visible" android:clickable="true" android:layout_width="50.0dip" android:layout_height="34.0dip" android:layout_margin="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+                    <Button android:textSize="14.0dip" android:textColor="#ffffffff" android:id="@id/delConBtn" android:background="@drawable/red_del_btn_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/delete_btn" android:shadowColor="#7f000000" android:shadowDx="1.5" android:shadowDy="1.5" android:shadowRadius="1.5" android:layout_centerInParent="true" />
+                </com.tencent.mobileqq.widget.ShaderAnimLayout>
+            </RelativeLayout>
+            <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_toLeftOf="@id/rightLayout" android:layout_toRightOf="@id/VisitTime" android:layout_below="@id/VisitorName">
+                <TextView android:textSize="14.0sp" android:textColor="@color/qzone_vistor_info_color" android:ellipsize="end" android:id="@id/visitInfo_pre" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+                <TextView android:textSize="14.0sp" android:textColor="@color/qzone_vistor_info_color" android:ellipsize="end" android:id="@id/visitInfo_content" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            </LinearLayout>
+        </RelativeLayout>
+    </com.qzone.widget.LinerLayoutForListViewItem>
+    <ImageView android:id="@id/itembottomline" android:background="#ffe6e6e6" android:layout_width="fill_parent" android:layout_height="1.0px" />
+</LinearLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="@drawable/common_list_item_background" android:padding="@dimen/dp_8" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/dp_8" android:layout_marginRight="@dimen/dp_8">
+        <ImageView android:id="@id/album_cover" android:layout_width="@dimen/album_cover_width" android:layout_height="@dimen/album_cover_width" />
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" android:layout_toRightOf="@id/album_cover" android:layout_centerInParent="true">
+            <TextView android:textSize="20.0sp" android:textColor="@color/black" android:ellipsize="end" android:gravity="center" android:id="@id/album_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="120.0dip" android:singleLine="true" />
+            <TextView android:textSize="14.0sp" android:textColor="#8c000000" android:ellipsize="end" android:gravity="center" android:id="@id/photo_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp_8" android:maxWidth="120.0dip" android:singleLine="true" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

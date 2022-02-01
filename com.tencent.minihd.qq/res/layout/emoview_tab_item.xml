@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="72.0dip" android:layout_height="37.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/emoticon_tab_common_height" android:layout_alignParentBottom="true">
+        <View android:id="@id/tabLine" android:background="@drawable/qvip_emoji_aio_face_tab_line" android:layout_width="2.0px" android:layout_height="@dimen/emoticon_tab_divide_line_height" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+        <ImageView android:id="@id/tab_item_bg" android:background="@drawable/emo_tabitem_sel" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toLeftOf="@id/tabLine" />
+        <ImageView android:id="@id/emoticon_tab_red_point" android:background="@drawable/skin_tips_dot" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_marginRight="2.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        <ImageView android:id="@id/tabView" android:layout_width="@dimen/emoticon_sencondary_tab_icon_width" android:layout_height="@dimen/emoticon_sencondary_tab_icon_width" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</RelativeLayout>

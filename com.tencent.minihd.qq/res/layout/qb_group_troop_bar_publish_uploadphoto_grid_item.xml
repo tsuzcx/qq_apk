@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/uploadphoto_item_image" android:layout_width="60.0dip" android:layout_height="60.0dip" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/round_corner_mask" android:layout_width="60.0dip" android:layout_height="60.0dip" android:src="@drawable/transparent_2" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/img_icon_delete" android:layout_width="22.0dip" android:layout_height="22.0dip" android:src="@drawable/qb_group_troop_bar_pulish_delete_image_icon" android:scaleType="centerCrop" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:contentDescription="@string/qb_group_troop_bar_publish_drop_image_description" />
+</RelativeLayout>

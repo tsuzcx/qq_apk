@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/submsg_item_root" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/subaccount_again_tip_bar" layout="@layout/subaccount_tip_bar" />
+    <LinearLayout android:orientation="vertical" android:background="@color/activate_base_page_bg" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="80.0dip" android:layout_marginLeft="32.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="32.0dip">
+            <RelativeLayout android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="24.0dip" android:layout_marginRight="24.0dip">
+                <Button android:textColor="@android:color/white" android:id="@id/subaccountmsg_enter" android:background="@drawable/subaccountmessage_list_blue_btn_selector" android:layout_width="88.0dip" android:layout_height="40.0dip" android:text="@string/ug_subaccount_message_enter" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                <ImageView android:id="@id/subaccountmsg_icon" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@drawable/h001" android:layout_centerVertical="true" />
+                <View android:id="@id/middle_line" android:background="#00000000" android:layout_width="1.0px" android:layout_height="4.0dip" android:layout_toRightOf="@id/subaccountmsg_icon" android:layout_centerVertical="true" />
+                <TextView android:textSize="16.0dip" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/subaccountmsg_name" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:singleLine="true" android:layout_toLeftOf="@id/subaccountmsg_enter" android:layout_toRightOf="@id/subaccountmsg_icon" android:layout_above="@id/middle_line" />
+                <TextView android:textSize="14.0dip" android:textColor="#ff737373" android:ellipsize="end" android:id="@id/subaccountmsg_uin" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:singleLine="true" android:layout_toLeftOf="@id/subaccountmsg_enter" android:layout_toRightOf="@id/subaccountmsg_icon" android:layout_below="@id/middle_line" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

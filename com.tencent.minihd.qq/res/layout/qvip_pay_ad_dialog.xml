@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/qvip_pay_ad_dialog_image" android:padding="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="fitXY" android:adjustViewBounds="true" android:layout_centerInParent="true" android:contentDescription="@null" />
+    <ImageView android:id="@id/qvip_pay_ad_dialog_close" android:background="@drawable/qvip_pay_popad_close_selector" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_alignTop="@id/qvip_pay_ad_dialog_image" android:layout_alignRight="@id/qvip_pay_ad_dialog_image" android:contentDescription="@null" />
+</RelativeLayout>

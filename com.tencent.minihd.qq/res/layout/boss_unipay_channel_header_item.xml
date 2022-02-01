@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_gravity="center" android:id="@id/boss_unipay_id_channel_itemlayout" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginBottom="10.0dip">
+        <ImageView android:id="@id/boss_unipay_recomend" android:visibility="gone" android:duplicateParentState="true" android:layout_marginLeft="6.0dip" style="@style/boss_unipay_wrap" />
+        <ImageView android:background="@drawable/boss_unipay_dr_channel_item1" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/boss_unipay_id_channelLogo" android:layout_width="25.0dip" android:layout_height="25.0dip" android:layout_marginLeft="15.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/boss_unipay_id_channelLogo" android:layout_centerVertical="true">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:id="@id/boss_unipay_id_channelName" android:layout_marginLeft="10.0dip" android:text="招商银行一卡通" style="@style/boss_unipay_tx.channel_name" />
+                <TextView android:id="@id/boss_unipay_id_channelDiscount" android:layout_marginLeft="5.0dip" android:text="91折" android:layout_alignBaseline="@id/boss_unipay_id_channelName" style="@style/boss_unipay_tx.discount" />
+            </LinearLayout>
+            <TextView android:textSize="12.0sp" android:textColor="#a6ffffff" android:id="@id/boss_unipay_id_channelKJ" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="财付通快捷支付" />
+        </LinearLayout>
+        <TextView android:textSize="14.0sp" android:id="@id/boss_unipay_id_channelBankTail" android:visibility="gone" android:text="尾号" android:layout_toLeftOf="@id/boss_unipay_id_channelInfo" android:layout_centerVertical="true" style="@style/boss_unipay_tx.channel_price" />
+        <TextView android:id="@id/boss_unipay_id_channelInfo" android:paddingRight="5.0dip" android:layout_marginRight="10.0dip" android:text="0000" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/boss_unipay_tx.channel_price" />
+    </RelativeLayout>
+</LinearLayout>

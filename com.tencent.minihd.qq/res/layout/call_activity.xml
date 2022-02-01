@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <RelativeLayout android:id="@id/root" android:layout_width="@dimen/pad_left_panel_width" android:layout_height="fill_parent">
+        <include android:id="@id/fix_top_searchbox" layout="@layout/search_box" />
+        <ViewStub android:id="@id/stub_recent_call" android:visibility="gone" android:layout="@layout/qq_conversation_call_list" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/fix_top_searchbox" />
+        <View android:background="@drawable/skin_header_bar_shadow" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_alignParentTop="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/recent_call_recommend" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/call_recommad_title_layout" android:background="#ffb7dbf5" android:layout_width="fill_parent" android:layout_height="160.0dip">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/call_bg_moutain_left_margin" android:src="@drawable/call_recommand_moutain_up" android:layout_alignParentBottom="true" />
+            <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="48.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+                <TextView android:textSize="20.0sp" android:textColor="@color/recent_call_font_color" android:gravity="center_horizontal" android:id="@id/headText" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/no_call_recommend" android:layout_alignParentRight="true" />
+                <TextView android:textSize="14.0sp" android:textColor="@color/recent_call_font_color" android:gravity="center_horizontal" android:id="@id/headText2" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/no_call_recommend2" android:layout_below="@id/headText" android:layout_alignLeft="@id/headText" />
+            </RelativeLayout>
+        </RelativeLayout>
+        <RelativeLayout android:background="@drawable/call_recommand_bg_texure" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/call_recommad_title_layout">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="60.0dip" android:src="@drawable/call_recommand_moutain_down" />
+            <ImageView android:id="@id/call_recommand_light" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <ImageView android:id="@id/call_recommand_dot" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <ImageView android:id="@id/call_recommand_sea" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="-8.0dip" android:layout_below="@id/call_recommad_title_layout" />
+        <ImageView android:id="@id/back" android:background="@drawable/header_btn_close_selector" android:visibility="invisible" android:layout_width="@dimen/dp_40" android:layout_height="@dimen/dp_40" android:layout_marginLeft="@dimen/dp_16" android:layout_marginTop="@dimen/dp_16" />
+        <com.tencent.mobileqq.activity.recent.RecentCallViewPager android:id="@id/viewPager" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/call_recommad_title_layout" />
+        <TextView android:textColor="@color/recent_call_font_color" android:gravity="center_horizontal" android:id="@id/promptText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/no_call_waiting" android:layout_centerInParent="true" android:contentDescription="@null" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/indicatorLayout" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <com.tencent.mobileqq.widget.NotRemoveFrameLayout android:id="@id/CallContainer" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/pad_left_panel_width" />
+</FrameLayout>

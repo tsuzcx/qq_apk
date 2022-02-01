@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.widget.XListView android:id="@id/search_friend_list" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@null"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

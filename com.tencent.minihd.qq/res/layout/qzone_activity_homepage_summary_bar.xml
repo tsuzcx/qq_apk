@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/qzone_skin_color_item_bg" android:paddingTop="8.0dip" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/user_info_summary_bar_mood" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/qzone_text_clickable" android:gravity="center" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/mood" android:maxLines="1" />
+            <TextView android:textSize="11.0sp" android:textColor="@color/qzone_text_clickable" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/user_info_summary_bar_mood_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/zero" android:maxLines="1" />
+        </LinearLayout>
+        <ImageView android:layout_gravity="center|right" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qzone_bg_line_shading_home" />
+    </FrameLayout>
+    <FrameLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/user_info_summary_bar_blog" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/qzone_text_clickable" android:gravity="center" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/blog" android:maxLines="1" />
+            <TextView android:textSize="11.0sp" android:textColor="@color/qzone_text_clickable" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/user_info_summary_bar_blog_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/zero" android:maxLines="1" />
+        </LinearLayout>
+        <ImageView android:layout_gravity="center|right" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qzone_bg_line_shading_home" />
+    </FrameLayout>
+    <FrameLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/user_info_summary_bar_photo" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/qzone_text_clickable" android:gravity="center" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/homepage_album" android:maxLines="1" />
+            <TextView android:textSize="11.0sp" android:textColor="@color/qzone_text_clickable" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/user_info_summary_bar_photo_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/zero" android:maxLines="1" />
+        </LinearLayout>
+        <ImageView android:layout_gravity="center|right" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qzone_bg_line_shading_home" />
+    </FrameLayout>
+    <FrameLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/user_info_summary_bar_message" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/qzone_text_clickable" android:gravity="center" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/message" android:maxLines="1" />
+            <TextView android:textSize="11.0sp" android:textColor="@color/qzone_text_clickable" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/user_info_summary_bar_message_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/zero" android:maxLines="1" />
+        </LinearLayout>
+        <ImageView android:layout_gravity="center|right" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qzone_bg_line_shading_home" />
+    </FrameLayout>
+    <FrameLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/user_info_summary_bar_visitor" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/qzone_text_clickable" android:gravity="center" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/visitor" android:maxLines="1" />
+            <TextView android:textSize="11.0sp" android:textColor="@color/qzone_text_clickable" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/user_info_summary_bar_visitor_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/zero" android:maxLines="1" />
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

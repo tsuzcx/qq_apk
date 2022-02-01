@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/loadingdialogRoot" android:background="@drawable/qzone_bg_publishing_dialog" android:layout_width="wrap_content" android:layout_height="60.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ProgressBar android:id="@id/footLoading" android:layout_width="wrap_content" android:layout_height="wrap_content" style="?attr/progress_drawable" />
+    <ImageView android:gravity="center" android:id="@id/uploadDialogImage" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:singleLine="true" />
+    <TextView android:textSize="15.0dip" android:textColor="@color/qzone_white" android:id="@id/dialogText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="正在发表..." android:singleLine="true" />
+</LinearLayout>

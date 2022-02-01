@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/container" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/favorites_item_status" android:visibility="visible" android:clickable="true" android:layout_width="61.0dip" android:layout_height="fill_parent" android:src="@drawable/extension_share_done_fail" android:scaleType="center" android:layout_centerVertical="true" android:contentDescription="@null" />
+    <com.tencent.mobileqq.widget.ShaderAnimLayout android:id="@id/shader" android:visibility="gone" android:clickable="true" android:layout_width="64.0dip" android:layout_height="34.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_centerHorizontal="true" android:layout_centerVertical="true">
+        <Button android:textSize="14.0sp" android:textColor="@color/white" android:id="@id/favorites_item_delConBtn" android:background="@drawable/red_del_btn_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/delete_btn" android:layout_centerInParent="true" />
+    </com.tencent.mobileqq.widget.ShaderAnimLayout>
+</RelativeLayout>

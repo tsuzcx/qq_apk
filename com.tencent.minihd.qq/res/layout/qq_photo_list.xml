@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/skin_background_local_albums" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/group_album_bar" android:background="#ffe9e9e9" android:paddingLeft="@dimen/dp_32" android:paddingRight="@dimen/dp_32" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="45.0dip">
+        <TextView android:ellipsize="middle" android:id="@id/album_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="@string/photo_upload_to_group_album_default_album" android:singleLine="true" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/TxtLocalAlbumsName" />
+        <TextView android:id="@id/upload_to" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/photo_upload_to_group_album" android:layout_toLeftOf="@id/album_name" android:layout_centerVertical="true" style="@style/TxtLocalAlbumsUpload" />
+        <CheckBox android:id="@id/group_album_checkbox" android:layout_width="wrap_content" android:layout_height="wrap_content" android:button="@drawable/skin_pic_troop_album_local_albums_checkbox" android:layout_toLeftOf="@id/upload_to" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/tool_and_selection" android:background="@drawable/skin_aio_input_bar_bg_local_albums" android:paddingLeft="@dimen/dp_32" android:paddingRight="@dimen/dp_32" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <RelativeLayout android:gravity="center_vertical" android:id="@id/tool_bar" android:layout_width="fill_parent" android:layout_height="@dimen/dp_64" android:layout_alignParentBottom="true">
+            <Button android:gravity="center" android:id="@id/magic_stick" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/photo_mebu_edit" style="@style/SmallButtonlightBlueLocalAlbums" />
+            <com.tencent.mobileqq.widget.QualityCheckBox android:gravity="center" android:id="@id/quality_btn" android:paddingLeft="@dimen/dp_8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_32" android:button="@drawable/skin_pic_troop_album_local_albums_checkbox" android:text="@string/photo_menu_send_raw" android:layout_toRightOf="@id/magic_stick" style="@style/SmallButtonlightBlueLocalAlbums" />
+            <Button android:id="@id/preview_btn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/preview" android:layout_alignParentRight="true" style="@style/SmallButtonlightBlueLocalAlbums" />
+        </RelativeLayout>
+    </LinearLayout>
+    <com.tencent.widget.GestureSelectGridView android:id="@id/photo_list_gv" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/transparent" android:numColumns="3" android:layout_above="@id/tool_and_selection" android:layout_below="@id/group_album_bar" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/tool_and_selection">
+        <TextView android:textSize="15.0sp" android:textColor="#ffafafaf" android:gravity="center" android:layout_gravity="center" android:id="@id/empty_view" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/photo_no_photo" android:drawableTop="@drawable/no_photo" android:drawablePadding="10.0dip" />
+    </FrameLayout>
+</RelativeLayout>

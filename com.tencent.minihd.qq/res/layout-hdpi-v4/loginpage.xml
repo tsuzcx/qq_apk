@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.InputMethodRelativeLayout android:id="@id/loginpage" android:background="@drawable/login_bg_item_nie" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:mobileqq="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <ImageView android:id="@id/iv_mountain" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitXY" android:layout_alignParentBottom="true" />
+    <LinearLayout android:orientation="vertical" android:id="@id/scrollAreaLayout" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/login_bottom">
+        <FrameLayout android:gravity="center" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="96.0dip">
+            <ImageView android:layout_gravity="center" android:id="@id/face" android:layout_width="87.0dip" android:layout_height="87.0dip" android:scaleType="fitXY" />
+        </FrameLayout>
+        <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/loginInputView" android:visibility="invisible" android:layout_width="320.0dip" android:layout_height="wrap_content">
+            <RelativeLayout android:id="@id/input" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="40.0dip">
+                <com.tencent.mobileqq.widget.DropdownView android:gravity="center_vertical" android:id="@id/dropdown" android:paddingLeft="15.0dip" android:paddingRight="66.0dip" android:layout_width="fill_parent" android:layout_height="44.0dip" android:hint="@string/account_hint" android:maxLines="1" android:singleLine="true" android:layout_alignParentTop="true" style="@style/new_login_input_font" />
+                <View android:id="@id/line1" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="2.0px" android:layout_below="@id/dropdown" />
+                <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/line1">
+                    <LinearLayout android:layout_width="fill_parent" android:layout_height="104.0dip" android:layout_marginTop="@dimen/common_8dp" android:contentDescription="listview_account_container">
+                        <com.tencent.widget.HorizontalListView android:id="@id/listview_account" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/common_8dp" />
+                    </LinearLayout>
+                    <LinearLayout android:orientation="vertical" android:id="@id/ll_password_container" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                        <com.tencent.mobileqq.widget.CustomSafeEditText android:gravity="center_vertical" android:id="@id/password" android:paddingLeft="16.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="44.0dip" android:hint="@string/password" android:maxLines="1" android:maxLength="16" android:inputType="textPassword" android:imeActionLabel="@string/login" mobileqq:clearBtnDrawable="@drawable/common_input_box_clear" mobileqq:clearBtnDrawableWidth="19.0dip" mobileqq:clearBtnDrawableHeight="19.0dip" style="@style/new_login_input_font" />
+                        <View android:id="@id/line2" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="2.0px" android:layout_below="@id/password" />
+                        <LinearLayout android:id="@id/loginlayout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="42.0dip" android:layout_below="@id/line2">
+                            <Button android:gravity="center" android:id="@id/login" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/login" style="@style/new_login_button" />
+                        </LinearLayout>
+                        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/layout_check_clause" android:paddingTop="14.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/loginlayout">
+                            <CheckBox android:layout_gravity="center_vertical" android:id="@id/check_caluse" android:background="@drawable/cm_blue_check_bg" android:layout_width="15.0dip" android:layout_height="15.0dip" android:checked="false" android:button="@null" />
+                            <TextView android:textSize="@dimen/textSizeS4" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="@string/qr_clause_prefix" />
+                            <TextView android:textSize="@dimen/textSizeS4" android:textColor="@color/skin_blue" android:id="@id/txt_clause" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qr_clause" />
+                            <TextView android:textSize="@dimen/textSizeS4" android:textColor="@color/white" android:id="@id/txt_clause_and" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qr_clause_and" />
+                            <TextView android:textSize="@dimen/textSizeS4" android:textColor="@color/skin_blue" android:id="@id/txt_private" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qr_clause_private" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </FrameLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+    <RelativeLayout android:id="@id/login_bottom" android:paddingLeft="56.0dip" android:paddingRight="60.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="56.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <Button android:textSize="18.0sp" android:textColor="@android:color/white" android:gravity="center|left" android:id="@id/findPass" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/password_forget_text" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <Button android:textSize="18.0sp" android:textColor="@android:color/white" android:gravity="center" android:id="@id/regist" android:background="@null" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/new_user" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <include android:id="@id/rl_title_bar" android:layout_alignParentTop="true" layout="@layout/custom_commen_title" />
+</com.tencent.mobileqq.widget.InputMethodRelativeLayout>

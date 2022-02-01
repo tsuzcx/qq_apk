@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/scrollbar_handle_vertical" android:background="@drawable/bg_texture" android:focusable="true" android:focusableInTouchMode="true" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="horizontal" android:id="@id/gender_layout" android:background="@drawable/skin_setting_strip_middle_unpressed" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginTop="20.0dip">
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/gender_female" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <TextView android:textSize="16.0dip" android:textColor="@color/skin_black_item" android:gravity="center" android:id="@id/female_tv" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/female" android:drawablePadding="2.0dip" />
+            </LinearLayout>
+            <ImageView android:background="@drawable/skin_conversation_options_bg_line" android:layout_width="1.0px" android:layout_height="fill_parent" />
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/gender_male" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <TextView android:textSize="16.0dip" android:textColor="@color/skin_black_item" android:gravity="center" android:id="@id/male_tv" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/male" android:drawablePadding="2.0dip" />
+            </LinearLayout>
+            <ImageView android:background="@drawable/skin_conversation_options_bg_line" android:layout_width="1.0px" android:layout_height="fill_parent" />
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/gender_all" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <TextView android:textSize="16.0dip" android:textColor="@color/skin_black_item" android:gravity="center" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/troop_member_all" />
+            </LinearLayout>
+        </LinearLayout>
+        <TextView android:textSize="14.0dip" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/qq_setting_table_txtLeftRightPadding_20px" android:layout_marginTop="20.0dip" android:text="@string/nearpeople_time_tips" android:contentDescription="@string/nearpeople_time_tips" style="@style/table_biaoti_14sp_808080" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/time_layout" android:background="@drawable/skin_setting_strip_middle_unpressed" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginTop="@dimen/qq_setting_table_item2txt_16px">
+            <TextView android:textSize="16.0dip" android:textColor="@color/skin_black_item" android:gravity="center" android:id="@id/time_fifteen_min" android:background="@drawable/qq_nearpeople_word_selector" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/nearpeople_fifteen_min" android:layout_weight="1.0" />
+            <ImageView android:background="@drawable/skin_conversation_options_bg_line" android:layout_width="1.0px" android:layout_height="fill_parent" />
+            <TextView android:textSize="16.0dip" android:textColor="@color/skin_black_item" android:gravity="center" android:id="@id/time_one_hour" android:background="@drawable/qq_nearpeople_word_selector" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/nearpeople_one_hour" android:layout_weight="1.0" />
+            <ImageView android:background="@drawable/skin_conversation_options_bg_line" android:layout_width="1.0px" android:layout_height="fill_parent" />
+            <TextView android:textSize="16.0dip" android:textColor="@color/skin_black_item" android:gravity="center" android:id="@id/time_four_hour" android:background="@drawable/qq_nearpeople_word_selector" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/nearpeople_four_hour" android:layout_weight="1.0" />
+            <ImageView android:background="@drawable/skin_conversation_options_bg_line" android:layout_width="1.0px" android:layout_height="fill_parent" />
+            <TextView android:textSize="16.0dip" android:textColor="@color/skin_black_item" android:gravity="center" android:id="@id/time_eight_hour" android:background="@drawable/qq_nearpeople_word_selector" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/troop_member_all" android:layout_weight="1.0" />
+        </LinearLayout>
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/age" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" formItem:bgType="top" formItem:leftText="@string/info_age" formItem:showArrow="true" />
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/career" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="middle" formItem:leftText="职业" formItem:showArrow="true" />
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/hometown" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="middle" formItem:leftText="故乡" formItem:showArrow="true" />
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/xingzuo" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="bottom" formItem:leftText="@string/nearpeople_xingzuo" formItem:showArrow="true" />
+    </LinearLayout>
+</com.tencent.mobileqq.widget.BounceScrollView>

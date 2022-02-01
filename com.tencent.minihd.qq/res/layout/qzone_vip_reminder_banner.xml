@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/qzone_vip_reminder_banner" android:background="#00c0c0c0" android:layout_width="fill_parent" android:layout_height="50.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.AsyncImageView android:id="@id/vip_reminder_bac" android:background="@color/transparent" android:focusable="false" android:clickable="false" android:longClickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
+    <ImageButton android:id="@id/cancle_vip_reminder" android:background="#00ffffff" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="-50.0dip" android:layout_toRightOf="@id/vip_reminder_bac" android:layout_centerVertical="true" />
+</RelativeLayout>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/qq_map_page" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/title" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" layout="@layout/custom_commen_title" />
+    <include android:id="@id/search_bar" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/search_box" />
+    <RelativeLayout android:id="@id/qq_map" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:id="@id/poi_layout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="0.0dip" android:layout_alignParentBottom="true">
+            <RelativeLayout android:id="@id/poi_pull_up_layout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/poi_list_pull_up_height">
+                <ImageView android:id="@id/poi_expand_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qb_coupon_nearbyshop_shangla" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <ImageView android:id="@id/four_square_sign" android:background="@drawable/qb_map_location_bg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/poi_tab" android:background="@drawable/skin_list_item_normal_local" android:layout_width="fill_parent" android:layout_height="52.0dip" />
+            <FrameLayout android:id="@id/poi_list_layout" android:layout_width="fill_parent" android:layout_height="@dimen/poi_list_height">
+                <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                    <TextView android:textColor="@color/skin_gray2" android:id="@id/poi_list_loading" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/poi_list_loading" />
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+        <com.tencent.mobileqq.widget.QQMapView android:enabled="true" android:id="@id/map" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/poi_layout" />
+        <ImageView android:id="@id/google_logo" android:background="@drawable/qb_map_google_logo" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="20.0dip" android:layout_marginLeft="1.0dip" android:layout_marginBottom="1.0dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+        <ImageView android:id="@id/poi_location" android:background="@drawable/qb_coupon_location_bg" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:src="@drawable/qb_coupon_location" android:scaleType="center" />
+        <ImageView android:id="@id/jiejing" android:background="@drawable/qb_coupon_location_bg" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="10.0dip" android:src="@drawable/qb_coupon_jiejing" android:scaleType="center" android:layout_toRightOf="@id/poi_location" />
+        <ImageView android:id="@id/pin" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/pin_shadow" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/poi_bubble_layout" android:background="@drawable/map_pop_bg_selector" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="@dimen/poi_bubble_layout_height" android:layout_centerHorizontal="true">
+            <ImageView android:id="@id/poi_bubble_preview" android:visibility="gone" android:layout_width="@dimen/poi_bubble_preview_width" android:layout_height="@dimen/poi_bubble_preview_height" android:layout_marginRight="3.0dip" android:src="@drawable/qb_poi_preview_default_pic" />
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="14.0sp" android:textColor="@color/poi_bubble_fixed_text" android:ellipsize="end" android:id="@id/poi_bubble_title_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="150.0dip" android:singleLine="true" />
+                <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <TextView android:textSize="12.0sp" android:textColor="@color/poi_bubble_fixed_text" android:id="@id/poi_bubble_text_prefix" android:paddingTop="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/poi_bubble_fixed_text_prefix" />
+                    <TextView android:textSize="12.0sp" android:textColor="@color/poi_bubble_number_text" android:id="@id/poi_bubble_text" android:paddingTop="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="50.0dip" android:text="0" />
+                    <TextView android:textSize="12.0sp" android:textColor="@color/poi_bubble_fixed_text" android:id="@id/poi_bubble_text_postfix" android:paddingTop="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/poi_bubble_fixed_text_postfix_tuan" />
+                </LinearLayout>
+            </LinearLayout>
+            <ImageView android:id="@id/poi_bubble_left_line" android:background="#b2333333" android:layout_width="1.0px" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:layout_marginTop="1.0dip" />
+            <ImageView android:id="@id/poi_bubble_line" android:background="#1affffff" android:layout_width="1.0px" android:layout_height="fill_parent" android:layout_marginTop="1.0dip" />
+            <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip">
+                <ImageView android:id="@id/poi_bubble_right_arrow" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/skin_icon_arrow_right_normal" android:layout_centerInParent="true" />
+            </RelativeLayout>
+        </LinearLayout>
+        <RelativeLayout android:id="@id/lbs_toolbar" android:layout_width="wrap_content" android:layout_height="60.0dip" android:layout_marginBottom="26.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+            <ImageView android:background="@drawable/album_toolbar_black" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_alignLeft="@id/tools" android:layout_alignRight="@id/tools" android:layout_centerInParent="true" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/tools" android:visibility="visible" android:layout_width="184.0dip" android:layout_height="fill_parent" android:layout_centerHorizontal="true">
+                <ImageView android:layout_gravity="center_vertical" android:id="@id/lbs_default" android:background="@drawable/bottom_bar_btn_selector" android:visibility="visible" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/toolbar_zoom_another" android:scaleType="center" android:layout_weight="1.0" />
+                <ImageView android:layout_gravity="center_vertical" android:id="@id/lbs_zoomin" android:background="@drawable/bottom_bar_btn_selector" android:visibility="visible" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/toolbar_zoomin" android:scaleType="center" android:layout_weight="1.0" />
+                <ImageView android:layout_gravity="center_vertical" android:id="@id/lbs_zoomout" android:background="@drawable/bottom_bar_btn_selector" android:visibility="visible" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/toolbar_zoomout" android:scaleType="center" android:layout_weight="1.0" />
+            </LinearLayout>
+        </RelativeLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/shop_list_layout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/shop_list_margin_top" android:layout_alignParentBottom="true">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/shop_list_header" android:background="@drawable/skin_list_item_normal_local" android:layout_width="fill_parent" android:layout_height="40.0dip">
+                <ImageView android:background="@drawable/qb_coupon_tuan" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="3.0dip" />
+                <TextView android:textSize="16.0sp" android:textColor="@color/skin_gray2" android:id="@id/shop_number_textview" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                <ImageView android:id="@id/shop_expand_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:src="@drawable/qb_coupon_nearbyshop_shangla" />
+            </LinearLayout>
+            <com.tencent.widget.XListView android:id="@id/shop_list" android:layout_width="fill_parent" android:layout_height="@dimen/shop_list_height" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

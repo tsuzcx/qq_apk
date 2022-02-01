@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/linearLayout1" android:paddingLeft="10.0dip" android:paddingTop="12.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:mobileqq="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <ImageView android:id="@id/verification_code" android:layout_width="130.0dip" android:layout_height="53.0dip" android:scaleType="fitXY" />
+    <RelativeLayout android:id="@id/waitting" android:visibility="gone" android:layout_width="100.0dip" android:layout_height="wrap_content">
+        <ProgressBar android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <TextView android:id="@id/refreshVerify" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginBottom="22.0dip" android:text="@string/fetch_verification_code_prompt" style="@style/K1_Font" />
+    <com.tencent.mobileqq.widget.ClearableEditText android:textColorHint="#ffcacbcc" android:gravity="center" android:id="@id/input_prompt" android:background="@drawable/acm_inputbox" android:paddingLeft="12.0dip" android:paddingTop="14.0dip" android:paddingRight="12.0dip" android:paddingBottom="14.0dip" android:layout_width="fill_parent" android:layout_height="44.0dip" android:maxLines="1" android:singleLine="true" android:maxLength="20" android:inputType="text" mobileqq:clearBtnDrawable="@drawable/common_input_box_clear" mobileqq:clearBtnDrawableWidth="19.0dip" mobileqq:clearBtnDrawableHeight="19.0dip" style="@style/B3_Font" />
+    <TextView android:layout_gravity="left" android:id="@id/notestr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_marginTop="10.0dip" android:text="@string/verifycode_input_prompt" style="@style/C3_Font" />
+</LinearLayout>

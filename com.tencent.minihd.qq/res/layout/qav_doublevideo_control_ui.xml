@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/doublevideocontrol" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/qav_title_bar" android:background="@color/transparent" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
+        <View android:id="@id/qav_status_bar" android:layout_width="fill_parent" android:layout_height="@dimen/qav_title_bar_height_for_new_ui" />
+        <include android:id="@id/qav_title_control_bar" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_below="@id/qav_status_bar" layout="@layout/qav_top_control_layer" />
+        <RelativeLayout android:id="@id/qav_friend_head_frame" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="87.0dip" android:layout_below="@id/qav_title_control_bar" android:layout_centerHorizontal="true">
+            <ImageView android:id="@id/qav_friend_info_head" android:layout_width="@dimen/qav_friend_head_width_810" android:layout_height="@dimen/qav_friend_head_width_810" android:src="@drawable/h001" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <TextView android:textSize="22.0dip" android:textColor="@color/white" android:ellipsize="end" android:id="@id/qav_friend_info_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:maxWidth="198.0dip" android:text="名字" android:singleLine="true" android:layout_below="@id/qav_friend_head_frame" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="15.0dip" android:textColor="@color/qav_white_FF" android:ellipsize="marquee" android:gravity="center_horizontal" android:id="@id/qav_titlebar_mid_txt" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="等待对方接听..." android:singleLine="true" android:layout_below="@id/qav_friend_info_name" android:layout_centerHorizontal="true" android:onClick="BtnOnClick" />
+    </RelativeLayout>
+    <com.tencent.av.ui.QavPanel android:id="@id/qav_panel" android:layout_width="fill_parent" android:layout_height="@dimen/qav_panel_height" android:layout_alignParentBottom="true" />
+</RelativeLayout>

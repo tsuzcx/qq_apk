@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/dialogRoot" android:background="@drawable/common_alert_bg" android:layout_width="@dimen/dialogBase_width" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/qq_dialog_title_textsize" android:textColor="@color/color_hei" android:ellipsize="end" android:gravity="center" android:id="@id/dialogTitle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dialogBase_title_marginLeft" android:layout_marginTop="@dimen/dialogBase_title_marginTop" android:layout_marginRight="@dimen/dialogBase_title_marginRight" android:text="上传自定义服务器" android:singleLine="true" />
+    <LinearLayout android:orientation="vertical" android:id="@id/bodyLayout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dialogBase_body_marginLeft" android:layout_marginTop="@dimen/dialogBase_body_marginTop" android:layout_marginRight="@dimen/dialogBase_body_marginRight" android:layout_marginBottom="@dimen/dialogBase_body_marginBottom" android:layout_below="@id/dialogTitle">
+        <EditText android:textSize="@dimen/qq_dialog_content_textsize" android:id="@id/qzone_upload_server_ip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="请输入测试服务器ip" />
+        <EditText android:textSize="@dimen/qq_dialog_content_textsize" android:id="@id/qzone_upload_server_port" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:hint="请输入测试服务器端口" />
+        <TextView android:textSize="11.0sp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:hint="注意：设置后需要退出应用重新启动后生效" />
+    </LinearLayout>
+    <View android:id="@id/dialogDivider" android:background="@color/dialog_gray" android:layout_width="fill_parent" android:layout_height="@dimen/dialogBase_divider_width" android:layout_below="@id/bodyLayout" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/btnLayout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/dialogDivider">
+        <TextView android:textSize="@dimen/qq_dialog_btn_textsize" android:textColor="@color/dialog_blue" android:gravity="center" android:id="@id/dialogLeftBtn" android:background="@drawable/common_dialog_btn_left" android:layout_width="fill_parent" android:layout_height="@dimen/dialogBase_btnHeight" android:text="取消" android:singleLine="true" android:layout_weight="1.0" />
+        <View android:background="@color/dialog_gray" android:layout_width="@dimen/dialogBase_divider_width" android:layout_height="fill_parent" />
+        <TextView android:textSize="@dimen/qq_dialog_btn_textsize" android:textColor="@color/dialog_blue" android:gravity="center" android:id="@id/dialogRightBtn" android:background="@drawable/common_dialog_btn_right" android:layout_width="fill_parent" android:layout_height="@dimen/dialogBase_btnHeight" android:text="确认" android:singleLine="true" android:layout_weight="1.0" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_gravity="center" android:id="@id/qqlslayout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="22.0dip" android:layout_marginTop="32.0dip" android:layout_marginRight="22.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_gravity="center" android:id="@id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_centerVertical="true">
+        <RelativeLayout android:orientation="horizontal" android:background="#bf000000" android:layout_width="fill_parent" android:layout_height="44.0dip">
+            <ImageView android:layout_gravity="center" android:id="@id/qq_icon" android:layout_width="27.0dip" android:layout_height="27.0dip" android:layout_marginLeft="15.0dip" android:src="@drawable/channel_qq" android:layout_centerVertical="true" />
+            <TextView android:textColor="#ffffffff" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="QQ" android:layout_toRightOf="@id/qq_icon" android:layout_centerVertical="true" />
+            <RelativeLayout android:id="@id/btn_close" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+                <ImageView android:layout_gravity="center|right" android:paddingLeft="10.0dip" android:paddingTop="10.0dip" android:paddingRight="15.0dip" android:paddingBottom="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qq_ls_close_btn" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/single_recent_item_rl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/title">
+        <RelativeLayout android:id="@id/qq_ls_recent_item" android:background="@drawable/qq_ls_bg_item" android:longClickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="40.0dip" android:layout_centerVertical="true">
+            <RelativeLayout android:id="@id/item_content" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="45.0dip" android:layout_marginBottom="15.0dip" android:layout_toRightOf="@id/qq_ls_head">
+                <TextView android:textSize="16.0sp" android:textColor="@color/white" android:id="@id/qq_ls_name" android:paddingRight="30.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="飞翔的秋秋" android:singleLine="true" />
+            </RelativeLayout>
+            <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginRight="15.0dip">
+                <TextView android:textSize="11.0sp" android:textColor="#ffbebfbf" android:id="@id/qq_ls_time" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="下午 10:10" android:layout_alignParentRight="true" />
+            </RelativeLayout>
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="315.0dip">
+            <RelativeLayout android:id="@id/single_list" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="120.0dip">
+                <com.tencent.widget.XListView android:id="@id/single_recent_list" android:background="@color/transparent" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@android:color/transparent" />
+                <ImageView android:background="@drawable/qq_ls_bg_item" android:layout_width="fill_parent" android:layout_height="6.0dip" android:layout_below="@id/single_recent_list" />
+                <com.tencent.mobileqq.activity.recent.cur.DragTextView android:textSize="10.0sp" android:textColor="@color/white" android:gravity="center" android:id="@id/qq_ls_unread_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:text="8" android:layout_alignParentRight="true" />
+            </RelativeLayout>
+            <RelativeLayout android:id="@id/input_bar_bg" android:layout_width="fill_parent" android:layout_height="120.0dip" android:layout_below="@id/single_list">
+                <LinearLayout android:orientation="horizontal" android:id="@id/input_bar" android:background="@drawable/qq_ls_input_bar_bg" android:layout_width="fill_parent" android:layout_height="56.0dip">
+                    <ImageButton android:id="@id/btn_call" android:background="@color/transparent" android:layout_width="50.0dip" android:layout_height="fill_parent" android:layout_marginLeft="5.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="5.0dip" android:layout_marginBottom="5.0dip" android:src="@drawable/qq_ls_call_btn" />
+                    <com.tencent.widget.XEditTextEx android:textSize="16.0sp" android:textColor="@color/skin_input" android:id="@id/input_text" android:background="@drawable/qq_ls_aio_input_bg" android:layout_width="0.0dip" android:layout_height="56.0dip" android:maxLines="5" android:layout_weight="1.0" android:inputType="textMultiLine" android:contentDescription="文本框  连按两次来编辑" android:textSelectHandle="@drawable/text_select_handle_middle" />
+                    <Button android:textSize="15.0sp" android:textColor="@color/qq_ls_reply_font" android:id="@id/btn_reply" android:background="@color/transparent" android:layout_width="50.0dip" android:layout_height="fill_parent" android:layout_marginLeft="5.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="5.0dip" android:layout_marginBottom="5.0dip" android:text="发送" />
+                </LinearLayout>
+                <ImageView android:id="@id/input_bar_line" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="5.0dip" android:layout_marginTop="-56.0dip" android:layout_marginRight="5.0dip" android:src="@drawable/qq_ls_input_line" android:layout_below="@id/input_bar" android:layout_centerHorizontal="true" />
+                <TextView android:textSize="15.0sp" android:gravity="center" android:id="@id/single_toast" android:background="@drawable/qq_ls_toast_bg" android:visibility="invisible" android:layout_width="200.0dip" android:layout_height="36.0dip" android:layout_marginBottom="5.0dip" android:text="@string/qq_ls_doubleclick" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="402.0dip">
+        <com.tencent.widget.XListView android:id="@id/recent_list" android:background="@color/transparent" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="44.0dip" />
+        <TextView android:textSize="15.0sp" android:gravity="center" android:id="@id/recent_toast" android:background="@drawable/qq_ls_toast_bg" android:visibility="invisible" android:layout_width="200.0dip" android:layout_height="36.0dip" android:layout_marginTop="30.0dip" android:text="@string/qq_ls_doubleclick" android:layout_below="@id/recent_list" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</RelativeLayout>

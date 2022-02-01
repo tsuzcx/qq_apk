@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.widget.ScrollView android:scrollbarThumbVertical="@drawable/scrollbar_handle_vertical" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/qzone_personal_setting_activity" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.qzone.cover.ui.BannerView android:id="@id/qzone_personal_banner" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <LinearLayout android:orientation="horizontal" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="77.0dip" android:baselineAligned="false">
+            <LinearLayout android:orientation="vertical" android:id="@id/qzone_personal_bg_music" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <ImageView android:layout_gravity="center_horizontal" android:background="@drawable/qzone_personal_music" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginTop="9.0dip" />
+                <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="9.0dip">
+                    <TextView android:textSize="13.0sp" android:textColor="#ff000000" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="背景音乐" android:includeFontPadding="false" />
+                    <TextView android:textSize="12.0sp" android:textColor="#ff888888" android:id="@id/qzone_personal_bg_music_number" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="" android:includeFontPadding="false" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/qzone_personal_phone_tag" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <ImageView android:layout_gravity="center_horizontal" android:background="@drawable/qzone_personal_mark" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginTop="9.0dip" />
+                <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="9.0dip">
+                    <TextView android:textSize="13.0sp" android:textColor="#ff000000" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="手机标识" android:includeFontPadding="false" />
+                    <ImageView android:layout_gravity="center_vertical" android:background="@drawable/qzone_personal_jh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/qzone_personal_desc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <ImageView android:layout_gravity="center_horizontal" android:background="@drawable/qzone_personal_description" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginTop="9.0dip" />
+                <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="9.0dip">
+                    <TextView android:textSize="13.0sp" android:textColor="#ff000000" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="空间描述" android:includeFontPadding="false" />
+                    <ImageView android:layout_gravity="center_vertical" android:background="@drawable/qzone_personal_jh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <com.qzone.personalize.QZonePersonalizeSettingCell android:id="@id/qzone_personal_store1" android:background="#ffffffff" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="0.25dip" android:layout_weight="1.0" />
+                <com.qzone.personalize.QZonePersonalizeSettingCell android:id="@id/qzone_personal_store2" android:background="#ffffffff" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="0.25dip" android:layout_weight="1.0" />
+            </LinearLayout>
+            <com.qzone.personalize.QZonePersonalizeSettingCell android:id="@id/qzone_personal_store3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+</com.tencent.widget.ScrollView>

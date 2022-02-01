@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/image_info_view" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/image_info_view_content_container" android:paddingTop="5.0dip" android:paddingBottom="5.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="30.0dip">
+        <TextView android:textSize="20.0sp" android:textColor="@color/qzone_color_hei" android:gravity="center_vertical" android:id="@id/image_info_view_default" android:layout_width="wrap_content" android:layout_height="0.0dip" android:maxWidth="200.0dip" android:text="@string/qzone_photo_shoot_info_default" android:singleLine="true" android:drawableLeft="@drawable/qzone_publish_mood_location" android:drawablePadding="12.0dip" android:layout_weight="1.0" />
+        <TextView android:textColor="@color/qzone_color_hei" android:layout_gravity="center_vertical" android:id="@id/image_info_view_content" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+    </LinearLayout>
+    <ImageView android:id="@id/arrow" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/qzone_list_icon_arrow" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <TextView android:textSize="16.0sp" android:textColor="@color/qzone_color_hint" android:gravity="center|right" android:id="@id/image_info_state" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qzone_photo_shoot_info_bar_open" android:layout_toLeftOf="@id/arrow" android:layout_centerVertical="true" />
+</RelativeLayout>

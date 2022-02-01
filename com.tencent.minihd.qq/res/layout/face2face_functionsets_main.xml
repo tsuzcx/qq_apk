@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:background="@drawable/face2face_functionsets_bg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/face2facelay" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:layout_gravity="center_horizontal" android:id="@id/add_friends_btn" android:background="@drawable/face2face_functionsets_add_friends" android:clickable="true" android:layout_width="72.0dip" android:layout_height="72.0dip" android:src="@drawable/face2face_functionsets_enteritem_sel" android:contentDescription="面对面加好友" />
+            <TextView android:textSize="14.0sp" android:textColor="#ff808080" android:gravity="center" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" android:text="@string/face2face_add_friends" android:singleLine="true" android:includeFontPadding="false" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:layout_gravity="center_horizontal" android:id="@id/create_discussion_btn" android:background="@drawable/face2face_functionsets_discussion" android:clickable="true" android:layout_width="72.0dip" android:layout_height="72.0dip" android:src="@drawable/face2face_functionsets_enteritem_sel" android:contentDescription="面对面建讨论组" />
+            <TextView android:textSize="14.0sp" android:textColor="#ff808080" android:gravity="center" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" android:text="@string/face2face_create_discussion" android:singleLine="true" android:includeFontPadding="false" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:layout_gravity="center_horizontal" android:id="@id/transfer_files_btn" android:background="@drawable/face2face_functionsets_transfer_file" android:clickable="true" android:layout_width="72.0dip" android:layout_height="72.0dip" android:src="@drawable/face2face_functionsets_enteritem_sel" android:contentDescription="面对面传文件" />
+            <TextView android:textSize="14.0sp" android:textColor="#ff808080" android:gravity="center" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" android:text="@string/face2face_transfer_files" android:singleLine="true" android:includeFontPadding="false" />
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView android:background="@drawable/face2face_functionsets_bowen_bg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="-44.0dip" android:layout_above="@id/face2facelay" android:layout_centerInParent="true" />
+</RelativeLayout>

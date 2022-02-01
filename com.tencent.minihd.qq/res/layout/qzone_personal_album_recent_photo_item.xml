@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.qzone.widget.AsyncMarkImageView android:id="@id/iv_recent_item" android:layout_width="75.0dip" android:layout_height="75.0dip" android:scaleType="centerCrop"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

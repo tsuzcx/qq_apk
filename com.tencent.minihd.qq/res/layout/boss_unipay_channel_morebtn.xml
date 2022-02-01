@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/boss_unipay_id_channelListHeader" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/boss_unipay_wrapper"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/boss_unipay_id_otherChannel" android:layout_width="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:text="其他支付方式" style="@style/boss_unipay_tx.other" />
+</LinearLayout>

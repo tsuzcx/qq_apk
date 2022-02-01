@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/qq_userguide_page2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/qav_beauty_preview" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/qav_api_beauty_preview_ui" />
+    <TextView android:textSize="23.0sp" android:textColor="#ffffffff" android:layout_gravity="center|top" android:id="@id/qq_userguide_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="美颜设置" />
+    <LinearLayout android:layout_gravity="bottom|center" android:orientation="horizontal" android:id="@id/preview_count_layout" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="91.0dip">
+        <TextView android:textSize="30.0sp" android:textColor="#ffffffff" android:id="@id/preview_label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="颜值提升" />
+        <TextView android:textSize="56.0sp" android:textColor="#ffffffff" android:id="@id/preview_value" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout android:layout_gravity="bottom|center" android:orientation="vertical" android:id="@id/feature_layout" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginRight="30.0dip" android:layout_marginBottom="75.0dip">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@id/qq_userguide_beautyfeature" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qq_userguide_beauty" android:layout_alignParentRight="true" />
+            <ImageView android:id="@id/qq_userguide_video" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qq_userguide_video" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/qq_userguide_invate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qq_userguide_invate" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="25.0dip">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/qq_userguide_sound" android:layout_alignParentLeft="true" />
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qq_userguide_call" android:layout_centerHorizontal="true" />
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/qq_userguide_quit" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout android:layout_gravity="bottom|center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="9.0dip" android:src="@drawable/qq_userguide_dot_grey" />
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="9.0dip" android:src="@drawable/qq_userguide_dot_purple" />
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qq_userguide_dot_grey" />
+    </LinearLayout>
+    <TextView android:textSize="20.0sp" android:textColor="#ff23ccf5" android:layout_gravity="center|right|top" android:id="@id/pass" android:paddingLeft="60.0dip" android:paddingTop="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="10.0dip" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_marginRight="10.0dip" android:text="跳 过》" android:contentDescription="跳过按钮，进入QQ" />
+</FrameLayout>

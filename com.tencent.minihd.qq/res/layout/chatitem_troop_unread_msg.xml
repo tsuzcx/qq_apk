@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginBottom="6.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="28.0dip">
+        <TextView android:textSize="@dimen/font_size_extra_small" android:gravity="center" android:id="@id/graybar" android:paddingTop="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qb_troop_aio_unread_tip" android:includeFontPadding="false" android:layout_centerHorizontal="true" android:lineSpacingExtra="4.0dip" />
+        <TextView android:id="@id/henxian1" android:background="@drawable/qb_group_unread_tips_bk" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="20.0px" android:layout_marginRight="20.0px" android:layout_toRightOf="@id/graybar" android:layout_centerVertical="true" />
+        <TextView android:id="@id/henxian2" android:background="@drawable/qb_group_unread_tips_bk" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="20.0px" android:layout_marginRight="16.0px" android:layout_toLeftOf="@id/graybar" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</RelativeLayout>

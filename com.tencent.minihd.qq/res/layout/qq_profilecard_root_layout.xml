@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.BounceScrollView android:id="@id/common_xlistview" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/cover_mask_view" android:background="@drawable/qq_profilecard_cover_mask" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="77.0dip" />
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/title_layout" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height">
+        <TextView android:ellipsize="end" android:gravity="center" android:id="@id/ivTitleName" android:background="@drawable/skin_header_bar_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@null" android:singleLine="true" android:layout_centerInParent="true" style="@style/TitleText" />
+        <com.tencent.widget.EmptyTextView android:gravity="center" android:id="@id/ivTitleBtnLeft" android:background="@drawable/top_back_left_selector" android:layout_width="@dimen/dp_40" android:layout_height="@dimen/dp_40" android:layout_marginLeft="@dimen/dp_32" android:maxWidth="88.0dip" android:minWidth="55.0dip" android:text="@null" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/TitleBtn" />
+        <TextView android:id="@id/ivTitleBtnRightText" android:background="@drawable/qq_profilecard_header_btn_more_selector" android:layout_width="@dimen/dp_40" android:layout_height="@dimen/dp_40" android:layout_marginRight="@dimen/dp_32" android:text="@null" style="@style/CommonTitleRightTxt" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/btns" android:background="@drawable/profile_info_card_btns_bg" android:layout_width="fill_parent" android:layout_height="@dimen/float_btn_height" android:layout_alignParentBottom="true" />
+    <ViewStub android:id="@id/newer_guide_mask_view" android:layout="@layout/qvip_profile_newer_guide" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/qq_profilecard_night_mask" android:background="#77000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

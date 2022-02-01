@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/dating_time_item" android:background="@drawable/common_strip_setting_middle" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginTop="20.0dip">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/qq_dating_time" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/DatingFont_1" />
+        <TextView android:id="@id/dating_time_tv" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:layout_toLeftOf="@id/dating_time_arrow" android:layout_centerVertical="true" style="@style/DatingFont_5" />
+        <ImageView android:id="@id/dating_time_arrow" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:src="@drawable/common_arrow_right_selector" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/dating_addr_item" android:background="@drawable/common_strip_setting_bottom" android:layout_width="fill_parent" android:layout_height="44.0dip">
+        <TextView android:id="@id/dating_addr_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/qq_dating_addr" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/DatingFont_1" />
+        <ImageView android:id="@id/dating_addr_arrow" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:src="@drawable/common_arrow_right_selector" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <LinearLayout android:orientation="horizontal" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:layout_toLeftOf="@id/dating_addr_arrow" android:layout_toRightOf="@id/dating_addr_title" android:layout_centerVertical="true">
+            <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
+            <TextView android:textColorHint="@color/skin_gray7" android:ellipsize="end" android:gravity="right" android:id="@id/dating_addr_tv" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="@string/qq_dating_please_select" android:singleLine="true" style="@style/DatingFont_5" />
+        </LinearLayout>
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/dating_match_item" android:background="@drawable/common_strip_setting_middle" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginTop="20.0dip">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/qq_dating_match" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/DatingFont_1" />
+        <TextView android:id="@id/dating_match_tv" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:layout_toLeftOf="@id/dating_match_arrow" android:layout_centerVertical="true" style="@style/DatingFont_5" />
+        <ImageView android:id="@id/dating_match_arrow" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:src="@drawable/common_arrow_right_selector" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/dating_type_item" android:background="@drawable/common_strip_setting_middle" android:layout_width="fill_parent" android:layout_height="44.0dip">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/qq_dating_type" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/DatingFont_1" />
+        <TextView android:id="@id/dating_type_tv" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:layout_toLeftOf="@id/dating_type_arrow" android:layout_centerVertical="true" style="@style/DatingFont_5" />
+        <ImageView android:id="@id/dating_type_arrow" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:src="@drawable/common_arrow_right_selector" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/dating_others_item" android:background="@drawable/common_strip_setting_bottom" android:layout_width="fill_parent" android:layout_height="44.0dip">
+        <TextView android:id="@id/dating_others_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/qq_dating_others" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/DatingFont_1" />
+        <ImageView android:id="@id/dating_others_arrow" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:src="@drawable/common_arrow_right_selector" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <LinearLayout android:orientation="horizontal" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:layout_toLeftOf="@id/dating_others_arrow" android:layout_toRightOf="@id/dating_others_title" android:layout_centerVertical="true">
+            <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
+            <TextView android:textColorHint="@color/skin_gray7" android:ellipsize="end" android:gravity="right" android:id="@id/dating_others_tv" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="@string/qq_dating_please_enter" android:singleLine="true" style="@style/DatingFont_5" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

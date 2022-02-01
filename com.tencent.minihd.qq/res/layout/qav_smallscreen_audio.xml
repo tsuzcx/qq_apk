@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.av.smallscreen.SmallScreenRelativeLayout android:id="@id/qav_smallscreen" android:background="@drawable/qav_smallscreen_audio_background" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="@string/qav_smallscreen_description_audio"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/qav_smallscreen_audio_sigal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/qav_smallscreen_audio_sigal_marginleft" android:layout_marginTop="@dimen/qav_smallscreen_audio_sigal_margintop" android:contentDescription="@string/qav_smallscreen_description_audio" />
+    <TextView android:textSize="11.0dip" android:textColor="@color/qav_white" android:ellipsize="marquee" android:gravity="center_horizontal" android:id="@id/qav_titlebar_mid_txt" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="36.0dip" android:singleLine="true" android:layout_centerHorizontal="true" />
+    <View android:id="@id/qav_dark_bg" android:background="@drawable/qav_smallscreen_dark_circle" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/qav_smallscreen_audio_dark_bg_marginbottom" android:contentDescription="@string/qav_smallscreen_description_audio" />
+</com.tencent.av.smallscreen.SmallScreenRelativeLayout>

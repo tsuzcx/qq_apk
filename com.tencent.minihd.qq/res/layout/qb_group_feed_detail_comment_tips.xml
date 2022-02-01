@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/commentTipsDivider" android:visibility="gone" layout="@layout/qzone_divider" />
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:orientation="horizontal" android:paddingBottom="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
+        <ProgressBar android:id="@id/commentTipsProgressBar" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginRight="10.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/text_drag_refresh_big" android:id="@id/commentTipsText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="正在加载评论..." android:singleLine="true" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:layout_gravity="center_vertical" android:orientation="vertical" android:id="@id/qzone_gomyfeed" android:layout_width="wrap_content" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="5.0dip" android:contentDescription="与我相关">
+        <com.qzone.widget.AvatarImageView android:layout_gravity="center_vertical" android:id="@id/qzone_header_passive_user_icon" android:layout_width="27.0dip" android:layout_height="27.0dip" android:src="@drawable/qzone_header_defaultpassive_avatar" />
+        <TextView android:textSize="13.0sp" android:textColor="#ff000000" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/qzone_feed_noread" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_marginRight="1.0dip" android:text="与我相关" />
+        <TextView android:textSize="11.0sp" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/qzone_feed_noreadcount" android:background="@drawable/qzone_qun_num_bg" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="16.0dip" android:text="2" android:includeFontPadding="false" />
+    </LinearLayout>
+    <ImageView android:layout_gravity="right" android:id="@id/passassiv_arrow" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qzone_header_defaultpassive_arrow" />
+</LinearLayout>

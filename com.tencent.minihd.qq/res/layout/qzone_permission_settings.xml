@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:gravity="left" android:layout_gravity="left" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="@dimen/qq_setting_table_item2txt_16px" android:text="动态访问权限" style="@style/C4_Font_white" />
+    <RelativeLayout android:id="@id/permission_access_public" android:background="@drawable/common_strip_setting_top" android:focusable="false" android:clickable="true" android:layout_width="fill_parent" android:layout_height="44.0dip">
+        <TextView android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/qzone_permission_access_public" android:layout_centerVertical="true" style="@style/B4_Font" />
+        <ImageView android:id="@id/permission_access_public_check" android:duplicateParentState="true" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginRight="15.0dip" android:src="@drawable/troop_class_choice_icon" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/permission_access_friend" android:background="@drawable/common_strip_setting_middle" android:focusable="false" android:clickable="true" android:layout_width="fill_parent" android:layout_height="44.0dip">
+        <TextView android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/qzone_permission_access_friend" android:layout_centerVertical="true" style="@style/B4_Font" />
+        <ImageView android:id="@id/permission_access_friend_check" android:duplicateParentState="true" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginRight="15.0dip" android:src="@drawable/troop_class_choice_icon" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/permission_access_self" android:background="@drawable/common_strip_setting_bottom" android:focusable="false" android:clickable="true" android:layout_width="fill_parent" android:layout_height="44.0dip">
+        <TextView android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/qzone_permission_access_self" android:layout_centerVertical="true" style="@style/B4_Font" />
+        <ImageView android:id="@id/permission_access_self_check" android:duplicateParentState="true" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginRight="15.0dip" android:src="@drawable/troop_class_choice_icon" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <TextView android:gravity="center_vertical" android:id="@id/permission_block" android:background="@drawable/common_strip_setting_top" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:focusable="false" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginTop="@dimen/qq_setting_table_item2item_40px" android:text="@string/qzone_permission_block" android:drawableRight="@drawable/common_arrow_right_selector" style="@style/B4_Font" />
+</LinearLayout>

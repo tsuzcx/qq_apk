@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/private_msg_switch_layout" android:background="@drawable/common_strip_setting_bg" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:focusable="true" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="10.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:layout_gravity="center_vertical" android:id="@id/qzone_private_msg_openvip" android:layout_width="50.0dip" android:layout_height="50.0dip" android:drawableLeft="@drawable/qzone_icon_yellowdiamond" style="@style/B4_Font_white" />
+    <TextView android:id="@id/test" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:text="@string/qzone_private_msg_tip" android:layout_alignLeft="@id/qzone_private_msg_openvip" android:layout_centerVertical="true" style="@style/B4_Font_white" />
+    <com.qzone.widget.QzoneSwitchExtend android:id="@id/private_msg_switch" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

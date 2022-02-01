@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="#66000000" android:paddingLeft="25.0dip" android:paddingRight="25.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/root_layout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="400.0dip" android:layout_centerInParent="true">
+        <LinearLayout android:layout_gravity="top" android:orientation="vertical" android:background="@drawable/qb_tenpay_dialog_pay_result" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <ImageView android:id="@id/back_btn" android:paddingLeft="15.0dip" android:paddingTop="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qb_tenpay_arrow_left" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+                <TextView android:textSize="16.0sp" android:textColor="@color/qb_tenpay_black_color" android:ellipsize="end" android:id="@id/title_txt" android:paddingTop="18.0dip" android:paddingBottom="17.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="选择支付方式" android:singleLine="true" android:layout_centerHorizontal="true" />
+                <ImageButton android:id="@id/close_btn" android:background="@null" android:paddingLeft="10.0dip" android:paddingTop="7.0dip" android:paddingRight="7.0dip" android:paddingBottom="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qb_tenpay_dialog_btnclose" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+            </RelativeLayout>
+            <ScrollView android:id="@id/scroll_view" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="true">
+                <LinearLayout android:orientation="vertical" android:id="@id/tenpay_paytype_layout" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            </ScrollView>
+            <View style="@style/qb_tenpay_line" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/new_card_layout" android:background="@drawable/qb_tenpay_pay_type_item_bg_selector" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="63.0dip">
+                <ImageView android:background="@drawable/qb_tenpay_add_bank_normal" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="@null" />
+                <TextView android:textSize="16.0sp" android:textColor="@color/black" android:id="@id/use_new_bankcard" android:paddingLeft="10.0dip" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/qb_tenpay_chose_other_bank" android:layout_weight="1.0" />
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qb_tenpay_arrow" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

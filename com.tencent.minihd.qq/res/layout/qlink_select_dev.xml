@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/selectdevlayout" android:background="#3fbbbbbb" android:layout_width="fill_parent" android:layout_height="196.0dip" android:layout_alignParentBottom="true">
+        <TextView android:textSize="16.0dip" android:textColor="#ffa3a3a3" android:ellipsize="end" android:gravity="center" android:id="@id/selet_tips" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="38.0dip" android:text="@string/qlink_select_dev_tips" android:singleLine="true" android:layout_above="@id/space3" android:layout_centerHorizontal="true" />
+        <TextView android:id="@id/space3" android:background="#ffaeaeae" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_above="@id/andrlayout" />
+        <RelativeLayout android:id="@id/andrlayout" android:background="@drawable/qlink_com_btn_selector" android:layout_width="fill_parent" android:layout_height="52.0dip" android:layout_above="@id/space2">
+            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+                <ImageView android:layout_gravity="center" android:id="@id/andrIcon" android:background="@drawable/qlink_andr_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:textSize="18.0dip" android:textColor="#ff007dfd" android:layout_gravity="center" android:id="@id/andrbtn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="安卓" />
+            </LinearLayout>
+        </RelativeLayout>
+        <TextView android:id="@id/space2" android:background="#ffaeaeae" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_above="@id/iphonelayout" />
+        <RelativeLayout android:id="@id/iphonelayout" android:background="@drawable/qlink_com_btn_selector" android:layout_width="fill_parent" android:layout_height="52.0dip" android:layout_above="@id/space1">
+            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+                <ImageView android:layout_gravity="center" android:id="@id/iphoneIcon" android:background="@drawable/qlink_iphone_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:textSize="18.0dip" android:textColor="#ff007dfd" android:layout_gravity="center" android:id="@id/iphonebtn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="苹果" />
+            </LinearLayout>
+        </RelativeLayout>
+        <TextView android:id="@id/space1" android:background="#ffaeaeae" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_above="@id/cancel" />
+        <TextView android:textSize="17.0dip" android:textColor="#ff007dfd" android:ellipsize="end" android:gravity="center" android:id="@id/cancel" android:background="@drawable/qlink_com_btn_selector" android:layout_width="fill_parent" android:layout_height="52.0dip" android:text="@string/qlink_comm_cancel" android:singleLine="true" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</RelativeLayout>

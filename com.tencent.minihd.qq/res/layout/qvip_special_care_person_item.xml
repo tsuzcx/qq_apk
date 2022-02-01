@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/special_care_person_view" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:leftIconWidth="50.0dip" formItem:leftIconHeight="50.0dip" formItem:customHeight="60.0dip" formItem:leftIcon="@drawable/ic_launcher" formItem:showArrow="true"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.minihd.qq" />

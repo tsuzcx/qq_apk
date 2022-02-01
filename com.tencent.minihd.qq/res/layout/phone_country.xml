@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.PinnedDividerListView android:id="@id/country_pdlv" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@null" />
+    <com.tencent.mobileqq.widget.IndexView android:id="@id/index_v" android:background="@drawable/index_view_background" android:paddingLeft="8.0dip" android:paddingTop="8.0dip" android:paddingRight="10.0dip" android:paddingBottom="8.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginTop="5.0dip" android:layout_marginBottom="5.0dip" android:layout_alignParentRight="true" />
+</RelativeLayout>

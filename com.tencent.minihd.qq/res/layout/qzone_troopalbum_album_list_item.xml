@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingLeft="@dimen/album_list_edge_padding" android:paddingTop="@dimen/album_list_v_space_half" android:paddingRight="@dimen/album_list_edge_padding" android:paddingBottom="@dimen/album_list_v_space_half" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/layout_item1" android:background="@drawable/qzone_album_list_item_bg" android:padding="@dimen/album_list_item_padding" android:layout_width="@dimen/album_list_item_width" android:layout_height="@dimen/album_list_item_height">
+        <com.qzone.widget.AsyncImageView android:layout_gravity="center_vertical" android:id="@id/img_album_list_item1_cover" android:layout_width="@dimen/album_list_item_cover_width" android:layout_height="@dimen/album_list_item_cover_height" android:src="@drawable/defaultpic" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/qzone_album_list_item_name" android:ellipsize="end" android:id="@id/album_list_item1_album_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginTop="6.0dip" android:singleLine="true" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip">
+            <TextView android:textSize="11.0sp" android:textColor="@color/qzone_album_list_item_count" android:ellipsize="end" android:id="@id/album_list_item1_pic_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="2.0dip" android:singleLine="true" />
+            <ImageView android:background="@drawable/qzone_qun_album_divide_line" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/album_list_item_halving_line_paddingTop" />
+            <TextView android:textSize="11.0sp" android:textColor="@color/qzone_album_list_item_count" android:ellipsize="end" android:id="@id/album_list_item1_pic_uploadtime" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:singleLine="true" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/layout_item2" android:background="@drawable/qzone_album_list_item_bg" android:padding="@dimen/album_list_item_padding" android:layout_width="@dimen/album_list_item_width" android:layout_height="@dimen/album_list_item_height" android:layout_marginLeft="@dimen/album_list_edge_padding">
+        <com.qzone.widget.AsyncImageView android:layout_gravity="center_vertical" android:id="@id/img_album_list_item2_cover" android:layout_width="@dimen/album_list_item_cover_width" android:layout_height="@dimen/album_list_item_cover_height" android:src="@drawable/defaultpic" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/qzone_album_list_item_name" android:ellipsize="end" android:id="@id/album_list_item2_album_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginTop="6.0dip" android:singleLine="true" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip">
+            <TextView android:textSize="11.0sp" android:textColor="@color/qzone_album_list_item_count" android:ellipsize="end" android:id="@id/album_list_item2_pic_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="2.0dip" android:singleLine="true" />
+            <ImageView android:background="@drawable/qzone_qun_album_divide_line" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/album_list_item_halving_line_paddingTop" />
+            <TextView android:textSize="11.0sp" android:textColor="@color/qzone_album_list_item_count" android:ellipsize="end" android:id="@id/album_list_item2_pic_uploadtime" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:singleLine="true" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

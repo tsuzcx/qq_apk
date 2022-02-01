@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <cooperation.qzone.widget.RadioPreference android:title="全量上报（100%）" android:key="test100" android:widgetLayout="@layout/qzone_radiopreference" android:defaultValue="false" />
+    <cooperation.qzone.widget.RadioPreference android:title="抽样上报50%" android:key="test50" android:widgetLayout="@layout/qzone_radiopreference" android:defaultValue="false" />
+    <cooperation.qzone.widget.RadioPreference android:title="使用后台下发配置（1%）" android:key="testDefault" android:widgetLayout="@layout/qzone_radiopreference" android:defaultValue="true" />
+    <cooperation.qzone.widget.RadioPreference android:title="立即上报" android:key="leiji" android:widgetLayout="@layout/qzone_radiopreference" android:defaultValue="false" />
+    <cooperation.qzone.widget.RadioPreference android:title="累计2次上报" android:key="leiji2" android:widgetLayout="@layout/qzone_radiopreference" android:defaultValue="false" />
+    <cooperation.qzone.widget.RadioPreference android:title="使用后台下发配置（50次）" android:key="leijiDefault" android:widgetLayout="@layout/qzone_radiopreference" android:defaultValue="true" />
+</PreferenceScreen>

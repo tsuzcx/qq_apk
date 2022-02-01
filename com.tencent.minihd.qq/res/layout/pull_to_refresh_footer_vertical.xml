@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/fl_inner" android:background="@color/qzone_common_background" android:paddingLeft="@dimen/header_footer_left_right_padding" android:paddingTop="@dimen/header_footer_top_bottom_padding" android:paddingRight="@dimen/header_footer_left_right_padding" android:paddingBottom="@dimen/header_footer_top_bottom_padding" android:layout_width="fill_parent" android:layout_height="@dimen/refresh_header_real_height">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/ll_refresh_container" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="13.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+                <TextView android:textAppearance="?android:textAppearance" android:textSize="14.0dip" android:textColor="@color/skin_over_header" android:id="@id/pull_to_refresh_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+                <TextView android:textAppearance="?android:textAppearanceSmall" android:textColor="@color/skin_over_header" android:id="@id/pull_to_refresh_sub_text" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            </LinearLayout>
+            <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_toLeftOf="@id/ll_refresh_container" android:layout_alignBaseline="@id/ll_refresh_container" android:layout_alignBottom="@id/ll_refresh_container">
+                <ImageView android:layout_gravity="center" android:id="@id/pull_to_refresh_image" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/refresh_arrow" />
+                <ProgressBar android:layout_gravity="center" android:id="@id/pull_to_refresh_progress" android:visibility="invisible" android:layout_width="24.0dip" android:layout_height="24.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading5" android:indeterminateBehavior="repeat" />
+            </FrameLayout>
+        </RelativeLayout>
+    </FrameLayout>
+</merge>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="#90000000" android:layout_centerInParent="true" style="@style/boss_unipay_wrapper"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true">
+        <LinearLayout android:id="@id/ivr_alert_input_root" android:layout_centerInParent="true" style="@style/boss_unipay_linear.tipframe">
+            <RelativeLayout android:layout_marginBottom="10.0dip" style="@style/boss_unipay_tips_header">
+                <TextView android:id="@id/ivr_alert_tip" android:layout_marginLeft="15.0dip" android:layout_marginTop="22.0dip" style="@style/boss_unipay_tx" />
+                <ImageButton android:id="@id/ivr_alert_close" android:layout_alignParentRight="true" style="@style/boss_unipay_ic_tipsclose" />
+            </RelativeLayout>
+            <RelativeLayout style="@style/boss_unipay_edit_group_c">
+                <EditText android:id="@id/ivr_alert_input" android:layout_width="fill_parent" android:layout_marginLeft="10.0dip" android:layout_marginRight="40.0dip" android:text="" android:layout_weight="100.0" style="@style/boss_unipay_edit.noborder" />
+                <ImageButton android:id="@id/ivr_alert_delete" android:layout_marginLeft="5.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" style="@style/boss_unipay_ic_wrong_s" />
+            </RelativeLayout>
+            <Button android:id="@id/ivr_alert_confirm_btn" android:layout_marginTop="13.0dip" android:text="确定并提交" style="@style/boss_unipay_btn_main.tips" />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

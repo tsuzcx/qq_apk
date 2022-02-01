@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/qb_tenpay_pagebg_color" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/qb_tenpay_common_title_bar" />
+    <LinearLayout android:orientation="vertical" android:background="@drawable/qb_tenpay_border" android:padding="1.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginTop="35.0dip" android:layout_marginRight="0.0dip" android:layout_marginBottom="8.0dip">
+        <Button android:textSize="16.0sp" android:textColor="@color/qb_tenpay_blue_wathet_color" android:gravity="center_vertical" android:id="@id/change_psd_btn" android:background="@drawable/qb_tenpay_btn_white" android:paddingLeft="15.0dip" android:layout_width="fill_parent" android:layout_height="42.0dip" android:text="@string/qb_tenpay_bank_pwd_modify" style="@style/qb_tenpay_link_blue" />
+        <View style="@style/qb_tenpay_line" />
+        <Button android:textSize="16.0sp" android:textColor="@color/qb_tenpay_blue_wathet_color" android:gravity="center_vertical" android:id="@id/reset_psd_btn" android:background="@drawable/qb_tenpay_btn_white" android:paddingLeft="15.0dip" android:layout_width="fill_parent" android:layout_height="42.0dip" android:text="@string/qb_tenpay_bank_pwd_reset" style="@style/qb_tenpay_link_blue" />
+    </LinearLayout>
+    <TextView android:background="@color/qb_tenpay_pagebg_color" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:text="@string/qb_tenpay_bank_pwd_intro" style="@style/qb_tenpay_txt_gray" />
+</LinearLayout>

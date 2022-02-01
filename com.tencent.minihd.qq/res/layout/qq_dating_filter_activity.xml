@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/scrollbar_handle_vertical" android:background="@drawable/bg_texture" android:focusable="true" android:focusableInTouchMode="true" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="horizontal" android:id="@id/gender_layout" android:background="@drawable/skin_setting_strip_bg_unpressed" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginTop="20.0dip">
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/gender_female" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <TextView android:textSize="16.0dip" android:textColor="@color/skin_black_item" android:gravity="center" android:id="@id/female_tv" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/female" android:drawablePadding="2.0dip" />
+            </LinearLayout>
+            <ImageView android:background="@drawable/skin_conversation_options_bg_line" android:layout_width="1.0px" android:layout_height="fill_parent" />
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/gender_male" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <TextView android:textSize="16.0dip" android:textColor="@color/skin_black_item" android:gravity="center" android:id="@id/male_tv" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/male" android:drawablePadding="2.0dip" />
+            </LinearLayout>
+            <ImageView android:background="@drawable/skin_conversation_options_bg_line" android:layout_width="1.0px" android:layout_height="fill_parent" />
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/gender_all" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <TextView android:textSize="16.0dip" android:textColor="@color/skin_black_item" android:gravity="center" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/troop_member_all" />
+            </LinearLayout>
+        </LinearLayout>
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/qq_dating_filter_content" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" formItem:bgType="top" formItem:leftText="@string/qq_dating_dating_content" formItem:showArrow="true" />
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/qq_dating_filter_dest" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="middle" formItem:leftText="@string/qq_dating_dating_dest" formItem:showArrow="true" />
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/qq_dating_filter_time" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="bottom" formItem:leftText="@string/qq_dating_dating_time" formItem:showArrow="true" />
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/qq_dating_filter_age" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" formItem:bgType="top" formItem:leftText="@string/info_age" formItem:showArrow="true" />
+        <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/qq_dating_filter_career" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="bottom" formItem:leftText="@string/qq_dating_career" formItem:showArrow="true" />
+    </LinearLayout>
+</com.tencent.mobileqq.widget.BounceScrollView>

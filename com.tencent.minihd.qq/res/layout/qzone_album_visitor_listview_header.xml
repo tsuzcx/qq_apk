@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="#fff8f8f8" android:focusable="true" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="40.0dip">
+        <TextView android:textSize="14.0sp" android:textColor="#ff000000" android:layout_gravity="center_vertical" android:id="@id/totalNumText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="28.0dip" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerInParent="true" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff000000" android:id="@id/todayNumText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="28.0dip" android:singleLine="true" android:layout_alignParentRight="true" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <ImageView android:id="@id/bottom_line" android:background="#ffe6e6e6" android:layout_width="fill_parent" android:layout_height="1.0px" />
+</LinearLayout>

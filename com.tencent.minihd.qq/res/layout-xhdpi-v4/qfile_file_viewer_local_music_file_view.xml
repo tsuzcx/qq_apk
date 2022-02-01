@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/fileViewerLayout" android:paddingBottom="50.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.filemanager.widget.AsyncImageView android:layout_gravity="center_horizontal" android:id="@id/musicicon" android:layout_width="220.0dip" android:layout_height="220.0dip" android:layout_marginLeft="50.0dip" android:layout_marginTop="35.0dip" android:layout_marginRight="50.0dip" android:src="@drawable/qfile_file_mp3" />
+    <TextView android:textSize="18.0dip" android:textColor="@color/skin_dark_gray" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/fileName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="22.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="22.0dip" android:maxLines="1" />
+    <TextView android:textSize="12.0sp" android:textColor="@color/skin_gray3" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/fileInfoDesc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="22.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="22.0dip" android:maxLines="3" />
+    <SeekBar android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/playerprogress" android:paddingLeft="3.0dip" android:paddingRight="3.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:maxWidth="4.0dip" android:maxHeight="4.0dip" android:progress="30" android:progressDrawable="@drawable/qfile_file_music_play_progress_layerlist" android:thumb="@drawable/qfile_file_play_progress_seekbar" style="?android:attr/progressBarStyleHorizontal" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="35.0dip">
+        <TextView android:textSize="13.0sp" android:textColor="@color/skin_gray3" android:gravity="center" android:id="@id/local_music_file_tips" android:paddingTop="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/file_viewer_open_audio_type_unsurpport" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/skin_black" android:gravity="left" android:id="@id/postime" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/skin_black" android:id="@id/alltime" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:id="@id/previous" android:background="@drawable/qfile_file_viewer_music_previous_btn_selector" android:layout_width="50.0dip" android:layout_height="50.0dip" />
+        <Button android:id="@id/play" android:background="@drawable/qfile_file_viewer_music_play_btn_selector" android:layout_width="73.0dip" android:layout_height="73.0dip" android:layout_marginLeft="40.0dip" />
+        <Button android:id="@id/next" android:background="@drawable/qfile_file_viewer_music_next_btn_selector" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="40.0dip" />
+    </LinearLayout>
+</LinearLayout>

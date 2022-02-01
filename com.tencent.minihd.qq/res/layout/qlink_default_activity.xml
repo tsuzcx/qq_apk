@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/root" android:background="@drawable/qlink_bg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/rlCommenTitle" style="@style/title_bar">
+        <com.tencent.widget.EmptyTextView android:id="@id/ivTitleBtnLeft" style="@style/title_bar_left_btn" />
+        <TextView android:id="@id/ivTitleName" android:text="@string/qlink_default_title" style="@style/title_bar_title" />
+        <ImageView android:id="@id/qlhelp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/qlFileRecord" android:background="@drawable/qlink_his_file" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="最近文件" />
+        <ImageView android:id="@id/qlFileRecordbj" android:background="@drawable/skin_tips_dot" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignTop="@id/qlFileRecord" android:layout_alignRight="@id/qlFileRecord" />
+    </RelativeLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/mysendlayout" android:layout_below="@id/rlCommenTitle">
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <ImageView android:id="@id/imageView" android:background="@drawable/qlink_intro" android:layout_width="170.0dip" android:layout_height="170.0dip" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="16.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/tips" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:maxWidth="300.0dip" android:text="@string/qlink_discover_intro_1" android:layout_below="@id/imageView" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="16.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/tips_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:maxWidth="300.0dip" android:text="@string/qlink_discover_intro_2" android:layout_below="@id/tips" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/mysendlayout" android:background="@drawable/qlink_bai_btn_selector" android:layout_width="fill_parent" android:layout_height="46.0dip" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="14.0dip" android:layout_above="@id/myrecvlayout">
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <ImageView android:layout_gravity="center" android:id="@id/mysendIcon" android:background="@drawable/qlink_send_i" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:textSize="16.0dip" android:textColor="#ff00a6df" android:layout_gravity="center" android:id="@id/mysendbtn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="发文件" />
+        </LinearLayout>
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/myrecvlayout" android:background="@drawable/qlink_bai_btn_selector" android:layout_width="fill_parent" android:layout_height="46.0dip" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="49.0dip" android:layout_alignParentBottom="true">
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <ImageView android:layout_gravity="center" android:id="@id/myrecvIcon" android:background="@drawable/qlink_recv_i" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:textSize="16.0dip" android:textColor="#ff00a6df" android:layout_gravity="center" android:id="@id/myrecvbtn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="收文件" />
+        </LinearLayout>
+    </RelativeLayout>
+    <TextView android:id="@id/selectdevbg" android:background="#3fbbbbbb" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

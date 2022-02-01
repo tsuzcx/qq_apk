@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/root_view" android:background="@color/white" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/search_panel" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+        <include android:id="@id/search_box" layout="@layout/qq_search_searchbox_in_dialog" />
+    </LinearLayout>
+    <RelativeLayout android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/search_panel">
+        <RelativeLayout android:id="@id/result_layout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true">
+            <com.tencent.widget.XListView android:id="@id/search_result_list" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/transparent" android:cacheColorHint="@android:color/transparent" android:divider="@null" />
+            <TextView android:textSize="15.0sp" android:gravity="center_horizontal" android:id="@id/no_result" android:background="@drawable/bg_texture" android:paddingTop="120.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/no_search_local_friend" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/bg_gray" android:gravity="center_vertical" android:id="@id/search_result_float_title_view" android:background="@color/color_background" android:paddingLeft="15.0dip" android:focusable="true" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="23.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/tips_history_layout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true">
+            <include android:id="@id/search_history" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/qb_active_search_history_list" />
+        </LinearLayout>
+        <RelativeLayout android:id="@id/search_key_word_layout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true">
+            <com.tencent.widget.XListView android:id="@id/search_key_word_list" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="#ffdedfe0" android:dividerHeight="1.0px" android:layout_alignParentTop="true" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/search_progress_layout" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="98.0dip" android:layout_centerHorizontal="true">
+            <ProgressBar android:id="@id/search_progress" android:layout_width="23.0dip" android:layout_height="23.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading3" android:indeterminateBehavior="repeat" />
+            <TextView android:textSize="14.0sp" android:textColor="#ffababab" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/qb_active_search_search_progress_text" />
+        </LinearLayout>
+        <View android:id="@id/mask" android:background="#77000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </RelativeLayout>
+</RelativeLayout>

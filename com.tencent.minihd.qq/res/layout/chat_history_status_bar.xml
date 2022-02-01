@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/status_bar_top" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:id="@id/net_status_bar" android:background="#fffff4b9" android:paddingLeft="10.0dip" android:layout_width="fill_parent" android:layout_height="40.0dip">
+        <TextView android:textSize="15.0sp" android:textColor="#ffc2804a" android:id="@id/status_bar_info_top" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:text="@string/failedconnection" android:layout_weight="1.0" />
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/tips_arrow" />
+    </LinearLayout>
+    <ImageView android:background="#ffe5dba6" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+</LinearLayout>

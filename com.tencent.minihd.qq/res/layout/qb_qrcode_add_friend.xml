@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:scanner="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <ScrollView android:id="@id/qrcode_scrollview" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:id="@id/qrcode_wrap" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:gravity="top" android:id="@id/rlCommenTitle" android:background="@drawable/qb_scan_bar" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" style="@style/title_bar">
+                <TextView android:id="@id/ivTitleName" style="@style/title_bar_title" />
+                <com.tencent.widget.EmptyTextView android:id="@id/ivTitleBtnLeft" style="@style/title_bar_left_btn" />
+            </RelativeLayout>
+            <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <com.tencent.biz.widgets.ScannerView android:id="@id/scannerView" android:layout_width="fill_parent" android:layout_height="fill_parent" scanner:autoStart="false" />
+                <TextView android:textSize="15.0sp" android:textColor="#ffffffff" android:gravity="center_horizontal" android:id="@id/status_view" android:background="#00000030" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                <RelativeLayout android:gravity="center" android:id="@id/qrcode_card" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <ImageView android:id="@id/qrcode_card_body" android:layout_width="270.0dip" android:layout_height="370.0dip" android:scaleType="centerInside" android:layout_centerInParent="true" />
+                </RelativeLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </ScrollView>
+    <RelativeLayout android:id="@id/qrcode_loadingbar" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="?android:attr/progressBarStyleLarge" />
+    </RelativeLayout>
+</merge>

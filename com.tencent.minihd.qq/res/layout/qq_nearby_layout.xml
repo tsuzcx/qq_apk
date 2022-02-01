@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <include android:id="@id/rl_title_bar" android:visibility="visible" layout="@layout/custom_commen_title" />
+        <RelativeLayout android:id="@id/rl_content" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.mobileqq.widget.QQTabHost android:id="@android:id/tabhost" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <RelativeLayout android:orientation="vertical" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                    <com.tencent.mobileqq.widget.SlideTabWidget android:id="@android:id/tabs" android:background="@drawable/skin_entry_background" android:layout_width="fill_parent" android:layout_height="46.0dip" android:divider="@null" android:layout_alignParentTop="true" />
+                    <FrameLayout android:id="@android:id/tabcontent" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@android:id/tabs" />
+                </RelativeLayout>
+            </com.tencent.mobileqq.widget.QQTabHost>
+        </RelativeLayout>
+    </LinearLayout>
+</merge>

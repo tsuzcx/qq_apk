@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.UnaffectedRelativeLayout android:orientation="vertical" android:background="@color/white" android:paddingTop="16.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/head_layout" android:background="@drawable/common_list_item_background" android:paddingLeft="32.0dip" android:paddingRight="32.0dip" android:focusable="true" android:layout_width="fill_parent" android:layout_height="68.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
+        <TextView android:textSize="18.0sp" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/nickname" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Asaka" android:singleLine="true" />
+        <TextView android:id="@id/qqlevel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/qq_setting_me_item_qqlevel_marginTop" android:drawablePadding="3.0dip" android:layout_below="@id/nickname" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bottom_btns" android:paddingLeft="33.0dip" android:paddingRight="32.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/settings" android:layout_width="wrap_content" android:layout_height="35.0dip">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qq_setting_setting" android:scaleType="center" />
+            <com.tencent.mobileqq.widget.RedDotTextView android:textSize="16.0sp" android:textColor="@color/qq_setting_me_nightmode_color" android:gravity="center_vertical" android:id="@id/settings_tx" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="8.0dip" android:text="@string/qq_setting_shezhi" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/nightmode" android:layout_width="wrap_content" android:layout_height="35.0dip" android:layout_marginLeft="33.0dip">
+            <ImageView android:id="@id/nightmode_img" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qq_setting_me_nightmode_on" android:scaleType="centerCrop" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/qq_setting_me_nightmode_color" android:gravity="center_vertical" android:id="@id/nightmode_txt" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="16.0dip" android:text="@string/qq_setting_nightmode" />
+        </LinearLayout>
+    </LinearLayout>
+    <com.tencent.mobileqq.widget.BounceScrollView android:orientation="vertical" android:id="@id/midcontent" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/bottom_btns" android:layout_below="@id/head_layout">
+        <LinearLayout android:orientation="vertical" android:id="@id/midcontent_list" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <include android:id="@id/account_manager" layout="@layout/qq_setting_me_item" />
+            <include android:id="@id/myvip" layout="@layout/qq_setting_me_item" />
+            <include android:id="@id/mypocket" layout="@layout/qq_setting_me_item" />
+            <include android:id="@id/myDressup" layout="@layout/qq_setting_me_item" />
+            <View android:background="#fff2f2f2" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="32.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="32.0dip" android:layout_marginBottom="20.0dip" />
+            <include android:id="@id/myfiles" layout="@layout/qq_setting_me_item" />
+            <include android:id="@id/myfavorites" layout="@layout/qq_setting_me_item" />
+            <include android:id="@id/myphotos" layout="@layout/qq_setting_me_item" />
+            <View android:background="#fff2f2f2" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="32.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="32.0dip" android:layout_marginBottom="20.0dip" />
+            <include android:id="@id/my_setting" layout="@layout/qq_setting_me_item" />
+            <View android:layout_width="fill_parent" android:layout_height="16.0dip" />
+        </LinearLayout>
+    </com.tencent.mobileqq.widget.BounceScrollView>
+</com.tencent.mobileqq.widget.UnaffectedRelativeLayout>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/qr_layout" android:paddingLeft="@dimen/layout_common_xlistview_paddingLR" android:paddingRight="@dimen/layout_common_xlistview_paddingLR" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/textSizeS3" android:id="@id/txt_send_sms" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="30.0dip" android:layout_marginRight="20.0dip" android:maxLines="3" android:layout_centerHorizontal="true" />
+    <Button android:id="@id/send_sms" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:text="@string/qr_i_had_send_sms" android:layout_below="@id/txt_send_sms" style="@style/ButtonBlue" />
+</RelativeLayout>

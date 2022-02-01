@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/QQSettingMeItem"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/item_left_icon" android:src="@drawable/qq_setting_xiangce" style="@style/QQSetingMeItemIconL" />
+    <TextView android:id="@id/item_txt" android:text="@string/qq_setting_xiangce" style="@style/QQSettingMeItemTxt" />
+    <TextView android:id="@id/item_right_icon" android:visibility="gone" style="@style/QQSettingMeItemRight" />
+    <ImageView android:id="@id/item_icon_view" android:visibility="gone" android:layout_width="35.0dip" android:layout_height="35.0dip" android:layout_marginRight="@dimen/qq_setting_me_item_marginRight" android:scaleType="centerCrop" />
+    <com.tencent.image.URLImageView android:id="@id/attention_icon" android:visibility="gone" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginRight="100.0dip" android:scaleType="centerCrop" />
+    <ImageView android:id="@id/item_right_arrow" android:visibility="visible" android:src="@drawable/sidebar_rightarrow" style="@style/QQSettingMeItemRightArrow" />
+</LinearLayout>

@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@drawable/card_shadow_foot" android:layout_width="fill_parent" android:layout_height="@dimen/qqmusic_widget_select_folder_padding_1"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

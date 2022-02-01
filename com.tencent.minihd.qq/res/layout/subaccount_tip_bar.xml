@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:id="@id/subaccount_tip_bar_container" android:background="@drawable/common_strip_setting_bg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="44.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/subaccount_tip_bar_icon" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/subaccount_bind_tips_icon" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/skin_blue" android:ellipsize="middle" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/subaccount_tip_bar_info_top" android:duplicateParentState="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="8.0dip" android:layout_marginRight="4.0dip" android:text="@string/subaccount_more_bind_tips" android:singleLine="true" android:layout_weight="1.0" />
+    <ImageView android:id="@id/subaccount_tip_bar_arrow" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/common_tips_arrow_blue" />
+</LinearLayout>

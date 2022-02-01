@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" style="@style/boss_unipay_wrapper"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.pay.ui.common.APHead android:id="@id/boss_unipay_id_head" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:layout_marginTop="35.0dip" style="@style/boss_unipay_linear">
+        <TextView android:id="@id/boss_unipay_mcardOnce" android:layout_marginLeft="20.0dip" android:layout_marginBottom="8.0dip" android:text="充值卡只能一次性使用，请选择面值" style="@style/boss_unipay_tx.thin.middle" />
+        <ListView android:id="@id/boss_unipay_id_cardValueList" android:fadingEdge="none" android:listSelector="@android:color/transparent" android:drawSelectorOnTop="false" android:divider="@null" style="@style/boss_unipay_list_group" />
+        <TextView android:layout_gravity="center" android:id="@id/boss_unipay_mcardSupport" android:visibility="gone" android:layout_marginTop="15.0dip" style="@style/boss_unipay_tx.price" />
+    </LinearLayout>
+</LinearLayout>

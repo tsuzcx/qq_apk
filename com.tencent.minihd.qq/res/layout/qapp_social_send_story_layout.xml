@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/ll_send_story_main" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/title_bar" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" layout="@layout/custom_commen_title" />
+    <RelativeLayout android:id="@id/rl_middle_share" android:background="@drawable/skin_setting_strip_middle_unpressed" android:layout_width="fill_parent" android:layout_height="150.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip">
+        <RelativeLayout android:gravity="center_vertical" android:id="@id/rl_toolbar" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_marginLeft="14.0dip" android:layout_alignParentBottom="true">
+            <Button android:id="@id/btn_add_target_buddy" android:background="@drawable/qzone_toolbar_btn_at_click" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <ScrollView android:id="@id/sv_buddy_selected" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/rl_toolbar">
+            <com.tencent.open.widget.CursorEditText android:textSize="16.0sp" android:textColor="#ff757575" android:gravity="top" android:id="@id/et_story" android:background="#00000000" android:paddingLeft="10.0dip" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/com_tencent_open_agent_share_hint" android:singleLine="false" />
+        </ScrollView>
+    </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/ll_story_detail" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginRight="6.0dip">
+            <TextView android:textSize="16.0sp" android:textColor="#ff757575" android:id="@id/tv_story_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <TextView android:textSize="16.0sp" android:textColor="#ff757575" android:id="@id/tv_story_summary" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <ImageView android:id="@id/iv_story_image" android:layout_width="wrap_content" android:layout_height="wrap_content" android:adjustViewBounds="true" android:maxHeight="190.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

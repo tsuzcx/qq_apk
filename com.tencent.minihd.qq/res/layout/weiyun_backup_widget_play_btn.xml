@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/play_btn_inter" android:background="@drawable/weiyun_backup_btn_backup_selector" android:duplicateParentState="true" android:layout_width="142.0dip" android:layout_height="142.0dip" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/breath_img" android:background="@drawable/weiyun_backup_play_btn_breath" android:layout_width="142.0dip" android:layout_height="142.0dip" android:layout_centerInParent="true" />
+    <TextView android:textSize="27.0sp" android:textColor="@color/white" android:id="@id/play_btn_start" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/weiyun_backup_start" android:layout_centerInParent="true" android:contentDescription="@string/weiyun_backup_start" />
+    <TextView android:textSize="27.0sp" android:textColor="@color/white" android:id="@id/play_btn_pause" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/weiyun_backup_cancel" android:layout_centerInParent="true" android:contentDescription="@string/weiyun_backup_cancel" />
+</RelativeLayout>

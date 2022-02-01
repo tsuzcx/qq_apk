@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.NotAllowInterceptRelativeLayout android:orientation="vertical" android:id="@id/rootLayout" android:background="@color/common_bg_color" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/fileViewContent" android:background="@color/common_bg_color" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/rlCustomCommenTitle" tencent:skintype="title_bg_bar" style="@style/title_bar"
+      xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/title_layout" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="110.0dip" android:layout_marginRight="97.0dip" android:layout_centerInParent="true">
+            <TextView android:textSize="19.0dip" android:textColor="@color/skin_bar_text" android:ellipsize="end" android:gravity="center" android:id="@id/ivTitleName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <TextView android:textSize="10.0dip" android:textColor="@color/skin_bar_text" android:ellipsize="end" android:gravity="center" android:id="@id/ivTitleSub" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" />
+        </LinearLayout>
+        <com.tencent.widget.EmptyTextView android:id="@id/ivTitleBtnLeft" style="@style/title_bar_left_btn" />
+        <include android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" layout="@layout/custom_commen_title_rightview" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/actionBarView" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignBottom="@id/fileViewContent" android:layout_centerVertical="true" />
+    <ViewStub android:id="@id/fileviewFreshemanGuide" android:layout="@layout/qfile_file_viewer_guide" android:inflatedId="@id/freshmanGuide_import" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</com.tencent.mobileqq.widget.NotAllowInterceptRelativeLayout>

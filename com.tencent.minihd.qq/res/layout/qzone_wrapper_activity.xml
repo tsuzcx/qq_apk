@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/qzone_wrapper" android:layout_width="@dimen/pad_left_panel_width" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.widget.BounceScrollView android:orientation="vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:orientation="vertical" android:id="@id/qzone_wrapper_list" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip">
+                <include android:id="@id/myFeed" layout="@layout/qzone_wrapper_list_item" />
+                <include android:id="@id/recentVisitors" layout="@layout/qzone_wrapper_list_item" />
+                <RelativeLayout android:background="@color/white" android:paddingLeft="32.0dip" android:paddingTop="20.0dip" android:paddingRight="32.0dip" android:paddingBottom="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <View android:background="#fff2f2f2" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_centerVertical="true" />
+                </RelativeLayout>
+                <include android:id="@id/myQzone" layout="@layout/qzone_wrapper_list_item" />
+                <include android:id="@id/myMoodList" layout="@layout/qzone_wrapper_list_item" />
+                <include android:id="@id/myAlbum" layout="@layout/qzone_wrapper_list_item" />
+            </LinearLayout>
+        </com.tencent.mobileqq.widget.BounceScrollView>
+    </FrameLayout>
+    <com.tencent.mobileqq.widget.NotRemoveFrameLayout android:id="@id/Qzonecontainer" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/pad_left_panel_width">
+        <FrameLayout android:id="@id/Qzonecontainer_base" android:background="@color/common_bg_color" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.tencent.mobileqq.widget.NotRemoveFrameLayout>
+</FrameLayout>

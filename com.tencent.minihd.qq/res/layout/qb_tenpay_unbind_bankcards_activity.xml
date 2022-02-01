@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/tenpay_yzm_layout" android:background="@color/qb_tenpay_pagebg_color" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/qb_tenpay_common_title_bar" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <ScrollView android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true">
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="14.0sp" android:textColor="@color/qb_tenpay_skin_dark_gray" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="35.0dip" android:text="@string/qb_tenpay_wallet_unbind_tip_text" />
+                <LinearLayout android:orientation="vertical" android:id="@id/passwd_layout" android:background="@drawable/qb_tenpay_border" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="0.0dip">
+                    <com.tenpay.android.qqplugin.control.SixPasswdFullScreenEditText android:id="@id/six_passwd_edt" android:visibility="gone" style="@style/qb_tenpay_big_edittext" />
+                    <com.tenpay.android.qqplugin.control.ClearableEditText android:id="@id/normal_passwd_edt" android:hint="@string/qb_tenpay_please_input_password" android:inputType="textPassword" style="@style/qb_tenpay_big_edittext" />
+                </LinearLayout>
+                <Button android:id="@id/tenpay_unbind_btn" android:layout_marginLeft="15.0dip" android:layout_marginTop="35.0dip" android:layout_marginRight="15.0dip" android:text="@string/qb_tenpay_bank_delete_confirm" style="@style/qb_tenpay_btn_red" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+    <com.tenpay.android.qqplugin.control.MyKeyboardWindow android:id="@id/tenpay_num_keyboard" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

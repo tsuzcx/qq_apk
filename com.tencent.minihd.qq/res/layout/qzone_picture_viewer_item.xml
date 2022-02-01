@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.qzone.preview.FaceRelativeLayout android:paddingLeft="@dimen/qzone_pictureviewer_item_padding_left" android:paddingRight="@dimen/qzone_pictureviewer_item_padding_right" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.preview.view.PictureImageView android:layout_gravity="center" android:id="@id/ImgViewPhoto_thumb" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    <com.qzone.preview.view.PictureImageView android:layout_gravity="center" android:id="@id/ImgViewPhoto" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/gif_play_image" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qzone_video_btn_play_s84" android:layout_centerInParent="true" android:contentDescription="播放gif" />
+</com.qzone.preview.FaceRelativeLayout>

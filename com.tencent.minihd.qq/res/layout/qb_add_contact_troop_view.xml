@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.XListView android:scrollbarThumbVertical="@drawable/scrollbar_handle_vertical" android:id="@id/public_recommend_account_list" android:background="@color/common_bg_color" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@null" />
+    <ProgressBar android:layout_gravity="center" android:id="@id/refresh_progress" android:visibility="gone" android:layout_width="23.0dip" android:layout_height="23.0dip" android:layout_marginTop="-25.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" />
+</merge>

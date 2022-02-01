@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/icon_phone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/weiyun_backup_icon_phone" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/icon_dots_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:src="@drawable/weiyun_backup_dots_icon_left_anim_list" android:minWidth="11.0dip" android:minHeight="2.0dip" android:layout_toRightOf="@id/icon_phone" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/icon_cloud" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/weiyun_backup_ico_cloud" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/icon_dots_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:src="@drawable/weiyun_backup_dots_icon_right_anim_list" android:minWidth="11.0dip" android:minHeight="2.0dip" android:layout_toLeftOf="@id/icon_cloud" android:layout_centerVertical="true" />
+    <ImageSwitcher android:id="@id/image_switcher" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/icon_dots_2" android:layout_toRightOf="@id/icon_dots_1" android:layout_centerHorizontal="true">
+        <ImageView android:layout_gravity="center" android:background="@color/white" android:padding="2.0dip" android:layout_width="@dimen/weiyun_backup_img_size" android:layout_height="@dimen/weiyun_backup_img_size" android:src="@drawable/qzone_defaultphoto" android:scaleType="center" />
+        <ImageView android:layout_gravity="center" android:background="@color/white" android:padding="2.0dip" android:layout_width="@dimen/weiyun_backup_img_size" android:layout_height="@dimen/weiyun_backup_img_size" android:src="@drawable/qzone_defaultphoto" android:scaleType="center" />
+    </ImageSwitcher>
+</RelativeLayout>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/camera_bottom_bar" android:background="@drawable/zebra_navibar_bg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <TextView android:textSize="15.0sp" android:textColor="@android:color/white" android:gravity="center" android:id="@id/done_button" android:focusable="true" android:visibility="invisible" android:layout_width="70.0dip" android:layout_height="70.0dip" android:text="预览" android:layout_centerInParent="true" />
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/albumbg" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toLeftOf="@id/done_button" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
+            <RelativeLayout android:gravity="center" android:id="@id/cancel_btn" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <ImageView android:id="@id/cancel_click" android:background="@null" android:clickable="true" android:layout_width="60.0dip" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+                <TextView android:textSize="20.0sp" android:textColor="@android:color/white" android:gravity="center" android:id="@id/cancelText" android:layout_width="70.0dip" android:layout_height="70.0dip" android:text="取消" android:layout_centerInParent="true" />
+            </RelativeLayout>
+        </LinearLayout>
+        <RelativeLayout android:gravity="center" android:id="@id/send_btn" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toRightOf="@id/done_button">
+            <ImageView android:id="@id/send_click" android:background="@null" android:clickable="true" android:layout_width="60.0dip" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+            <TextView android:textSize="20.0sp" android:textColor="@android:color/white" android:gravity="center" android:id="@id/sendText" android:layout_width="70.0dip" android:layout_height="70.0dip" android:text="确定" android:layout_centerInParent="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

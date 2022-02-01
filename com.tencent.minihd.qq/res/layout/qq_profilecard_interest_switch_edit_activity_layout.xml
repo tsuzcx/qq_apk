@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.BounceScrollView android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="13.0sp" android:textColor="@color/skin_gray3" android:paddingLeft="15.0dip" android:paddingTop="20.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="在我的资料里展示以下兴趣爱好：" />
+        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/interest_item" android:focusable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="top" formItem:switchText="兴趣部落" formItem:switchChecked="false" />
+        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/music_item" android:focusable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="middle" formItem:switchText="我喜欢听" formItem:switchChecked="false" />
+        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/recent_activity_item" android:focusable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="middle" formItem:switchText="最近在玩" formItem:switchChecked="false" />
+        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/star_item" android:focusable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="middle" formItem:switchText="星影联盟" formItem:switchChecked="false" />
+        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/joined_group_item" android:focusable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="middle" formItem:switchText="加入的群" formItem:switchChecked="false" />
+        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/KTV_item" android:focusable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="middle" formItem:switchText="最近K歌" formItem:switchChecked="false" />
+        <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/eat_item" android:focusable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="bottom" formItem:switchText="吃喝玩乐" formItem:switchChecked="false" />
+    </LinearLayout>
+</com.tencent.mobileqq.widget.BounceScrollView>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/imageView" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:layout_gravity="bottom" android:background="#a0909090" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@drawable/dataline_icon_video" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@string/lite_fileInfo" />
+        <TextView android:textColor="#ffffffff" android:id="@id/duration" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <ImageView android:layout_gravity="bottom|center|right" android:id="@id/imageSelector" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="2.0dip" android:layout_marginBottom="2.0dip" android:src="@drawable/dataline_icon_check" android:contentDescription="@string/lite_fileSelect" />
+</FrameLayout>

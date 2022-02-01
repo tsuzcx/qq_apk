@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/boss_unipay_linear"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@id/boss_unipay_id_mcardItemLayout" style="@style/boss_unipay_listbar">
+        <TextView android:id="@id/boss_unipay_id_apPayNum" android:layout_marginLeft="10.0dip" android:text="10" android:layout_weight="100.0" style="@style/boss_unipay_tx.list" />
+        <ImageView android:layout_marginRight="10.0dip" style="@style/boss_unipay_ic_arrowr.list" />
+    </LinearLayout>
+</LinearLayout>

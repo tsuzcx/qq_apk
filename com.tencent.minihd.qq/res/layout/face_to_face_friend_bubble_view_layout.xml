@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/friend_root" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/friend_head_container" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@id/friend_status_layout" android:visibility="gone" android:layout_width="@dimen/face2face_head_status_width" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/face2face_head_status_margin_left" android:layout_alignBottom="@id/friend_head">
+            <ImageView android:id="@id/friend_status" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+            <ProgressBar android:id="@id/status_loading" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="9.0dip" android:layout_marginRight="4.0dip" android:layout_marginBottom="7.0dip" android:indeterminateDrawable="@drawable/face_to_face_situation_waiting_load_animation_list" android:layout_alignBottom="@id/friend_status" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <ImageView android:id="@id/friend_head" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="@dimen/face2face_head_width" android:layout_height="@dimen/face2face_head_width" android:contentDescription="@string/face_to_face_friend_headphoto_description" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_horizontal" android:id="@id/friend_nick_layout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:minWidth="@dimen/face2face_head_width">
+        <ImageView android:id="@id/troop_head_flag" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:layout_marginRight="1.0dip" android:src="@drawable/face_to_face_troop_flag" android:contentDescription="@string/face_to_face_friend_headphoto_description" />
+        <TextView android:textSize="13.0dip" android:textColor="@android:color/white" android:ellipsize="end" android:gravity="center_horizontal" android:layout_gravity="center" android:id="@id/friend_nickname" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="@dimen/face2face_head_nickname_max_width" android:lines="1" android:shadowColor="#cc000000" android:shadowDx="0.0" android:shadowDy="1.0" android:shadowRadius="2.0" />
+    </LinearLayout>
+</LinearLayout>

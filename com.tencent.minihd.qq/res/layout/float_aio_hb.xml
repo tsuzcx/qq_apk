@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="left" android:id="@id/hb_left_arrow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:src="@drawable/hb_left_arror" />
+    <ImageView android:layout_gravity="right" android:id="@id/hb_right_arrow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:src="@drawable/hb_right_arrow" />
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginRight="5.0dip" android:src="@drawable/float_aio_hb" />
+    <TextView android:textSize="16.0sp" android:textColor="#fff8c76a" android:ellipsize="end" android:layout_gravity="center_horizontal" android:id="@id/float_aio_hb_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="58.0dip" android:maxLines="3" />
+</FrameLayout>

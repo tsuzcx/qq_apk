@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="300" android:drawable="@drawable/doyen_flow_1" />
+    <item android:duration="300" android:drawable="@drawable/doyen_flow_2" />
+    <item android:duration="300" android:drawable="@drawable/doyen_flow_3" />
+    <item android:duration="300" android:drawable="@drawable/doyen_flow_4" />
+</animation-list>

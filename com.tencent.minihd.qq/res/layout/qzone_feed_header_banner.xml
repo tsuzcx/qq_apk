@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/qz_feed_head_container" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ViewStub android:id="@id/qz_family_album_banner" android:layout="@layout/qzone_stub_family_album_banner" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/qz_photos_guide_banner" android:background="@drawable/qzone_feed_intbanner_bg" android:layout="@layout/qzone_stub_photos_guide_banner" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="3.0dip" />
+    <ViewStub android:id="@id/qz_operate_ads_banner" android:background="@drawable/qzone_feed_intbanner_bg" android:layout="@layout/qzone_stub_operate_ads_banner" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

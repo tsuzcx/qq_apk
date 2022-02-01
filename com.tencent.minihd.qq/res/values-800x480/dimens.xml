@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="qzone_cover_preview_height">310.0dip</dimen>
+    <dimen name="qzone_home_guest_cover_height">320.0dip</dimen>
+    <dimen name="qzone_home_guest_feeds_header_height">362.0dip</dimen>
+    <dimen name="qzone_home_guest_detail_marginTop">12.0dip</dimen>
+    <dimen name="qzone_home_guest_question_height">36.0dip</dimen>
+    <dimen name="qzone_home_guest_sendResult_marginTop">8.0dip</dimen>
+    <dimen name="album_list_item_height">195.0dip</dimen>
+    <dimen name="album_list_item_cover_height">150.0dip</dimen>
+    <dimen name="album_list_item_halving_line_paddingTop">0.0dip</dimen>
+    <dimen name="friendfeeds_empty_icon_marginTop">15.0dip</dimen>
+    <dimen name="widget_vip_speed_marginTop">3.0dip</dimen>
+    <dimen name="shuoshuo_recent_photo_grid_item_w">65.0dip</dimen>
+</resources>

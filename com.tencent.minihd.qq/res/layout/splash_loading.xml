@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/loading_background" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:id="@id/install_splash_logo" android:layout_width="400.0dip" android:layout_height="46.0dip" android:src="@drawable/install_splash_logo" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/progress_bg" android:layout_width="wrap_content" android:layout_height="5.0dip" android:layout_marginTop="32.0dip" android:src="@drawable/install_progress_bg" android:layout_below="@id/install_splash_logo" android:layout_centerHorizontal="true" />
+        <ProgressBar android:id="@id/horizonal_progressbar" android:layout_width="450.0dip" android:layout_height="5.0dip" android:layout_marginTop="32.0dip" android:max="100" android:progressDrawable="@drawable/install_progress_items" android:layout_below="@id/install_splash_logo" android:layout_centerHorizontal="true" style="?android:attr/progressBarStyleHorizontal" />
+        <ImageView android:id="@id/pic1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/install_progress_bottom_shadow" android:layout_below="@id/horizonal_progressbar" android:layout_alignLeft="@id/horizonal_progressbar" />
+        <ImageView android:id="@id/install_shadow_image" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/install_progress_bottom_shadow_white" android:layout_below="@id/horizonal_progressbar" android:layout_alignLeft="@id/pic1" android:layout_alignTop="@id/pic1" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff0b639d" android:id="@id/loading_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="24.0dip" android:layout_toRightOf="@id/horizonal_progressbar" android:layout_below="@id/install_splash_logo" />
+    </RelativeLayout>
+</RelativeLayout>

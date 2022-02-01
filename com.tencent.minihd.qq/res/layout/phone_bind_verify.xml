@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/textSizeS3" android:textColor="@color/skin_gray2" android:id="@id/number_text" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:lineSpacingExtra="5.0dip" />
+    <com.tencent.mobileqq.widget.ClearableEditText android:textSize="@dimen/textSizeS3" android:textColor="@color/skin_dark_gray" android:textColorHint="@color/skin_gray2" android:gravity="center_vertical" android:id="@id/code_edit" android:background="@drawable/skin_setting_strip_bg_unpressed" android:padding="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:hint="请输入短信验证码" android:singleLine="true" android:maxLength="6">
+        <requestFocus />
+    </com.tencent.mobileqq.widget.ClearableEditText>
+    <Button android:enabled="false" android:id="@id/commit_btn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="10.0dip" android:text="下一步" style="@style/ButtonBlue" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/agreecontainer" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="14.0dip">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/tos_check_ll" android:paddingLeft="8.0dip" android:paddingTop="6.0dip" android:paddingBottom="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <CheckBox android:layout_gravity="center_vertical" android:id="@id/tos_check" android:background="@drawable/cm_blue_check_bg" android:layout_width="15.0dip" android:layout_height="15.0dip" android:checked="true" android:button="@null" />
+            <TextView android:textSize="@dimen/textSizeS4" android:textColor="@color/skin_gray2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="我已阅读并同意" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/textSizeS4" android:textColor="@color/skin_blue" android:id="@id/tos_tv" android:paddingTop="6.0dip" android:paddingRight="8.0dip" android:paddingBottom="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="《我的营业厅功能规则》" />
+    </LinearLayout>
+</LinearLayout>

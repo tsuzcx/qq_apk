@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/video_float" android:background="@color/black" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:gravity="center" android:id="@id/hd_button" android:background="@color/transparent_half" android:padding="5.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:text="查看原片" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <TextView android:id="@id/message_view" android:background="@color/transparent_half" android:padding="5.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="70.0dip" android:text="轻点一下，退出播放" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

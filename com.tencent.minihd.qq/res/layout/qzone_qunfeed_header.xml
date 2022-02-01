@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.qzone.widget.LinerLayoutForListViewItem android:orientation="vertical" android:id="@id/qunfeed_operation_area" android:background="@color/qzone_feeditem_nor" android:layout_width="fill_parent" android:layout_height="50.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:background="@drawable/qzone_qun_header_sel" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="14.0sp" android:textColor="#ff3c5483" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="最近照片" android:drawableLeft="@drawable/qzone_qun_rencentimg" android:drawablePadding="3.0dip" />
+            <ImageView android:layout_gravity="bottom|center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qzone_qun_rencenticon" />
+        </FrameLayout>
+        <View android:background="#ffd7d8d7" android:layout_width="1.0px" android:layout_height="fill_parent" />
+        <FrameLayout android:id="@id/qunfeed_qunphotolay" android:background="@drawable/qzone_qun_header_sel" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="14.0sp" android:textColor="#ff6d6d6d" android:layout_gravity="center" android:id="@id/qunfeed_qunphotonum" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="相册" android:drawableLeft="@drawable/qzone_qun_photoimg" android:drawablePadding="3.0dip" />
+        </FrameLayout>
+        <View android:background="#ffd7d8d7" android:layout_width="1.0px" android:layout_height="fill_parent" />
+        <RelativeLayout android:gravity="center" android:id="@id/qunfeed_qunmelay" android:background="@drawable/qzone_qun_header_sel" android:descendantFocusability="blocksDescendants" android:layout_width="0.0dip" android:layout_height="50.0dip" android:layout_weight="1.0">
+            <TextView android:textSize="14.0sp" android:textColor="#ff6d6d6d" android:gravity="center" android:id="@id/textView1" android:layout_width="wrap_content" android:layout_height="50.0dip" android:text="与我相关" android:drawableLeft="@drawable/qzone_qun_mesimg" android:drawablePadding="3.0dip" />
+            <TextView android:textSize="9.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/qzone_feed_noreadcount" android:background="@drawable/qzone_qun_num_bg" android:padding="0.5dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.5dip" android:layout_toRightOf="@id/textView1" />
+        </RelativeLayout>
+    </LinearLayout>
+    <RelativeLayout android:id="@id/empty_content_layout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="250.0dip">
+        <com.qzone.widget.AsyncImageView android:id="@id/empty_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/friendfeeds_empty_icon_marginTop" android:layout_marginBottom="5.0dip" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="14.0sp" android:textColor="#ffc3c7c9" android:gravity="center" android:id="@id/empty_msg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/friend_feed_empty_tip" android:layout_below="@id/qunfeeds_empty_icon" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</com.qzone.widget.LinerLayoutForListViewItem>

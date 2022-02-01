@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout android:layout_gravity="bottom" android:id="@id/dialpad" android:layout_width="fill_parent" android:layout_height="216.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TableRow android:layout_height="fill_parent" android:layout_weight="1.0">
+        <ImageView android:gravity="center" android:id="@id/one" android:background="@drawable/qq_ftf_troop_rect_num_selector" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/qq_ftf_digit_pad_1" android:scaleType="centerInside" android:layout_weight="1.0" android:contentDescription="1" />
+        <ImageView android:gravity="center" android:id="@id/two" android:background="@drawable/qq_ftf_troop_rect_num_selector" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/qq_ftf_digit_pad_2" android:scaleType="centerInside" android:layout_weight="1.0" android:contentDescription="2" />
+        <ImageView android:gravity="center" android:id="@id/three" android:background="@drawable/qq_ftf_troop_rect_num_selector" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/qq_ftf_digit_pad_3" android:scaleType="centerInside" android:layout_weight="1.0" android:contentDescription="3" />
+    </TableRow>
+    <TableRow android:layout_height="0.0px" android:layout_weight="1.0">
+        <ImageView android:gravity="center" android:id="@id/four" android:background="@drawable/qq_ftf_troop_rect_num_selector" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/qq_ftf_digit_pad_4" android:scaleType="centerInside" android:layout_weight="1.0" android:contentDescription="4" />
+        <ImageView android:gravity="center" android:id="@id/five" android:background="@drawable/qq_ftf_troop_rect_num_selector" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/qq_ftf_digit_pad_5" android:scaleType="centerInside" android:layout_weight="1.0" android:contentDescription="5" />
+        <ImageView android:gravity="center" android:id="@id/six" android:background="@drawable/qq_ftf_troop_rect_num_selector" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/qq_ftf_digit_pad_6" android:scaleType="centerInside" android:layout_weight="1.0" android:contentDescription="6" />
+    </TableRow>
+    <TableRow android:layout_height="0.0px" android:layout_weight="1.0">
+        <ImageView android:gravity="center" android:id="@id/seven" android:background="@drawable/qq_ftf_troop_rect_num_selector" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/qq_ftf_digit_pad_7" android:scaleType="centerInside" android:layout_weight="1.0" android:contentDescription="7" />
+        <ImageView android:gravity="center" android:id="@id/eight" android:background="@drawable/qq_ftf_troop_rect_num_selector" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/qq_ftf_digit_pad_8" android:scaleType="centerInside" android:layout_weight="1.0" android:contentDescription="8" />
+        <ImageView android:gravity="center" android:id="@id/nine" android:background="@drawable/qq_ftf_troop_rect_num_selector" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/qq_ftf_digit_pad_9" android:scaleType="centerInside" android:layout_weight="1.0" android:contentDescription="9" />
+    </TableRow>
+    <TableRow android:layout_height="0.0px" android:layout_weight="1.0">
+        <ImageView android:gravity="center" android:id="@id/star" android:background="@drawable/qq_ftf_star_digits_pad" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+        <ImageView android:gravity="center" android:id="@id/zero" android:background="@drawable/qq_ftf_troop_rect_num_selector" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/qq_ftf_digit_pad_0" android:scaleType="centerInside" android:layout_weight="1.0" android:contentDescription="0" />
+        <ImageView android:gravity="center" android:id="@id/delete" android:background="@drawable/qq_ftf_delete_digits_pad_selector" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" android:contentDescription="删除" />
+    </TableRow>
+</TableLayout>

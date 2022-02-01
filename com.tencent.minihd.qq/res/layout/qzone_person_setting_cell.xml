@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/cover_store" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="9.0dip">
+        <TextView android:textSize="15.0sp" android:textColor="#ff000000" android:id="@id/cover_store_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="卡片装扮" android:includeFontPadding="false" android:layout_centerInParent="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/cover_store_new_tips" android:background="@drawable/skin_tips_new" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_toRightOf="@id/cover_store_name" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <TextView android:textSize="10.0sp" android:textColor="#ff6f6f6f" android:layout_gravity="center_horizontal" android:id="@id/cover_store_slogan" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:text="轻巧细节气质爆表" android:includeFontPadding="false" />
+    <com.qzone.personalize.DynamicAsyncImageView android:id="@id/cover_store_recommend_img" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="9.0dip" android:layout_marginRight="20.0dip" />
+</LinearLayout>

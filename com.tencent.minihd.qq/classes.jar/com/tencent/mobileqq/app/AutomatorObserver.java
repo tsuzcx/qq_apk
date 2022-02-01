@@ -1,0 +1,47 @@
+package com.tencent.mobileqq.app;
+
+public class AutomatorObserver
+  implements BusinessObserver
+{
+  public static final int a = 0;
+  public static final int b = 2;
+  public static final int c = 3;
+  public static final int d = 4;
+  public static final int e = 1;
+  public static final int f = 2;
+  public static final int g = 3;
+  
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  protected void b() {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    case 1: 
+    default: 
+      return;
+    case 0: 
+      a(paramBoolean, paramObject);
+      return;
+    case 2: 
+      b();
+      return;
+    case 3: 
+      a(((Integer)paramObject).intValue());
+      return;
+    }
+    a();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.minihd.qq\classes.jar
+ * Qualified Name:     com.tencent.mobileqq.app.AutomatorObserver
+ * JD-Core Version:    0.7.0.1
+ */

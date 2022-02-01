@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/skin_header_bar_bg" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:gravity="center" android:id="@id/boss_unipay_head_big_lbtn" android:background="@drawable/top_back_left_selector" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="8.0dip" android:maxWidth="88.0dip" android:minWidth="55.0dip" android:text="返回" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/TitleBtn" />
+    <TextView android:id="@id/boss_unipay_head_big_uptv" android:text="选择支付方式" style="@style/boss_unipay_headtx" />
+    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/boss_unipay_head_big_uptv" android:layout_centerInParent="true">
+        <ImageView android:id="@id/boss_unipay_head_annimationView" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:src="@drawable/boss_unipay_dr_titleloading" />
+    </LinearLayout>
+    <Button android:id="@id/boss_unipay_head_big_rbtn" android:background="@drawable/top_button_right_selector" android:text="取消" android:layout_alignParentRight="true" android:layout_centerInParent="true" android:layout_centerVertical="true" style="@style/boss_unipay_btn.head" />
+</RelativeLayout>

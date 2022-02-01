@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:mobileqq="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <RelativeLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/device_msg" android:layout_width="fill_parent" android:layout_height="60.0dip" android:layout_marginTop="25.0dip">
+            <ImageView android:id="@id/device_icon" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_centerVertical="true" />
+            <TextView android:textSize="20.0sp" android:textColor="#ff000000" android:ellipsize="middle" android:id="@id/device_name" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="4.0dip" android:singleLine="true" android:layout_toRightOf="@id/device_icon" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/wifi_setting" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_below="@id/device_msg">
+            <View android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+            <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/wifi_info_content" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="100.0dip">
+                <RelativeLayout android:id="@id/wifi_info_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_centerHorizontal="true">
+                    <ImageView android:id="@id/wifi_icon" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qq_gesture_setting_manual_icon" />
+                    <TextView android:textSize="16.0sp" android:textColor="@android:color/black" android:id="@id/wifititle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/device_setwifi_tip" android:singleLine="true" android:layout_toRightOf="@id/wifi_icon" />
+                </RelativeLayout>
+                <TextView android:textSize="13.0sp" android:textColor="#ffc0c0c0" android:gravity="center" android:id="@id/wifitips" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="15.0dip" android:text="@string/device_add_device_to_wifi" android:layout_below="@id/wifi_info_title" />
+            </RelativeLayout>
+            <View android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+            <RelativeLayout android:layout_gravity="center_horizontal" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="43.0dip" android:layout_marginTop="10.0dip">
+                <View android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+                <TextView android:textSize="16.0sp" android:textColor="@android:color/black" android:gravity="center" android:id="@id/ssidname" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="15.0dip" android:text="@string/device_wifi_name" android:singleLine="true" />
+                <TextView android:textSize="16.0sp" android:textColor="@android:color/black" android:id="@id/ssid" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="115.0dip" android:singleLine="true" android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <View android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+            <RelativeLayout android:gravity="center_vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="43.0dip">
+                <TextView android:textSize="16.0sp" android:textColor="@android:color/black" android:gravity="center" android:id="@id/wifiname" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="15.0dip" android:text="@string/device_wifi_psd" android:singleLine="true" />
+                <com.tencent.mobileqq.widget.ClearableEditText android:textSize="16.0sp" android:textColorHint="#ffcacbcc" android:id="@id/wifipsd" android:background="#ffffffff" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="115.0dip" android:maxLines="1" android:layout_centerVertical="true" android:inputType="textPassword" mobileqq:clearBtnDrawable="@drawable/common_input_box_clear" mobileqq:clearBtnDrawableWidth="15.0dip" mobileqq:clearBtnDrawableHeight="15.0dip" style="@style/login_Input_Font" />
+            </RelativeLayout>
+            <View android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        </LinearLayout>
+        <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/wifi_syncing" android:background="#ffffffff" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_below="@id/device_msg">
+            <View android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+            <RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip">
+                <RelativeLayout android:id="@id/connecting_layout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_centerHorizontal="true">
+                    <TextView android:textSize="16.0sp" android:textColor="@android:color/black" android:id="@id/connecting_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/device_connecting" android:singleLine="false" />
+                </RelativeLayout>
+                <TextView android:textSize="14.0sp" android:id="@id/device_connecting_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="30.0dip" android:layout_marginBottom="10.0dip" android:text="@string/device_connecting_tips" android:singleLine="false" android:layout_below="@id/connecting_layout" android:layout_alignParentTop="false" android:layout_alignParentBottom="false" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+            <View android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        </LinearLayout>
+    </RelativeLayout>
+    <View android:id="@id/litenightmask" android:background="#77000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

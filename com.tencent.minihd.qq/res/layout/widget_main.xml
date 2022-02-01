@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.UnaffectedFrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:scrollbarThumbVertical="@drawable/scrollbar_handle_vertical" android:background="#fff9f9f9" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/widget_linear_layout" android:background="#fff9f9f9" android:paddingTop="32.0dip" android:paddingBottom="32.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <RelativeLayout android:layout_width="@dimen/widget_big_item_width" android:layout_height="wrap_content">
+                <include android:id="@id/widget_weather" android:layout_width="@dimen/widget_small_item_width" android:layout_height="@dimen/widget_big_item_height" android:layout_alignParentLeft="true" layout="@layout/widget_weather" />
+                <com.tencent.mobileqq.activity.widget.qqmusic.ui.QQMusicWidget android:id="@id/widget_qq_music" android:layout_width="@dimen/widget_small_item_width" android:layout_height="@dimen/widget_big_item_height" android:layout_alignParentRight="true" />
+            </RelativeLayout>
+            <com.tencent.mobileqq.activity.widget.doyen.WidgetDoyen android:id="@id/widget_doyen" android:layout_width="@dimen/widget_big_item_width" android:layout_height="@dimen/widget_small_item_height" android:layout_marginTop="@dimen/widget_item_interval" />
+            <RelativeLayout android:layout_width="@dimen/widget_big_item_width" android:layout_height="wrap_content" android:layout_marginTop="@dimen/widget_item_interval">
+                <include android:id="@id/widget_news" android:layout_width="@dimen/widget_small_item_width" android:layout_height="@dimen/widget_small_item_height" android:layout_alignParentLeft="true" layout="@layout/widget_news" />
+                <include android:id="@id/widget_constellation" android:layout_width="@dimen/widget_small_item_width" android:layout_height="@dimen/widget_small_item_height" android:layout_alignParentRight="true" layout="@layout/widget_constellation" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</com.tencent.mobileqq.widget.UnaffectedFrameLayout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="200.0dip">
+        <View android:layout_gravity="top" android:id="@id/border" android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        <LinearLayout android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <com.tencent.mobileqq.activity.NumberWheelView android:id="@id/daypicker" android:layout_width="60.0dip" android:layout_height="fill_parent" android:layout_marginTop="-6.0dip" android:layout_marginBottom="-7.0dip" />
+            <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="@color/text_black" android:layout_gravity="center_vertical" android:id="@id/daytextview" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="18.0dip" android:text="@string/qb_group_gag_setting_pannel_unit_day" />
+            <com.tencent.mobileqq.activity.NumberWheelView android:id="@id/hourpicker" android:layout_width="60.0dip" android:layout_height="fill_parent" android:layout_marginTop="-6.0dip" android:layout_marginBottom="-7.0dip" />
+            <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="@color/text_black" android:layout_gravity="center_vertical" android:id="@id/hourtextview" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="10.0dip" android:text="@string/qb_group_gag_setting_pannel_unit_hour" />
+            <com.tencent.mobileqq.activity.NumberWheelView android:id="@id/minutepicker" android:layout_width="60.0dip" android:layout_height="fill_parent" android:layout_marginTop="-6.0dip" android:layout_marginBottom="-7.0dip" />
+            <TextView android:textAppearance="?android:textAppearanceMedium" android:textColor="@color/text_black" android:layout_gravity="center_vertical" android:id="@id/minutetextview" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="30.0dip" android:text="@string/qb_group_gag_setting_pannel_unit_minute" />
+        </LinearLayout>
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <View android:id="@id/line_up" android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="78.0dip" />
+            <View android:id="@id/line_down" android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="40.0dip" android:layout_below="@id/line_up" />
+        </RelativeLayout>
+    </FrameLayout>
+</RelativeLayout>

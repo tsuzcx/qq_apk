@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/filter_window_view" android:background="#7f000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="center|top" android:orientation="vertical" android:background="@drawable/lbs_popup_bg" android:layout_width="@dimen/search_troop_filter_width" android:layout_height="wrap_content" android:layout_marginTop="@dimen/title_bar_height">
+        <TextView android:textSize="16.0dip" android:textColor="@color/skin_blue" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/default_sort" android:background="@drawable/near_people_option_selector" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginTop="2.0dip" android:text="@string/strangetrooplist_sort_by_default" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/skin_blue" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/number_sort" android:background="@drawable/near_people_option_selector" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="40.0dip" android:text="@string/strangetrooplist_sort_by_member" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/skin_blue" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/active_sort" android:background="@drawable/near_people_option_selector" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginBottom="2.0dip" android:text="@string/strangetrooplist_sort_by_active" />
+    </LinearLayout>
+</LinearLayout>

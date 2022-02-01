@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/zebra_navibar_bg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/camera_bottom_bar" android:background="@android:color/black" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <ImageView android:id="@id/shutter_button" android:focusable="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="3.0dip" android:src="@drawable/zebra_ic_bt_normal" android:layout_centerInParent="true" />
+        <ImageView android:gravity="center" android:id="@id/album_default" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:src="@drawable/zebra_ic_album" android:layout_toLeftOf="@id/shutter_button" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <FrameLayout android:gravity="center" android:orientation="horizontal" android:id="@id/watermark_lib" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toRightOf="@id/shutter_button">
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <ImageView android:layout_gravity="center" android:id="@id/today_recommend" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:src="@drawable/zebra_today_recommend_icon" android:layout_weight="1.0" />
+                <ImageView android:gravity="center" android:layout_gravity="center" android:id="@id/iconText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/zebra_ic_library" android:layout_weight="1.0" />
+            </LinearLayout>
+        </FrameLayout>
+    </RelativeLayout>
+</RelativeLayout>

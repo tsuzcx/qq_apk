@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.magicface.view.MagicfaceContainerView android:id="@id/magicface_content" android:background="#7f000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="@drawable/qvip_magicface_bg" android:layout_width="270.0dip" android:layout_height="310.0dip" android:layout_centerInParent="true">
+        <com.tencent.mobileqq.magicface.view.MagicFaceGLView android:id="@id/magicface_container" android:visibility="gone" android:layout_width="160.0dip" android:layout_height="213.0dip" android:layout_marginLeft="55.0dip" android:layout_marginTop="52.0dip" />
+        <TextView android:textColor="@color/black" android:id="@id/magicface_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_centerHorizontal="true" />
+        <TextView android:textColor="@color/text_blue" android:id="@id/magicface_feekback" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/magicface_title" android:layout_centerHorizontal="true" />
+        <Button android:id="@id/magicface_close" android:background="@drawable/qvip_magicface_close" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="11.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6.0dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true">
+            <Button android:id="@id/magicface_send_sound" android:background="@drawable/qvip_magicface_send_sound_open" android:visibility="invisible" android:layout_width="26.0dip" android:layout_height="24.0dip" android:layout_marginLeft="20.0dip" />
+            <Button android:textColor="@color/text_white" android:id="@id/magicface_send" android:background="@drawable/common_btn_small_blue" android:layout_width="157.0dip" android:layout_height="30.0dip" android:layout_marginLeft="15.0dip" android:text="发送" />
+            <Button android:id="@id/magicface_refresh" android:background="@drawable/qvip_magicface_refresh" android:layout_width="24.0dip" android:layout_height="22.0dip" android:layout_marginLeft="15.0dip" />
+        </LinearLayout>
+    </RelativeLayout>
+</com.tencent.mobileqq.magicface.view.MagicfaceContainerView>

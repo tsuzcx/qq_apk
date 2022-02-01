@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="bottom" android:layout_width="fill_parent" android:layout_height="31.0dip">
+        <TextView android:textSize="16.0sp" android:textColor="#ff000000" android:id="@id/hb_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="来自星星的" />
+        <ImageView android:id="@id/pin" android:paddingLeft="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qb_tenpay_hb_pin" />
+        <TextView android:textSize="16.0sp" android:textColor="#ff000000" android:gravity="right" android:id="@id/amount" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="8.08元" />
+    </LinearLayout>
+    <LinearLayout android:paddingTop="4.0dip" android:layout_width="fill_parent" android:layout_height="28.5dip">
+        <TextView android:textSize="11.0sp" android:textColor="#ffa6a6a6" android:id="@id/time" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="07-27 14：35：21" />
+        <TextView android:textSize="11.0sp" android:textColor="#ffa6a6a6" android:gravity="right" android:id="@id/state" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="已领完" />
+    </LinearLayout>
+    <View android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0px" />
+</LinearLayout>

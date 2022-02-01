@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/send_msg_btn" android:background="@drawable/qq_profilecard_btn" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_alignParentBottom="true">
+        <TextView android:textSize="@dimen/textSizeS2" android:textColor="@color/skin_float_btn" android:id="@id/send_msg_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/life_online_account_bottom_btn" android:drawablePadding="6.0dip" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/send_msg_btn">
+        <ImageView android:id="@id/top_image" android:layout_width="fill_parent" android:layout_height="480.0dip" />
+        <ImageView android:id="@id/bottom_image" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </LinearLayout>
+    <com.tencent.biz.pubaccount.AccountDetailBounceScrollView android:id="@id/sliding_layout" android:background="@color/transparent" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/transparent" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0px" android:layout_above="@id/send_msg_btn">
+        <RelativeLayout android:orientation="vertical" android:id="@id/content_container" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <RelativeLayout android:id="@id/main_panel" android:background="#ffd4d4d4" android:layout_width="fill_parent" android:layout_height="506.0dip" android:layout_alignParentTop="true">
+                <ImageView android:id="@id/icon" android:background="@drawable/h002" android:layout_width="110.0dip" android:layout_height="110.0dip" android:layout_marginTop="122.0dip" android:layout_centerHorizontal="true" />
+                <ImageView android:id="@id/icon_cicle" android:layout_width="120.0dip" android:layout_height="120.0dip" android:layout_marginTop="117.0dip" android:layout_centerHorizontal="true" />
+                <RelativeLayout android:gravity="center" android:id="@id/name_container" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="22.0dip" android:layout_marginRight="20.0dip" android:layout_below="@id/icon" android:layout_centerInParent="true">
+                    <TextView android:textSize="22.0sp" android:textColor="@color/white" android:ellipsize="none" android:gravity="right" android:id="@id/text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="220.0dip" />
+                    <ImageView android:id="@id/certified_icon" android:background="@drawable/qb_pubaccount_avatar_icon" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="5.0dip" android:layout_toRightOf="@id/text" android:layout_centerInParent="true" />
+                </RelativeLayout>
+                <TextView android:textSize="13.0sp" android:textColor="#d9ffffff" android:ellipsize="end" android:id="@id/cetified_description" android:paddingLeft="50.0dip" android:paddingRight="50.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:singleLine="true" android:layout_below="@id/name_container" android:layout_centerInParent="true" />
+                <Button android:textSize="17.0sp" android:textColor="@color/white" android:gravity="center" android:id="@id/follow_btn" android:paddingLeft="3.0dip" android:paddingRight="3.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginTop="15.0dip" android:layout_below="@id/cetified_description" android:layout_centerInParent="true" />
+            </RelativeLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/dragView" android:background="@color/white" android:focusable="false" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/main_panel">
+                <LinearLayout android:orientation="vertical" android:id="@id/item_container" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                <TextView android:textSize="14.0sp" android:textColor="@color/black" android:ellipsize="end" android:id="@id/summary" android:paddingLeft="16.5dip" android:paddingTop="25.0dip" android:paddingRight="16.5dip" android:paddingBottom="25.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:lineSpacingExtra="5.0dip" />
+            </LinearLayout>
+        </RelativeLayout>
+    </com.tencent.biz.pubaccount.AccountDetailBounceScrollView>
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/life_online_account_title_layout" android:padding="0.0px" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_alignParentTop="true">
+        <TextView android:textSize="17.0sp" android:textColor="@color/white" android:gravity="center" android:id="@id/life_online_account_title_btn_left" android:background="@drawable/bmqq_top_back_left_selector" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="8.0dip" android:maxWidth="88.0dip" android:minWidth="55.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/life_online_account_title_btn_right" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="9.0dip" android:src="@drawable/account_detail_forward" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <LinearLayout android:autoLink="all" android:orientation="vertical" android:id="@id/error_container" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/public_account_no_found" />
+        <TextView android:textSize="20.0sp" android:textColor="#ff9d9d9d" android:textColorLink="#ff0b88e6" android:gravity="center" android:id="@id/error_text" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="50.0dip" android:layout_marginTop="50.0dip" android:layout_marginRight="50.0dip" android:layout_marginBottom="80.0dip" android:text="@string/public_account_no_found" />
+    </LinearLayout>
+    <Button android:id="@id/search_btn" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_margin="10.0dip" android:text="@string/public_account_search" android:layout_alignParentBottom="true" style="@style/ButtonBlue" />
+</RelativeLayout>

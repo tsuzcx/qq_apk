@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/layout" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/custom_commen_title" />
+    <FrameLayout android:background="@drawable/skin_setting_strip_bg_unpressed" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip">
+        <EditText android:textSize="16.0sp" android:textColor="@color/skin_input" android:textColorHint="@color/skin_hint_input" android:gravity="top" android:id="@id/fav_input_edit" android:background="@color/transparent" android:padding="2.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="6.0dip" android:hint="@string/info_comment" android:ems="10" android:singleLine="false" android:maxLength="60" android:lineSpacingExtra="2.0dip" />
+    </FrameLayout>
+    <LinearLayout android:paddingLeft="10.0dip" android:paddingTop="8.0dip" android:paddingRight="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <ImageView android:id="@id/imageView1" android:paddingTop="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qfav_entry_location_footnote" android:contentDescription="@string/geo_location" />
+        <TextView android:textSize="13.0sp" android:textColor="@color/skin_gray2" android:id="@id/location_desc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginRight="10.0dip" />
+    </LinearLayout>
+</LinearLayout>

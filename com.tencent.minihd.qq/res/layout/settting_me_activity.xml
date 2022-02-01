@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/setting_me_list" android:layout_width="@dimen/pad_left_panel_width" android:layout_height="fill_parent" />
+    <com.tencent.mobileqq.widget.NotRemoveFrameLayout android:id="@id/setting_detail" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/pad_left_panel_width" />
+</FrameLayout>

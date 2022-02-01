@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/qav_mid_state" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/qav_net_level_icon_mid" android:focusable="false" android:focusableInTouchMode="false" android:visibility="gone" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/qav_quality_out_net_state_bar_icon_margin_right" android:src="@drawable/qav_quality_out_no_network" />
+    <TextView android:textSize="15.0dip" android:textColor="@color/qav_white" android:ellipsize="marquee" android:gravity="center_horizontal" android:id="@id/qav_titlebar_mid_txt" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="等待对方接听..." android:singleLine="true" android:onClick="BtnOnClick" />
+</LinearLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/common_list_item_background" android:clickable="false" android:layout_width="fill_parent" android:layout_height="@dimen/roam_filter_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:clickable="false" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="18.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="18.0dip" android:layout_marginBottom="10.0dip" android:layout_weight="1.0">
+        <TextView android:textColor="@color/skin_dark_gray" android:id="@id/qvip_maproam_filter_address" android:singleLine="true" style="@style/HornAnimationText" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip">
+            <TextView android:textSize="13.0dip" android:textColor="@color/skin_gray2" android:ellipsize="end" android:id="@id/qvip_maproam_filter_des" android:clickable="false" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxWidth="190.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_weight="1.0" />
+            <TextView android:textSize="13.0dip" android:textColor="@color/skin_blue" android:ellipsize="end" android:id="@id/qvip_maproam_filter_btn" android:clickable="true" android:layout_width="60.0dip" android:layout_height="wrap_content" android:text="@string/vip_maproam_filter_btn_name" android:singleLine="true" android:includeFontPadding="false" />
+        </LinearLayout>
+    </LinearLayout>
+    <View android:background="#ffdfdfdf" android:clickable="false" android:layout_width="1.0dip" android:layout_height="39.0dip" />
+    <ImageView android:id="@id/qvip_maproam_open_map" android:padding="12.0dip" android:clickable="true" android:layout_width="53.0dip" android:layout_height="53.0dip" android:src="@drawable/qvip_maproam_filter" android:contentDescription="展开地图" />
+</LinearLayout>

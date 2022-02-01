@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="@dimen/title_bar_height" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/top" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip">
+            <ImageView android:id="@id/topImage" android:layout_width="120.0dip" android:layout_height="130.0dip" android:src="@drawable/sec_detect_high" android:scaleType="fitCenter" android:layout_alignParentTop="true" android:contentDescription="@string/security_detect_qqpimsecure_name" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/content_layout" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="24.0dip" android:layout_marginRight="5.0dip">
+            <TextView android:textSize="16.0sp" android:textColor="@color/gray" android:gravity="center_horizontal" android:id="@id/guide_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="4.0dip" android:text="@string/security_detect_qqpim_description" />
+        </LinearLayout>
+        <RelativeLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip">
+            <TextView android:textSize="16.0sp" android:textColor="#ff808080" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/set_phone_tip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:text="@string/security_detect_qqpim_guide" />
+        </RelativeLayout>
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/downloading" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="46.0dip" android:layout_marginTop="26.0dip">
+            <ProgressBar android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginRight="1.0dip" android:indeterminateDrawable="@drawable/common_loading3" />
+            <TextView android:textSize="15.0sp" android:textColor="@color/skin_gray2" android:gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:text="@string/security_detect_qqpim_btn_downloading" />
+        </LinearLayout>
+        <Button android:id="@id/ug_btn" android:layout_width="fill_parent" android:layout_height="46.0dip" android:layout_marginTop="15.0dip" android:text="@string/security_detect_qqpim_btn_run" style="@style/ButtonBlue" />
+    </LinearLayout>
+</LinearLayout>

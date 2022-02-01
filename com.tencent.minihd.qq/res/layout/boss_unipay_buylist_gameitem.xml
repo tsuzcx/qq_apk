@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@id/boss_unipay_id_buylist_itemlayout" style="@style/boss_unipay_listbar_c_effect.top">
+        <LinearLayout android:layout_marginLeft="10.0dip" android:layout_weight="100.0" style="@style/boss_unipay_wrap">
+            <TextView android:id="@id/boss_unipay_id_buylist_item_buyinfo" android:text=" 200书币" style="@style/boss_unipay_tx.list" />
+            <TextView android:textColor="@color/boss_unipay_c_em" android:id="@id/boss_unipay_id_buylist_item_mpinfo" android:text="(送10)" style="@style/boss_unipay_tx.small" />
+        </LinearLayout>
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip">
+            <TextView android:id="@id/boss_unipay_id_buylist_itemamout" android:text="100.00" android:layout_centerVertical="true" style="@style/boss_unipay_tx.price" />
+            <TextView android:id="@id/boss_unipay_id_buylist_itemunit" android:text="元" style="@style/boss_unipay_tx.price" />
+        </LinearLayout>
+        <ImageView android:layout_marginRight="10.0dip" style="@style/boss_unipay_ic_arrowr.list" />
+    </LinearLayout>
+</LinearLayout>

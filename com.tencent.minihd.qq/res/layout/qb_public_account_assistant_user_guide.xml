@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:paddingLeft="@dimen/layout_common_xlistview_paddingLR" android:paddingRight="@dimen/layout_common_xlistview_paddingLR" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_width="92.5dip" android:layout_height="152.5dip" android:layout_marginTop="52.5dip" android:src="@drawable/qb_public_account_assistant_user_guide_image" android:scaleType="center" />
+    <TextView android:textSize="16.0sp" android:textColor="@color/skin_dark_gray" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/qb_public_account_assistant_guide_title" android:shadowColor="#64ffffff" android:shadowDx="1.0" android:shadowDy="1.0" android:lineSpacingExtra="6.0dip" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="35.0dip">
+        <Button android:id="@id/public_account_assistant_setting" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/qb_public_account_assistant_guide_button" android:layout_weight="1.0" style="@style/ButtonWhite" />
+        <Button android:id="@id/public_account_assistant_i_know" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/qb_public_account_assistant_guide_i_know_button" android:layout_weight="1.0" style="@style/ButtonBlue" />
+    </LinearLayout>
+</LinearLayout>

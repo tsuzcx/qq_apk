@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/newer_mask_layout" android:background="@color/transparent_background" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/mask_imageview" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="60.0dip" android:src="@drawable/qvip_profile_guide_background" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:contentDescription="@string/profile_newer_guide_content_description" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/text_view_linear_layout" android:layout_width="fill_parent" android:layout_height="@dimen/float_btn_height" android:layout_alignParentBottom="true">
+        <TextView android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+        <LinearLayout android:gravity="center" android:background="@drawable/actionsheet_bottom" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/textSizeS2" android:textColor="@color/skin_float_btn" android:gravity="center" android:id="@id/mask_text_view" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/profile_go_personal_card_tips" android:drawableLeft="@drawable/qvip_profile_template_start_button" android:drawablePadding="6.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView android:id="@id/unchecked_msg_icon" android:background="@drawable/skin_tips_dot" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_marginRight="18.0dip" android:layout_alignTop="@id/text_view_linear_layout" android:layout_alignRight="@id/text_view_linear_layout" android:contentDescription="@null" />
+</RelativeLayout>

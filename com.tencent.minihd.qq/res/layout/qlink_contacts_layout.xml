@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/contactsLayout1" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="0.5">
+        <com.tencent.qlink.widget.QlinkContactView android:id="@id/contact1_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        <com.tencent.qlink.widget.QlinkContactView android:id="@id/contact1_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+        <com.tencent.qlink.widget.QlinkContactView android:id="@id/contact1_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="30.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/contactsLayout2" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="0.5">
+        <com.tencent.qlink.widget.QlinkContactView android:id="@id/contact2_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        <com.tencent.qlink.widget.QlinkContactView android:id="@id/contact2_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+        <com.tencent.qlink.widget.QlinkContactView android:id="@id/contact2_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="30.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ViewStub android:id="@id/edit_panel" android:layout="@layout/qq_nearby_people_profile_edit_panel" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:orientation="vertical" android:id="@id/display_panel" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.widget.BounceScrollView android:id="@id/bounce_scroll_view" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <RelativeLayout android:id="@id/rl_head" android:layout_width="fill_parent" android:layout_height="320.0dip">
+                    <com.tencent.image.URLImageView android:id="@id/imgv_big_head" android:background="@drawable/qq_profilecard_photowall_bg_texture" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="centerCrop" />
+                    <com.tencent.widget.CustomImgView android:id="@id/imgv_small_head" android:visibility="gone" android:layout_width="70.0dip" android:layout_height="70.0dip" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+                    <ImageView android:id="@id/imgv_small_head_white_stroke" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+                    <ImageView android:id="@id/imgv_guide_white_arrow" android:background="@drawable/qq_nearby_profilecard_white_arrow" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-7.0dip" android:layout_marginBottom="-8.0dip" android:layout_toRightOf="@id/imgv_small_head" android:layout_alignBottom="@id/imgv_small_head" />
+                    <ImageView android:id="@id/imgv_guide_white_text" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="11.0dip" android:layout_below="@id/imgv_small_head" android:layout_centerHorizontal="true" />
+                    <View android:id="@id/v_big_head_cover" android:background="@drawable/qq_nearby_profilecard_bigpic_cover" android:layout_width="fill_parent" android:layout_height="76.0dip" android:layout_alignBottom="@id/imgv_big_head" />
+                    <com.tencent.mobileqq.widget.VoteView android:id="@id/vote_btn" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_marginBottom="15.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+                    <TextView android:textSize="13.0sp" android:textColor="@color/skin_color_white" android:id="@id/txv_sex_age_etc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginBottom="10.0dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+                    <RelativeLayout android:orientation="horizontal" android:id="@id/rl_nick_name_etc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="5.0dip" android:layout_marginBottom="5.0dip" android:layout_toLeftOf="@id/vote_btn" android:layout_above="@id/txv_sex_age_etc" android:layout_alignParentLeft="true" android:layout_alignWithParentIfMissing="true">
+                        <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                            <TextView android:textSize="22.0sp" android:textColor="@color/skin_color_white" android:ellipsize="end" android:gravity="left" android:id="@id/txv_nick_name" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
+                            <ImageView android:layout_gravity="center_vertical" android:id="@id/imgv_authentication" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dating_drawable_pading" android:src="@drawable/public_account_tigs" />
+                        </LinearLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
+                <FrameLayout android:id="@id/fl_pic_gallery" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:layout_marginBottom="1.0dip">
+                    <com.tencent.mobileqq.widget.CustomHorizontalScrollView android:layout_gravity="center_vertical" android:id="@id/hsv_pic_gallery" android:visibility="gone" android:scrollbars="none" android:fadingEdge="none" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                        <LinearLayout android:orientation="horizontal" android:id="@id/ll_pic_gallery" android:background="@null" android:layout_width="fill_parent" android:layout_height="70.0dip" />
+                    </com.tencent.mobileqq.widget.CustomHorizontalScrollView>
+                </FrameLayout>
+                <LinearLayout android:orientation="horizontal" android:id="@id/date_entrance" android:background="@drawable/common_strip_setting_top" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:text="约会信息" style="@style/CardInfoItemTitle" />
+                    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/info_card_moreinfo_item_paddingTB" android:layout_marginRight="5.0dip" android:layout_marginBottom="@dimen/info_card_moreinfo_item_paddingTB" android:layout_weight="1.0">
+                        <TextView android:textColor="@color/skin_black" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/date_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:drawablePadding="5.0dip" />
+                        <TextView android:textColor="@color/skin_gray2" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/date_time" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:layout_marginTop="2.0dip" android:singleLine="true" android:drawablePadding="12.0dip" />
+                        <TextView android:textColor="@color/skin_gray2" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/date_place" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:layout_marginTop="3.0dip" android:singleLine="true" android:drawablePadding="12.0dip" />
+                    </LinearLayout>
+                    <ImageView style="@style/CardInfoItemArrow" />
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:id="@id/display_panel_xuan_yan_layout" android:background="@drawable/common_strip_setting_middle" android:paddingRight="25.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:text="交友宣言" style="@style/CardInfoItemTitle" />
+                    <TextView android:textSize="@dimen/qq_profilecard_name_text_size16" android:textColor="@color/skin_black" android:id="@id/display_panel_xuan_yan" android:paddingTop="@dimen/info_card_moreinfo_item_paddingTB" android:paddingBottom="@dimen/info_card_moreinfo_item_paddingTB" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/diaplay_panel_marital_status_layout" android:background="@drawable/common_strip_setting_bottom" android:paddingRight="10.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:text="情感状态" style="@style/CardInfoItemTitle" />
+                    <TextView android:textSize="@dimen/qq_profilecard_name_text_size16" android:textColor="@color/skin_black" android:id="@id/display_panel_status" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                </LinearLayout>
+                <View android:id="@id/diaplay_panel_margin_1" android:layout_width="fill_parent" android:layout_height="20.0dip" />
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/display_panel_job_layout" android:background="@drawable/common_strip_setting_top" android:paddingRight="10.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:text="职业" style="@style/CardInfoItemTitle" />
+                    <TextView android:textSize="13.0dip" android:textColor="@color/white" android:gravity="center" android:id="@id/display_panel_job_tag" android:paddingLeft="5.0dip" android:paddingTop="1.0px" android:paddingRight="5.0dip" android:paddingBottom="1.0px" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:minWidth="36.0dip" android:includeFontPadding="false" />
+                    <TextView android:textSize="@dimen/qq_profilecard_name_text_size16" android:textColor="@color/skin_black" android:id="@id/display_panel_job" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/display_panel_company_layout" android:background="@drawable/common_strip_setting_middle" android:paddingRight="25.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:text="公司" style="@style/CardInfoItemTitle" />
+                    <TextView android:textSize="@dimen/qq_profilecard_name_text_size16" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/display_panel_company" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/display_panel_college_layout" android:background="@drawable/common_strip_setting_middle" android:paddingRight="25.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:text="学校" style="@style/CardInfoItemTitle" />
+                    <TextView android:textSize="@dimen/qq_profilecard_name_text_size16" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/display_panel_college" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/display_panel_hometown_layout" android:background="@drawable/common_strip_setting_bottom" android:paddingRight="25.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:text="故乡" style="@style/CardInfoItemTitle" />
+                    <TextView android:textSize="@dimen/qq_profilecard_name_text_size16" android:textColor="@color/skin_black" android:id="@id/display_panel_hometown" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                </LinearLayout>
+                <View android:id="@id/diaplay_panel_margin_2" android:layout_width="fill_parent" android:layout_height="20.0dip" />
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/display_panel_qzone_feed_layout" android:background="@drawable/common_strip_setting_top" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:text="QQ空间" style="@style/CardInfoItemTitle" />
+                    <TextView android:textSize="@dimen/qq_profilecard_name_text_size16" android:textColor="@color/skin_black" android:id="@id/display_panel_qzone_feed" android:paddingTop="@dimen/info_card_moreinfo_item_paddingTB" android:paddingBottom="@dimen/info_card_moreinfo_item_paddingTB" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                    <ImageView style="@style/CardInfoItemArrow" />
+                </LinearLayout>
+                <include android:id="@id/display_panel_qzone_photo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/qq_profilecard_moreinfo_item_qzone_photo" />
+                <include android:id="@id/display_panel_hobby" android:background="@drawable/common_strip_setting_bottom" android:visibility="gone" layout="@layout/qq_profilecard_moreinfo_item_hscroll" />
+                <View android:id="@id/v_bottom_btns_space" android:layout_width="fill_parent" android:layout_height="@dimen/float_btn_height" />
+            </LinearLayout>
+        </com.tencent.mobileqq.widget.BounceScrollView>
+        <RelativeLayout android:id="@id/layout_normal_status_title_bar" style="@style/title_bar">
+            <RelativeLayout android:id="@id/rl_title_center" android:background="@drawable/skin_header_bar_bg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true">
+                <LinearLayout android:orientation="horizontal" android:id="@id/ll_title_top" android:paddingLeft="96.0dip" android:paddingRight="96.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_centerHorizontal="true">
+                    <TextView android:textSize="16.0dip" android:textColor="@color/skin_bar_text" android:ellipsize="end" android:gravity="center" android:id="@id/txv_title_top" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
+                    <ImageView android:layout_gravity="center_vertical" android:id="@id/imgv_title_authentication" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dating_drawable_pading" android:src="@drawable/public_account_tigs" />
+                </LinearLayout>
+                <TextView android:textSize="12.0dip" android:textColor="@color/skin_bar_text" android:ellipsize="end" android:gravity="center" android:id="@id/txv_title_bottom" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:singleLine="true" android:layout_below="@id/ll_title_top" android:layout_centerHorizontal="true" />
+                <TextView android:id="@id/ivTitleName" style="@style/title_bar_title" />
+            </RelativeLayout>
+            <com.tencent.widget.EmptyTextView android:textColor="@color/qq_nearby_special_title_bar_btn_color" android:id="@id/ivTitleBtnLeft" style="@style/title_bar_left_btn" />
+            <TextView android:textColor="@color/qq_nearby_special_title_bar_btn_color" android:id="@id/ivTitleBtnRightText" android:text="@string/profilecard_more_title" style="@style/title_bar_right_btn" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/bottom_btns" android:background="@drawable/profile_info_card_btns_bg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/float_btn_height" android:layout_alignParentBottom="true">
+            <LinearLayout android:gravity="center" android:id="@id/voic_call_btn" android:background="@android:color/white" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <TextView android:textSize="@dimen/qq_profilecard_btn_text_size" android:textColor="@color/skin_float_btn" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/info_card_free_call" android:drawablePadding="6.0dip" />
+            </LinearLayout>
+            <View android:id="@id/line0" android:background="#ffcdcdcd" android:layout_width="1.0px" android:layout_height="fill_parent" />
+            <LinearLayout android:gravity="center" android:id="@id/send_msg_btn" android:background="@android:color/white" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <TextView android:textSize="@dimen/qq_profilecard_btn_text_size" android:textColor="@color/skin_float_btn" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/send_msg" android:drawablePadding="6.0dip" />
+            </LinearLayout>
+            <View android:id="@id/line1" android:background="#ffcdcdcd" android:layout_width="1.0px" android:layout_height="fill_parent" />
+            <LinearLayout android:gravity="center" android:id="@id/add_friend_btn" android:background="@android:color/white" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <TextView android:textSize="@dimen/qq_profilecard_btn_text_size" android:textColor="@color/skin_float_btn" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/info_card_chatadd_add" android:drawablePadding="6.0dip" />
+            </LinearLayout>
+            <View android:id="@id/line2" android:background="#ffcdcdcd" android:layout_width="1.0px" android:layout_height="fill_parent" />
+            <LinearLayout android:gravity="center" android:id="@id/report_btn" android:background="@android:color/white" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <TextView android:textSize="@dimen/qq_profilecard_btn_text_size" android:textColor="@color/skin_float_btn" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="举报" android:drawablePadding="6.0dip" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</FrameLayout>

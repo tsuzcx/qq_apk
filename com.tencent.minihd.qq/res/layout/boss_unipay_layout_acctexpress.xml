@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:background="#90000000" style="@style/boss_unipay_wrapper"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout style="@style/boss_unipay_linear.tipframe">
+        <LinearLayout style="@style/boss_unipay_linear">
+            <LinearLayout style="@style/boss_unipay_tips_header">
+                <LinearLayout android:layout_weight="100.0" style="@style/boss_unipay_tips_title">
+                    <TextView android:id="@id/boss_unipay_id_express_buyInfo" android:text="10" android:layout_weight="1.0" style="@style/boss_unipay_tx" />
+                    <TextView android:textSize="16.0sp" android:id="@id/boss_unipay_id_express_cost" android:layout_marginRight="15.0dip" android:text="10 Q币" style="@style/boss_unipay_tx.price" />
+                </LinearLayout>
+                <ImageButton android:id="@id/boss_unipay_id_CloseBtn" style="@style/boss_unipay_ic_tipsclose" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout style="@style/boss_unipay_edit_group_c">
+            <LinearLayout android:background="@null" style="@style/boss_unipay_listbar">
+                <LinearLayout style="@style/boss_unipay_lable_warp">
+                    <TextView android:id="@id/boss_unipay_id_express_subchannel" android:text="1Q币" style="@style/boss_unipay_tx" />
+                    <TextView android:id="@id/boss_unipay_id_express_balance" android:layout_marginLeft="5.0dip" android:text="(余额0Q币)" style="@style/boss_unipay_tx" />
+                </LinearLayout>
+                <TextView android:id="@id/boss_unipay_id_MoreBtn" android:text="更换" style="@style/boss_unipay_tx_link" />
+            </LinearLayout>
+        </LinearLayout>
+        <Button android:id="@id/boss_unipay_id_AccountBtn" android:layout_marginTop="15.0dip" android:text="立即支付" android:contentDescription="pay" style="@style/boss_unipay_btn_main" />
+    </LinearLayout>
+</LinearLayout>

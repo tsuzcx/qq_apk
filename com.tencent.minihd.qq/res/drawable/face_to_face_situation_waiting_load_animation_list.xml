@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="1600" android:drawable="@drawable/face_to_face_situation_waiting_load_01" />
+    <item android:duration="80" android:drawable="@drawable/face_to_face_situation_waiting_load_02" />
+    <item android:duration="80" android:drawable="@drawable/face_to_face_situation_waiting_load_03" />
+    <item android:duration="80" android:drawable="@drawable/face_to_face_situation_waiting_load_04" />
+    <item android:duration="80" android:drawable="@drawable/face_to_face_situation_waiting_load_05" />
+    <item android:duration="80" android:drawable="@drawable/face_to_face_situation_waiting_load_06" />
+    <item android:duration="80" android:drawable="@drawable/face_to_face_situation_waiting_load_07" />
+    <item android:duration="80" android:drawable="@drawable/face_to_face_situation_waiting_load_08" />
+    <item android:duration="80" android:drawable="@drawable/face_to_face_situation_waiting_load_09" />
+    <item android:duration="80" android:drawable="@drawable/face_to_face_situation_waiting_load_10" />
+    <item android:duration="80" android:drawable="@drawable/face_to_face_situation_waiting_load_11" />
+    <item android:duration="80" android:drawable="@drawable/face_to_face_situation_waiting_load_12" />
+    <item android:duration="80" android:drawable="@drawable/face_to_face_situation_waiting_load_13" />
+    <item android:duration="80" android:drawable="@drawable/face_to_face_situation_waiting_load_14" />
+    <item android:duration="80" android:drawable="@drawable/face_to_face_situation_waiting_load_15" />
+</animation-list>

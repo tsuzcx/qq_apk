@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@id/bg_main" android:drawable="@drawable/qvip_profile_bg_main_breathe" android:left="12.0dip" android:top="12.0dip" android:right="12.0dip" android:bottom="12.0dip" />
+    <item android:id="@id/bg_second" android:drawable="@drawable/qvip_profile_bg_main_breathe" android:left="24.0dip" android:top="24.0dip" android:right="24.0dip" android:bottom="24.0dip" />
+    <item android:id="@id/bg_edge" android:drawable="@drawable/qvip_profile_edge_breathe" android:left="42.0dip" android:top="42.0dip" android:right="42.0dip" android:bottom="42.0dip" />
+</layer-list>

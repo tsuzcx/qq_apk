@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="horizontal" android:background="@drawable/skin_group_list_sub_entry" android:layout_width="fill_parent" android:layout_height="30.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textColor="@color/skin_black_group_item" android:ellipsize="middle" android:gravity="center_vertical" android:id="@id/nearby_troops_group_title" android:paddingRight="100.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="16.0dip" android:singleLine="true" android:layout_alignParentLeft="true" />
+    <TextView android:textColor="@color/skin_gray2" android:gravity="center_vertical" android:id="@id/nearby_troops_group_distance" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="15.0dip" android:layout_alignParentRight="true" />
+</RelativeLayout>

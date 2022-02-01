@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/title" style="@style/TroopInfoExItemTitle" />
+    <ImageView android:id="@id/arrow" style="@style/TroopInfoExItemArrow" />
+    <LinearLayout android:id="@id/content" style="@style/TroopInfoExItemContent">
+        <View style="@style/TroopInfoExItemSpace" />
+        <TextView android:id="@id/info" style="@style/TroopInfoExItemInfo" />
+    </LinearLayout>
+</RelativeLayout>

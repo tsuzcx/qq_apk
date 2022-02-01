@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/qb_tenpay_pagebg_color" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/qb_tenpay_common_title_bar" />
+    <LinearLayout android:orientation="vertical" android:paddingLeft="0.0dip" android:paddingTop="35.0dip" android:paddingRight="0.0dip" android:paddingBottom="9.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:background="@drawable/qb_tenpay_border" android:padding="1.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bank_debit" android:background="@drawable/qb_tenpay_btn_white" android:paddingLeft="15.0dip" android:layout_width="fill_parent" android:layout_height="42.0dip">
+                <TextView android:textColor="@color/qb_tenpay_black_white_color" android:id="@id/bank_debit_txt" android:duplicateParentState="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/qb_tenpay_select_bank_cxk" android:layout_weight="1.0" style="@style/qb_tenpay_label" />
+                <TextView android:textSize="16.0sp" android:textColor="@color/qb_tenpay_light_gray_color" android:id="@id/bank_debit_no" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/qb_tenpay_select_bank_cxk" android:layout_weight="1.0" />
+                <ImageView android:id="@id/bank_debit_radio" android:duplicateParentState="true" android:layout_marginRight="10.0dip" style="@style/qb_tenpay_arrow_r" />
+                <TextView android:textSize="16.0sp" android:id="@id/bank_debit_bind" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" />
+                <TextView android:textSize="16.0sp" android:textColor="@color/qb_tenpay_light_gray_color" android:id="@id/bank_debit_unsuport" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:text="@string/qb_tenpay_card_notsuport" />
+            </LinearLayout>
+            <View style="@style/qb_tenpay_line" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bank_credit" android:background="@drawable/qb_tenpay_btn_white" android:paddingLeft="15.0dip" android:clickable="true" android:layout_width="fill_parent" android:layout_height="42.0dip">
+                <TextView android:textColor="@color/qb_tenpay_black_white_color" android:id="@id/bank_credit_txt" android:duplicateParentState="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/qb_tenpay_select_bank_xyk" android:layout_weight="1.0" style="@style/qb_tenpay_label" />
+                <TextView android:textSize="16.0sp" android:textColor="@color/qb_tenpay_light_gray_color" android:id="@id/bank_credit_no" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/qb_tenpay_select_bank_xyk" android:layout_weight="1.0" style="@style/qb_tenpay_label" />
+                <ImageView android:id="@id/bank_credit_radio" android:duplicateParentState="true" android:layout_marginRight="10.0dip" style="@style/qb_tenpay_arrow_r" />
+                <TextView android:textSize="16.0sp" android:id="@id/bank_credit_bind" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" />
+                <TextView android:textSize="16.0sp" android:textColor="@color/qb_tenpay_light_gray_color" android:id="@id/bank_credit_unsuport" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:text="@string/qb_tenpay_card_notsuport" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

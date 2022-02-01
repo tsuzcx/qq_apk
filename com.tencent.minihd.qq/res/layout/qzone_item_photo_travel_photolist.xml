@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/qzone_white" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/timeData_container" android:paddingLeft="@dimen/album_grid_edge_padding" android:paddingRight="@dimen/album_grid_edge_padding" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip">
+        <CheckBox android:id="@id/item_select_all" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:button="@drawable/qzone_checkbox_bg2" />
+        <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/qzone_color_hei" android:id="@id/timeData" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <ImageView android:id="@id/timeRightArrow" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qzone_feed_recomm_arrow" android:contentDescription="@null" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/photolist_poi_area" android:paddingLeft="@dimen/album_grid_edge_padding" android:paddingRight="@dimen/album_grid_edge_padding" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/poi_icon" android:background="@drawable/qzone_address_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:layout_marginBottom="5.0dip" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff686868" android:ellipsize="end" android:id="@id/poi_name" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:singleLine="true" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff686868" android:ellipsize="end" android:id="@id/poi_address" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:layout_marginBottom="5.0dip" android:singleLine="true" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/imageViewContainer" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/album_grid_item_vertical_spacing" android:baselineAligned="false">
+        <com.qzone.widget.AsyncMarkImageView android:id="@id/photo1" android:layout_width="@dimen/album_item_wh" android:layout_height="@dimen/album_item_wh" />
+        <com.qzone.widget.AsyncMarkImageView android:id="@id/photo2" android:layout_width="@dimen/album_item_wh" android:layout_height="@dimen/album_item_wh" android:layout_marginLeft="@dimen/album_grid_item_horizontal_spacing" android:layout_toRightOf="@id/photo1" />
+        <com.qzone.widget.AsyncMarkImageView android:id="@id/photo3" android:layout_width="@dimen/album_item_wh" android:layout_height="@dimen/album_item_wh" android:layout_marginLeft="@dimen/album_grid_item_horizontal_spacing" android:layout_toRightOf="@id/photo2" />
+        <com.qzone.widget.AsyncMarkImageView android:id="@id/photo4" android:layout_width="@dimen/album_item_wh" android:layout_height="@dimen/album_item_wh" android:layout_marginLeft="@dimen/album_grid_item_horizontal_spacing" android:layout_toRightOf="@id/photo3" />
+    </RelativeLayout>
+</LinearLayout>

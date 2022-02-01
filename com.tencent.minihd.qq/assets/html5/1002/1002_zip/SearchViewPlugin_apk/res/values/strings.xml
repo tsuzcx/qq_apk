@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SearchViewPlugin</string>
+    <string name="title_activity_view_show">ViewShowActivity</string>
+    <string name="ab_active_search_movie_score">评分:  %1$.1f</string>
+    <string name="qb_active_search_movie_type">类型:  %1$s</string>
+    <string name="qb_active_search_shopping_comment">%1$d人评论  %2$d%%好评率</string>
+    <string name="qb_active_search_app_info">%1$s人下载  %2$s</string>
+    <string name="qb_active_search_coupon_price">人均:  %d元</string>
+    <string name="qb_active_search_hot_title">热门</string>
+    <string name="qb_active_search_result_app">搜索结果来自应用宝</string>
+    <string name="qb_active_search_result_movie">搜索结果来自电影</string>
+    <string name="qb_active_search_result_shopping">搜索结果来自购物</string>
+    <string name="qb_active_search_result_coupon">搜索结果来自吃喝玩乐</string>
+    <string name="qb_active_search_result_read">搜索结果来自阅读</string>
+    <string name="qb_active_search_result_tribar">搜索结果来自兴趣部落</string>
+    <string name="qb_active_search_result_stars">评星:%.1f星</string>
+    <string name="qb_active_search_result_score">评分:%.1f分</string>
+    <string name="qb_active_search_result_app_info">%1$s人下载,安装包大小:%2$s</string>
+    <string name="qb_active_search_result_book_name">书名:%s</string>
+    <string name="qb_active_search_result_book_info">类型:%1$s,作者:%2$s</string>
+    <string name="qb_active_search_result_coupon_catigary">类目:%s</string>
+    <string name="qb_active_search_result_coupon_addr">地址:%s</string>
+    <string name="qb_active_search_result_coupon_dist">距你%.1f</string>
+    <string name="qb_active_search_result_coupon_metre">米</string>
+    <string name="qb_active_search_result_coupon_kilometre">千米</string>
+    <string name="qb_active_search_result_movie_type">类型:%s</string>
+    <string name="qb_active_search_result_shopping_price">%.2f元</string>
+    <string name="qb_active_search_result_shopping_comment">%1$d人评论,百分之%2$d好评率</string>
+    <string name="qb_active_search_result_tribar_second_line">关注用户:  %1$s  今日话题:  %2$s</string>
+    <string name="qb_active_search_result_tribar_second_line_read">关注用户:  %1$s   , 今日新帖：  %2$s</string>
+    <string name="qb_active_search_result_post_third_line">来自  %s</string>
+    <string name="qb_active_search_result_tribar_name">%1$s部落</string>
+    <string name="qb_active_search_result_tribar_details">部落简介:%1$s</string>
+    <string name="qb_active_search_result_post_name">话题：%1$s</string>
+    <string name="qb_active_search_result_post_detail">话题简介:%1$s</string>
+</resources>

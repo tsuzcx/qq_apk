@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/common_bg_color" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:id="@id/empty_tip" android:background="@drawable/bg_texture" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <RelativeLayout android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <ImageView android:id="@id/image" android:layout_width="100.0dip" android:layout_height="100.0dip" android:src="@drawable/no_discussion_tip" android:layout_centerHorizontal="true" />
+                <TextView android:textSize="16.0sp" android:textColor="#ff333333" android:id="@id/text_view" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="三五好友，随便聊聊" android:layout_below="@id/image" android:layout_centerHorizontal="true" />
+                <Button android:id="@id/create_btn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="35.0dip" android:layout_marginRight="10.0dip" android:text="立即创建" android:layout_below="@id/text_view" style="@style/ButtonBlue" />
+            </RelativeLayout>
+        </LinearLayout>
+        <com.tencent.widget.XListView android:scrollbarThumbVertical="@drawable/scrollbar_handle_vertical" android:id="@id/lv_discussion" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:divider="@null" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</LinearLayout>

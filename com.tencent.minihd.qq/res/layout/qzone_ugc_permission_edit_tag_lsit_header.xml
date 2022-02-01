@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:id="@id/ugc_edit_tag_header" android:background="#ffffffff" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/addIcon" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_marginLeft="10.0dip" android:src="@drawable/qzone_ugc_right_add" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="添加" />
+    <TextView android:textSize="15.0sp" android:textColor="#ff295998" android:gravity="center|left" android:duplicateParentState="true" android:layout_width="218.0dip" android:layout_height="54.0dip" android:layout_marginLeft="10.0dip" android:text="@string/qzone_ugc_edit_tag_add" android:singleLine="true" android:layout_toRightOf="@id/addIcon" android:layout_centerVertical="true" />
+</RelativeLayout>

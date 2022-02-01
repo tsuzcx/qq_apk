@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/submsg_item_root" android:background="@drawable/skin_setting_strip_bg_unpressed" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="@color/activate_base_page_bg" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="32.0dip" android:layout_marginRight="32.0dip">
+            <View android:background="#fff2f2f2" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="24.0dip" android:layout_marginRight="24.0dip" />
+            <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="80.0dip">
+                <RelativeLayout android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="24.0dip" android:layout_marginRight="24.0dip">
+                    <ImageView android:id="@id/submsg_item_icon" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@drawable/h001" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+                    <View android:id="@id/middle_line" android:background="#00000000" android:layout_width="1.0px" android:layout_height="4.0dip" android:layout_toRightOf="@id/submsg_item_icon" android:layout_centerVertical="true" />
+                    <TextView android:textSize="12.0dip" android:textColor="#ffb2b2b2" android:gravity="center_vertical" android:id="@id/submsg_item_time" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginBottom="3.0dip" android:singleLine="true" android:layout_above="@id/middle_line" android:layout_alignParentRight="true" />
+                    <TextView android:textSize="16.0dip" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/submsg_item_name" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:singleLine="true" android:layout_toLeftOf="@id/submsg_item_time" android:layout_toRightOf="@id/submsg_item_icon" android:layout_above="@id/middle_line" />
+                    <com.tencent.mobileqq.activity.recent.cur.DragTextView android:textSize="12.0dip" android:textColor="@color/white" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/submsg_item_unread" android:background="@drawable/skin_tips_newmessage" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:includeFontPadding="false" android:layout_below="@id/middle_line" android:layout_alignParentRight="true" />
+                    <TextView android:textSize="14.0dip" android:textColor="#ff737373" android:ellipsize="end" android:gravity="center|left" android:id="@id/submsg_item_content" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:singleLine="true" android:layout_toLeftOf="@id/submsg_item_unread" android:layout_toRightOf="@id/submsg_item_icon" android:layout_below="@id/middle_line" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.minihd.qq"
+  xmlns:dslv="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <Button android:textSize="17.0sp" android:textColor="@color/qvip_emoji_multi_delete_text" android:id="@id/button_delete" android:background="@drawable/qvip_emoji_multi_delete_bg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="44.0dip" android:text="@string/user_emoticon_multi_delete" android:layout_alignParentBottom="true" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/button_delete">
+        <com.tencent.mobileqq.widget.TabBarView android:id="@id/tabBar" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/skin_black_group_item" android:gravity="center_vertical" android:id="@id/f_emosm_tip_finish" android:background="@drawable/common_list_group_item_background" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="75.0dip" android:text="@string/f_emosm_tip_finish" android:drawableRight="@drawable/common_arrow_right_selector" />
+        <com.tencent.mobileqq.emosm.view.DragSortListView android:id="@android:id/list" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@null" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0px" dslv:collapsed_height="1.0dip" dslv:drag_scroll_start="0.33" dslv:remove_mode="clickRemove" dslv:float_alpha="0.6" dslv:slide_shuffle_speed="0.3" dslv:drag_enabled="true" dslv:remove_enabled="true" dslv:drag_start_mode="onDown" dslv:drag_handle_id="@id/drag_handle" dslv:click_remove_id="@id/click_remove" dslv:ignore_delete_enabled="true" />
+    </LinearLayout>
+</RelativeLayout>

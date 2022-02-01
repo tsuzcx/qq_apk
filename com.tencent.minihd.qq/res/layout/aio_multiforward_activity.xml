@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/multi_forword" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.bubble.ChatXListView android:id="@id/multi_listView" android:focusable="false" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:transcriptMode="normal" android:divider="@null" />
+    <com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner android:id="@id/animator" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignTop="@id/multi_listView" android:layout_alignBottom="@id/multi_listView" />
+    <RelativeLayout android:id="@id/multi_descriptionView" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true">
+        <ImageView android:id="@id/multi_networkErrorImageView" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/common_blank_icon_networkerror" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="@dimen/font_size_middle" android:id="@id/multi_descriptionTextView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/refreshing" android:layout_below="@id/multi_networkErrorImageView" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</RelativeLayout>

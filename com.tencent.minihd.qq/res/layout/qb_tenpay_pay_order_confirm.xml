@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/qb_tenpay_pagebg_color" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/qb_tenpay_common_title_bar" />
+    <LinearLayout android:orientation="vertical" android:background="@color/qb_tenpay_white_color" android:paddingLeft="15.0dip" android:paddingTop="12.0dip" android:paddingRight="15.0dip" android:paddingBottom="18.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:text="@string/qb_tenpay_pay_money" android:layout_alignParentLeft="true" style="@style/qb_tenpay_order_info" />
+            <LinearLayout android:gravity="right" android:orientation="vertical" android:paddingBottom="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true">
+                <TextView android:textSize="20.0sp" android:textColor="@color/qb_tenpay_orange_color" android:id="@id/tenpay_cut_fee" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" android:text="9999.10元" />
+                <TextView android:textSize="14.0sp" android:textColor="@color/qb_tenpay_thin_color" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="已优惠9999.10元" />
+            </LinearLayout>
+        </RelativeLayout>
+        <View android:layout_marginBottom="10.0dip" style="@style/qb_tenpay_border_dash" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:text="@string/qb_tenpay_pay_account" android:layout_alignParentLeft="true" style="@style/qb_tenpay_order_info" />
+            <TextView android:text="心中那片天(868554884)" android:layout_alignParentRight="true" style="@style/qb_tenpay_order_info" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:text="@string/qb_tenpay_product_name" android:layout_alignParentLeft="true" style="@style/qb_tenpay_order_info" />
+            <TextView android:text="三星Notell 7102(16G)" android:layout_alignParentRight="true" style="@style/qb_tenpay_order_info" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:text="@string/qb_tenpay_merchant_name" android:layout_alignParentLeft="true" style="@style/qb_tenpay_order_info" />
+            <TextView android:text="三星官方旗舰店" android:layout_alignParentRight="true" style="@style/qb_tenpay_order_info" />
+        </RelativeLayout>
+    </LinearLayout>
+    <View style="@style/qb_tenpay_border_waves" />
+    <Button android:layout_marginLeft="15.0dip" android:layout_marginTop="35.0dip" android:layout_marginRight="15.0dip" android:text="@string/qb_tenpay_order_confirm" style="@style/qb_tenpay_btn_submit" />
+</LinearLayout>

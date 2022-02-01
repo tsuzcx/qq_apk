@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@id/multi_video_status_bar_top" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/multi_video_status_bar" android:background="@color/common_tips_bar_blue_bg_color" android:paddingRight="@dimen/common_16dp" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="@dimen/common_32dp" android:layout_marginRight="@dimen/common_32dp" android:layout_marginBottom="@dimen/common_16dp" android:contentDescription="@string/gaudio_return_to_gaudio_user_interface_acc_txt">
+        <ImageView android:id="@id/msgtab_multi_video_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="11.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/skin_aio_multivideo_mic" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+        <TextView android:textSize="12.0sp" android:id="@id/msgtab_multi_video_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="3.0dip" android:text="@string/aio_multi_videoing" android:layout_toRightOf="@id/msgtab_multi_video_icon" android:layout_centerVertical="true" style="@style/common_tips_blue_font" />
+    </RelativeLayout>
+</LinearLayout>

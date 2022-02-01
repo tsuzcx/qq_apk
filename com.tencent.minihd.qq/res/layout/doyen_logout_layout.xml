@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/iv_man" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/doyen_man_1" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <LinearLayout android:gravity="bottom|center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginTop="4.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <ImageView android:id="@id/iv_light_some_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:src="@drawable/doyen_light_some_1" />
+        <ImageView android:id="@id/iv_light_some_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_marginRight="6.0dip" android:src="@drawable/doyen_light_some_2" />
+        <ImageView android:id="@id/iv_light_some_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:src="@drawable/doyen_light_some_3" />
+    </LinearLayout>
+    <ImageView android:id="@id/iv_light" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:src="@drawable/doyen_sunshine" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

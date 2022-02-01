@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/qav_gaudio_control" android:background="@color/qav_ui_control_bg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/qav_title_bar" layout="@layout/qav_title_bar_multi" />
+    <include android:id="@id/qav_bottom_bar" android:layout_alignParentBottom="true" layout="@layout/qav_bottom_bar" />
+</RelativeLayout>

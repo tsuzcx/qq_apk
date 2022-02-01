@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <LinearLayout android:orientation="vertical" android:background="@drawable/shape_bg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="10.0dip">
+        <RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="50.0dip">
+            <TextView android:textSize="@dimen/font_size_large" android:textColor="@color/skin_black" android:id="@id/locat" android:paddingLeft="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qr_location" android:layout_centerVertical="true" />
+            <TextView android:textSize="@dimen/font_size_large" android:textColor="@color/skin_gray2" android:ellipsize="end" android:id="@id/location" android:background="@android:color/white" android:paddingLeft="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="CHINA" android:layout_toLeftOf="@id/change_location" android:layout_toRightOf="@id/locat" android:layout_centerVertical="true" />
+            <TextView android:textSize="@dimen/font_size_large" android:textColor="@color/skin_blue" android:gravity="center" android:id="@id/change_location" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="15.0dip" android:text="@string/info_change" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <View android:background="@drawable/shape_line" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="50.0dip">
+            <TextView android:textSize="@dimen/font_size_large" android:textColor="@color/skin_black" android:paddingLeft="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qr_mobile_num" />
+            <EditText android:textSize="16.0sp" android:textColor="@color/skin_gray2" android:id="@id/mobile_num" android:background="@android:color/white" android:paddingLeft="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="15.0dip" android:hint="@string/qr_input_mobile_num" android:maxLength="20" android:inputType="number" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:gravity="left" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="10.0dip">
+        <CheckBox android:textSize="@dimen/font_size_small" android:textColor="@color/skin_gray2" android:id="@id/readProtocol" android:background="@drawable/btn_check_label_background" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" android:text="@string/qr_read_protocol" />
+        <TextView android:textSize="@dimen/font_size_small" android:textColor="@color/skin_blue" android:id="@id/protocol" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qr_service_protocol" />
+    </LinearLayout>
+</LinearLayout>

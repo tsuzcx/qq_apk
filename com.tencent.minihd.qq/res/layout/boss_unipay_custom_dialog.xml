@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_gravity="center" android:background="@drawable/boss_unipay_bg_tipsframe" android:layout_width="270.0dip" style="@style/boss_unipay_dialog_wrapper"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout style="@style/boss_unipay_dialog_linear.dialogframe">
+        <LinearLayout style="@style/boss_unipay_linear">
+            <LinearLayout android:id="@id/boss_unipay_id_DialogTitleLayout" android:paddingTop="0.0dip" android:paddingBottom="10.0dip" android:visibility="invisible" style="@style/boss_unipay_alert_title">
+                <LinearLayout android:orientation="vertical" android:id="@id/boss_unipay_id_DialogTitleLayoutExpand" android:paddingTop="0.0dip" android:paddingBottom="4.0dip" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                <TextView android:gravity="center" android:id="@id/boss_unipay_id_DialogTitleTxt" android:visibility="gone" android:singleLine="false" style="@style/boss_unipay_tx.big" />
+            </LinearLayout>
+            <LinearLayout style="@style/boss_unipay_alert_con">
+                <TextView android:gravity="center" android:id="@id/boss_unipay_id_DialogMessage" android:singleLine="false" style="@style/boss_unipay_tx" />
+            </LinearLayout>
+        </LinearLayout>
+        <View style="@style/boss_unipay_line.garydeep1" />
+        <LinearLayout style="@style/boss_unipay_bar">
+            <Button android:textSize="16.0sp" android:id="@id/boss_unipay_id_DialogCancel" android:text="取消" android:layout_weight="1.0" style="@style/boss_unipay_btn.noborder" />
+            <View android:id="@id/boss_unipay_id_btnGap" style="@style/boss_unipay_partline" />
+            <Button android:textSize="16.0sp" android:id="@id/boss_unipay_id_DialogEnsure" android:text="充值" android:layout_weight="1.0" style="@style/boss_unipay_btn.noborder" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

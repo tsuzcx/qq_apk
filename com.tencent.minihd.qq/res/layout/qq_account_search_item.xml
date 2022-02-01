@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/qq_account_list_item" android:paddingLeft="32.0dip" android:paddingRight="32.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="@drawable/card_list_item_nor_background" android:paddingLeft="32.0dip" android:paddingRight="32.0dip" android:layout_width="fill_parent" android:layout_height="88.0dip">
+        <ImageView android:id="@id/head_iv" style="@style/HeaderIcon" />
+        <RelativeLayout android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" android:layout_toRightOf="@id/head_iv" android:layout_centerVertical="true">
+            <TextView android:textSize="18.0sp" android:textColor="@color/skin_dark_gray" android:ellipsize="end" android:id="@id/nick_tv" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="180.0dip" android:singleLine="true" android:includeFontPadding="false" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/white" android:id="@id/desc_tv" android:background="@drawable/tips_blue" android:paddingLeft="4.0dip" android:paddingTop="2.0dip" android:paddingRight="4.0dip" android:paddingBottom="2.0dip" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:includeFontPadding="false" android:drawablePadding="2.0dip" android:layout_toRightOf="@id/nick_tv" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/skin_gray2" android:gravity="center|left" android:id="@id/loc_tv" android:paddingLeft="2.0dip" android:paddingTop="1.0dip" android:paddingRight="2.0dip" android:paddingBottom="1.0dip" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="2.0dip" android:includeFontPadding="false" android:layout_toRightOf="@id/desc_tv" />
+            <com.tencent.mobileqq.widget.StatableSpanTextView android:textSize="14.0sp" android:textColor="#8c000000" android:ellipsize="end" android:id="@id/sig_tv" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/nick_tv" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_horizontal" android:background="@drawable/bg_texture" android:paddingLeft="11.0dip" android:paddingRight="11.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/status_icon_img" android:paddingTop="127.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/status_same_status_ic" />
+    <TextView android:textSize="@dimen/textSizeS3" android:textColor="@color/skin_dark_gray" android:paddingLeft="37.0dip" android:paddingRight="37.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="在这里，你能找到此时与你做相同事情的人。" android:layout_alignBottom="@id/status_icon_img" android:lineSpacingExtra="2.0dip" />
+    <Button android:id="@id/status_open_btn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:text="查找做相同事情的人" android:layout_below="@id/status_icon_img" style="@style/ButtonBlue" />
+</RelativeLayout>

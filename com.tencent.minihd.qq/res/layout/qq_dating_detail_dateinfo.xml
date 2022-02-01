@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/rl_dating_subject_info" android:background="@drawable/qq_dating_feed_card_middle_normal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/imgv_subject" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="13.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        <TextView android:gravity="center_vertical" android:id="@id/subject" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:maxLength="15" android:layout_toRightOf="@id/imgv_subject" android:layout_alignTop="@id/imgv_subject" android:layout_alignBottom="@id/imgv_subject" style="@style/DatingFont_3" />
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="-5.0dip" android:layout_marginBottom="-5.0dip" android:layout_toRightOf="@id/subject" android:layout_alignTop="@id/imgv_subject" android:layout_alignBottom="@id/imgv_subject">
+            <ImageView android:id="@id/imgv_date_status" android:background="@drawable/qq_dating_status_enroll" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <TextView android:gravity="center_vertical" android:id="@id/paytype" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/dating_busi_img_marginL" android:layout_alignTop="@id/imgv_subject" android:layout_alignBottom="@id/imgv_subject" android:layout_alignParentRight="true" style="@style/DatingFont_2" />
+        <TextView android:id="@id/txv_date_gender" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.5dip" android:layout_marginRight="@dimen/dating_busi_img_marginL" android:layout_below="@id/subject" android:layout_alignLeft="@id/subject" style="@style/DatingFont_2" />
+        <RelativeLayout android:id="@id/rl_date_gender_dot" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignLeft="@id/imgv_subject" android:layout_alignTop="@id/txv_date_gender" android:layout_alignRight="@id/imgv_subject" android:layout_alignBottom="@id/txv_date_gender">
+            <ImageView android:id="@id/imgv_date_gender_dot" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <TextView android:id="@id/txv_date_intro" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.5dip" android:layout_marginRight="@dimen/dating_busi_img_marginL" android:layout_below="@id/txv_date_gender" android:layout_alignLeft="@id/txv_date_gender" style="@style/DatingFont_2" />
+        <RelativeLayout android:id="@id/rl_date_intro_dot" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:layout_alignLeft="@id/imgv_subject" android:layout_alignTop="@id/txv_date_intro" android:layout_alignRight="@id/imgv_subject">
+            <ImageView android:id="@id/imgv_date_intro_dot" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <View android:layout_width="fill_parent" android:layout_height="13.0dip" android:layout_below="@id/txv_date_intro" />
+    </RelativeLayout>
+    <View android:id="@id/v_divider" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/dating_busi_img_marginL" android:layout_marginRight="@dimen/dating_busi_img_marginL" android:layout_below="@id/rl_dating_subject_info" />
+    <RelativeLayout android:id="@id/rl_busi" android:background="@drawable/qq_dating_feed_card_middle" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/v_divider">
+        <com.tencent.widget.CustomImgView android:id="@id/busi_img" android:layout_width="@dimen/dating_busi_size" android:layout_height="@dimen/dating_busi_size" android:layout_marginLeft="@dimen/dating_info_marginLR" android:layout_marginTop="10.0dip" android:layout_marginRight="@dimen/dating_busi_img_marginL" android:layout_alignParentRight="true" />
+        <ImageView android:id="@id/imgv_busi_name_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="12.5dip" android:src="@drawable/qq_dating_detail_icon_shop" />
+        <TextView android:ellipsize="end" android:id="@id/txv_busi_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:maxLines="2" android:layout_toLeftOf="@id/busi_img" android:layout_toRightOf="@id/imgv_busi_name_icon" android:layout_alignTop="@id/imgv_busi_name_icon" style="@style/DatingFont_3" />
+        <TextView android:ellipsize="end" android:id="@id/txv_busi_addr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.5dip" android:maxLines="2" android:layout_toLeftOf="@id/busi_img" android:layout_below="@id/txv_busi_name" android:layout_alignLeft="@id/txv_busi_name" style="@style/DatingFont_2" />
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:layout_alignLeft="@id/imgv_busi_name_icon" android:layout_alignTop="@id/txv_busi_addr" android:layout_alignRight="@id/imgv_busi_name_icon">
+            <ImageView android:id="@id/imgv_busi_addr_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qq_dating_detail_icon_location" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <TextView android:ellipsize="end" android:id="@id/txv_date_time" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.5dip" android:singleLine="true" android:layout_toLeftOf="@id/busi_img" android:layout_below="@id/txv_busi_addr" android:layout_alignLeft="@id/txv_busi_name" style="@style/DatingFont_2" />
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignLeft="@id/imgv_busi_name_icon" android:layout_alignTop="@id/txv_date_time" android:layout_alignRight="@id/imgv_busi_name_icon" android:layout_alignBottom="@id/txv_date_time">
+            <ImageView android:id="@id/imgv_date_time_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qq_dating_detail_icon_time" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <View android:id="@id/v_bottom_space" android:layout_width="1.0dip" android:layout_height="11.0dip" android:layout_below="@id/txv_date_time" />
+    </RelativeLayout>
+    <View android:id="@id/v_bottom_divider_line" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/rl_busi" />
+    <View android:id="@id/v_bottom_divider" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="10.0dip" android:layout_below="@id/v_bottom_divider_line" />
+    <View android:id="@id/v_upon_intro" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/v_divider" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+</RelativeLayout>

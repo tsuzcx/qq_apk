@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/qvip_maproam_search_bar" android:background="@drawable/qvip_maproam_search_bar_background" android:layout_width="fill_parent" android:layout_height="42.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="4.0dip">
+        <ImageView android:id="@id/qvip_maproam_searchbar_back" android:padding="5.0dip" android:clickable="true" android:layout_width="18.0dip" android:layout_height="24.0dip" android:layout_marginLeft="5.0dip" android:src="@drawable/qvip_maproam_top_back_left_selector_blue" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@string/back" />
+        <View android:id="@id/qb_troop_flagView" android:background="#ffdfdfdf" android:layout_width="1.0dip" android:layout_height="26.0dip" android:layout_marginLeft="12.0dip" android:layout_toRightOf="@id/qvip_maproam_searchbar_back" android:layout_centerVertical="true" />
+        <EditText android:textSize="15.0dip" android:textColor="@color/skin_input" android:ellipsize="none" android:id="@id/et_search_keyword" android:background="@drawable/skin_searchbar_input" android:paddingLeft="10.0dip" android:paddingRight="30.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:singleLine="true" android:layout_toRightOf="@id/qb_troop_flagView" android:layout_centerVertical="true" android:inputType="textNoSuggestions" android:contentDescription="搜索" />
+        <TextView android:textColor="@color/skin_hint_input" android:gravity="center" android:id="@id/tv_search_tips" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="22.0dip" android:text="@string/searchdialog_find_contact_new" android:drawableLeft="@drawable/skin_searchbar_icon" android:drawablePadding="5.0dip" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</merge>

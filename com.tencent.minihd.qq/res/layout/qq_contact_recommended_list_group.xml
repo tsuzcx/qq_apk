@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/group_item_layout" android:background="@drawable/common_list_group_item_background" android:layout_width="fill_parent" android:layout_height="44.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/iv_fake_indicator" android:visibility="invisible" android:layout_width="10.0dip" android:layout_height="50.0dip" android:layout_marginLeft="17.0dip" android:src="@drawable/skin_indicator_expanded" android:scaleType="center" android:layout_alignParentLeft="true" />
+    <TextView android:textSize="16.0dip" android:textColor="@color/skin_black_group_item" android:ellipsize="end" android:gravity="center|left" android:id="@id/group_name" android:layout_width="wrap_content" android:layout_height="50.0dip" android:layout_marginLeft="44.0dip" android:layout_marginRight="17.0dip" android:maxLines="1" android:maxEms="11" android:singleLine="true" android:includeFontPadding="false" android:layout_toLeftOf="@id/contact_count" android:layout_alignParentLeft="true" />
+    <TextView android:textSize="16.0dip" android:textColor="@color/skin_float_btn" android:gravity="center|right" android:id="@id/check_all" android:focusable="false" android:clickable="false" android:layout_width="100.0dip" android:layout_height="50.0dip" android:layout_marginRight="12.0dip" android:text="取消选择" android:maxLines="1" android:layout_alignParentRight="true" />
+</RelativeLayout>

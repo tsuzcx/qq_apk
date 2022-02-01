@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bitmap android:src="@drawable/aio_bg_aperture" android:tileMode="mirror"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

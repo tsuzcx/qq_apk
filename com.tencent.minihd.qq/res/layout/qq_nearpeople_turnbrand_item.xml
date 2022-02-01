@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/qq_nearpeople_turnbrand_card" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/qq_nearpeople_turnbrand_image_head" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/qq_nearpeople_image_head" android:scaleType="centerCrop" android:contentDescription="@null" />
+    <FrameLayout android:id="@id/qq_nearpeople_turnbrand_card_info" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <View android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <TextView android:textSize="16.0sp" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/qq_nearpeople_turnbrand_nickname" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:singleLine="true" android:layout_weight="1.0" />
+            <TextView android:textSize="16.0sp" android:textColor="#ff000000" android:id="@id/qq_nearpeople_turnbrand_age" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginRight="10.0dip" android:singleLine="true" android:layout_weight="0.0" />
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

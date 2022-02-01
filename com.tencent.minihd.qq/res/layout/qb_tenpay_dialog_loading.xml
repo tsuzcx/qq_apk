@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_gravity="center" android:orientation="vertical" android:background="@drawable/qb_tenpay_wallet_loading_bg" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center_horizontal" android:background="@drawable/qb_tenpay_wallet_logo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/qb_tenpay_link_color" android:layout_gravity="center" android:id="@id/tenpay_progress_txt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/qb_tenpay_wallet_loading" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+        <ImageView android:layout_gravity="center_vertical" android:background="#ff0079ff" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        <ImageView android:id="@id/qb_loading_pointer" android:background="@drawable/qb_tenpay_loading_pointer" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </FrameLayout>
+</LinearLayout>

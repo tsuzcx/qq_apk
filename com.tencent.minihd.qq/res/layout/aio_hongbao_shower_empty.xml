@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/rl_hongbao_content" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/ll_hongbao" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/rl_hongbao" android:background="@drawable/aio_bg_hongbao_empty" android:layout_width="240.0dip" android:layout_height="240.0dip">
+            <ImageView android:id="@id/iv_hongbao_logo" android:layout_width="70.0dip" android:layout_height="70.0dip" android:layout_marginRight="33.0dip" android:layout_marginBottom="5.0dip" android:src="@drawable/aio_bg_hongbao_logo" android:scaleType="fitCenter" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+        <TextView android:textSize="24.0sp" android:textColor="#fffee646" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/tv_hongbao_hint" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="红包派完了\n下次记得要快一点" android:maxLines="2" />
+    </LinearLayout>
+</RelativeLayout>

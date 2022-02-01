@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/edit_root_rl" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="0.0px"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.ClearableEditText android:textColor="@color/skin_input" android:gravity="center_vertical" android:id="@id/group_edit_clearinput" android:paddingBottom="30.0dip" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:minHeight="74.0dip" android:layout_alignParentTop="true" android:inputType="text" android:imeOptions="actionDone" style="@style/common_single_line_input_box_style" />
+    <TextView android:textSize="12.0sp" android:textColor="@color/skin_gray3" android:layout_gravity="right" android:id="@id/group_edit_num_tip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="6.0dip" android:layout_alignBottom="@id/group_edit_clearinput" android:layout_alignParentRight="true" />
+    <ImageView android:id="@id/switch_icon" android:visibility="invisible" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/qzone_edit_face_drawable" android:layout_alignBottom="@id/group_edit_clearinput" android:layout_alignParentLeft="true" />
+    <View android:id="@id/view_fold" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_below="@id/switch_icon" />
+    <LinearLayout android:orientation="vertical" android:id="@id/emotion_panel_container" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="150.0dip" android:layout_below="@id/switch_icon" />
+</RelativeLayout>

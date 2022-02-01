@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/word" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="正在启动相机，请稍候..." android:layout_centerInParent="true" />
+    <RelativeLayout android:id="@id/loCameraTop_high" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_alignParentTop="true" />
+    <RelativeLayout android:id="@id/loCameraBottom_high" android:background="#ff000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="99.0dip" android:layout_alignParentBottom="true">
+        <Button android:id="@id/btnShot" android:background="@drawable/zebra_ic_bt_normal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="fitXY" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/ivGallery" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_marginLeft="17.0dip" android:src="@drawable/zebra_ic_album" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/loCameraTop_short" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_alignParentTop="true" />
+    <RelativeLayout android:id="@id/loCameraBottom_short" android:background="#ff000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <Button android:id="@id/btnShot_short" android:background="@drawable/zebra_ic_bt_normal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/ivGallery_short" android:layout_width="42.0dip" android:layout_height="42.0dip" android:layout_marginLeft="17.0dip" android:src="@drawable/zebra_ic_album" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</RelativeLayout>

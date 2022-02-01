@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/white" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/pic" android:layout_width="35.0dip" android:layout_height="35.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="10.0dip" android:scaleType="centerCrop" android:layout_centerVertical="true" />
+    <FrameLayout android:id="@id/layoutRight" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <ImageView android:id="@id/indicator" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qb_group_troop_bar_pulish_mybar_current_indicator" android:scaleType="centerCrop" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/qb_troop_bar_select_bar_item_click_disable" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/msg" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+    </FrameLayout>
+    <TextView android:textSize="16.0sp" android:textColor="@color/black" android:gravity="center_vertical" android:id="@id/name" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginRight="15.0dip" android:layout_toLeftOf="@id/layoutRight" android:layout_toRightOf="@id/pic" android:layout_centerVertical="true" />
+    <View android:background="@color/qb_troop_bar_divider" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="65.0dip" android:layout_alignParentBottom="true" />
+</RelativeLayout>

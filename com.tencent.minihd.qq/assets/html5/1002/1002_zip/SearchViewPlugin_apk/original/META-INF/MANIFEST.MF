@@ -1,0 +1,60 @@
+Manifest-Version: 1.0
+Created-By: 1.0 (Android)
+
+Name: res/drawable-xhdpi/qq_active_search_tag_cyan.9.png
+SHA1-Digest: N/hdKTNp8jShfDstoOauOL1JWQU=
+
+Name: res/drawable-xhdpi/qb_active_search_tribar_icon.png
+SHA1-Digest: n7sSWR2kDnR8HOzA5rVS1gPVhls=
+
+Name: res/layout/qb_active_search_read_item.xml
+SHA1-Digest: YE63sPOd67qr57QXn+ldTfKkPSo=
+
+Name: res/layout/qb_active_search_tribar_item.xml
+SHA1-Digest: IWnonsXhQUeTNsbcgJXg5yfozgo=
+
+Name: res/drawable-xhdpi/qq_active_search_tag_purple.9.png
+SHA1-Digest: FxfjhXciQvM5KySB1DzkK+dWv3M=
+
+Name: resources.arsc
+SHA1-Digest: v8GH97tFjZ8oyjC0LsssXCoZYBk=
+
+Name: classes.dex
+SHA1-Digest: +qIXapqtFFUzx9tG4XfzWP4LsiI=
+
+Name: res/drawable-xhdpi/qq_active_search_tag_orange.9.png
+SHA1-Digest: KmFbHDq/EAdHUvPCtq+oRlC5fxM=
+
+Name: res/drawable-xhdpi/qb_active_search_star_off.png
+SHA1-Digest: vJY2wxZFR88oLhCWfVtSKkMGyc4=
+
+Name: res/layout/qb_active_search_shoping_item.xml
+SHA1-Digest: nzaCh1o+Zpt4db38HoUd5R4j+QA=
+
+Name: res/drawable/qb_active_search_item_bg.xml
+SHA1-Digest: iO6UT7TCzpitc3Qm+v+9pGukuAM=
+
+Name: AndroidManifest.xml
+SHA1-Digest: weLAz7jn6+xjGl7tbZIEdrXjL/Q=
+
+Name: res/drawable-xhdpi/qq_active_search_tag_blue.9.png
+SHA1-Digest: Snb92BFkcEqNtmKjXNvHd5yjPOQ=
+
+Name: res/layout/qb_active_search_app_item.xml
+SHA1-Digest: AWJF9LzKrthkGrv2P1wNWJW1JbU=
+
+Name: res/drawable-xhdpi/qb_active_search_star_half.png
+SHA1-Digest: TL6eSMpehlRFPUVq1grhNfR2zLE=
+
+Name: res/drawable-xhdpi/qb_active_search_star_on.png
+SHA1-Digest: cDg0M2cR1fEMOI98rxjNUvvEM9w=
+
+Name: res/drawable-xhdpi/qb_active_search_tuan.png
+SHA1-Digest: yVZaKwhrZFtkuRBlFBR84UZS7fk=
+
+Name: res/layout/qb_active_search_coupon_item.xml
+SHA1-Digest: Q7tenY9yVn9qAVooemexsuLt+I8=
+
+Name: res/layout/qb_active_search_movie_item.xml
+SHA1-Digest: UsRyKZCQDDGEDPg+q7yJIZHzG8U=
+

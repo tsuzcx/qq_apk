@@ -1,0 +1,62 @@
+package com.tencent.mobileqq.activity.aio.tips;
+
+import android.app.Activity;
+import android.content.res.Resources;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.TipsBar;
+import gdf;
+
+public class CommingRingTipsBar
+  implements TipsBarTask
+{
+  static final String a;
+  public Activity a;
+  public TipsManager a;
+  public QQAppInterface a;
+  
+  static
+  {
+    jdField_a_of_type_JavaLangString = CommingRingTipsBar.class.getSimpleName();
+  }
+  
+  public CommingRingTipsBar(QQAppInterface paramQQAppInterface, TipsManager paramTipsManager, Activity paramActivity)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager = paramTipsManager;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+  }
+  
+  public int a()
+  {
+    return 11;
+  }
+  
+  public View a(Object... paramVarArgs)
+  {
+    paramVarArgs = new TipsBar(this.jdField_a_of_type_AndroidAppActivity);
+    paramVarArgs.setTipsText(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131368556));
+    paramVarArgs.setTipsIcon(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840074));
+    paramVarArgs.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131368556));
+    paramVarArgs.setOnClickListener(new gdf(this));
+    return paramVarArgs;
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs) {}
+  
+  public int[] a()
+  {
+    return null;
+  }
+  
+  public int b()
+  {
+    return 37;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.minihd.qq\assets\exlibs.2.jar\classes.jar
+ * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.CommingRingTipsBar
+ * JD-Core Version:    0.7.0.1
+ */

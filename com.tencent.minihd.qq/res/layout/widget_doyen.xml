@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:id="@id/ll_root" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/iv_bg" android:background="@drawable/doyen_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/widget_shadow_margin" android:layout_marginTop="@dimen/widget_shadow_margin" android:layout_marginRight="@dimen/widget_shadow_margin" android:layout_marginBottom="@dimen/widget_shadow_margin_bottom" />
+    <ImageView android:background="@drawable/widget_shadow_layer" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.activity.widget.doyen.DoyenEarthLayout android:id="@id/doyen_earth" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6.0dip" />
+        <LinearLayout android:gravity="right" android:orientation="vertical" android:id="@id/ll_info_container" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/common_32dp" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="@dimen/textSize16sp" android:textColor="@android:color/black" android:id="@id/tv_title" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:id="@id/ll_wheel_container" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:textSize="@dimen/textSize16sp" android:textColor="@android:color/black" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="天" />
+            </LinearLayout>
+            <LinearLayout android:background="@drawable/card_white30" android:paddingLeft="@dimen/common_8dp" android:paddingTop="@dimen/common_8dp" android:paddingRight="@dimen/common_8dp" android:paddingBottom="@dimen/common_8dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/common_8dp">
+                <TextView android:textSize="@dimen/textSize14sp" android:textColor="@color/qzone_55pre_black" android:id="@id/tv_sub_title" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+        <ImageView android:id="@id/iv_doyen_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/common_32dp" android:layout_marginTop="@dimen/common_16dp" android:src="@drawable/qq_new_xman_logo_off" />
+    </RelativeLayout>
+</FrameLayout>

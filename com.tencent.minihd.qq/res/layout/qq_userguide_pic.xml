@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/qq_userguide_picbg" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="欢迎左滑体验视频美颜功能"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="20.0sp" android:textColor="#ff868686" android:id="@id/pass" android:paddingLeft="60.0dip" android:paddingTop="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="10.0dip" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_marginRight="10.0dip" android:text="跳 过》" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:contentDescription="跳过按钮，进入QQ" />
+    <ImageView android:id="@id/qq_userguide_word_2" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="19.0dip" android:layout_marginBottom="151.0dip" android:src="@drawable/qq_userguide_word_2" android:scaleType="fitXY" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:contentDescription="只为一个理由" />
+    <ImageView android:id="@id/qq_userguide_word_1" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qq_userguide_word_1" android:scaleType="fitXY" android:layout_above="@id/qq_userguide_word_2" android:layout_centerHorizontal="true" android:contentDescription="我们做了个功能" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="9.0dip" android:src="@drawable/qq_userguide_dot_purple" />
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="9.0dip" android:src="@drawable/qq_userguide_dot_grey" />
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qq_userguide_dot_grey" />
+    </LinearLayout>
+</RelativeLayout>

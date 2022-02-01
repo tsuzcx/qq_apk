@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/skin_list_item_normal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <include android:id="@id/search_bar" layout="@layout/search_box" />
+    <com.tencent.mobileqq.widget.TabBarView android:id="@id/sort_seg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="32.0dip" />
+    <RelativeLayout android:id="@id/all_member_item" android:background="@drawable/common_list_item_background" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="52.0dip">
+        <ImageView android:id="@id/iv_head_image" android:layout_width="38.0dip" android:layout_height="38.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/contact_list_item_icon_bg_selector" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="100.0dip" android:layout_toRightOf="@id/iv_head_image" android:layout_centerVertical="true">
+            <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/tv_member_level" android:background="@drawable/shape_troop_member_role_bg" android:paddingLeft="6.0dip" android:paddingTop="0.0dip" android:paddingRight="6.0dip" android:paddingBottom="0.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="17.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_weight="0.0" />
+            <TextView android:textSize="16.0dip" android:textColor="@color/skin_black" android:ellipsize="end" android:gravity="center" android:id="@id/tv_name" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:singleLine="true" android:layout_weight="1.0" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/skin_gray2" android:layout_gravity="center_vertical" android:id="@id/tv_level_score" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_weight="0.0" />
+        </LinearLayout>
+        <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2" android:gravity="center_vertical" android:id="@id/remain_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</LinearLayout>

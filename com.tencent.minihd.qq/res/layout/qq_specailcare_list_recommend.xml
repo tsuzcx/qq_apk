@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/scrollbar_handle_vertical" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="0.0px" android:layout_weight="1.0">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="16.0dip" android:textColor="@color/skin_gray2_item" android:gravity="center" android:id="@id/titletip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="55.0dip" android:layout_marginRight="15.0dip" android:text="@string/qq_specail_care_recom_title" android:maxLines="2" android:textAlignment="center" />
+            <com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid android:id="@id/gridview" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="120.0dip" />
+            <Button android:gravity="center" android:id="@id/addBtn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="30.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="50.0dip" android:text="@string/qq_specail_care_add_person" android:layout_below="@id/gridview" style="@style/ButtonBlue" />
+            <View android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_below="@id/addBtn" />
+        </RelativeLayout>
+    </com.tencent.mobileqq.widget.BounceScrollView>
+</LinearLayout>

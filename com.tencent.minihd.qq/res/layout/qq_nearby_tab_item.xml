@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/skin_tabbar_bg" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="15.0sp" android:textColor="@color/qq_nearby_tab_item_title_color" android:gravity="center" android:id="@id/tab_title" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/red_dot" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-3.0dip" android:layout_marginBottom="-3.0dip" android:src="@drawable/skin_tips_dot" android:layout_toRightOf="@id/tab_title" android:layout_above="@id/tab_title" />
+    <TextView android:id="@id/new_dot" android:background="@drawable/skin_tips_newmessage" android:visibility="gone" android:layout_marginLeft="6.0dip" android:text="@string/qq_reddot_new" android:layout_toRightOf="@id/tab_title" android:layout_centerVertical="true" style="@style/CustomNoteTxt" />
+    <ImageView android:id="@id/filter_icon" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:src="@drawable/qq_dating_filter_icon" android:layout_toRightOf="@id/tab_title" android:layout_centerVertical="true" />
+</RelativeLayout>

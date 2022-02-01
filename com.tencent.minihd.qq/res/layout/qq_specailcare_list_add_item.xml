@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/add_an_special_friend" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:background="@drawable/card_shadow_foot" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:background="@drawable/common_list_item_background" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <View android:background="#fff2f2f2" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/common_32dp" android:layout_marginRight="@dimen/common_32dp" />
+            <LinearLayout android:paddingLeft="@dimen/common_32dp" android:paddingRight="@dimen/common_32dp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/common_16dp" android:layout_marginBottom="@dimen/common_32dp">
+                <ImageView android:layout_gravity="center|left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:src="@drawable/add" />
+                <TextView android:textSize="18.0sp" android:textColor="@color/skin_blue" android:layout_gravity="center|left" android:background="@android:color/transparent" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="34.0dip" android:text="@string/qq_specail_care_add" android:singleLine="true" android:contentDescription="@string/qq_specail_care_add" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <View android:background="@color/common_third_page_background" android:layout_width="fill_parent" android:layout_height="@dimen/common_32dp" />
+</LinearLayout>

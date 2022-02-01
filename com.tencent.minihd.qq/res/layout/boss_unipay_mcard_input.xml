@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" style="@style/boss_unipay_wrapper"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <LinearLayout style="@style/boss_unipay_linear">
+            <com.pay.ui.common.APHead android:id="@id/boss_unipay_id_head" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <include layout="@layout/boss_unipay_info_big" />
+        </LinearLayout>
+        <ScrollView android:id="@id/boss_unipay_ScrollView" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true">
+            <LinearLayout android:orientation="vertical" style="@style/boss_unipay_wrapper">
+                <LinearLayout android:paddingLeft="20.0dip" android:paddingTop="26.0dip" android:paddingBottom="2.0dip" style="@style/boss_unipay_bar.p">
+                    <TextView android:text="充值卡面值" style="@style/boss_unipay_tx.middle" />
+                    <TextView android:textSize="14.0sp" android:id="@id/boss_unipay_mcardValue" android:text="100元" style="@style/boss_unipay_tx.price" />
+                    <TextView android:textSize="14.0sp" android:id="@id/boss_unipay_mcardReset" android:layout_marginLeft="5.0dip" android:text="重选" style="@style/boss_unipay_tx_link" />
+                </LinearLayout>
+                <LinearLayout style="@style/boss_unipay_edit_group">
+                    <com.pay.ui.common.APEditText android:id="@id/boss_unipay_mcardNum" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                    <View style="@style/boss_unipay_line" />
+                    <com.pay.ui.common.APEditText android:id="@id/boss_unipay_mcardPWD" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                </LinearLayout>
+                <Button android:id="@id/boss_unipay_mcardValuePayBtn" android:text="立即支付" style="@style/boss_unipay_btn_main" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+    <com.tenpay.android.qqplugin.control.MyKeyboardWindow android:id="@id/boss_unipay_keyboard" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

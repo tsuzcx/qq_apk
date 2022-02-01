@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/qq_recommend_tips_background" android:layout_width="fill_parent" android:layout_height="55.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/recommend_contact_head" android:layout_width="25.5dip" android:layout_height="24.5dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/skin_qq_recommend_unread_tipsbar_head" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/recommend_contact_button" android:layout_toRightOf="@id/recommend_contact_head" android:layout_centerVertical="true">
+        <TextView android:textSize="16.0dip" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/recommend_contact_tips" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" android:singleLine="true" />
+        <TextView android:textSize="14.0dip" android:textColor="#ff808080" android:ellipsize="end" android:id="@id/recommend_contact_list" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" android:singleLine="true" android:layout_below="@id/recommend_contact_tips" />
+    </RelativeLayout>
+    <TextView android:id="@id/recommend_contact_button" android:background="@drawable/qq_recommend_unread_tips_arrow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

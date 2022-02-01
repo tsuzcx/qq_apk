@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/qvip_pay_wallet_root" android:background="@color/qvip_pay_wallet_bg_gray" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/qvip_pay_wallet_layout_bottom" android:layout_width="fill_parent" android:layout_height="58.0dip" android:layout_alignParentBottom="true">
+        <RelativeLayout android:id="@id/qvip_pay_wallet_layout_account" android:background="#ff606263" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
+                <RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <ImageView android:id="@id/qvip_pay_wallet_image_account" android:layout_width="38.0dip" android:layout_height="26.0dip" android:src="@drawable/qvip_pay_my_account" android:scaleType="center" android:contentDescription="@null" />
+                    <ImageView android:id="@id/qvip_pay_wallet_account_redtouch" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/skin_tips_dot" android:layout_toRightOf="@id/qvip_pay_wallet_image_account" android:contentDescription="@null" />
+                </RelativeLayout>
+                <TextView android:textSize="13.0sp" android:textColor="#ffffffff" android:layout_gravity="center_horizontal" android:id="@id/qvip_pay_wallet_text_account" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:scaleType="center" android:text="@string/qvip_pay_account_title" />
+            </LinearLayout>
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/qvip_pay_wallet_layout_add_bank" android:background="#ff606263" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <RelativeLayout android:id="@id/qvip_pay_wallet_layout_add_bank_icon" android:layout_width="140.0dip" android:layout_height="wrap_content" android:layout_centerInParent="true">
+                <ImageView android:id="@id/qvip_pay_wallet_image_addbank" android:layout_width="38.0dip" android:layout_height="26.0dip" android:src="@drawable/qvip_pay_account_add_new" android:scaleType="center" android:layout_centerHorizontal="true" android:contentDescription="@null" />
+                <TextView android:textSize="13.0sp" android:textColor="#ffffffff" android:id="@id/qvip_pay_wallet_text_addbank" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:scaleType="center" android:text="@string/qvip_pay_add_bank_text" android:layout_below="@id/qvip_pay_wallet_image_addbank" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+            <LinearLayout android:layout_width="140.0dip" android:layout_height="wrap_content" android:layout_centerHorizontal="true">
+                <TextView android:textSize="11.0sp" android:textColor="#ffffffff" android:ellipsize="none" android:gravity="center" android:id="@id/qvip_pay_wallet_text_addbank_event" android:background="@drawable/qvip_pay_wallet_text_addbank_event_red_dot" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="82.0dip" android:layout_marginTop="7.0dip" android:singleLine="true" android:maxLength="4" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/qvip_pay_wallet_layout_bottom">
+        <RelativeLayout android:id="@id/qvip_pay_wallet_recommend" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/scrollbar_handle_vertical" android:id="@id/scroll" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="false">
+                <LinearLayout android:orientation="vertical" android:id="@id/qvip_pay_wallet_scroll_layout" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <com.tencent.mobileqq.widget.ADView android:id="@id/qvip_pay_wallet_adbanner_adview" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                    <RelativeLayout android:id="@id/qvip_pay_wallet_message" android:background="#f2fff2b7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                        <ImageView android:id="@id/qvip_pay_wallet_message_icon" android:visibility="gone" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="15.0dip" android:layout_marginBottom="15.0dip" android:scaleType="fitCenter" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+                        <ImageView android:id="@id/qvip_pay_wallet_message_arrow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="15.0dip" android:src="@drawable/qvip_pay_arrow_right" android:scaleType="center" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+                        <TextView android:textSize="15.0sp" android:textColor="#ff000000" android:id="@id/qvip_pay_wallet_message_text" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginRight="21.0dip" android:layout_marginBottom="15.0dip" android:layout_toRightOf="@id/qvip_pay_wallet_message_icon" android:layout_centerVertical="true" />
+                        <View android:background="#1e000000" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
+                    </RelativeLayout>
+                    <LinearLayout android:orientation="vertical" android:id="@id/qvip_pay_recommend_service_container" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/qq_setting_table_item2item_40px" />
+                </LinearLayout>
+            </com.tencent.mobileqq.widget.BounceScrollView>
+            <View android:id="@id/qvip_pay_wallet_bottom_line" android:background="#ffe3e4e5" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/scroll" />
+        </RelativeLayout>
+    </FrameLayout>
+    <RelativeLayout android:id="@id/qvip_pay_wallet_mask_layout" android:background="#99000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

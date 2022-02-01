@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:id="@id/relativeItem" android:background="@drawable/common_list_item_background" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout style="@style/ContactListItem">
+        <com.tencent.widget.FixSizeImageView android:id="@id/iv_icon" style="@style/HeaderIcon" />
+        <ImageView android:id="@id/iv_state" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignRight="@id/iv_icon" android:layout_alignBottom="@id/iv_icon" android:contentDescription="@null" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/text1Area" android:paddingRight="10.0dip" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp_16" android:layout_toRightOf="@id/iv_icon" android:layout_alignParentTop="true">
+            <TextView android:textSize="18.0dip" android:textColor="@color/skin_black_item" android:ellipsize="end" android:id="@id/tv_name" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <TextView android:textSize="18.0dip" android:textColor="@color/skin_gray2_item" android:ellipsize="end" android:id="@id/tv_member_count" android:paddingLeft="2.0dip" android:paddingRight="2.0dip" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <ImageView android:id="@id/iv_flag" android:visibility="gone" android:layout_width="15.0sp" android:layout_height="15.0sp" android:layout_marginLeft="2.0dip" android:layout_marginTop="3.0dip" android:contentDescription="@null" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_toLeftOf="@id/shader" android:layout_below="@id/text1Area" android:layout_alignLeft="@id/text1Area">
+            <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2_item" android:ellipsize="end" android:gravity="center|left" android:id="@id/tv_type" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

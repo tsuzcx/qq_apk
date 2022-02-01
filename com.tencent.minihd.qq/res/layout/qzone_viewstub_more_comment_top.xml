@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ProgressBar android:layout_gravity="center|left" android:id="@id/commentTipsProgressBar" android:visibility="gone" android:layout_width="18.0dip" android:layout_height="18.0dip" android:indeterminate="true" />
+    <com.qzone.proxy.feedcomponent.model.SafeTextView android:textSize="@dimen/feed_item_comment_text_size" android:textColor="@color/qzone_color_hint" android:layout_gravity="center_vertical" android:id="@id/commentTipsText" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="正在加载评论..." android:singleLine="true" />
+    <com.qzone.proxy.feedcomponent.model.SafeTextView android:textSize="@dimen/feed_item_comment_text_size" android:textColor="@color/qzone_color_link" android:layout_gravity="center_vertical" android:id="@id/moreCommentView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="4.0dip" android:text="正在加载评论..." android:singleLine="true" />
+</LinearLayout>

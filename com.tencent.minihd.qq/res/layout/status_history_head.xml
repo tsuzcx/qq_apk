@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingLeft="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/sig_ower" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:id="@id/sigOwnerHead" android:background="@drawable/qq_profilecard_avatar_bg" android:visibility="visible" android:layout_width="@dimen/info_signature_history_avatar_size" android:layout_height="@dimen/info_signature_history_avatar_size" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:src="@drawable/h001" android:scaleType="fitCenter" android:contentDescription="@null" />
+        <TextView android:textSize="@dimen/textSize18sp" android:textColor="@color/black" android:layout_gravity="center_vertical" android:id="@id/sigOwnerName" android:paddingLeft="10.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@null" android:singleLine="true" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/white_line" android:paddingLeft="32.0dip" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:id="@id/status_bg_v" android:background="@drawable/status_time_middle" android:layout_width="0.0dip" android:layout_height="15.0dip" android:layout_alignLeft="@id/status_img" android:layout_alignRight="@id/status_img" />
+        <ImageView android:id="@id/status_img" android:background="@drawable/qvip_sig_dot" android:visibility="invisible" android:layout_width="6.0dip" android:layout_height="6.0dip" android:contentDescription="@null" />
+    </RelativeLayout>
+</LinearLayout>

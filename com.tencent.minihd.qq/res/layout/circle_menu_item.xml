@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="12.0sp" android:textColor="#8c000000" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/circle_menu_item_text" android:background="@drawable/circle_menu_text_bg" android:paddingBottom="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="文件快传" />
+    <ImageView android:id="@id/circle_menu_item_img" android:background="@drawable/circle_menu_icon_bg_smaller_selector" android:paddingBottom="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginRight="4.0dip" android:src="@drawable/circle_menu_recent_file" android:scaleType="center" />
+</LinearLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:paddingLeft="32.0dip" android:paddingRight="32.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="@drawable/card_list_item_nor_background" android:layout_width="fill_parent" android:layout_height="88.0dip" android:minHeight="88.0dip">
+        <ImageView android:id="@id/face" android:clickable="false" android:layout_width="56.0dip" android:layout_height="56.0dip" android:layout_marginLeft="32.0dip" android:layout_centerVertical="true" android:contentDescription="@null" />
+        <TextView android:textSize="18.0sp" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/dicussion_name" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:maxWidth="190.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/face" android:layout_centerVertical="true" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/skin_gray2" android:id="@id/count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_toRightOf="@id/dicussion_name" android:layout_centerVertical="true" />
+        <ImageView android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/common_arrow_right_selector" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+    </RelativeLayout>
+</FrameLayout>

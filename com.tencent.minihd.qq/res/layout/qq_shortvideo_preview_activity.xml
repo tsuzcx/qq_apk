@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/black" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <SurfaceView android:id="@id/surfaceView" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/cover" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/operatorBtn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qq_shortvideo_preview_play" android:layout_centerInParent="true" />
+    <RelativeLayout android:id="@id/bottomBar" android:paddingLeft="@dimen/title_bar_padding_h" android:paddingRight="@dimen/title_bar_padding_h" android:layout_width="fill_parent" android:layout_height="@dimen/dp_72" android:layout_alignParentTop="true">
+        <com.tencent.widget.EmptyTextView android:id="@id/cancelBtn" android:background="@drawable/top_back_left_modal_selector" style="@style/title_bar_left_btn" />
+        <TextView android:textColor="@color/skin_send_btn" android:id="@id/sendBtn" android:visibility="visible" android:text="发送" style="@style/title_bar_right_btn" />
+    </RelativeLayout>
+</RelativeLayout>

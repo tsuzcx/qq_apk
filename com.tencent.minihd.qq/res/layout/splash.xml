@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/splashBg" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center" android:id="@id/splash_image" android:layout_width="400.0dip" android:layout_height="560.0dip" />
+    <TextView android:textSize="20.0sp" android:textColor="@color/skip_splash_btn" android:gravity="center" android:layout_gravity="bottom|center|right" android:id="@id/skip_splash_btn" android:background="@drawable/skip_splash_btn_bg" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="40.0dip" android:layout_marginRight="24.0dip" android:layout_marginBottom="24.0dip" android:text="@string/skin_splash" />
+</FrameLayout>

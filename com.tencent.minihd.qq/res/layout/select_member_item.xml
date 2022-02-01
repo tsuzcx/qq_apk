@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:paddingLeft="32.0dip" android:paddingRight="32.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0sp" android:textColor="@color/select_member_little_title_color" android:gravity="center|left" android:id="@id/tv_index" android:paddingLeft="32.0dip" android:paddingTop="16.0dip" android:paddingRight="32.0dip" android:paddingBottom="16.0dip" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <RelativeLayout android:id="@id/rl_member" android:background="@drawable/card_list_item_nor_background" android:layout_width="fill_parent" android:layout_height="88.0dip">
+        <CheckBox android:id="@id/checkbox" android:background="@drawable/group_add_checkbox_selector" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="23.0dip" android:layout_height="23.0dip" android:layout_marginRight="32.0dip" android:checked="false" android:button="@null" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <ImageView android:gravity="center_vertical" android:id="@id/icon" android:layout_width="56.0dip" android:layout_height="56.0dip" android:layout_marginLeft="32.0dip" android:layout_marginRight="15.0dip" android:scaleType="fitXY" android:layout_centerVertical="true" />
+        <TextView android:textSize="18.0sp" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/name" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_toLeftOf="@id/checkbox" android:layout_toRightOf="@id/icon" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</FrameLayout>

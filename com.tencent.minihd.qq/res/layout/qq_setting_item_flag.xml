@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/qqsetting_item_flag" android:layout_width="wrap_content" android:layout_height="fill_parent" android:contentDescription="@null" />
+    <TextView android:textSize="11.0sp" android:textStyle="bold" android:textColor="@color/color_bai" android:gravity="center" android:id="@id/flag_num" android:background="@drawable/skin_tips_newmessage" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="99" android:singleLine="true" android:includeFontPadding="false" android:layout_centerVertical="true" />
+</RelativeLayout>

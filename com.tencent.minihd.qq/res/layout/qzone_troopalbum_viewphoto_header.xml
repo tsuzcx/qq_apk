@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="66.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.LinerLayoutForListViewItem android:orientation="horizontal" android:id="@id/uploadphoto_layout" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center" android:id="@id/local_upload" android:background="@drawable/qzone_album_list_header_selector" android:clickable="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="4.0dip" android:src="@drawable/qzone_local_album" />
+            <TextView android:textSize="16.0sp" android:textColor="#ff464646" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qzone_qun_album_photolist_header_upload_local" />
+        </LinearLayout>
+        <View android:background="#ffd7d7d7" android:layout_width="1.0px" android:layout_height="fill_parent" android:layout_marginBottom="3.0px" />
+        <LinearLayout android:gravity="center" android:id="@id/reship" android:background="@drawable/qzone_album_list_header_selector" android:clickable="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="4.0dip" android:src="@drawable/qzone_qun_photo_list_header_icon_qzone" />
+            <TextView android:textSize="16.0sp" android:textColor="#ff464646" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qzone_qun_album_photolist_header_reship" />
+        </LinearLayout>
+    </com.qzone.widget.LinerLayoutForListViewItem>
+    <View android:id="@id/mask_layout" android:background="#7fffffff" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

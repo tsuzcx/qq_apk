@@ -1,0 +1,1270 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="com.tencent.minihd.qq">
+    <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:smallScreens="true"/>
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="com.tencent.msf.permission.account.sync2"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT"/>
+    <uses-permission android:name="android.permission.PERSISTENT_ACTIVITY"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="com.tencent.permission.VIRUS_SCAN"/>
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.FLASHLIGHT"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.BROADCAST_STICKY"/>
+    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+    <uses-permission android:name="android.permission.WRITE_OWNER_DATA"/>
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR"/>
+    <uses-permission android:name="android.permission.REORDER_TASKS"/>
+    <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.android.launcher3.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.android.launcher3.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.google.android.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.bbk.launcher2.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.huaqin.launcherEx.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.htc.launcher.settings"/>
+    <uses-permission android:name="com.htc.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.htc.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.huawei.launcher3.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.huawei.android.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.sonyericsson.home.permission.BROADCAST_BADGE"/>
+    <uses-permission android:name="com.sec.android.provider.badge.permission.READ"/>
+    <uses-permission android:name="com.sec.android.provider.badge.permission.WRITE"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS"/>
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS"/>
+    <uses-permission android:name="android.permission.READ_CALL_LOG"/>
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE"/>
+    <permission android:name="com.tencent.msf.service.permission2" android:protectionLevel="signature"/>
+    <permission android:name="com.tencent.msf.permission.account.sync2" android:permissionGroup="android.permission-group.SYSTEM_TOOLS" android:protectionLevel="normal"/>
+    <uses-permission android:name="android.permission.RESTART_PACKAGES"/>
+    <uses-permission android:name="android.permission.NFC"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
+    <uses-feature android:name="android.hardware.location" android:required="false"/>
+    <uses-feature android:name="android.hardware.location.gps" android:required="false"/>
+    <uses-feature android:name="android.hardware.location.network" android:required="false"/>
+    <uses-feature android:name="android.hardware.telephony" android:required="false"/>
+    <uses-feature android:name="android.hardware.bluetooth_le" android:required="false"/>
+    <application android:allowBackup="false" android:debuggable="false" android:icon="@drawable/icon" android:label="@string/app_name" android:name="com.tencent.common.app.BaseApplicationImpl" android:networkSecurityConfig="@xml/network_security_config" android:theme="@style/Default.Transparent">
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+        <meta-data android:name="SC_DBVersion" android:value="28"/>
+        <meta-data android:name="QfavDBVersion" android:value="13"/>
+        <meta-data android:name="com.tencent.rdm.uuid" android:value="1234567890"/>
+        <meta-data android:name="TencentMapSDK" android:value="73dfcdeff8636c1d3501fa9a2860ebb7"/>
+        <meta-data android:name="TencentGeoLocationSDK" android:value="QQ2013,LWPAH-5CHEJ-Y6CR2-AQPLX-IV2JQ"/>
+        <service android:exported="true" android:name="com.tencent.mobileqq.msf.service.MsfService" android:process=":MSF" android:stopWithTask="true">
+            <intent-filter>
+                <action android:name="com.tencent.qphone.base.subservice"/>
+            </intent-filter>
+            <meta-data android:name="SERVICE_ID" android:value="mobileqq.service"/>
+            <meta-data android:name="SERVICE_NAME" android:value="MobileQQ Service"/>
+            <meta-data android:name="SERVICE_VERSION" android:value="1"/>
+        </service>
+        <service android:exported="false" android:name="com.tencent.mobileqq.app.CoreService"/>
+        <service android:exported="false" android:name="com.tencent.mobileqq.app.CoreService$KernelService"/>
+        <service android:exported="false" android:name="com.tencent.mobileqq.pluginsdk.ipc.PluginRemoteService$Sub1"/>
+        <service android:exported="false" android:name="com.tencent.mobileqq.pluginsdk.ipc.PluginRemoteService$Sub2"/>
+        <receiver android:name="com.tencent.mobileqq.msf.core.NetConnInfoCenter" android:process=":MSF">
+            <intent-filter android:priority="2147483647">
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.TIME_SET"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.tencent.mobileqq.rdm.report"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.tencent.mobileqq.msf.receiveofflinepush"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.tencent.mobileqq.msf.offlinepushclearall"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.tencent.mobileqq.msf.receiveofflinepushav"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.tencent.mobileqq.msf.offlinepushclearallav"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.tencent.mobileqq.qqwifi.scanStateChange"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.tencent.mobileqq.msf.startmsf"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_BAD_REMOVAL"/>
+                <action android:name="android.intent.action.MEDIA_EJECT"/>
+                <action android:name="android.intent.action.MEDIA_MOUNTED"/>
+                <action android:name="android.intent.action.MEDIA_REMOVED"/>
+                <action android:name="android.intent.action.MEDIA_SCANNER_FINISHED"/>
+                <action android:name="android.intent.action.MEDIA_SCANNER_STARTED"/>
+                <action android:name="android.intent.action.MEDIA_SHARED"/>
+                <action android:name="android.intent.action.MEDIA_UNMOUNTED"/>
+                <data android:scheme="file"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="mqq.app.QQBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.tencent.mobileqq.broadcast.qq"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="false" android:name="com.tencent.mobileqq.statistics.ReportReceiver"/>
+        <receiver android:exported="false" android:name="com.tencent.mobileqq.vas.ThemeChangeBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.tencent.qplus.THEME_INVALIDATE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="false" android:name="cooperation.plugin.PluginCrashReceiver">
+            <intent-filter>
+                <action android:name="com.tencent.mobileqq.ACTION_PLUGIN_CRASH"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.tencent.mobileqq.ACTION_PLUGIN_STARTUP_FAILED"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.tencent.mobileqq.ACTION_PLUGIN_DIR_INFO_LOG"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="false" android:name="cooperation.qqfav.QfavPluginProxyReceiver" android:process=":qqfav">
+            <intent-filter>
+                <action android:name="com.tencent.mobileqq.ACTION_QFAVIPC_BROADCAST"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="false" android:name="com.tencent.mobileqq.earlydownload.EarlyDownloadReceiver" android:permission="com.tencent.qqhead.permission.getheadresp2">
+            <intent-filter>
+                <action android:name="req.com.tencent.mobileqq.EARLY_DOWNLOAD"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="req.com.tencent.mobileqq.EARLY_QUERY"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="req.com.tencent.mobileqq.EARLY_CANCEL"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="req.com.tencent.mobileqq.EARLY_SET_FAIL"/>
+            </intent-filter>
+        </receiver>
+        <activity android:exported="false" android:fasten="meta-data" android:launchMode="singleTask" android:name="com.tencent.mobileqq.debug.DebugActivity">
+            <meta-data android:name="@anim/accelerate_quint" android:value="meta-data"/>
+        </activity>
+        <activity android:exported="false" android:launchMode="singleTask" android:name="com.tencent.mobileqq.debug.EnvSwitchActivity"/>
+        <activity android:exported="false" android:name="com.tencent.mobileqq.debug.AdjustScaleActivity"/>
+        <activity android:exported="false" android:launchMode="singleTask" android:name="com.tencent.mobileqq.activity.QuickLoginActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.InstallActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"/>
+        <activity android:exported="false" android:name="com.test.QzoneTestActivity" android:windowSoftInputMode="stateAlwaysHidden|adjustResize"/>
+        <activity android:exported="false" android:name="com.tencent.mobileqq.activity.LoginActivity" android:windowSoftInputMode="stateAlwaysHidden|adjustResize"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.LoginPhoneNumActivity" android:windowSoftInputMode="stateVisible"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:excludeFromRecents="true" android:exported="false" android:name="com.tencent.mobileqq.activity.QQLSActivity" android:theme="@android:style/Theme.Wallpaper.NoTitleBar" android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:exported="false" android:name="com.tencent.mobileqq.activity.QQLSUnlockActivity" android:theme="@style/TransparentWithoutTitle"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.LoginPhoneNumActivity2" android:process=":openSdk" android:windowSoftInputMode="stateVisible"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.LoginVerifyCodeActivity" android:windowSoftInputMode="stateVisible"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.LoginVerifyCodeActivity2" android:process=":openSdk" android:windowSoftInputMode="stateVisible"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.RegisterActivity" android:windowSoftInputMode="stateVisible"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.RegisterPhoneNumActivity" android:windowSoftInputMode="stateVisible"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.RegisterVerifyCodeActivity" android:windowSoftInputMode="stateVisible"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.RegisterSendUpSms" android:windowSoftInputMode="stateVisible"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.RegisterPersonalInfoActivity" android:windowSoftInputMode="stateVisible"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity" android:windowSoftInputMode="stateVisible"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.RegisterQQNumberActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:hardwareAccelerated="true" android:label="@string/app_name" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.SplashActivity" android:theme="@style/Default.NoTitleBar.NoPreview.FullScreen" android:windowSoftInputMode="adjustResize|stateHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.tencent.mobileqq.action.MAINACTIVITY"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.contact.troop.TroopActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.TroopDiscussionListActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:exported="false" android:name="com.tencent.mobileqq.activity.TrafficStatActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:exported="false" android:name="com.tencent.mobileqq.activity.TrafficDetailActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.NearPeopleActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.NearPeopleFilterActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboard|keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.JobSelectionActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.AgeSelectionActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="true" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.InterestSwitchEditActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.MayKnowManActivity" android:theme="@style/Default"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.maproam.activity.RoamingActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.maproam.activity.VipMapRoamActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleInstance" android:name="com.tencent.mobileqq.activity.UserguideActivity" android:theme="@style/Default.NoTitleBar.NoPreview.FullScreen" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleInstance" android:name="com.tencent.mobileqq.activity.UserguideFaceMaskActivity" android:theme="@style/Default.NoTitleBar.NoPreview.FullScreen" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleInstance" android:name="com.tencent.mobileqq.activity.UserguideThirdActivity" android:theme="@style/Default.NoTitleBar.NoPreview.FullScreen" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.RegisterGuideActivity" android:theme="@style/Default.NoTitleBar.NoPreview.FullScreen" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.SubAccountInfoListActivity" android:theme="@style/Default"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.SubAccountUgActivity" android:theme="@style/Default"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.SubAccountBindActivity" android:theme="@style/Default"/>
+        <activity android:exported="false" android:name="com.tencent.mobileqq.activity.SubLoginActivity" android:windowSoftInputMode="adjustResize"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.SubAccountMessageActivity" android:theme="@style/Default"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.SubAccountSettingActivity" android:theme="@style/Default"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:hardwareAccelerated="true" android:label="" android:name="com.tencent.mobileqq.activity.Conversation" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:hardwareAccelerated="true" android:label="" android:name="com.tencent.mobileqq.activity.Call" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:hardwareAccelerated="true" android:label="" android:name="com.tencent.mobileqq.activity.Contacts" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:hardwareAccelerated="true" android:label="" android:name="com.tencent.mobileqq.activity.QzoneWrapperActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:hardwareAccelerated="true" android:label="" android:name="com.tencent.mobileqq.activity.Leba" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:hardwareAccelerated="true" android:label="" android:name="com.tencent.mobileqq.activity.SettingMe" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:label="" android:name="com.tencent.mobileqq.activity.ChatActivity" android:theme="@style/Default.Transparent" android:windowSoftInputMode="adjustResize|stateHidden">
+            <intent-filter>
+                <action android:name="com.tencent.mobileqq.action.CHAT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.ForwardHandlerActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="true" android:launchMode="singleInstance" android:name="com.tencent.mobileqq.activity.ShortcutGuideActivity" android:theme="@style/GuideDialog"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.ShortcutRouterActivity" android:theme="@style/GuideDialog"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.ShortcutGuideDialogActivity" android:theme="@style/GuideDialog"/>
+        <service android:exported="false" android:name="com.tencent.mobileqq.activity.photo.PeakService" android:process=":peak"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.photo.AlbumListActivity" android:process=":peak" android:theme="@style/Default.Transparent.noTitlebar" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.photo.PhotoListActivity" android:permission="com.tencent.photos.permission.DATA2" android:process=":peak" android:windowSoftInputMode="stateHidden">
+            <intent-filter>
+                <action android:name="com.tencent.mobileqq.action.takephoto"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.aio.photo.AIOPhotoListActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.photo.PhotoCropActivity" android:process=":peak" android:theme="@style/Default.Transparent.noTitlebar" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.photo.PhotoCropForPortraitActivity" android:theme="@style/Default.Transparent.noTitlebar" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.photo.PhotoPreviewActivity" android:process=":peak" android:theme="@style/Default.Transparent.noTitlebar" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.photo.SendPhotoActivity" android:theme="@style/qzone_Transparent" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.PhotoListActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.PhotoSelectActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.ThemeDownloadAndSetActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.IndividuationSetActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.ThemeNoviceGuideActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.ChatHistory" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.ChatHistoryForC2C" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.PhotoPreview" android:theme="@style/Default.NoTitleBar"/>
+        <activity android:exported="false" android:name="cooperation.photoplus.PhotoPlusPluginProxyActivity" android:process=":photoplus" android:theme="@android:style/Theme.NoTitleBar"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="cooperation.photoedit.PhotoEditPluginProxyActivity" android:process=":peak" android:theme="@style/TransparentWithoutTitle"/>
+        <receiver android:exported="false" android:name="cooperation.photoedit.PhotoEditProxyReceiver" android:process=":peak">
+            <intent-filter>
+                <action android:name="com.photoedit.intent.action.START_PROCESS"/>
+            </intent-filter>
+        </receiver>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="standard" android:name="com.tencent.mobileqq.activity.photo.CameraPreviewActivity"/>
+        <activity android:exported="false" android:name="cooperation.troop.TroopProxyActivity"/>
+        <activity android:exported="false" android:name="com.tencent.biz.troopplugin.TroopBarProxyActivity" android:process=":troopbar" android:theme="@style/Default.NoTitleBarWithActAnimation"/>
+        <activity android:exported="false" android:name="com.tencent.biz.troopplugin.TroopIphoneTtileBarProxyActivity" android:process=":troopbar"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="standard" android:name="cooperation.troop.TroopGPUProxyActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="standard" android:name="com.tencent.mobileqq.activity.photopreview.SecretFilePreviewActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="standard" android:name="com.tencent.mobileqq.activity.photopreview.SendSecretFileActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.ImagePreviewActivity" android:theme="@style/qzone_Transparent"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity" android:process=":peak" android:theme="@style/qzone_Transparent"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.FriendProfileImageActivity" android:theme="@style/Default.NoTitleBar"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.QQBroadcastActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.AddFriendSettingActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.VisitorsActivity"/>
+        <activity android:exported="false" android:name="com.tencent.mobileqq.activity.EditTagActivity" android:theme="@style/Default"/>
+        <activity android:exported="false" android:name="com.tencent.mobileqq.activity.ShowCardActivity" android:theme="@style/Default.NoTitleBar">
+&gt;
+</activity>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.SayHiActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.EditActivity" android:windowSoftInputMode="stateAlwaysVisible|adjustPan"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.MoveToGroupActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.ModifyFriendInfoActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.AutoRemarkActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.UpgradeActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.cooperation.InstallGameActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.AddFriendLogicActivity" android:theme="@style/DialogNoBackground" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.AddRequestActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.TroopRequestActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity" android:windowSoftInputMode="adjustPan"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.conditionsearch.LocationSelectActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.conditionsearch.CountrySelectActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.conditionsearch.SearchResultActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.GroupManagerActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.UpgradeDetailActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:excludeFromRecents="true" android:exported="false" android:name="com.tencent.mobileqq.activity.PublicAccountActivity" android:process=":web" android:taskAffinity="com.tencent.mobileqq.tab.contacts" android:theme="@style/Default.Transparent"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.SearchTroopListActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:enabled="true" android:exported="false" android:name="com.tencent.mobileqq.activity.BookShareAdviceEditActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.StrangeTroopListActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.StrangerManageActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.AddFriendActivity" android:windowSoftInputMode="stateVisible"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.SearchFriendListActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.AddFriendVerifyActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.TroopMemberListActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.biz.troop.EditUniqueTitleActivity" android:windowSoftInputMode="stateVisible"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.biz.troop.TroopMemberTitleActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.TroopManageActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.TroopGagActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.TroopPrivilegeActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.SetTroopAdminsActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:excludeFromRecents="true" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.selectmember.SelectMemberActivity" android:taskAffinity="com.tencent.mobileqq.tab.ModelWindow" android:theme="@style/Default.Transparent" android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity" android:theme="@style/Default.AnimPullUp" android:windowSoftInputMode="adjustPan"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.DiscussionMemberActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.tencent.mobileqq.activity.JoinDiscussionActivity" android:theme="@style/Default.Transparent"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.AboutActivity" android:theme="@style/Default"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.testassister.activity.ShareAppLogActivity" android:theme="@style/Default"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.testassister.activity.ShareDumpMemoryActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.MySelfTroopMemberCard" android:windowSoftInputMode="stateHidden"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.TroopInfoActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.TroopClassChoiceActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.EditInfoActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation" android:exported="false" android:label="@string/app_name" android:launchMode="singleTask" android:name="com.tencent.mobileqq.activity.VerifyCodeActivity" android:windowSoftInputMode="stateAlwaysVisible"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation" android:exported="false" android:name="com.tencent.mobileqq.activity.ForceLogoutActivity" android:theme="@style/DialogStyle">
+            <intent-filter>
+                <action android:name="mqq.intent.action.FORCE_LOGOUT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:alwaysRetainTaskState="true" android:exported="false" android:name="com.tencent.mobileqq.activity.PerformanceTestActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:label="" android:name="com.tencent.mobileqq.activity.FriendProfileCardActivity" android:theme="@style/Default.Transparent"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.TroopMemberGagActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:label="" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.ProfileCardMoreActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:label="" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.SettingUncommUsedContactsActivity"/>
+        <provider android:authorities="com.tencent.minihd.qq.fileprovider" android:exported="false" android:grantUriPermissions="true" android:name="android.support.v4.content.FileProvider" android:process=":tool">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/forward_paths"/>
+        </provider>
+        <provider android:authorities="qq.favorites.2" android:name="cooperation.qqfav.content.FavoritesProvider" android:permission="com.tencent.msg.permission.pushnotify2" android:process=":qqfav"/>
+        <provider android:authorities="qq.friendlist.2" android:name="com.tencent.mobileqq.content.FriendListProvider" android:permission="com.tencent.msg.permission.pushnotify2"/>
+        <provider android:authorities="com.tencent.common.config.provider.QZoneConfigProvider.2" android:name="com.tencent.common.config.provider.QZoneConfigProvider" android:permission="com.tencent.msg.permission.pushnotify2"/>
+        <provider android:authorities="com.tencent.mqq.shared_file_accessor.ContentProviderImpl.2" android:exported="false" android:name="com.tencent.mqq.shared_file_accessor.ContentProviderImpl"/>
+        <receiver android:exported="false" android:name="com.tencent.mobileqq.app.PushBroadcastReceiver">
+            <intent-filter>
+                <action android:name="tencent.notify.friend.message"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="tencent.notify.troop.message"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="tencent.notify.qc.background"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="tencent.notify.background"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="tencent.notify.foreground"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="tencent.notify.friend.status"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.tencent.mobileqq.PCONLINE_CLICK_NOTIFICATION"/>
+            </intent-filter>
+        </receiver>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.flaotaio.FloatSettingActivity" android:theme="@style/Default"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.NotifyPushSettingActivity" android:theme="@style/Default"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.AutoReplySettingActivity" android:theme="@style/Default"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.SoundAndVibrateActivity" android:theme="@style/Default"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.DisplaySettingActivity" android:theme="@style/Default"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.AssistantSettingActivity" android:theme="@style/Default">
+            <intent-filter>
+                <action android:name="com.tencent.mobileqq.msf.qqwifi.settings"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.PredownloadTest" android:theme="@style/Default"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.PermisionPrivacyActivity" android:theme="@style/Default"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.LoginInfoActivity" android:theme="@style/Default"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.AuthDevActivity" android:theme="@style/Default"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.AuthDevRenameActivity" android:theme="@style/Default"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.SecurityDetectActivity" android:theme="@style/Default"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.SecurityProtectActivity" android:theme="@style/Default"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.RecentLoginDevActivity" android:theme="@style/Default"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.AuthDevUgActivity" android:theme="@style/Default"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.AuthDevOpenUgActivity" android:theme="@style/Default"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.AuthDevConfirmPhoneNoActivity" android:theme="@style/Default"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.AuthDevEnableCompleteActivity" android:theme="@style/Default"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.DevlockPushActivity" android:theme="@style/Default"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.tencent.mobileqq.activity.DevlockQuickLoginActivity" android:theme="@style/Default"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity" android:windowSoftInputMode="stateVisible"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.GesturePWDGuideActivity" android:theme="@style/Default"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.GesturePWDCreateActivity" android:theme="@style/Theme_Gesture_Create"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.GesturePWDSettingActivity" android:theme="@style/Default"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.GesturePWDUnlockActivity" android:theme="@style/Default"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.GesturePWDManualGuideActivity" android:theme="@style/Default"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.HelpSettingActivity" android:theme="@style/Default"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.PlugMgrActivity" android:theme="@style/Default"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.PlugDetailActivity" android:theme="@style/Default"/>
+        <activity android:allowTaskReparenting="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.OpenidToUinActivity" android:theme="@style/TransparentWithoutTitle"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.tencent.mobileqq.activity.PCActiveNoticeActiviy" android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter>
+                <action android:name="mqq.intent.action.NOTICE_ON_PCACTIVE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="true" android:launchMode="singleTask" android:name="com.tencent.mobileqq.activity.NotificationActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter>
+                <action android:name="mqq.intent.action.ACCOUNT_EXPIRED"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="mqq.intent.action.ACCOUNT_KICKED"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="mqq.intent.action.ACCOUNT_TIPS"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="mqq.intent.action.GRAY"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="mqq.intent.action.SUSPEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.tencent.mobileqq.activity.NotifyPCActiveActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter>
+                <action android:name="mqq.intent.action.PCACTIVE_TIPS"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.QQMapActivity" android:process=":map" android:theme="@style/qqMapTheme"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.biz.PoiMapActivity" android:process=":map" android:theme="@style/qqMapTheme"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.RoamingActivity" android:theme="@style/Default.NoTitleBar"/>
+        <receiver android:exported="false" android:name="com.tencent.mobileqq.webprocess.WebProcessReceiver" android:permission="com.tencent.msg.permission.pushnotify2" android:process=":web">
+            <intent-filter>
+                <action android:name="com.tencent.mobileqq.webprocess.preload_web_process"/>
+            </intent-filter>
+        </receiver>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:excludeFromRecents="true" android:exported="false" android:name="com.tencent.mobileqq.activity.QQBrowserActivity" android:process=":web" android:theme="@style/Default.Transparent" android:windowSoftInputMode="adjustResize"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:excludeFromRecents="true" android:exported="false" android:name="com.tencent.mobileqq.activity.empty.BrowserSettingMeActivity" android:process=":web" android:taskAffinity="com.tencent.mobileqq.tab.settingme" android:theme="@style/Default.Transparent" android:windowSoftInputMode="adjustResize"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:excludeFromRecents="true" android:exported="false" android:name="com.tencent.mobileqq.activity.empty.BrowserConversationActivity" android:process=":web" android:taskAffinity="com.tencent.mobileqq.tab.conversation" android:theme="@style/Default.Transparent" android:windowSoftInputMode="adjustResize"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:excludeFromRecents="true" android:exported="false" android:name="com.tencent.mobileqq.activity.empty.BrowserCallActivity" android:process=":web" android:taskAffinity="com.tencent.mobileqq.tab.call" android:theme="@style/Default.Transparent" android:windowSoftInputMode="adjustResize"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:excludeFromRecents="true" android:exported="false" android:name="com.tencent.mobileqq.activity.empty.BrowserContactActivity" android:process=":web" android:taskAffinity="com.tencent.mobileqq.tab.contacts" android:theme="@style/Default.Transparent" android:windowSoftInputMode="adjustResize"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:excludeFromRecents="true" android:exported="false" android:name="com.tencent.mobileqq.activity.empty.BrowserQzoneActivity" android:process=":web" android:taskAffinity="com.tencent.mobileqq.tab.qzone" android:theme="@style/Default.Transparent" android:windowSoftInputMode="adjustResize"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:excludeFromRecents="true" android:exported="false" android:name="com.tencent.mobileqq.activity.empty.BrowserLebaMeActivity" android:process=":web" android:taskAffinity="com.tencent.mobileqq.tab.leba" android:theme="@style/Default.Transparent" android:windowSoftInputMode="adjustResize"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:excludeFromRecents="true" android:exported="false" android:name="com.tencent.mobileqq.vipgift.VipGiftBrowserActivity" android:process=":web" android:theme="@style/Default.Transparent" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:excludeFromRecents="true" android:exported="false" android:name="com.tencent.mobileqq.musicgene.MusicGeneQQBrowserActivity" android:process=":web"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:excludeFromRecents="true" android:exported="false" android:name="com.tencent.mobileqq.activity.empty.MusicSettingMeActivity" android:process=":web" android:taskAffinity="com.tencent.mobileqq.tab.settingme"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:excludeFromRecents="true" android:exported="false" android:name="com.tencent.mobileqq.activity.empty.MusicConversationActivity" android:process=":web" android:taskAffinity="com.tencent.mobileqq.tab.conversation"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:excludeFromRecents="true" android:exported="false" android:name="com.tencent.mobileqq.activity.empty.MusicCallActivity" android:process=":web" android:taskAffinity="com.tencent.mobileqq.tab.call"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:excludeFromRecents="true" android:exported="false" android:name="com.tencent.mobileqq.activity.empty.MusicContactsActivity" android:process=":web" android:taskAffinity="com.tencent.mobileqq.tab.contacts"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:excludeFromRecents="true" android:exported="false" android:name="com.tencent.mobileqq.activity.empty.MusicQzoneActivity" android:process=":web" android:taskAffinity="com.tencent.mobileqq.tab.qzone"/>
+        <activity android:configChanges="fontScale|keyboardHidden|locale|navigation|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.QQBrowserDelegationActivity" android:theme="@style/Default.Transparent"/>
+        <activity android:configChanges="fontScale|keyboardHidden|locale|navigation|orientation|screenSize" android:name="com.tencent.mobileqq.activity.JumpActivity" android:theme="@android:style/Theme.Translucent">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="mqq"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="mqqapi"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="mqqmdpass"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="mqqwpa"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="mqqwpaopenid"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="http"/>
+                <data android:host="clientui.3g.qq.com"/>
+                <data android:pathPrefix="/"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:host="qm.qq.com" android:scheme="http"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="mqqopensdkapi"/>
+            </intent-filter>
+            <intent-filter android:label="@string/send_to_friend">
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/*"/>
+                <data android:mimeType="video/*"/>
+                <data android:mimeType="audio/*"/>
+                <data android:mimeType="application/*"/>
+                <data android:mimeType="text/plain"/>
+                <data android:mimeType="text/html"/>
+                <data android:mimeType="text/css"/>
+                <data android:mimeType="text/xml"/>
+                <data android:mimeType="text/csv"/>
+                <data android:mimeType="text/x-vcard"/>
+            </intent-filter>
+            <intent-filter android:label="@string/send_to_friend">
+                <action android:name="android.intent.action.SEND_MULTIPLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/*"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="mqqflyticket"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="wtloginmqq"/>
+            </intent-filter>
+            <intent-filter android:label="@string/send_to_friend">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="file"/>
+                <data android:mimeType="image/*"/>
+                <data android:mimeType="video/*"/>
+                <data android:mimeType="audio/*"/>
+                <data android:mimeType="text/*"/>
+                <data android:mimeType="application/x-7z-compressed"/>
+                <data android:mimeType="application/msword"/>
+                <data android:mimeType="application/octet-stream"/>
+                <data android:mimeType="application/pdf"/>
+                <data android:mimeType="application/vnd.mophun.application"/>
+                <data android:mimeType="application/vnd.mpohun.certificate"/>
+                <data android:mimeType="application/vnd.ms-excel"/>
+                <data android:mimeType="application/vnd.ms-powerpoint"/>
+                <data android:mimeType="application/vnd.ms-project"/>
+                <data android:mimeType="application/x-autocad"/>
+                <data android:mimeType="application/x-gtar"/>
+                <data android:mimeType="application/x-gzip"/>
+                <data android:mimeType="application/x-msaccess"/>
+                <data android:mimeType="application/x-mscardfile"/>
+                <data android:mimeType="application/x-msclip"/>
+                <data android:mimeType="application/x-msmediaview"/>
+                <data android:mimeType="application/x-msmetafile"/>
+                <data android:mimeType="application/x-msmoney"/>
+                <data android:mimeType="application/x-mspublisher"/>
+                <data android:mimeType="application/x-msschedule"/>
+                <data android:mimeType="application/x-msterminal"/>
+                <data android:mimeType="application/x-ms-wmd"/>
+                <data android:mimeType="application/x-ms-wmz"/>
+                <data android:mimeType="application/x-mswrite"/>
+                <data android:mimeType="application/x-rar-compressed"/>
+                <data android:mimeType="application/x-shockwave-flash"/>
+                <data android:mimeType="application/x-tar"/>
+                <data android:mimeType="application/zip"/>
+                <data android:mimeType="application/vnd.openxmlformats-officedocument.wordprocessingml.document"/>
+                <data android:mimeType="application/vnd.openxmlformats-officedocument.wordprocessingml.template"/>
+                <data android:mimeType="application/vnd.openxmlformats-officedocument.presentationml.template"/>
+                <data android:mimeType="application/vnd.openxmlformats-officedocument.presentationml.slideshow"/>
+                <data android:mimeType="application/vnd.openxmlformats-officedocument.presentationml.presentation"/>
+                <data android:mimeType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
+                <data android:mimeType="application/vnd.openxmlformats-officedocument.spreadsheetml.template"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SENDTO"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:host="qq" android:scheme="imto"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:host="tribe" android:scheme="mqqtribe"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="mqqvoipivr"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:host="puzzle_verify_code" android:scheme="miniqqverifycode"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="qapp"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.tencent.mobileqq.action.QQWiFiProxy"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.tencent.mobileqq.action.QQWiFi"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.tencent.mobileqq.msf.qqwifi.missions"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.tencent.mobileqq.msf.qqwifi.map"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.tencent.mobileqq.msf.qqwifi.redtouch"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="qqwifi"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.nfc.action.TECH_DISCOVERED"/>
+            </intent-filter>
+            <meta-data android:name="android.nfc.action.TECH_DISCOVERED" android:resource="@xml/buscard_nfc_tech_filter"/>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="mqqconnect"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|locale|orientation" android:excludeFromRecents="true" android:exported="true" android:launchMode="singleInstance" android:name="com.tencent.mobileqq.activity.ContactSyncJumpActivity" android:theme="@android:style/Theme.Translucent">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="vnd.android.cursor.item/vnd.com.tencent.mobileqq.voicecall.profile"/>
+                <data android:mimeType="vnd.android.cursor.item/vnd.com.tencent.mobileqq.zchat"/>
+            </intent-filter>
+        </activity>
+        <service android:exported="true" android:name="com.tencent.mobileqq.contactsync.authenticator.AuthenticationService">
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator"/>
+            </intent-filter>
+            <meta-data android:name="android.accounts.AccountAuthenticator" android:resource="@xml/qq_contactsync_authenticator"/>
+        </service>
+        <service android:exported="true" android:name="com.tencent.mobileqq.contactsync.syncadapter.SyncService">
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter"/>
+            </intent-filter>
+            <meta-data android:name="android.content.SyncAdapter" android:resource="@xml/qq_contactsync_syncadapter"/>
+            <meta-data android:name="android.provider.CONTACTS_STRUCTURE" android:resource="@xml/qq_contactsync_contacts"/>
+        </service>
+        <activity android:configChanges="keyboardHidden|locale|orientation" android:exported="true" android:icon="@drawable/qfile_dataline_pc_recent" android:name="com.tencent.mobileqq.activity.qfileJumpActivity" android:theme="@android:style/Theme.Translucent">
+            <intent-filter android:label="@string/lite_send_dataline">
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/*"/>
+                <data android:mimeType="video/*"/>
+                <data android:mimeType="audio/*"/>
+                <data android:mimeType="application/*"/>
+                <data android:mimeType="text/*"/>
+            </intent-filter>
+            <intent-filter android:label="@string/lite_send_dataline">
+                <action android:name="android.intent.action.SEND_MULTIPLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/*"/>
+            </intent-filter>
+        </activity>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.VerifyPhoneNumActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.CommonWebActivity" android:process=":web"/>
+        <service android:exported="false" android:name="com.tencent.mobileqq.emosm.web.MessengerService"/>
+        <service android:exported="false" android:name="com.tencent.av.service.QQServiceForAV"/>
+        <service android:exported="false" android:name="com.tencent.av.service.AVServiceForQQ" android:process=":video"/>
+        <service android:exported="false" android:name="com.tencent.av.service.UtilsServiceForAV" android:process=":video"/>
+        <service android:exported="false" android:name="com.tencent.av.smallscreen.SmallScreenService" android:process=":video"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.av.smallscreen.SmallScreenDialogActivity" android:process=":video" android:taskAffinity="com.tencent.mobileqq.tab.ModelWindow" android:theme="@android:style/Theme.Translucent" android:windowSoftInputMode="adjustPan"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.tencent.av.ui.VideoInviteFull" android:process=":video" android:screenOrientation="portrait" android:theme="@style/VideoNoTitleBar"/>
+        <activity android:allowTaskReparenting="true" android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.tencent.av.ui.VideoInviteLock" android:process=":video" android:screenOrientation="portrait" android:taskAffinity="com.tencent.qqVideo" android:theme="@style/VideoNoTitleBar"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.tencent.av.ui.MultiVideoMembersListviewAvtivity" android:process=":video" android:theme="@style/VideoNoTitleBar_Animation"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.tencent.av.ui.MultiVideoEnterPageActivity" android:process=":video" android:theme="@style/VideoNoTitleBar_Animation"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.tencent.av.gaudio.DoubleVideoGuideActivity" android:theme="@style/DoubleVideoGuideActivityTheme"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.tencent.av.ui.AVActivity" android:process=":video" android:screenOrientation="portrait" android:taskAffinity="com.tencent.mobileqq.av.video" android:theme="@style/VideoNoTitleBar_Animation" android:windowSoftInputMode="adjustPan"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.tencent.av.gaudio.GaInviteDialogActivity" android:process=":video" android:taskAffinity="com.tencent.mobileqq.tab.ModelWindow" android:theme="@style/VideoNoTitleBar_Animation"/>
+        <activity android:allowTaskReparenting="true" android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.tencent.av.gaudio.GaInviteLockActivity" android:process=":video" android:taskAffinity="com.tencent.qqVideo" android:theme="@style/VideoNoTitleBar_Animation"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.tencent.av.gaudio.GaActivity" android:process=":video" android:theme="@style/VideoNoTitleBar_Animation"/>
+        <activity android:exported="false" android:name="com.tencent.biz.eqq.IvrAlertDialogWithInput" android:theme="@android:style/Theme.Translucent" android:windowSoftInputMode="adjustResize|stateVisible"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.troop.ablum.activity.OpenTroopViewPhotoActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:enabled="true" android:exported="false" android:hardwareAccelerated="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.troop.ablum.preview.SimplePictureViewer" android:theme="@style/qzone_Transparent"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.troop.activity.FavOpenTroopActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity" android:theme="@style/qzone_Transparent"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.troop.activity.TroopTagViewActivity" android:process=":web"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:excludeFromRecents="true" android:exported="false" android:name="com.tencent.mobileqq.activity.empty.TroopTagConversationActivity" android:process=":web" android:taskAffinity="com.tencent.mobileqq.tab.conversation"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:excludeFromRecents="true" android:exported="false" android:name="com.tencent.mobileqq.activity.empty.TroopTagContactsActivity" android:process=":web" android:taskAffinity="com.tencent.mobileqq.tab.contacts"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.troop.activity.TroopSearchLogicActivity" android:theme="@style/troop_Transparent" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:excludeFromRecents="true" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.troop.activity.NearbyTroopsActivity" android:process=":web" android:taskAffinity="com.tencent.mobileqq.tab.conversation" android:theme="@style/Default.Transparent" android:windowSoftInputMode="adjustResize|stateHidden">	&gt;
+</activity>
+        <activity android:alwaysRetainTaskState="true" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.biz.troop.activity.TroopNearByBigMapActivity" android:process=":web" android:theme="@style/Default.Transparent"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:excludeFromRecents="true" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTask" android:name="com.tencent.mobileqq.troop.activity.NearbyTroopsLocationActivity" android:process=":web" android:windowSoftInputMode="adjustResize|stateHidden"> &gt;
+</activity>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTask" android:name="com.tencent.mobileqq.troop.activity.TroopLocationActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:label="" android:launchMode="singleTop" android:name="com.tencent.mobileqq.troop.activity.TroopNewcomerNoticeActivity" android:theme="@android:style/Theme.Translucent" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.troop.activity.TroopBarPublishActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.troop.activity.QLifeCommentActivity" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.troop.activity.AudioRecordActivity" android:theme="@style/qbGroup_troopBar_publish_recomment_TransparentWithAnimPullUp_Style"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.troop.activity.VideoRecordActivity" android:theme="@style/Default"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.troop.activity.TroopBarUploadManagerActivity"/>
+        <activity android:configChanges="keyboard|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.troop.activity.TroopBarReplyActivity" android:theme="@style/qbGroup_troopBar_publish_recomment_TransparentWithAnimPullUp_Style" android:windowSoftInputMode="stateAlwaysVisible|adjustResize"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.troop.activity.TroopBarPublishBarSelectActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.troop.activity.ImagePreviewActivity" android:theme="@style/Default.NoTitleBar" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:excludeFromRecents="true" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.troop.activity.TroopBarShareActivity" android:process=":web" android:theme="@style/Default.Transparent"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:excludeFromRecents="true" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.troop.activity.TroopAssistantFeedsActivity" android:process=":web" android:taskAffinity="com.tencent.mobileqq.tab.conversation"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.ForwardSelectionActivity" android:theme="@style/Default.NoTitleBar" android:windowSoftInputMode="adjustPan"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.ForwardFriendListActivity" android:theme="@style/Default.Transparent.noTitlebar" android:windowSoftInputMode="adjustPan"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.ForwardRecentActivity" android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="com.tencent.intent.QQ_FORWARD"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.DirectForwardActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.DiscussionInfoCardActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.ChatSettingActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.ChatSettingForTroop" android:theme="@style/Default.Transparent" android:windowSoftInputMode="stateHidden"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.troop.activity.TroopAdminList"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.TroopDisbandActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.TroopTransferActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.TroopAssistantActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.TroopMemberCardActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.TroopAssistSetGuideActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation" android:exported="false" android:name="com.tencent.mobileqq.activity.AccountManageActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation" android:exported="false" android:name="com.tencent.mobileqq.activity.QQSettingSettingActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.ThemeSwitchDlgActivity" android:theme="@android:style/Theme.Translucent" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation" android:exported="false" android:name="com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity"/>
+        <activity android:excludeFromRecents="true" android:exported="false" android:name="com.tencent.securemodule.ui.TransparentActivity" android:process=":remote" android:taskAffinity="com.tencent.securemodule.ui.TransparentActivity" android:theme="@android:style/Theme.Dialog"/>
+        <receiver android:exported="false" android:name="com.tencent.securemodule.ui.SecureEventReceiver" android:process=":remote"/>
+        <service android:exported="false" android:name="com.tencent.securemodule.impl.SecureService" android:process=":remote"/>
+        <receiver android:exported="false" android:name="com.tencent.sc.appwidget.QCenterWidgetProvider"/>
+        <receiver android:exported="false" android:name="cooperation.qzone.QzoneProxyReceiver">
+            <intent-filter>
+                <action android:name="com.qzone.intent.action.START_PROCESS"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.tencent.qzone.action.OperateQZonePermission"/>
+            </intent-filter>
+        </receiver>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:label="" android:name="cooperation.qzone.QzoneOrientationPluginProxyActivity" android:theme="@style/QZHasBackground" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:label="" android:name="cooperation.qzone.QzoneEnterPluginProxyActivity" android:theme="@style/QZHasTanslucentBackground" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:label="" android:name="cooperation.qzone.QzoneGPUPluginProxyActivity" android:theme="@style/QZHasBackground" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="cooperation.qzone.QzonePluginProxyActivity" android:permission="com.tencent.photos.permission.DATA2" android:windowSoftInputMode="adjustResize|stateHidden">
+            <intent-filter>
+                <action android:name="com.tencent.mobileqq.action.publishmood"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="cooperation.qzone.QzoneCommonProxyActivity" android:theme="@style/TransparentWithoutTitleAndFullScreen"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:name="cooperation.qzone.QzoneTransWithKeyboardPluginProxyActivity" android:theme="@style/TransparentWithoutTitle" android:windowSoftInputMode="adjustResize|stateVisible"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:name="cooperation.qzone.QzoneTranslucentPluginProxyActivity" android:theme="@style/QZTransparent" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:name="cooperation.qzone.QzoneTransNoTitlePluginProxyActivity" android:theme="@style/TransparentWithoutTitle" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="cooperation.qzone.QzonePicturePluginProxyActivity" android:process=":picture" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|screenSize" android:exported="false" android:name="cooperation.qzone.QzonePictureExtPluginProxyActivity" android:process=":picture" android:theme="@style/Default" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:name="cooperation.qzone.TranslucentActivity" android:theme="@style/Transparent" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:hardwareAccelerated="false" android:label="" android:launchMode="singleTop" android:name="com.qzone.feed.ui.activity.QZoneFriendFeedActivity" android:theme="@style/QZTheme.NoBackground" android:windowSoftInputMode="adjustResize|stateHidden">
+            <intent-filter>
+                <action android:name="com.tencent.intent.QZONE_FRIEND_FEED"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <receiver android:exported="false" android:name="cooperation.qzone.PreDownloadReceiver">
+            <intent-filter>
+                <action android:name="com.tencent.intent.QZONE_PRE_DOWNLOAD"/>
+            </intent-filter>
+        </receiver>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:hardwareAccelerated="false" android:name="cooperation.qzone.video.QzoneVideoPluginProxyActivity" android:process=":qzonevideo" android:theme="@style/plugin_qzonevideo" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.pluginproxy.PhotoEditPluginActivity" android:process=":pedit" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <service android:exported="false" android:name="com.tencent.imageservice.ImageProcessService" android:process=":imageservice"/>
+        <service android:exported="false" android:name="cooperation.qzone.QzonePluginProxyService"/>
+        <service android:exported="false" android:name="cooperation.qzone.video.QzoneVideoPluginProxyService" android:process=":qzonevideo"/>
+        <service android:exported="false" android:name="cooperation.qzone.music.QzoneMusicPluginProxyService"/>
+        <service android:exported="false" android:name="cooperation.qzone.QzonePluginPublishQueueProxyService"/>
+        <service android:exported="false" android:name="cooperation.qlink.QlinkPluginProxyService" android:process=":qlink"/>
+        <service android:exported="false" android:name="cooperation.qzone.QzonePictureViewerProxyService" android:process=":picture"/>
+        <service android:exported="false" android:name="com.tencent.mobileqq.service.contactsync.ContactSyncPluginProxyService">
+            <intent-filter>
+                <action android:name="com.tencent.plugin.contactsync.proxyservice"/>
+            </intent-filter>
+        </service>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:name="cooperation.qlink.QlinkPluginProxyActivity" android:process=":qlink" android:theme="@style/QZTransparent" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:exported="false" android:launchMode="singleTop" android:name="cooperation.qlink.QlinkBridgeActivity" android:theme="@android:style/Theme.Translucent"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:exported="false" android:name="cooperation.qzone.ServerSetting"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:exported="false" android:name="cooperation.qzone.UploadServerSetting"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:exported="false" android:name="cooperation.qzone.QZoneStatisticsSettingActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="cooperation.qzone.CrashNotificationActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:configChanges="orientation" android:exported="true" android:name="com.tencent.open.agent.AgentActivity" android:process=":openSdk" android:theme="@style/sc_TransparentTheme"/>
+        <activity android:configChanges="orientation" android:exported="false" android:name="com.tencent.open.agent.AuthorityActivity" android:process=":openSdk"/>
+        <activity android:configChanges="orientation" android:exported="false" android:name="com.tencent.open.agent.QuickLoginAuthorityActivity" android:process=":openSdk"/>
+        <activity android:configChanges="orientation" android:exported="true" android:name="com.tencent.open.agent.EncryTokenActivity" android:process=":openSdk"/>
+        <activity android:configChanges="orientation" android:exported="false" android:name="com.tencent.open.agent.SmartHardwareActivity"/>
+        <activity android:configChanges="orientation" android:exported="false" android:name="com.tencent.open.agent.SwitchAccountActivity" android:process=":openSdk"/>
+        <activity android:exported="false" android:label="@string/app_name" android:name="com.tencent.qqconnect.wtlogin.Login" android:process=":openSdk"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.open.agent.BindGroupActivity" android:theme="@style/Default" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.open.agent.BindGroupConfirmActivity" android:theme="@style/Default" android:windowSoftInputMode="adjustPan"/>
+        <activity android:label="@string/app_name" android:name="com.tencent.qqconnect.wtlogin.AuthDevUgActivity2" android:process=":openSdk" android:taskAffinity="com.tencent.qqconnect.wtlogin">
+            <intent-filter>
+                <action android:name="mqq.opensdk.intent.action.ACTION_VERYFY_LOCK_CODE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:exported="false" android:label="@string/app_name" android:name="com.tencent.qqconnect.wtlogin.AuthDevVerifyCodeActivity2" android:process=":openSdk"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation" android:label="@string/app_name" android:launchMode="singleTask" android:name="com.tencent.mobileqq.activity.VerifyCodeActivity2" android:process=":openSdk" android:taskAffinity="com.tencent.qqconnect.wtlogin" android:windowSoftInputMode="stateAlwaysVisible">
+            <intent-filter>
+                <action android:name="mqq.opensdk.intent.action.VERIFYCODE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.open.agent.SocialFriendChooser" android:process=":openSdk" android:theme="@style/Default.AnimPullUp" android:windowSoftInputMode="adjustPan"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.open.agent.DeviceShareFriendChooser" android:theme="@style/Default.AnimPullUp" android:windowSoftInputMode="adjustPan"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.open.agent.DeviceDeleteFriendChooserActivity" android:process=":openSdk" android:theme="@style/Default.AnimPullUp" android:windowSoftInputMode="adjustPan"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.open.agent.SendStoryActivity" android:process=":openSdk" android:theme="@style/Default.AnimPullUp" android:windowSoftInputMode="adjustPan"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.open.agent.BragActivity" android:process=":openSdk" android:theme="@style/Default.AnimPullUp" android:windowSoftInputMode="adjustResize"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.open.agent.ChallengeActivity" android:process=":openSdk" android:theme="@style/Default.AnimPullUp" android:windowSoftInputMode="adjustResize"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation" android:exported="false" android:name="com.tencent.biz.TenpayActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.QPayReminderActivity" android:windowSoftInputMode="adjustNothing"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.phone.PhoneFrameActivity" android:theme="@style/Default.Transparent" android:windowSoftInputMode="adjustNothing"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.phone.PhoneLaunchActivity" android:windowSoftInputMode="adjustNothing"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.phone.CountryActivity" android:windowSoftInputMode="adjustNothing"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.phone.BindNumberActivity" android:theme="@style/Default.Transparent" android:windowSoftInputMode="adjustNothing"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.phone.BindVerifyActivity" android:theme="@style/Default.Transparent" android:windowSoftInputMode="adjustNothing|stateVisible"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.phone.BindNumberBusinessActivity" android:theme="@style/Default.Transparent" android:windowSoftInputMode="adjustNothing|stateVisible"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.phone.BindNumberDialogActivity" android:theme="@style/Default.Transparent" android:windowSoftInputMode="adjustNothing|stateVisible"/>
+        <activity android:configChanges="keyboardHidden|screenLayout|screenSize" android:excludeFromRecents="true" android:exported="false" android:name="com.tencent.mobileqq.activity.phone.MyBusinessActivity" android:process=":web" android:taskAffinity="com.tencent.mobileqq.tab.settingme" android:theme="@style/Default.Transparent"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.phone.TosActivity" android:process=":web" android:theme="@style/Default.Transparent"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.phone.SettingActivity2" android:theme="@style/Default.Transparent"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.phone.RebindActivity" android:theme="@style/Default.Transparent"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.phone.BindNumberFromPcActivity" android:theme="@style/Default.Transparent"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.phone.PhoneMatchActivity" android:theme="@style/Default.Transparent"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.circle.ui.GroupListActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.circle.ui.FriendListActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.circle.ui.LaunchActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.circle.ui.SettingActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.TroopAssisSettingActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.DetailProfileActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.EmosmActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.EmosmDetailActivity"/>
+        <activity android:exported="false" android:name="com.dataline.activity.DLTestMain"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="cooperation.qqdataline.DatalinePluginProxyActivity" android:process=":dataline" android:theme="@style/QZTransparent"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="cooperation.qqdataline.DatalinePluginProxyActivity$SingleTop" android:process=":dataline" android:theme="@style/QZTransparent"/>
+        <service android:exported="false" android:name="cooperation.qqdataline.ipc.DatalineProxyService" android:process=":dataline"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTask" android:name="com.dataline.activities.LiteActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTask" android:name="com.dataline.activities.PrinterActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.dataline.activities.PrinterOptionActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.dataline.activities.PrinterSubOptionActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.dataline.activities.DLRouterSessionInfoActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.dataline.activities.LiteVideoActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.dataline.activities.LiteAdvanceActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.dataline.activities.DLFilesViewerActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.dataline.activities.LiteMutiPicViewerActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.tencent.smtt.sdk.VideoActivity">
+            <intent-filter>
+                <action android:name="com.tencent.smtt.tbs.video.PLAY"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTask" android:name="com.dataline.activities.DLRouterActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.dataline.activities.RouterAdvanceActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.filemanager.activity.FMActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.filemanager.activity.FMOfflineFileActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.filemanager.activity.FMCloudActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.filemanager.activity.FileViewerActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity" android:theme="@style/Default.TransparentWithAnimPullUp"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.filemanager.fileviewer.FileBrowserEmptyActivity" android:theme="@style/Default.AnimPullUp"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.filemanager.fileviewer.TroopFileDetailBrowserActivity" android:theme="@style/Default.AnimPullUp"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.filemanager.activity.fileviewer.NewFileViewerActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.filemanager.activity.fileviewer.qfile.QfileFileViewerActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.filemanager.activity.fileviewer.troopfile.TroopFileViewerActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.filemanager.activity.FilePreviewActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.filemanager.activity.CloudFileBrowserActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileBrowserActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.filemanager.activity.LocalFileCategoryBrowserActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileCategoryBrowserActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.filemanager.activity.FileAssistantActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.filemanager.activity.fileassistant.QfileFileAssistantActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentFileActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.filemanager.activity.FMRecentFileActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.qlink.activity.QlinkDiscoverActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.qlink.activity.QlinkApGuidelineActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.qlink.activity.QlinkProxyActivity" android:theme="@android:style/Theme.Translucent"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.qlink.widget.QlinkDialogWrapper" android:theme="@android:style/Theme.Translucent"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="cooperation.qlink.QlinkAgentActivity" android:theme="@style/Theme_Dialog_Alert"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation" android:icon="@drawable/qlink_desktopicon" android:name="cooperation.qlink.QlinkShareJumpActivity" android:theme="@android:style/Theme.Translucent">
+            <intent-filter android:label="@string/qlink_share_entry">
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/*"/>
+                <data android:mimeType="video/*"/>
+                <data android:mimeType="audio/*"/>
+                <data android:mimeType="application/*"/>
+                <data android:mimeType="text/*"/>
+            </intent-filter>
+            <intent-filter android:label="@string/qlink_share_entry">
+                <action android:name="android.intent.action.SEND_MULTIPLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/*"/>
+                <data android:mimeType="video/*"/>
+                <data android:mimeType="audio/*"/>
+                <data android:mimeType="application/*"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.qlink.activity.QlinkDefaultActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.qlink.activity.QlinkSearchActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.qlink.activity.QlinkTransferActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.qlink.activity.QlinkGuidePageActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="cooperation.qlink.QlinkDialogActivity" android:theme="@style/Theme_Dialog_Alert"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="cooperation.qlink.QlinkStandardDialogActivity" android:theme="@style/Theme_Dialog_Alert"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="cooperation.qlink.QlinkSendTipsActivity" android:theme="@style/UniformDownload_Transparent"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity" android:theme="@style/UniformDownload_Transparent"/>
+        <receiver android:exported="false" android:name="com.tencent.mobileqq.filemanager.core.UniformDownloadNfnReceiver">
+            <intent-filter>
+                <action android:name="com.tencent.mobileqq.UniformDownloadNfn.PAUSE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.tencent.mobileqq.UniformDownloadNfn.DO_DOWNLOAD"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.tencent.mobileqq.UniformDownloadNfn.TRY_DOWNLOAD"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.tencent.mobileqq.UniformDownloadNfn.INSTALL"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.tencent.mobileqq.UniformDownloadNfn.BEDEL"/>
+            </intent-filter>
+        </receiver>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:excludeFromRecents="true" android:exported="false" android:hardwareAccelerated="true" android:name="cooperation.qqfav.QfavPluginProxyActivity" android:process=":qqfav" android:taskAffinity="com.tencent.mobileqq.tab.settingme"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="cooperation.qqfav.QfavPluginProxyActivity$SingleTop" android:process=":qqfav" android:theme="@style/QZTransparent"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="cooperation.qqfav.QfavPluginProxyActivity$DetailProxy" android:process=":qqfav" android:theme="@style/QZTransparent"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="cooperation.qqfav.QfavPluginProxyActivity$ScreenOrientationProxy" android:process=":qqfav"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation" android:exported="true" android:icon="@drawable/qfav_share_system" android:name="cooperation.qqfav.widget.QfavJumpActivity" android:theme="@android:style/Theme.Translucent">
+            <intent-filter android:label="@string/qfav_add_to_qfav">
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/*"/>
+                <data android:mimeType="text/*"/>
+            </intent-filter>
+            <intent-filter android:label="@string/qfav_add_to_qfav">
+                <action android:name="android.intent.action.SEND_MULTIPLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="image/*"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="cooperation.qqfav.QfavPluginProxyActivity$ImageViewer" android:process=":qqfav" android:theme="@style/qzone_Transparent"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="cooperation.qqfav.widget.LocationDetailActivity" android:process=":map" android:theme="@style/qqMapTheme"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:name="com.tencent.biz.qrcode.activity.QRDisplayActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.biz.qrcode.activity.ScannerActivity" android:theme="@style/Default.NoTitleBarWithActAnimation"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.biz.qrcode.activity.AddFriendScannerActivity" android:theme="@style/Default.NoTitleBarWithActAnimation"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.av.ui.IvrScanBarActivity" android:theme="@style/Default.NoTitleBarWithActAnimation"/>
+        <activity android:configChanges="orientation|screenSize" android:exported="false" android:name="com.tencent.biz.qrcode.activity.QRCardActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.biz.qrcode.activity.QRJumpActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:exported="false" android:name="com.tencent.biz.qrcode.activity.QRLoginActivity"/>
+        <activity android:exported="false" android:name="com.tencent.biz.qrcode.activity.LoginManagerActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.open.applist.WebAppActivity" android:process=":web" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.open.appcenter.QZoneAppWebViewActivity" android:process=":web" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.open.appcenter.QZoneAppCenterActivity" android:process=":web" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.open.applist.QZoneAppListActivity" android:process=":web" android:theme="@style/Default.Transparent" android:windowSoftInputMode="adjustPan"/>
+        <receiver android:exported="false" android:name="com.tencent.open.downloadnew.common.DownloadReceiver">
+            <intent-filter>
+                <action android:name="com.tencent.open.download.start.com.tencent.mobileqq"/>
+                <action android:name="com.tencent.open.download.complete.com.tencent.mobileqq"/>
+                <action android:name="com.tencent.open.download.open.com.tencent.mobileqq"/>
+                <action android:name="com.tencent.open.download.yyb.com.tencent.mobileqq"/>
+                <action android:name="com.tencent.open.download.restart.com.tencent.mobileqq"/>
+                <action android:name="com.tencent.open.download.pause.com.tencent.mobileqq"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="false" android:name="com.tencent.open.downloadnew.common.DownloadReceiverWebProcess" android:process=":web">
+            <intent-filter>
+                <action android:name="com.tencent.open.download.start.com.tencent.mobileqq.web"/>
+                <action android:name="com.tencent.open.download.complete.com.tencent.mobileqq.web"/>
+                <action android:name="com.tencent.open.download.open.com.tencent.mobileqq.web"/>
+                <action android:name="com.tencent.open.download.yyb.com.tencent.mobileqq.web"/>
+                <action android:name="com.tencent.open.download.restart.com.tencent.mobileqq.web"/>
+                <action android:name="com.tencent.open.download.pause.com.tencent.mobileqq.web"/>
+            </intent-filter>
+        </receiver>
+        <service android:exported="false" android:name="com.tencent.tmdownloader.TMAssistantDownloadService" android:process=":TMAssistantDownloadSDKService"/>
+        <receiver android:exported="false" android:name="com.tencent.open.business.base.appreport.AppReportReceiver" android:process=":web">
+            <intent-filter>
+                <data android:scheme="package"/>
+                <action android:name="android.intent.action.PACKAGE_ADDED"/>
+                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
+                <action android:name="android.intent.action.PACKAGE_REPLACED"/>
+            </intent-filter>
+        </receiver>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:exported="false" android:name="com.tencent.av.ui.IvrQRScanBrowser" android:process=":web" android:theme="@style/Default.Transparent"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:excludeFromRecents="true" android:exported="false" android:name="com.tencent.biz.pubaccount.PublicAccountBrowser" android:process=":web" android:taskAffinity="com.tencent.mobileqq.tab.conversation" android:theme="@style/Default.Transparent"/>
+        <activity android:exported="false" android:name="com.tencent.biz.pubaccount.AccountDetailActivity" android:theme="@style/Default.Transparent.noTitlebar"/>
+        <activity android:exported="false" android:name="com.tencent.biz.troopbar.TroopBarDetailActivity"/>
+        <activity android:exported="false" android:name="com.tencent.biz.eqq.EnterpriseDetailActivity"/>
+        <activity android:configChanges="keyboardHidden|screenLayout|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.biz.pubaccount.assistant.PubAccountAssistantActivity"/>
+        <activity android:configChanges="keyboardHidden|screenLayout|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.biz.pubaccount.assistant.PubAccountAssistantSettingActivity"/>
+        <activity android:configChanges="keyboardHidden|screenLayout|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantActivity"/>
+        <activity android:configChanges="keyboardHidden|screenLayout|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantActivity"/>
+        <activity android:configChanges="keyboardHidden|screenLayout|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.biz.lebasearch.SearchActivity" android:theme="@style/Default.Transparent" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.biz.bmqq.profile.BmqqProfileCardActivity"/>
+        <activity android:configChanges="keyboardHidden|screenLayout|screenSize" android:exported="false" android:name="com.tencent.biz.coupon.CouponActivity" android:process=":web"/>
+        <activity android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.biz.coupon.MyCoupon"/>
+        <activity android:exported="false" android:name="com.tencent.biz.coupon.FavourBusinessActivity"/>
+        <activity android:exported="false" android:name="com.tencent.mobileqq.activity.ChatTextSizeSettingActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.TextPreviewActivity" android:theme="@style/text_preview_theme" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:exported="false" android:launchMode="singleTop" android:name="com.qqreader.QRBridgeActivity" android:theme="@style/QZTransparent"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:name="com.qqreader.QRPluginProxyActivity" android:process=":qqreader" android:theme="@style/QZTransparent" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:name="com.qqreader.QRReaderPageProxyActivity" android:process=":qqreader" android:theme="@style/QZTransparent" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:name="com.qqreader.QRHardWareActivity" android:process=":qqreader" android:theme="@style/QZTransparent"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:name="com.qqreader.QRWebBrowserActivity" android:process=":qqreader" android:theme="@style/QZTransparent" android:windowSoftInputMode="adjustPan"/>
+        <receiver android:name="com.qqreader.QRAioCmdReceiver">
+            <intent-filter>
+                <action android:name="com.qqreader.aioback2reader"/>
+            </intent-filter>
+        </receiver>
+        <meta-data android:name="TA_APPKEY" android:value="A3IK3R1BXK23"/>
+        <meta-data android:name="InstallChannel" android:value="debug"/>
+        <uses-library android:name="com.google.android.media.effects" android:required="false"/>
+        <uses-library android:name="com.motorola.hardware.frontcamera" android:required="false"/>
+        <activity android:clearTaskOnLaunch="true" android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="cooperation.zebra.WatermarkPluginProxyActivity" android:process=":plugin" android:theme="@style/plugin_watermark" android:windowSoftInputMode="adjustPan"/>
+        <activity android:clearTaskOnLaunch="true" android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="cooperation.zebra.ZebraPluginProxyActivity" android:process=":zebra" android:theme="@style/plugin_watermark" android:windowSoftInputMode="adjustPan"/>
+        <activity android:clearTaskOnLaunch="true" android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="cooperation.thirdpay.NFCPayPluginProxyActivity" android:process=":cardpay" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:windowSoftInputMode="stateHidden"/>
+        <activity android:clearTaskOnLaunch="true" android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="cooperation.thirdpay.ThirdPayPluginProxyActivity" android:process=":cardpay" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.richstatus.EditActivity" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.richstatus.ActionListActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.richstatus.ActionGridActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.richstatus.ActionUrlActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.richstatus.MovieDetailActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.richstatus.SameStatusActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.richstatus.SameStatusGuideActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.richstatus.StatusHistoryActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.SigCommentListActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.contact.CircleMemberListActivity" android:windowSoftInputMode="adjustResize"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.contact.newfriend.ContactRecommendActivity" android:windowSoftInputMode="adjustResize"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity" android:windowSoftInputMode="adjustResize"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity" android:windowSoftInputMode="adjustResize"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.PayBridgeActivity" android:theme="@style/qzone_Transparent" android:windowSoftInputMode="adjustNothing"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:excludeFromRecents="true" android:exported="false" android:name="com.tencent.mobileqq.activity.empty.PayBridgeNewActivity" android:taskAffinity="com.tencent.mobileqq.tab.ModelWindow" android:theme="@style/qzone_Transparent" android:windowSoftInputMode="adjustNothing"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.gamecenter.activities.GameCenterActivity" android:process=":web" android:windowSoftInputMode="adjustResize"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.DialogActivity" android:theme="@android:style/Theme.Translucent" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:excludeFromRecents="true" android:exported="false" android:name="com.tencent.mobileqq.activity.FunnyFaceHomePageActivity" android:process=":web" android:windowSoftInputMode="adjustNothing"/>
+        <activity android:exported="true" android:label="@string/app_name" android:name="com.tencent.mobileqq.wxapi.WXEntryActivity" android:theme="@android:style/Theme.Translucent"/>
+        <activity android:exported="false" android:name="com.tencent.mobileqq.activity.MusicSharePlayActivity"/>
+        <service android:exported="false" android:name="com.tencent.mobileqq.music.QQPlayerService"/>
+        <meta-data android:name="APPKEY_DENGTA" android:value="0S2004ZPSC1KLTD2"/>
+        <activity android:exported="false" android:launchMode="singleTask" android:name="com.dataline.activities.LiteWifiphotoActivity"/>
+        <activity android:exported="false" android:name="com.dataline.mpfile.LiteMpFileFileListActivity"/>
+        <activity android:exported="false" android:name="com.dataline.mpfile.LiteMpFileFailedActivity"/>
+        <activity android:exported="false" android:name="com.dataline.mpfile.LiteMpFileMainActivity"/>
+        <activity android:exported="false" android:name="com.dataline.mpfile.LiteMpFileActionListActivity"/>
+        <activity android:exported="false" android:name="com.dataline.mpfile.LiteMpFileDownloadActivity"/>
+        <activity android:exported="false" android:name="com.dataline.mpfile.LiteMpFileUploadActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.aio.MessageShareActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:excludeFromRecents="true" android:exported="false" android:name="com.tencent.mobileqq.troop.activity.TroopLocationModifyActivity" android:process=":web" android:windowSoftInputMode="adjustNothing"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:excludeFromRecents="true" android:exported="false" android:name="com.tencent.mobileqq.activity.empty.TroopLocationModifyConversationActivity" android:process=":web" android:taskAffinity="com.tencent.mobileqq.tab.conversation" android:windowSoftInputMode="adjustNothing"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:excludeFromRecents="true" android:exported="false" android:name="com.tencent.mobileqq.activity.empty.TroopLocationModifyContactsActivity" android:process=":web" android:taskAffinity="com.tencent.mobileqq.tab.contacts" android:windowSoftInputMode="adjustNothing"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:excludeFromRecents="true" android:exported="false" android:name="com.tencent.mobileqq.troop.activity.TroopCreateActivity" android:process=":web" android:taskAffinity="com.tencent.mobileqq.tab.contacts" android:windowSoftInputMode="adjustResize"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.troop.activity.TroopCreateAvatarActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity" android:theme="@style/troop_Transparent" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.troop.activity.TroopCreateEnterActivity" android:theme="@style/troop_Transparent" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.specialcare.QvipSpecialCareActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity" android:windowSoftInputMode="stateHidden"/>
+        <receiver android:exported="false" android:name="cooperation.qwallet.plugin.QWalletProxyReceiver" android:process=":qwallet">
+            <intent-filter>
+                <action android:name="cooperation.qwallet.QWALLET_PRELOAD"/>
+            </intent-filter>
+        </receiver>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:excludeFromRecents="true" android:exported="false" android:hardwareAccelerated="true" android:name="cooperation.qwallet.plugin.QWalletPluginProxyActivity" android:process=":qwallet" android:theme="@style/QWalletTransparent" android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:excludeFromRecents="true" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.empty.QWalletPluginProxySettingMeActivity" android:process=":qwallet" android:taskAffinity="com.tencent.mobileqq.tab.settingme" android:theme="@style/QWalletTransparent" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:excludeFromRecents="true" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.empty.QWalletPluginProxyConversationActivity" android:process=":qwallet" android:taskAffinity="com.tencent.mobileqq.tab.conversation" android:theme="@style/QWalletTransparent" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:excludeFromRecents="true" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.empty.QWalletPluginProxyCallActivity" android:process=":qwallet" android:taskAffinity="com.tencent.mobileqq.tab.call" android:theme="@style/QWalletTransparent" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:excludeFromRecents="true" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.empty.QWalletPluginProxyContactsActivity" android:process=":qwallet" android:taskAffinity="com.tencent.mobileqq.tab.contacts" android:theme="@style/QWalletTransparent" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:excludeFromRecents="true" android:exported="false" android:hardwareAccelerated="true" android:name="cooperation.qwallet.plugin.proxy.QWalletNFCProxyActivity" android:process=":buscard" android:theme="@android:style/Theme.Translucent"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTask" android:name="cooperation.qwallet.plugin.proxy.BuscardLoadNFCProxyActivity" android:process=":buscard" android:theme="@android:style/Theme.Translucent"/>
+        <activity android:excludeFromRecents="true" android:exported="true" android:launchMode="singleTop" android:name="cooperation.qwallet.open.AppPayActivity" android:theme="@android:style/Theme.Translucent">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="mqqwallet"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:excludeFromRecents="true" android:exported="false" android:launchMode="singleTask" android:name="cooperation.qwallet.virtual.QChongLotteryBrowser" android:process=":web"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="cooperation.qwallet.open.OpenPayActivity" android:theme="@android:style/Theme.Translucent" android:windowSoftInputMode="adjustNothing"/>
+        <activity android:exported="true" android:name="com.tencent.mobileqq.wxapi.WXPayEntryActivity" android:process=":qwallet" android:theme="@android:style/Theme.Translucent"/>
+        <activity android:configChanges="keyboard|keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.qwallet.TransactionActivity" android:theme="@style/Default.Transparent" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboard|keyboardHidden|locale|orientation|screenSize" android:excludeFromRecents="true" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.empty.TransactionContactActivity" android:taskAffinity="com.tencent.mobileqq.tab.contacts" android:theme="@style/Default.Transparent" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboard|keyboardHidden|locale|orientation|screenSize" android:excludeFromRecents="true" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.empty.TransactionConversationActivity" android:taskAffinity="com.tencent.mobileqq.tab.conversation" android:theme="@style/Default.Transparent" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboard|keyboardHidden|locale|orientation|screenSize" android:excludeFromRecents="true" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.empty.TransactionCallActivity" android:taskAffinity="com.tencent.mobileqq.tab.call" android:theme="@style/Default.Transparent" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboard|keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.qwallet.SendHbActivity" android:theme="@style/Default.Transparent" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboard|keyboardHidden|locale|orientation|screenSize" android:excludeFromRecents="true" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.empty.SendHbContactActivity" android:taskAffinity="com.tencent.mobileqq.tab.contacts" android:theme="@style/Default.Transparent" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboard|keyboardHidden|locale|orientation|screenSize" android:excludeFromRecents="true" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.empty.SendHbConversationActivity" android:taskAffinity="com.tencent.mobileqq.tab.conversation" android:theme="@style/Default.Transparent" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboard|keyboardHidden|locale|orientation|screenSize" android:excludeFromRecents="true" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.empty.SendHbCallActivity" android:taskAffinity="com.tencent.mobileqq.tab.call" android:theme="@style/Default.Transparent" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTask" android:name="cooperation.buscard.BuscardPluginInstallActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:windowSoftInputMode="adjustPan"/>
+        <service android:exported="false" android:name="cooperation.qqwifi.QQWiFiAssistService" android:process=":qqwifi"/>
+        <service android:exported="false" android:name="cooperation.qqwifi.QQWiFiAutoJumpService">
+            <intent-filter>
+                <action android:name="com.tencent.mobileqq.msf.qqwifi.autoconnect"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </service>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTask" android:name="cooperation.qqwifi.QQWiFiConnectProxyActivity" android:process=":qqwifi" android:theme="@style/TransparentWithoutTitle" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="cooperation.qqwifi.QQWiFiProxyActivity" android:process=":qqwifi" android:theme="@style/TransparentWithoutTitle" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="cooperation.qqwifi.QQWIFIMapProxyActivity" android:process=":qqwifiditu" android:theme="@style/TransparentWithoutTitle" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTask" android:name="cooperation.qqwifi.QQWiFiPluginInstallActivity" android:theme="@style/Default" android:windowSoftInputMode="adjustPan"/>
+        <receiver android:exported="false" android:name="cooperation.qqwifi.AutoConnectReceiver">
+            <intent-filter>
+                <action android:name="com.tencent.mobileqq.msf.qqwifi.autoconnect"/>
+            </intent-filter>
+        </receiver>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:label="@string/weiyun_backup_title" android:name="cooperation.weiyun.AlbumBackupProxyActivity" android:process=":weiyun" android:theme="@style/Weiyun"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:label="@string/weiyun_backup_title" android:name="cooperation.weiyun.AlbumBackupLaunchProxyActivity" android:process=":weiyun" android:theme="@style/Weiyun"/>
+        <receiver android:exported="false" android:name="cooperation.weiyun.WeiyunProxyBroadcastReceiver" android:process=":weiyun">
+            <intent-filter>
+                <action android:name="com.weiyun.plugin.BROADCAST"/>
+            </intent-filter>
+        </receiver>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:excludeFromRecents="true" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.vas.AvatarPendantMarketActivity" android:process=":web" android:taskAffinity="com.tencent.mobileqq.tab.settingme" android:theme="@style/Default.Transparent" android:windowSoftInputMode="adjustNothing"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:excludeFromRecents="true" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.vas.ChatBackgroundMarketActivity" android:process=":web" android:taskAffinity="com.tencent.mobileqq.tab.settingme" android:theme="@style/Default.Transparent" android:windowSoftInputMode="adjustNothing"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.profile.ProfileCardBrowserActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.profile.VipProfileCardPreviewActivity" android:theme="@style/Default.Transparent"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.profile.VipProfileCardPhotoHandlerActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.troop.activity.PicturesPreviewActivity" android:theme="@style/qzone_Transparent"/>
+        <activity android:allowTaskReparenting="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.NearbyActivity"/>
+        <activity android:allowTaskReparenting="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.dating.PublicDatingActivity" android:theme="@style/Default"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.dating.DatingDestinationActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.dating.DatingOthersActivity" android:theme="@style/Default" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.dating.MsgBoxListActivity" android:theme="@style/Default"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.qcall.QCallDetailActivity" android:theme="@style/Default"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:excludeFromRecents="true" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.LebaListMgrActivity" android:taskAffinity="com.tencent.mobileqq.tab.ModelWindow" android:theme="@style/Default.Transparent"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:excludeFromRecents="true" android:exported="false" android:name="com.tencent.mobileqq.activity.SoftInputActivity" android:taskAffinity="com.tencent.mobileqq.tab.Search" android:theme="@style/Default.Transparent.noTitlebar"/>
+        <service android:exported="false" android:name="com.tencent.biz.troop.TroopMemberApiService"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:exported="false" android:name="cooperation.qzone.PluginDownloadActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:exported="false" android:name="cooperation.qzone.QZoneVideoDownloadActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:exported="false" android:name="cooperation.photoplus.PhotoPlusBridgeActivity"/>
+        <activity android:allowTaskReparenting="true" android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.HotChatListActivity" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.activity.ChatSettingForHotChat" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation" android:exported="false" android:name="com.tencent.mobileqq.activity.QQSpaceCleanActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation" android:exported="false" android:name="com.tencent.mobileqq.activity.SecurityLoginDetectActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation" android:exported="false" android:name="com.tencent.mobileqq.activity.SecurityPickproofActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.MultiForwardActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.ProfileLabelEditorActivity"/>
+        <activity android:allowTaskReparenting="true" android:configChanges="keyboard|keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.dating.DatingFeedActivity"/>
+        <activity android:configChanges="keyboard|keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.dating.DatingFilterActivity"/>
+        <activity android:configChanges="keyboard|keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.dating.DatingViewerListActivity"/>
+        <activity android:allowTaskReparenting="true" android:configChanges="keyboard|keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.nearpeople.TurnBrandActivity" android:theme="@style/Default.Transparent"/>
+        <activity android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity" android:theme="@style/Default"/>
+        <activity android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity" android:theme="@style/Default.NoTitleBar"/>
+        <activity android:configChanges="orientation" android:exported="false" android:name="com.tencent.device.msg.activities.DeviceShareAgentActivity" android:theme="@style/sc_TransparentTheme"/>
+        <activity android:configChanges="orientation" android:exported="false" android:name="com.tencent.device.msg.activities.DeviceQRAgentActivity"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.tencent.device.msg.activities.DeviceMsgSettingActivity"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.Face2FaceActivity"/>
+        <receiver android:exported="false" android:name="com.tencent.mobileqq.app.NotificationDeleteReceiver"/>
+        <activity android:allowTaskReparenting="true" android:configChanges="keyboard|keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.dating.DatingDetailActivity" android:theme="@style/Default" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboard|keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTask" android:name="com.tencent.mobileqq.dating.DateEventMsgActivity" android:theme="@style/Default" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboard|keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.dating.DatingUserCenterActivity" android:theme="@style/Default" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.vipav.VipFunCallPreviewActivity"/>
+        <activity android:exported="false" android:launchMode="singleTop" android:name="com.tencent.biz.JoinGroupTransitActivity" android:theme="@style/troop_Transparent"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.RecommendedGatherListActivity" android:windowSoftInputMode="adjustPan"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity" android:windowSoftInputMode="adjustPan"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.RecentSaidActivity"/>
+        <activity android:exported="false" android:label="" android:name="com.tencent.mobileqq.activity.HongbaoShowerActivity" android:theme="@style/qq_aio_hongbao_Transparent"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="cooperation.smartdevice.SmartDevicePluginProxyActivity" android:process=":smartdevice" android:theme="@style/QZTransparent"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:exported="false" android:name="cooperation.smartdevice.SmartDevicePluginDownloadActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:exported="false" android:name="com.tencent.device.bind.DevicePluginDownloadActivity"/>
+        <service android:exported="false" android:name="cooperation.smartdevice.ipc.SmartDeviceProxyService" android:process=":smartdevice"/>
+        <service android:exported="false" android:name="cooperation.smartdevice.ipc.BluetoothLeProxyService" android:process=":smartdevice"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="cooperation.secmsg.SecMsgPluginProxyActivity" android:process=":secmsg"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:launchMode="singleTop" android:name="com.tencent.mobileqq.theme.diy.ThemeDIYActivity"/>
+        <activity android:allowTaskReparenting="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:name="com.tencent.biz.widgets.XChooserActivity" android:theme="@style/Transparent"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.mobileqq.dating.NearbyTransitActivity" android:theme="@android:style/Theme.Translucent"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:launchMode="singleTop" android:name="com.tencent.mobileqq.activity.widget.qqmusic.ui.QQMusicFolderSelectActivity" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.PublicFragmentActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:hardwareAccelerated="true" android:name="com.tencent.mobileqq.activity.PublicTransFragmentActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.tencent.qav.activity.QavChatActivity" android:process=":video" android:screenOrientation="portrait" android:theme="@style/VideoNoTitleBar_Animation"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.tencent.qav.activity.QavInviteActivity" android:process=":video" android:screenOrientation="portrait" android:theme="@style/VideoNoTitleBar_Animation"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.tencent.qav.activity.Qav3rdInviteActivity" android:process=":video" android:screenOrientation="portrait" android:theme="@style/VideoNoTitleBar_Animation"/>
+        <service android:name="com.tencent.qav.ipc.QavService" android:process=":video"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.tencent.qav.app.QavAwakeActivity" android:process=":video" android:screenOrientation="portrait" android:theme="@style/VideoNoTitleBar_Animation">
+            <intent-filter>
+                <action android:name="com.tencent.av.ui.VChatActivity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <receiver android:exported="false" android:name="com.tencent.qav.app.QavAwakeReceiver" android:process=":video">
+            <intent-filter>
+                <action android:name="com.tencent.av.ui.VChatActivity"/>
+            </intent-filter>
+        </receiver>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.tencent.av.utils.PopupDialog" android:process=":video" android:screenOrientation="portrait" android:theme="@style/VideoNoTitleBar_Animation" android:windowSoftInputMode="adjustPan"/>
+        <service android:exported="false" android:name="com.tencent.av.smallscreen.SmallScreenService" android:process=":video"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenSize" android:exported="false" android:name="com.tencent.av.smallscreen.SmallScreenDialogActivity" android:process=":video" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent" android:windowSoftInputMode="adjustPan"/>
+    </application>
+    <permission android:name="com.tencent.photos.permission.DATA2" android:protectionLevel="signature"/>
+    <uses-permission android:name="com.tencent.photos.permission.DATA2"/>
+    <uses-permission android:name="com.tencent.msf.permission.account.sync2"/>
+    <permission android:name="com.tencent.music.data.permission22" android:protectionLevel="signature"/>
+    <uses-permission android:name="com.tencent.music.data.permission22"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="com.tencent.msg.permission.pushnotify2"/>
+    <uses-permission android:name="com.tencent.msf.permission.account.sync2"/>
+    <uses-permission android:name="com.tencent.wifisdk.permission.disconnect2"/>
+    <uses-permission android:name="com.tencent.qqhead.permission.getheadresp2"/>
+    <permission android:name="com.tencent.msg.permission.pushnotify2" android:protectionLevel="signature"/>
+    <permission android:name="com.tencent.wifisdk.permission.disconnect2" android:protectionLevel="signature"/>
+    <permission android:name="com.tencent.qqhead.permission.getheadresp2" android:protectionLevel="signature"/>
+    <permission android:name="com.tencent.qav.permission.broadcast2" android:protectionLevel="signature"/>
+    <uses-permission android:name="com.tencent.qav.permission.broadcast2"/>
+    <permission android:name="com.tencent.smartdevice.permission.broadcast2" android:protectionLevel="signature"/>
+    <uses-permission android:name="com.tencent.smartdevice.permission.broadcast2"/>
+</manifest>

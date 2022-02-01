@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="12.0sp" android:textColor="#ff000000" android:id="@id/fastimage_tip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/aio_fastimage_tip" android:singleLine="false" android:layout_alignRight="@id/fastimage_preview" />
+    <ImageView android:id="@id/fastimage_preview" android:layout_width="77.0dip" android:layout_height="77.0dip" android:layout_marginTop="6.0dip" android:src="@drawable/qb_group_info_head_bg" android:scaleType="centerCrop" android:layout_below="@id/fastimage_tip" />
+</RelativeLayout>

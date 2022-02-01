@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_horizontal" android:background="#fff6f6f6" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/empty_content_layout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
+        <com.qzone.widget.AsyncImageView android:layout_gravity="center_horizontal" android:id="@id/empty_icon" android:layout_width="300.0dip" android:layout_height="200.0dip" />
+        <FrameLayout android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
+            <TextView android:textColor="#ffc3c7c9" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/empty_msg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qzone_troopalbum_data_loading" />
+            <ProgressBar android:layout_gravity="center" android:id="@id/empty_progressbar" android:visibility="gone" android:layout_width="19.0dip" android:layout_height="19.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" />
+        </FrameLayout>
+        <TextView android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/tv_empty_new_album" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="wrap_content" android:layout_height="41.5dip" android:layout_marginTop="15.0dip" android:text="@string/qzone_troopalbum_list_item_new" style="@style/ButtonWhite" />
+    </LinearLayout>
+</RelativeLayout>

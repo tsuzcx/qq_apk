@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/bmqq_strip_setting_bg_bottom" android:layout_width="fill_parent" android:layout_height="60.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="16.0sp" android:textColor="@color/black" android:gravity="center|left" android:id="@id/bmqq_profile_card_ununsed_key" android:layout_width="wrap_content" android:layout_height="60.0dip" android:text="@string/bmqq_unusednum" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" />
+    <TextView android:textSize="16.0sp" android:textColor="@color/black" android:ellipsize="end" android:gravity="center|left" android:id="@id/bmqq_profile_card_ununsed_value" android:layout_width="wrap_content" android:layout_height="60.0dip" android:layout_marginLeft="23.0dip" android:maxWidth="250.0dip" android:text="@null" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/bmqq_profile_card_ununsed_key" />
+</RelativeLayout>

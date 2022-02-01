@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" style="@style/boss_unipay_wrapper"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.pay.ui.common.APHead android:id="@id/boss_unipay_id_head" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:layout_height="0.0dip" android:layout_weight="100.0" style="@style/boss_unipay_linear">
+        <LinearLayout style="@style/boss_unipay_bar.result">
+            <View style="@style/boss_unipay_ic_right" />
+            <TextView android:textColor="@color/boss_unipay_c_suc" android:id="@id/boss_unipay_id_result_succtext" android:text="支付成功" style="@style/boss_unipay_tx.big" />
+        </LinearLayout>
+        <View style="@style/boss_unipay_line" />
+        <LinearLayout style="@style/boss_unipay_result.right">
+            <LinearLayout style="@style/boss_unipay_linear.content">
+                <LinearLayout style="@style/boss_unipay_bar.details">
+                    <TextView android:textSize="14.0sp" android:gravity="left" android:layout_width="0.0dip" android:text="商品名称" android:layout_weight="100.0" style="@style/boss_unipay_tx.thin" />
+                    <TextView android:textSize="14.0sp" android:id="@id/boss_unipay_id_result_buyInfo" android:text="0个月黄钻贵族" style="@style/boss_unipay_tx.thin" />
+                </LinearLayout>
+                <LinearLayout android:id="@id/boss_unipay_id_result_buyInfo2layout" android:visibility="gone" style="@style/boss_unipay_bar.details">
+                    <TextView android:textSize="14.0sp" android:gravity="left" android:visibility="invisible" android:layout_width="0.0dip" android:text="商品名称" android:layout_weight="100.0" style="@style/boss_unipay_tx.thin" />
+                    <TextView android:textSize="14.0sp" android:id="@id/boss_unipay_id_result_buyInfo2" android:text="00Q币" style="@style/boss_unipay_tx.thin" />
+                </LinearLayout>
+            </LinearLayout>
+            <View style="@style/boss_unipay_dashline" />
+            <LinearLayout style="@style/boss_unipay_linear.content">
+                <LinearLayout style="@style/boss_unipay_bar.details">
+                    <TextView android:textSize="14.0sp" android:gravity="left" android:text="支付金额" android:layout_weight="100.0" style="@style/boss_unipay_tx.thin" />
+                    <TextView android:id="@id/boss_unipay_id_result_cost" android:text="60.00" style="@style/boss_unipay_tx.middle.thin3" />
+                    <TextView android:id="@id/boss_unipay_id_result_unit" android:text="元" style="@style/boss_unipay_tx.middle.thin3" />
+                </LinearLayout>
+            </LinearLayout>
+            <View android:id="@id/boss_unipay_busdash" android:visibility="gone" style="@style/boss_unipay_dashline" />
+            <LinearLayout android:id="@id/boss_unipay_bl_bus" android:visibility="gone" style="@style/boss_unipay_linear.content">
+                <LinearLayout style="@style/boss_unipay_bar.details">
+                    <TextView android:textSize="14.0sp" android:gravity="left" android:text="公交卡余额" android:layout_weight="100.0" style="@style/boss_unipay_tx.thin" />
+                    <TextView android:id="@id/boss_unipay_rt_bus" style="@style/boss_unipay_tx.middle.thin3" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:id="@id/boss_unipay_qpayl" android:paddingTop="20.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="14.0sp" android:layout_gravity="center" android:id="@id/boss_unipay_qpayt" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/boss_unipay_tx.thin" />
+        </LinearLayout>
+        <Button android:id="@id/boss_unipay_id_result_continue" android:text="继续购买" style="@style/boss_unipay_btn_main" />
+        <Button android:textSize="17.0sp" android:textColor="@color/boss_unipay_c_blue" android:id="@id/boss_unipay_boss_bsc" android:background="@drawable/qvip_pay_common_btn_white" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:text="绑定银行卡" />
+    </LinearLayout>
+    <LinearLayout android:layout_gravity="center" android:layout_marginBottom="15.0dip" style="@style/boss_unipay_foot_help">
+        <TextView android:textSize="12.0sp" android:layout_width="fill_parent" android:text="@string/boss_unipay_service" style="@style/boss_unipay_tx.thin" />
+        <LinearLayout style="@style/boss_unipay_bar">
+            <TextView android:textSize="12.0sp" android:text="@string/boss_unipay_service_call" style="@style/boss_unipay_tx.thin" />
+            <TextView android:textSize="12.0sp" android:autoLink="all" android:id="@id/boss_unipay_id_telnum" android:layout_width="105.0dip" android:text="@string/boss_unipay_service_phone" style="@style/boss_unipay_tx_link" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

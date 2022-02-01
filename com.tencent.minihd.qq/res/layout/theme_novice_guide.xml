@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@drawable/theme_novice_guide_bg" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button android:textSize="19.0sp" android:textColor="#ffffffff" android:id="@id/switch_theme_btn" android:background="@drawable/select_member_done_btn_blue" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="84.0dip" android:minHeight="50.0dip" android:text="立即更换主题" android:layout_alignParentBottom="true" />
+    <TextView android:textSize="16.0sp" android:textColor="#ff000000" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="56.0dip" android:text="体验全新沟通乐趣！" android:layout_alignParentBottom="true" />
+</RelativeLayout>

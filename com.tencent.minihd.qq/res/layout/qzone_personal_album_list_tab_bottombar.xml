@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/bottomBar" android:background="@drawable/skin_aio_input_bar_bg" android:paddingLeft="11.0dip" android:paddingTop="11.0dip" android:paddingBottom="11.0dip" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="50.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0sp" android:textColor="@color/skin_input" android:gravity="center" android:id="@id/tv_recent_photo_tip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qzone_personal_album_recent_photo_tip" />
+    <HorizontalScrollView android:id="@id/scrollView" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="75.0dip" android:layout_marginTop="11.0dip" android:layout_below="@id/tv_recent_photo_tip">
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <com.tencent.widget.GridView android:id="@id/gd_recentPhotos" android:fadingEdge="none" android:layout_width="100.0dip" android:layout_height="fill_parent" android:listSelector="@color/transparent" android:cacheColorHint="@null" android:horizontalSpacing="@dimen/personal_album_recent_photo_grid_h_space" android:verticalSpacing="0.0dip" android:stretchMode="none" android:columnWidth="@dimen/personal_album_recent_photo_grid_item_w" android:numColumns="1" />
+        </LinearLayout>
+    </HorizontalScrollView>
+    <TextView android:id="@id/tv_cancel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="11.0dip" android:text="@string/qzone_cancel" android:layout_below="@id/scrollView" android:layout_alignParentLeft="true" style="@style/SmallButtonWhite" />
+    <TextView android:id="@id/tv_confirm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="11.0dip" android:layout_marginRight="11.0dip" android:text="@string/qzone_uploadphoto_upload" android:layout_below="@id/scrollView" android:layout_alignParentRight="true" style="@style/SmallButtonBlue" />
+</RelativeLayout>

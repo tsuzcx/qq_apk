@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/add_special_care_friend_footerview" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="bottom" formItem:leftText="@string/qvip_add_special_care_person" formItem:leftTextColor="blue"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.minihd.qq" />

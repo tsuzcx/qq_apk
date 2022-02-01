@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/qzone_background" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/view_margin_top" android:background="@color/white" android:layout_width="@dimen/qzone_feed_width" android:layout_height="@dimen/qzone_common_32dp" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+    <RelativeLayout android:id="@id/container" android:background="@color/white" android:layout_width="@dimen/qzone_feed_width" android:layout_height="wrap_content" android:layout_below="@id/view_margin_top" android:layout_centerHorizontal="true">
+        <TextView android:textSize="12.0dip" android:textColor="@color/qzone_blogtime_text_color" android:id="@id/blogtime" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="32.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="32.0dip" android:layout_marginRight="32.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
+            <TextView android:textSize="18.0dip" android:textColor="@color/qzone_color_text_color_black" android:id="@id/blogtitle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:lineSpacingExtra="2.0dip" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="12.0dip" android:textColor="@color/qzone_blogtime_text_color" android:id="@id/blogcomment" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" />
+                <TextView android:textSize="12.0dip" android:textColor="@color/qzone_blogtime_text_color" android:id="@id/blogview" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+    <View android:id="@id/view_margin_bottom" android:background="@color/white" android:layout_width="@dimen/qzone_feed_width" android:layout_height="@dimen/qzone_common_32dp" android:layout_marginLeft="@dimen/qzone_common_32dp" android:layout_marginRight="@dimen/qzone_common_32dp" android:layout_below="@id/container" android:layout_centerHorizontal="true" />
+    <View android:background="@color/divider_color" android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_marginLeft="@dimen/qzone_common_64dp" android:layout_marginRight="@dimen/qzone_common_64dp" android:layout_below="@id/view_margin_bottom" />
+</RelativeLayout>

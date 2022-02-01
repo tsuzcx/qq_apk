@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/local_search" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:clickable="true" layout="@layout/qq_search_searchbox_in_dialog" />
+    <RelativeLayout android:id="@id/result_layout" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.widget.XListView android:scrollbarThumbVertical="@drawable/scrollbar_handle_vertical" android:id="@id/search_result_list" android:background="@drawable/bg_texture" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/transparent" android:scrollingCache="false" android:cacheColorHint="@android:color/transparent" android:divider="@null" android:dividerHeight="0.0dip" />
+        <TextView android:textSize="15.0sp" android:textColor="@color/skin_gray3" android:gravity="center_horizontal" android:id="@id/no_result" android:background="@drawable/bg_texture" android:paddingTop="100.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/no_search_local_friend" android:drawableTop="@drawable/no_result" />
+        <com.tencent.widget.XListView android:scrollbarThumbVertical="@drawable/scrollbar_handle_vertical" android:id="@id/search_history_list" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/transparent" android:scrollingCache="false" android:cacheColorHint="@android:color/transparent" android:divider="@null" android:dividerHeight="0.0dip" />
+    </RelativeLayout>
+</LinearLayout>

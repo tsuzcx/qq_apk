@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/qq_ls_single_recent_item" android:background="@drawable/qq_ls_bg_item" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="19.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/qq_ls_dot" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/qq_ls_dot" />
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/qq_ls_video" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qq_conversation_call_icon_misscall_nor" />
+    <TextView android:textSize="14.0sp" android:textColor="#ffbfbfbd" android:id="@id/qq_ls_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="40.0dip" android:text="一条为接听电话一条为接接听电话接听电话听电话一条为接听电话一条为接听电话" android:maxLines="10" />
+</LinearLayout>

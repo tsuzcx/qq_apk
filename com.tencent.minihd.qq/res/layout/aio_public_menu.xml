@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/extension_coverview" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:alpha="0.0" />
+    <LinearLayout android:gravity="center" android:id="@id/pa_loading_bar" android:background="@drawable/qb_pubaccount_shape_ret_loading_bg" android:visibility="gone" android:layout_width="160.0dip" android:layout_height="33.0dip" android:layout_marginBottom="90.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <ProgressBar android:layout_gravity="center" android:id="@id/refresh_progress" android:layout_width="18.0dip" android:layout_height="18.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading5" android:indeterminateBehavior="repeat" />
+        <TextView android:textSize="@dimen/textSize16sp" android:textColor="@color/white" android:id="@id/loadding_message" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/message_loading" />
+    </LinearLayout>
+    <com.tencent.biz.ui.CustomMenuBar android:id="@id/extension_custom_menu_bar" android:background="@drawable/skin_aio_input_bar_bg" android:paddingRight="48.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <com.tencent.mobileqq.widget.PublicMenuBar android:id="@id/extension_cover_menu_bar" android:background="@drawable/qq_profilecard_btn" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+</merge>

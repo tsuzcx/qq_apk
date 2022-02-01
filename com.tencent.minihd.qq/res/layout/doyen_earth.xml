@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-30.0dip" android:layout_marginBottom="-104.0dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true">
+        <ImageView android:layout_gravity="center" android:id="@id/iv_flow_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/doyen_flow_1" android:scaleType="center" />
+        <ImageView android:layout_gravity="center" android:id="@id/iv_flow_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/doyen_flow_2" android:scaleType="center" />
+        <ImageView android:layout_gravity="center" android:id="@id/iv_flow_3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/doyen_flow_3" android:scaleType="center" />
+        <ImageView android:layout_gravity="center" android:id="@id/iv_flow_4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/doyen_flow_4" android:scaleType="center" />
+        <FrameLayout android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:layout_gravity="center" android:id="@id/iv_earth" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/doyen_earth_login" />
+            <ImageView android:layout_gravity="center" android:id="@id/iv_earth_cover" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/doyen_earth_logout" />
+        </FrameLayout>
+    </FrameLayout>
+    <ViewStub android:id="@id/vs_logout" android:layout="@layout/doyen_logout_layout" android:layout_width="wrap_content" android:layout_height="84.0dip" android:layout_marginLeft="82.0dip" />
+    <ViewStub android:id="@id/vs_login" android:layout="@layout/doyen_login_layout" android:layout_width="wrap_content" android:layout_height="92.0dip" android:layout_marginLeft="94.0dip" android:layout_marginTop="4.0dip" />
+</RelativeLayout>

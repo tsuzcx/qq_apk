@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:background="@drawable/common_strip_setting_extra" android:layout_width="fill_parent" android:layout_height="42.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0sp" android:textColor="@color/skin_black" android:id="@id/qq_call_phone_type_label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/chat_titlebar_bg" android:id="@id/qq_call_phone_number" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="78.0dip" />
+</RelativeLayout>

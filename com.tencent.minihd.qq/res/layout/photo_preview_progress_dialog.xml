@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center" android:layout_gravity="center" android:background="@drawable/tips_popup_win_bg" android:layout_width="100.0dip" android:layout_height="100.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ProgressBar android:id="@id/photo_prievew_progress_dialog_image" android:layout_width="17.0dip" android:layout_height="17.0dip" android:indeterminateDrawable="@drawable/image_progress" android:layout_centerHorizontal="true" />
+    <TextView android:textColor="@color/white" android:id="@id/photo_prievew_progress_dialog_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/photo_preveiw_loading" android:layout_below="@id/photo_prievew_progress_dialog_image" android:layout_centerHorizontal="true" />
+</RelativeLayout>

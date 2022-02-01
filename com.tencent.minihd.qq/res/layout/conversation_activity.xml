@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/conversation_content_frame" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.CustomRelativeLayout android:id="@id/root" android:layout_width="@dimen/pad_left_panel_width" android:layout_height="fill_parent">
+        <include android:id="@id/fix_top_searchbox" layout="@layout/search_box" />
+        <com.tencent.mobileqq.fpsreport.FPSSwipListView android:scrollbarThumbVertical="@drawable/scrollbar_handle_vertical" android:id="@id/recent_chat_list" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/transparent" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0px" android:layout_below="@id/fix_top_searchbox" />
+        <View android:background="@drawable/skin_header_bar_shadow" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_alignParentTop="true" />
+        <com.tencent.widget.CustomHorizontalLoadingBar android:id="@id/conversation_loading_bar" android:background="@drawable/skin_custom_progress_bg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="3.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        <View android:id="@id/recent_list_chat_mask" android:background="#e6ffffff" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="72.0dip" />
+    </com.tencent.mobileqq.widget.CustomRelativeLayout>
+    <com.tencent.mobileqq.activity.widget.WidgetContainer android:id="@id/WidgetContainer" android:background="#fff2f2f2" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <include layout="@layout/widget_main" />
+    </com.tencent.mobileqq.activity.widget.WidgetContainer>
+    <com.tencent.mobileqq.widget.NotRemoveFrameLayout android:id="@id/Conversationcontainer" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/pad_left_panel_width" />
+</FrameLayout>

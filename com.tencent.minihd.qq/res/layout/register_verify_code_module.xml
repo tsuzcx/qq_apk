@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <LinearLayout android:gravity="center_vertical" android:background="@drawable/shape_bg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="10.0dip" android:minHeight="50.0dip">
+        <TextView android:textSize="@dimen/font_size_large" android:textColor="@color/skin_black" android:paddingLeft="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qr_verify_code" android:layout_weight="1.0" />
+        <EditText android:textSize="16.0sp" android:textColor="@color/skin_gray2" android:id="@id/verify_code" android:background="@android:color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:layout_marginRight="1.0dip" android:layout_marginBottom="1.0dip" android:hint="@string/qr_input_verify_code" android:singleLine="true" android:layout_weight="3.0" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/font_size_small" android:textColor="@color/skin_black" android:id="@id/time_to_reget" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginBottom="20.0dip" />
+    <TextView android:textSize="@dimen/font_size_small" android:textColor="@color/skin_black" android:gravity="center" android:id="@id/reget" android:background="@drawable/op_bg_selector" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="20.0dip" android:text="@string/qr_reget_verify_code" />
+</LinearLayout>

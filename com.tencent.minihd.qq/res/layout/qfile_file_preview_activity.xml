@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/file_assistant" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/webView" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/retrylayout" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/errimage" android:background="@drawable/common_default_caution" android:layout_width="100.0dip" android:layout_height="100.0dip" android:contentDescription="@string/request_failed" />
+        <TextView android:textSize="16.0dip" android:textColor="#ffa6a6a6" android:gravity="center" android:id="@id/retmsg" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/offline_priview_default" android:layout_below="@id/errimage" />
+    </LinearLayout>
+    <RelativeLayout android:orientation="horizontal" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/getmorelayout" android:background="@drawable/qfile_file_preview_gray_bg" android:layout_width="110.0dip" android:layout_height="36.0dip" android:layout_centerHorizontal="true">
+            <ProgressBar android:id="@id/getmoreloading" android:layout_width="19.0dip" android:layout_height="19.0dip" android:indeterminateDrawable="@drawable/common_loading5" />
+            <TextView android:gravity="center" android:id="@id/getmore" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/offline_priview_getmore" />
+        </LinearLayout>
+    </RelativeLayout>
+    <TextView android:textSize="16.0dip" android:textColor="@color/white" android:gravity="center" android:id="@id/pagetips" android:background="@drawable/qfile_file_preview_gray_bg" android:layout_width="70.0dip" android:layout_height="30.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="15.0dip" android:layout_alignParentTop="true" />
+</RelativeLayout>

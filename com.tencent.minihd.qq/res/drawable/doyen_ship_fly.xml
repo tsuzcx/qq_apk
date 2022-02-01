@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="300" android:drawable="@drawable/doyen_ship_1" />
+    <item android:duration="300" android:drawable="@drawable/doyen_ship_2" />
+    <item android:duration="300" android:drawable="@drawable/doyen_ship_3" />
+    <item android:duration="300" android:drawable="@drawable/doyen_ship_4" />
+    <item android:duration="800" android:drawable="@drawable/doyen_ship_land" />
+</animation-list>

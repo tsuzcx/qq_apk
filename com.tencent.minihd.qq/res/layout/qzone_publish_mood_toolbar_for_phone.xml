@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/rl_publish_toolbar" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="32.0dip">
+        <ImageView android:id="@id/iv_emo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qzone_toolbar_btn_face_click" />
+        <ImageView android:id="@id/iv_at" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="32.0dip" android:src="@drawable/qzone_toolbar_btn_at_click" />
+        <com.qzone.widget.RedDotImageView android:id="@id/qzone_publish_mood_add_picture" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="32.0dip" android:src="@drawable/qzone_toolbar_add_image_click" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="32.0dip" android:layout_marginTop="@dimen/common_8dp">
+        <CheckBox android:textSize="20.0sp" android:textColor="#8c000000" android:id="@id/cb_sync_sign" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="32.0dip" android:button="@drawable/qzone_checkbox_selector" android:text="@string/qzone_publish_mood_sync_sign" android:layout_alignParentRight="true" />
+        <CheckBox android:textSize="20.0sp" android:textColor="#8c000000" android:id="@id/cb_send_orignal_pic" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="32.0dip" android:button="@drawable/qzone_checkbox_selector" android:text="@string/qzone_publish_mood_send_origal_pic" android:layout_toLeftOf="@id/cb_sync_sign" />
+    </LinearLayout>
+</LinearLayout>

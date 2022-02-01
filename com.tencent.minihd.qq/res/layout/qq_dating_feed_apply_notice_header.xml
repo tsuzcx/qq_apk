@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/qq_dating_feed_apply_notice_container" android:background="@drawable/qq_dating_feed_notify_bar" android:focusable="true" android:layout_width="290.0dip" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="4.0dip">
+        <ImageView android:id="@id/avatar" android:focusable="false" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="4.0dip" android:layout_marginBottom="4.0dip" android:src="@drawable/qq_dating_icon" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/skin_black" android:gravity="center_vertical" android:id="@id/msg_tip" android:duplicateParentState="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="15.0dip" android:text="@string/qq_dating_feed_apply_notice" android:singleLine="true" android:layout_weight="1.0" />
+        <TextView android:id="@id/unread" android:background="@drawable/skin_tips_newmessage" android:duplicateParentState="true" android:layout_marginRight="10.0dip" style="@style/CustomNoteTxt" />
+        <ImageView android:id="@id/arrow" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:src="@drawable/common_arrow_right_selector" />
+    </LinearLayout>
+</LinearLayout>

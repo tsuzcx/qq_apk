@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.minihd.qq">
+    <RelativeLayout android:id="@id/imageContent" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/rlCommenTitle" tencent:skintype="title_bg_bar" style="@style/title_bar">
+        <TextView android:id="@id/ivTitleName" style="@style/title_bar_title" />
+        <RelativeLayout android:id="@id/title_layout" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="96.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="96.0dip" android:layout_marginBottom="5.0dip" android:layout_centerInParent="true">
+            <TextView android:textSize="16.0dip" android:textColor="@color/skin_bar_text" android:ellipsize="end" android:gravity="center" android:id="@id/title_top" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@null" android:singleLine="true" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/skin_bar_text" android:ellipsize="end" android:gravity="center" android:id="@id/title_bottom" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@null" android:singleLine="true" android:layout_below="@id/title_top" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <com.tencent.widget.EmptyTextView android:id="@id/ivTitleBtnLeft" style="@style/title_bar_left_btn" />
+        <com.tencent.widget.EmptyTextView android:id="@id/ivTitleBtnLeftButton" style="@style/title_bar_left_btn_2" />
+        <include android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" layout="@layout/custom_commen_title_rightview" />
+    </RelativeLayout>
+</RelativeLayout>

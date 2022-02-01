@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="horizontal" android:background="@drawable/qzone_list_item_bg_selector" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.AsyncImageView android:id="@id/img_album_list_item_cover" android:layout_width="@dimen/local_photo_list_cover_w" android:layout_height="@dimen/local_photo_list_cover_h" android:src="@drawable/defaultpic" android:layout_alignParentLeft="true" />
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/img_album_list_item_open" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/qzone_icon_forward_selector" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_toLeftOf="@id/img_album_list_item_open" android:layout_toRightOf="@id/img_album_list_item_cover" android:layout_centerVertical="true">
+        <TableLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:shrinkColumns="0">
+            <TableRow>
+                <TextView android:textSize="15.0sp" android:textColor="@color/qzone_color_hei" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/album_list_item_album_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+                <TextView android:textSize="15.0sp" android:textColor="@color/qzone_color_photo_count" android:layout_gravity="center_vertical" android:id="@id/album_list_item_pic_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+    <com.qzone.widget.CommonLine android:layout_width="fill_parent" android:layout_height="@dimen/divider_height" android:layout_alignParentBottom="true" />
+</RelativeLayout>

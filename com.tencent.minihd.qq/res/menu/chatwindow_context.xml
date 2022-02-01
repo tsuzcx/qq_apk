@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@id/del_msg" android:title="@string/chat_delete" />
+    <item android:id="@id/cancel_sending" android:title="@string/chat_cancel_sending" />
+    <item android:id="@id/cancel_all_sending" android:title="@string/chat_cancel_all_sending" />
+    <item android:icon="@drawable/menu_setting" android:id="@id/reupload" android:title="@string/reupload" />
+    <item android:id="@id/del_txt" android:title="@string/record_delete" />
+    <item android:id="@id/cpy_txt" android:title="@string/record_copy" />
+    <item android:id="@id/resnd_txt" android:title="@string/record_resend" />
+    <item android:id="@id/forward" android:title="@string/forward" />
+    <item android:id="@id/favorite" android:title="@string/favorite" />
+    <item android:id="@id/multi_forward" android:title="@string/multi_forward" />
+    <item android:id="@id/send_struct_msg" android:title="@string/send_struct_msg" />
+    <item android:id="@id/add_friend" android:title="@string/add_friend" />
+    <item android:id="@id/join_troop" android:title="@string/join_troop_title" />
+    <item android:id="@id/dial_number" android:title="@string/dial_number" />
+    <item android:id="@id/copy_number" android:title="@string/copy_number" />
+    <item android:id="@id/upload_weiyun" android:title="@string/upload_weiyun" />
+    <item android:id="@id/about_qqi" android:title="@string/qtrans_feature_about" />
+    <item android:id="@id/del_file" android:title="@string/file_assistant_delete" />
+    <item android:id="@id/save_to_weiyun" android:title="@string/file_assistant_save2cloudlet" />
+    <item android:id="@id/forward_file" android:title="@string/file_assistant_forward" />
+    <item android:id="@id/download_file" android:title="@string/fm_operation_btn_download" />
+    <item android:id="@id/pause_download_file" android:title="@string/fm_operation_btn_pause" />
+    <item android:id="@id/resume_download_file" android:title="@string/fm_operation_btn_resume" />
+    <item android:id="@id/forward_to_pc" android:title="@string/lite_forward_to_pc" />
+    <item android:id="@id/qlink_the_file" android:title="@string/qlink_the_file" />
+    <item android:id="@id/qb_troop_file_pause_download" android:title="@string/qb_troop_file_menu_pause" />
+    <item android:id="@id/qb_troop_file_pause_upload" android:title="@string/qb_troop_file_menu_pause" />
+    <item android:id="@id/qb_troop_file_continue_download" android:title="@string/qb_troop_file_menu_continue" />
+    <item android:id="@id/qb_troop_file_continue_upload" android:title="@string/qb_troop_file_menu_continue" />
+    <item android:id="@id/qb_troop_file_cancel_download" android:title="@string/qb_troop_file_menu_cancel_download" />
+    <item android:id="@id/qb_troop_file_cancel_upload" android:title="@string/qb_troop_file_menu_cancel_upload" />
+    <item android:id="@id/qb_troop_file_send_forward" android:title="@string/qb_troop_file_menu_send_forward" />
+    <item android:id="@id/qb_troop_file_save_weiyun" android:title="@string/qb_troop_file_menu_save_weiyun" />
+    <item android:id="@id/qb_troop_file_save_local" android:title="@string/qb_troop_file_menu_save_local" />
+    <item android:id="@id/qb_troop_file_retry_upload" android:title="@string/qb_troop_file_menu_retry_upload" />
+    <item android:id="@id/qb_troop_file_retry_download" android:title="@string/qb_troop_file_menu_retry_download" />
+    <item android:id="@id/qb_troop_file_download" android:title="@string/qb_troop_file_menu_download" />
+    <item android:id="@id/qb_troop_file_favorite" android:title="@string/qb_troop_file_menu_favorite" />
+</menu>
